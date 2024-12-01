@@ -1,0 +1,3 @@
+networks:
+  wh-app:
+    driver: bridge

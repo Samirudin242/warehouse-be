@@ -1,0 +1,17 @@
+cp-schema-registry:
+  enabled: false
+
+cp-kafka-rest:
+  enabled: false
+
+cp-ksql-server:
+  enabled: false
+
+cp-control-center:
+  enabled: false
+
+cp-kafka-connect:
+  enabled: false
+
+cp-connector-operator:
+  enabled: false
