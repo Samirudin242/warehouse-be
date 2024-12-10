@@ -4,25 +4,25 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.fns</groupId>
-        <artifactId>warehouse-service</artifactId>
+        <artifactId>product-service</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>warehouse-dataaccess</artifactId>
+    <artifactId>product-dataaccess</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>warehouse-dataaccess</name>
+    <name>product-dataaccess</name>
 
     <dependencies>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <groupId>com.fns</groupId>
+            <artifactId>product-application-service</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.fns</groupId>
-            <artifactId>warehouse-application-service</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
             <groupId>jakarta.persistence</groupId>
@@ -31,10 +31,6 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
         </dependency>
     </dependencies>
 </project>

@@ -2,8 +2,6 @@ package com.fns.warehouse.service.domain.rest;
 
 import com.fns.warehouse.service.domain.dto.create.CreateWarehouseCommand;
 import com.fns.warehouse.service.domain.dto.create.CreateWarehouseResponse;
-import com.fns.warehouse.service.domain.dto.create.StockTransferCommand;
-import com.fns.warehouse.service.domain.dto.create.StockTransferResponse;
 import com.fns.warehouse.service.domain.ports.input.service.WarehouseApplicationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -34,12 +32,4 @@ public class WarehouseController {
         log.info("Warehouse created");
         return ResponseEntity.ok(createWarehouseResponse);
     }
-
-//    @PostMapping("/stock/transfer")
-//    public ResponseEntity<StockTransferResponse> stockTransferRequest(@RequestBody StockTransferCommand stockTransferCommand) {
-//        log.info("Stock transfer {} to {}", stockTransferCommand.getSourceStockId(), stockTransferCommand.getDestinationStockId());
-//        StockTransferResponse stockTransferResponse = warehouseApplicationService.transferStock(stockTransferCommand);
-//        log.info("Stock transfer requested");
-//        return ResponseEntity.ok(stockTransferResponse);
-//    }
 }
