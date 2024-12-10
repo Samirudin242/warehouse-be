@@ -1,0 +1,8 @@
+/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-domain/user-domain-core/src/main/java/com/fns/user/service/domain/UserDomainService.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-domain/user-domain-core/src/main/java/com/fns/user/service/domain/UserDomainServiceImpl.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-domain/user-domain-core/src/main/java/com/fns/user/service/domain/entity/User.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-domain/user-domain-core/src/main/java/com/fns/user/service/domain/exception/UserDomainException.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-domain/user-domain-core/src/main/java/com/fns/user/service/domain/valueObject/Password.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-domain/user-domain-core/src/main/java/com/fns/user/service/domain/valueObject/Role.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-domain/user-domain-core/src/main/java/com/fns/user/service/domain/valueObject/UserName.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-domain/user-domain-core/src/main/java/com/fns/user/service/domain/valueObject/UserRoleType.java
