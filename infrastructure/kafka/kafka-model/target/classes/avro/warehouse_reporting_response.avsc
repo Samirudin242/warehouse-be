@@ -1,0 +1,60 @@
+{
+  "namespace": "com.fns.kafka.warehouse.avro.model",
+  "type": "record",
+  "name": "WarehouseReportingResponseAvroModel",
+  "fields": [
+    {
+      "name": "id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "sagaId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "warehouseId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "reportingId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "createdAt",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "name": "monthlyWarehouseCreated",
+      "type": {
+        "type": "array",
+        "items":{
+          "type":"string"
+        }
+      }
+    },
+    {
+      "name": "failureMessages",
+      "type": {
+        "type": "array",
+        "items":{
+          "type":"string"
+        }
+      }
+    }
+  ]
+}
