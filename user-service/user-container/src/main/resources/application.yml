@@ -6,11 +6,11 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        default_schema: public
         format_sql: true
+    hibernate:
+      ddl-auto: update  # Automatically generate and update tables
   datasource:
     url: jdbc:postgresql://localhost:5432/multi-warehouse?currentSchema=public&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     username: postgres
     password: theyaku
     driver-class-name: org.postgresql.Driver
-    schema: classpath:init-schema.sql

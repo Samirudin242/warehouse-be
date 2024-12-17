@@ -1,4 +1,4 @@
-package com.fns.user.service.domainn;
+package com.fns.user.service.domain;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,0 +1,3 @@
+com/fns/product/service/domain/dto/create/CreateProductCommand.class
+com/fns/product/service/domain/ports/input/service/ProductApplicationService.class
+com/fns/product/service/domain/dto/create/CreateProductCommand$CreateProductCommandBuilder.class
