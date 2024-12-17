@@ -1,4 +1,9 @@
-/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/product/entity/BrandEntity.java
-/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/product/entity/CategoriesEntity.java
-/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/product/entity/ProductEntity.java
-/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/product/repository/ProductJpaRepository.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/ProductBrandEntity.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/ProductCategoriesEntity.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/ProductColors.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/ProductEntity.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/ProductImages.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/ProductPricesEntity.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/ProductReviews.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/ProductSizes.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/repository/ProductJpaRepository.java
