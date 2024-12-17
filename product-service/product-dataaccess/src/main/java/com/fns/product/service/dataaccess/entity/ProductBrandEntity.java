@@ -3,17 +3,17 @@ package com.fns.product.service.dataaccess.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
 import java.util.UUID;
+import java.util.List;
 
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "product_categories")
+@Table(name = "brands")
 @Entity
-public class CategoriesEntity {
+public class ProductBrandEntity {
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
@@ -22,6 +22,6 @@ public class CategoriesEntity {
 
     private String slug;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductEntity> products;
 }

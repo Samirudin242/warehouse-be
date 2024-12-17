@@ -11,17 +11,14 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "brands")
+@Table(name = "product_colors")
 @Entity
-public class BrandEntity {
+public class ProductColors {
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
 
-    private String name;
+    private String original_name;
 
-    private String slug;
-
-    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProductEntity> products;
+    private String filter_group;
 }
