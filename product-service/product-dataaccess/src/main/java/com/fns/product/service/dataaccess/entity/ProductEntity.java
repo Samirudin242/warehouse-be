@@ -6,6 +6,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -32,11 +33,31 @@ public class ProductEntity {
 
     @ManyToOne
     @JoinColumn(name = "brand_id", referencedColumnName = "id")
-    private BrandEntity brand;
+    private ProductBrandEntity brand;
 
     @ManyToOne
     @JoinColumn(name = "product_categories_id", referencedColumnName = "id")
-    private CategoriesEntity category;
+    private ProductCategoriesEntity category;
+
+    @ManyToOne
+    @JoinColumn(name = "size_id", referencedColumnName = "id")
+    private ProductSizes productSize;
+
+    @ManyToOne
+    @JoinColumn(name = "color_id", referencedColumnName = "id")
+    private ProductColors productColor;
+
+    @OneToMany
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private List<ProductImages> images;
+
+    @OneToOne
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private ProductPricesEntity productPrices;
+
+    @OneToMany
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private List<ProductReviews> reviews;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
