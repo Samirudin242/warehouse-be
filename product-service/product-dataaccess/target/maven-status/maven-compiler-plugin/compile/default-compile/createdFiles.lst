@@ -1,0 +1,7 @@
+com/fns/product/service/dataaccess/product/entity/CategoriesEntity$CategoriesEntityBuilder.class
+com/fns/product/service/dataaccess/product/entity/BrandEntity$BrandEntityBuilder.class
+com/fns/product/service/dataaccess/product/entity/ProductEntity.class
+com/fns/product/service/dataaccess/product/entity/BrandEntity.class
+com/fns/product/service/dataaccess/product/entity/ProductEntity$ProductEntityBuilder.class
+com/fns/product/service/dataaccess/product/entity/CategoriesEntity.class
+com/fns/product/service/dataaccess/product/repository/ProductJpaRepository.class
