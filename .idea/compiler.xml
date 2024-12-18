@@ -2,31 +2,32 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="product-application-service" />
+        <module name="user-dataaccess" />
         <module name="reporting-domain-core" />
         <module name="kafka-model" />
         <module name="kafka-consumer" />
+        <module name="kafka-producer" />
         <module name="product-container" />
+        <module name="kafka-config-data" />
+        <module name="user-application-service" />
+        <module name="user-container" />
         <module name="reporting-container" />
         <module name="product-domain-core" />
         <module name="reporting-application-service" />
         <module name="common-domain" />
-        <module name="saga" />
-        <module name="product-application" />
-        <module name="product-dataaccess" />
-        <module name="product-application-service" />
-        <module name="user-dataaccess" />
-        <module name="kafka-producer" />
-        <module name="kafka-config-data" />
-        <module name="user-application-service" />
-        <module name="user-container" />
         <module name="reporting-messaging" />
         <module name="user-messaging" />
         <module name="user-domain-core" />
         <module name="user-application" />
+        <module name="saga" />
+        <module name="product-application" />
+        <module name="product-dataaccess" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

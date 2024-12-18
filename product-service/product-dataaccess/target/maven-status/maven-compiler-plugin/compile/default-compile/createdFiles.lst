@@ -1,8 +1,10 @@
 com/fns/product/service/dataaccess/repository/ProductJpaRepository.class
 com/fns/product/service/dataaccess/entity/ProductCategoriesEntity.class
 com/fns/product/service/dataaccess/entity/ProductColors$ProductColorsBuilder.class
+com/fns/product/service/dataaccess/repository/ProductColorsRepository.class
 com/fns/product/service/dataaccess/entity/ProductImages$ProductImagesBuilder.class
 com/fns/product/service/dataaccess/entity/ProductBrandEntity.class
+com/fns/product/service/dataaccess/repository/ProductBrandRepository.class
 com/fns/product/service/dataaccess/entity/ProductEntity$ProductEntityBuilder.class
 com/fns/product/service/dataaccess/entity/ProductPricesEntity$ProductPricesEntityBuilder.class
 com/fns/product/service/dataaccess/entity/ProductBrandEntity$ProductBrandEntityBuilder.class
@@ -15,3 +17,4 @@ com/fns/product/service/dataaccess/entity/ProductCategoriesEntity$ProductCategor
 com/fns/product/service/dataaccess/entity/ProductReviews$ProductReviewsBuilder.class
 com/fns/product/service/dataaccess/entity/ProductImages.class
 com/fns/product/service/dataaccess/entity/ProductSizes.class
+com/fns/product/service/dataaccess/repository/ProductSizeRepository.class
