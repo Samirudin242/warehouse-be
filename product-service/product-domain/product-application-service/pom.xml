@@ -77,5 +77,9 @@
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.fns</groupId>-->
+<!--            <artifactId>product-dataaccess</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 </project>

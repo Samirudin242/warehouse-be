@@ -2,7 +2,10 @@ package com.fns.product.service.dataaccess.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 import java.util.List;
 
@@ -22,5 +25,12 @@ public class ProductSizes {
     private String size;
 
     private Boolean is_stock;
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 
 }
