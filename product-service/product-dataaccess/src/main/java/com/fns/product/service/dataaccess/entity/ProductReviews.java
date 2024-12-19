@@ -2,7 +2,10 @@ package com.fns.product.service.dataaccess.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
@@ -26,4 +29,11 @@ public class ProductReviews {
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private ProductEntity product;
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 }

@@ -1,2 +1,8 @@
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/ProductApplicationServiceImpl.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/ProductCreateCommandHandler.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/dto/create/CreatePriceCommand.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/dto/create/CreateProductCommand.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/dto/create/CreateProductResponse.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/mapper/ProductDataMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/ports/input/service/ProductApplicationService.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/ports/output/repository/ProductRepository.java
