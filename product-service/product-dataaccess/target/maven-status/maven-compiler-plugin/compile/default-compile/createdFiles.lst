@@ -10,6 +10,8 @@ com/fns/product/service/dataaccess/entity/ProductPricesEntity$ProductPricesEntit
 com/fns/product/service/dataaccess/entity/ProductBrandEntity$ProductBrandEntityBuilder.class
 com/fns/product/service/dataaccess/entity/ProductColors.class
 com/fns/product/service/dataaccess/entity/ProductReviews.class
+com/fns/product/service/dataaccess/adapter/ProductServiceImpl.class
+com/fns/product/service/dataaccess/repository/ProductCategoriesRepository.class
 com/fns/product/service/dataaccess/entity/ProductPricesEntity.class
 com/fns/product/service/dataaccess/entity/ProductEntity.class
 com/fns/product/service/dataaccess/entity/ProductSizes$ProductSizesBuilder.class
