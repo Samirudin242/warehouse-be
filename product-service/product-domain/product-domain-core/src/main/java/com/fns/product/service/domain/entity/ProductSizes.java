@@ -4,9 +4,9 @@ import java.util.UUID;
 
 // Entity: ProductSizes
 public class ProductSizes {
-    private final UUID id; // Unique ID for the size
-    private String size; // Size description (e.g., "S", "M", "L")
-    private Boolean isStock; // Availability flag
+    private final UUID id;
+    private String size;
+    private Boolean isStock;
 
     // Constructor for creating a new ProductSizes instance
     public ProductSizes(String size, Boolean isStock) {

@@ -7,7 +7,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-import java.util.List;
 
 @Getter
 @Setter
@@ -16,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "product_sizes")
 @Entity
-public class ProductSizes {
+public class ProductSizesEntity {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -24,7 +23,7 @@ public class ProductSizes {
 
     private String size;
 
-    private Boolean is_stock;
+    private Boolean isStock;
 
     @CreationTimestamp
     @Column(updatable = false)

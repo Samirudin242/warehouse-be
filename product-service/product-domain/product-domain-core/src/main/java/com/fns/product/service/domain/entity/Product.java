@@ -1,29 +1,34 @@
 package com.fns.product.service.domain.entity;
 
-import com.fns.product.service.domain.valueObject.Category;
-import com.fns.product.service.domain.valueObject.Gender;
 import com.fns.product.service.domain.valueObject.Price;
+import lombok.*;
 
 import java.util.UUID;
 
 // Aggregate Root: Product
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Product {
 
-    private final UUID id;
+    private UUID id;
     private String sku;
     private String name;
     private String slug;
     private String description;
-    private Gender gender;
+    private String gender;
     private Price price;
     private UUID brandId;
     private UUID productCategoryId;
     private UUID sizeId;
+    private UUID colorId;
     private String imageUrl;
 
     // Private constructor for builder
     private Product(Builder builder) {
-        this.id = builder.id != null ? builder.id : UUID.randomUUID();
+        this.id = builder.id;
         this.sku = builder.sku;
         this.name = builder.name;
         this.slug = generateSlug(builder.name);
@@ -33,94 +38,15 @@ public class Product {
         this.brandId = builder.brandId;
         this.productCategoryId = builder.productCategoryId;
         this.sizeId = builder.sizeId;
+        this.colorId = builder.colorId;
         this.imageUrl = builder.imageUrl;
     }
+
 
     public static Builder builder() {
         return new Builder();
     }
 
-    public UUID getId() {
-        return id;
-    }
-
-    public String getSku() {
-        return sku;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getSlug() {
-        return slug;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public Price getPrice() {
-        return price;
-    }
-
-    public UUID getBrandId() {
-        return brandId;
-    }
-
-    public UUID getProductCategoryId() {
-        return productCategoryId;
-    }
-
-    public UUID getSizeId() {
-        return sizeId;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    // Setters for updatable fields
-    public void updateDetails(String name, Price price, Gender gender, String imageUrl) {
-        if (name != null && !name.trim().isEmpty()) {
-            this.name = name;
-            this.slug = generateSlug(name);
-        }
-        if (price != null) {
-            this.price = price;
-        }
-        if (gender != null) {
-            this.gender = gender;
-        }
-        if (imageUrl != null) {
-            this.imageUrl = imageUrl;
-        }
-    }
-
-    public void setSku(String sku) {
-        this.sku = sku;
-    }
-
-    public void setBrandId(UUID brandId) {
-        if (brandId == null) {
-            throw new IllegalArgumentException("Brand ID cannot be null.");
-        }
-        this.brandId = brandId;
-    }
-
-    public void setProductCategoryId(UUID productCategoryId) {
-        if (productCategoryId == null) {
-            throw new IllegalArgumentException("Product category ID cannot be null.");
-        }
-        this.productCategoryId = productCategoryId;
-    }
-
-    public void setSizeId(UUID sizeId) {
-        if (sizeId == null) {
-            throw new IllegalArgumentException("Size ID cannot be null.");
-        }
-        this.sizeId = sizeId;
-    }
 
     private String generateSlug(String name) {
         return name.toLowerCase().replaceAll("[^a-z0-9]+", "-").replaceAll("(^-|-$)", "");
@@ -142,14 +68,16 @@ public class Product {
                 '}';
     }
 
+
     // Builder class
     public static class Builder {
+        public UUID colorId;
         private UUID id;
         private String sku;
         private String name;
         private String slug;
         private String description;
-        private Gender gender;
+        private String gender;
         private Price price;
         private UUID brandId;
         private UUID productCategoryId;
@@ -184,7 +112,7 @@ public class Product {
             return this;
         }
 
-        public Builder gender(Gender gender) {
+        public Builder gender(String gender) {
             if (gender == null) {
                 throw new IllegalArgumentException("Product gender cannot be null.");
             }
@@ -224,6 +152,14 @@ public class Product {
             return this;
         }
 
+        public Builder colorId(UUID colorId) {
+            if (colorId == null) {
+                throw new IllegalArgumentException("Color ID cannot be null.");
+            }
+            this.colorId = colorId;
+            return this;
+        }
+
         public Builder imageUrl(String imageUrl) {
             this.imageUrl = imageUrl;
             return this;
@@ -232,5 +168,6 @@ public class Product {
         public Product build() {
             return new Product(this);
         }
+
     }
 }

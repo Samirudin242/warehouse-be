@@ -1,10 +1,14 @@
 com/fns/product/service/domain/dto/create/CreateProductCommand$CreateProductCommandBuilder.class
-com/fns/product/service/domain/dto/create/CreatePriceCommand.class
-com/fns/product/service/domain/ports/input/service/ProductApplicationService.class
 com/fns/product/service/domain/ProductApplicationServiceImpl.class
+com/fns/product/service/domain/ports/output/repository/ProductColorsRepository.class
 com/fns/product/service/domain/dto/create/CreateProductResponse$CreateProductResponseBuilder.class
 com/fns/product/service/domain/dto/create/CreateProductCommand.class
 com/fns/product/service/domain/mapper/ProductDataMapper.class
+com/fns/product/service/domain/ports/output/repository/ProductCategoriesRepository.class
 com/fns/product/service/domain/dto/create/CreateProductResponse.class
-com/fns/product/service/domain/ports/output/repository/ProductRepository.class
 com/fns/product/service/domain/ProductCreateCommandHandler.class
+com/fns/product/service/domain/dto/create/CreatePriceCommand.class
+com/fns/product/service/domain/ports/input/service/ProductApplicationService.class
+com/fns/product/service/domain/ports/output/repository/ProductSizesRepository.class
+com/fns/product/service/domain/ports/output/repository/ProductBrandRepository.class
+com/fns/product/service/domain/ports/output/repository/ProductRepository.class
