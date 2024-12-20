@@ -1,7 +1,7 @@
 package com.fns.product.service.domain.seeder;
 
 import com.fns.product.service.dataaccess.entity.ProductBrandEntity;
-import com.fns.product.service.dataaccess.repository.ProductBrandRepository;
+import com.fns.product.service.dataaccess.repository.ProductBrandJpaRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,16 +12,16 @@ import java.util.stream.Collectors;
 @Component
 public class ProductBrandSeeder implements CommandLineRunner {
 
-    private final ProductBrandRepository productBrandRepository;
+    private final ProductBrandJpaRepository productBrandJpaRepository;
 
-    public ProductBrandSeeder(ProductBrandRepository productBrandRepository) {
-        this.productBrandRepository = productBrandRepository;
+    public ProductBrandSeeder(ProductBrandJpaRepository productBrandJpaRepository) {
+        this.productBrandJpaRepository = productBrandJpaRepository;
     }
 
     @Override
     public void run(String... args) {
 
-        if(productBrandRepository.count() == 0) {
+        if(productBrandJpaRepository.count() == 0) {
             List<Brand> brandsToSeed = List.of(
                     new Brand("Michael Kors", "michael-kors"),
                     new Brand("Gabs", "gabs"),
@@ -35,7 +35,7 @@ public class ProductBrandSeeder implements CommandLineRunner {
             );
 
             // Check existing brands and filter out already seeded ones
-            List<String> existingSlugs = productBrandRepository.findAll()
+            List<String> existingSlugs = productBrandJpaRepository.findAll()
                     .stream()
                     .map(ProductBrandEntity::getSlug)
                     .toList();
@@ -51,7 +51,7 @@ public class ProductBrandSeeder implements CommandLineRunner {
 
             // Save new brands if any
             if (!brandsToSave.isEmpty()) {
-                productBrandRepository.saveAll(brandsToSave);
+                productBrandJpaRepository.saveAll(brandsToSave);
             }
         }
     }

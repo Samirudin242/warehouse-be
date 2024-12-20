@@ -7,7 +7,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-import java.util.List;
 
 @Getter
 @Setter
@@ -16,14 +15,14 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "product_colors")
 @Entity
-public class ProductColors {
+public class ProductColorsEntity {
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
 
-    private String original_name;
+    private String originalName;
 
-    private String filter_group;
+    private String filterGroup;
 
     @CreationTimestamp
     @Column(updatable = false)

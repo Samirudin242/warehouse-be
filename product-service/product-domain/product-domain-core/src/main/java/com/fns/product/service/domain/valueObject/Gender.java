@@ -31,8 +31,7 @@ public class Gender {
         }
     }
 
-    // Accessor for the value
-    public String getValue() {
+    public String toStringValue() {
         return value;
     }
 
@@ -50,7 +49,7 @@ public class Gender {
         return Objects.hash(value);
     }
 
-    // String representation for debugging
+    // String representation for debugging (not needed for storage)
     @Override
     public String toString() {
         return "Gender{" +

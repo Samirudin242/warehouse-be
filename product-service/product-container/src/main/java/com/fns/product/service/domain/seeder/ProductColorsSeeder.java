@@ -1,7 +1,7 @@
 package com.fns.product.service.domain.seeder;
 
-import com.fns.product.service.dataaccess.entity.ProductColors;
-import com.fns.product.service.dataaccess.repository.ProductColorsRepository;
+import com.fns.product.service.dataaccess.entity.ProductColorsEntity;
+import com.fns.product.service.dataaccess.repository.ProductColorsJpaRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import java.util.UUID;
@@ -9,127 +9,127 @@ import java.util.UUID;
 @Component
 public class ProductColorsSeeder implements CommandLineRunner {
 
-    private final ProductColorsRepository productColorsRepository;
+    private final ProductColorsJpaRepository productColorsJpaRepository;
 
-    public ProductColorsSeeder(ProductColorsRepository productColorsRepository) {
-        this.productColorsRepository = productColorsRepository;
+    public ProductColorsSeeder(ProductColorsJpaRepository productColorsJpaRepository) {
+        this.productColorsJpaRepository = productColorsJpaRepository;
     }
 
     @Override
     public void run(String... args) {
-        if (productColorsRepository.count() == 0) {
-            ProductColors color1 = ProductColors.builder()
+        if (productColorsJpaRepository.count() == 0) {
+            ProductColorsEntity color1 = ProductColorsEntity.builder()
                     .id(UUID.randomUUID())
-                    .original_name("white")
-                    .filter_group("white")
+                    .originalName("white")
+                    .filterGroup("white")
                     .build();
 
-            ProductColors color2 = ProductColors.builder()
+            ProductColorsEntity color2 = ProductColorsEntity.builder()
                     .id(UUID.randomUUID())
-                    .original_name("silver")
-                    .filter_group("silver")
+                    .originalName("silver")
+                    .filterGroup("silver")
                     .build();
 
-            ProductColors color3 = ProductColors.builder()
+            ProductColorsEntity color3 = ProductColorsEntity.builder()
                     .id(UUID.randomUUID())
-                    .original_name("pink")
-                    .filter_group("pink")
+                    .originalName("pink")
+                    .filterGroup("pink")
                     .build();
 
-            ProductColors color4 = ProductColors.builder()
+            ProductColorsEntity color4 = ProductColorsEntity.builder()
                     .id(UUID.randomUUID())
-                    .original_name("beige")
-                    .filter_group("beige")
+                    .originalName("beige")
+                    .filterGroup("beige")
                     .build();
 
-            ProductColors color5 = ProductColors.builder()
+            ProductColorsEntity color5 = ProductColorsEntity.builder()
                     .id(UUID.randomUUID())
-                    .original_name("multi")
-                    .filter_group("multi")
+                    .originalName("multi")
+                    .filterGroup("multi")
                     .build();
 
-            ProductColors color6 = ProductColors.builder()
+            ProductColorsEntity color6 = ProductColorsEntity.builder()
                     .id(UUID.randomUUID())
-                    .original_name("black")
-                    .filter_group("black")
+                    .originalName("black")
+                    .filterGroup("black")
                     .build();
 
-            ProductColors color7 = ProductColors.builder()
+            ProductColorsEntity color7 = ProductColorsEntity.builder()
                     .id(UUID.randomUUID())
-                    .original_name("brow")
-                    .filter_group("brow")
+                    .originalName("brow")
+                    .filterGroup("brow")
                     .build();
 
-            ProductColors color8 = ProductColors.builder()
+            ProductColorsEntity color8 = ProductColorsEntity.builder()
                     .id(UUID.randomUUID())
-                    .original_name("grey")
-                    .filter_group("grey")
+                    .originalName("grey")
+                    .filterGroup("grey")
                     .build();
 
-            ProductColors color9 = ProductColors.builder()
+            ProductColorsEntity color9 = ProductColorsEntity.builder()
                     .id(UUID.randomUUID())
-                    .original_name("pink")
-                    .filter_group("pink")
+                    .originalName("pink")
+                    .filterGroup("pink")
                     .build();
 
-            ProductColors color10 = ProductColors.builder()
+            ProductColorsEntity color10 = ProductColorsEntity.builder()
                     .id(UUID.randomUUID())
-                    .original_name("olive")
-                    .filter_group("olive")
+                    .originalName("olive")
+                    .filterGroup("olive")
                     .build();
 
-            ProductColors color11 = ProductColors.builder()
+            ProductColorsEntity color11 = ProductColorsEntity.builder()
                     .id(UUID.randomUUID())
-                    .original_name("orange")
-                    .filter_group("orange")
+                    .originalName("orange")
+                    .filterGroup("orange")
                     .build();
 
-            ProductColors color12 = ProductColors.builder()
+            ProductColorsEntity color12 = ProductColorsEntity.builder()
                     .id(UUID.randomUUID())
-                    .original_name("gold")
-                    .filter_group("gold")
+                    .originalName("gold")
+                    .filterGroup("gold")
                     .build();
 
-            ProductColors color13 = ProductColors.builder()
+            ProductColorsEntity color13 = ProductColorsEntity.builder()
                     .id(UUID.randomUUID())
-                    .original_name("yellow")
-                    .filter_group("yellow")
+                    .originalName("yellow")
+                    .filterGroup("yellow")
                     .build();
 
-            ProductColors color14 = ProductColors.builder()
+            ProductColorsEntity color14 = ProductColorsEntity.builder()
                     .id(UUID.randomUUID())
-                    .original_name("red")
-                    .filter_group("red")
+                    .originalName("red")
+                    .filterGroup("red")
                     .build();
 
-            ProductColors color15 = ProductColors.builder()
+            ProductColorsEntity color15 = ProductColorsEntity.builder()
                     .id(UUID.randomUUID())
-                    .original_name("green")
-                    .filter_group("green")
+                    .originalName("green")
+                    .filterGroup("green")
                     .build();
 
-            ProductColors color16 = ProductColors.builder()
+            ProductColorsEntity color16 = ProductColorsEntity.builder()
                     .id(UUID.randomUUID())
-                    .original_name("blue")
-                    .filter_group("blue")
+                    .originalName("blue")
+                    .filterGroup("blue")
                     .build();
 
-            productColorsRepository.save(color1);
-            productColorsRepository.save(color2);
-            productColorsRepository.save(color3);
-            productColorsRepository.save(color4);
-            productColorsRepository.save(color5);
-            productColorsRepository.save(color6);
-            productColorsRepository.save(color7);
-            productColorsRepository.save(color8);
-            productColorsRepository.save(color9);
-            productColorsRepository.save(color10);
-            productColorsRepository.save(color11);
-            productColorsRepository.save(color12);
-            productColorsRepository.save(color13);
-            productColorsRepository.save(color14);
-            productColorsRepository.save(color15);
-            productColorsRepository.save(color16);
+            productColorsJpaRepository.save(color1);
+            productColorsJpaRepository.save(color2);
+            productColorsJpaRepository.save(color3);
+            productColorsJpaRepository.save(color4);
+            productColorsJpaRepository.save(color5);
+            productColorsJpaRepository.save(color6);
+            productColorsJpaRepository.save(color7);
+            productColorsJpaRepository.save(color8);
+            productColorsJpaRepository.save(color9);
+            productColorsJpaRepository.save(color10);
+            productColorsJpaRepository.save(color11);
+            productColorsJpaRepository.save(color12);
+            productColorsJpaRepository.save(color13);
+            productColorsJpaRepository.save(color14);
+            productColorsJpaRepository.save(color15);
+            productColorsJpaRepository.save(color16);
 
             System.out.println("Seeded ProductColors table with initial data.");
         } else {

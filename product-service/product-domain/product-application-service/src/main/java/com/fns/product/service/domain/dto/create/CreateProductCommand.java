@@ -13,6 +13,9 @@ import java.util.UUID;
 @Builder
 public class CreateProductCommand {
 
+    @NotNull
+    private UUID id;
+
     private String sku;
 
     @NotNull
@@ -23,7 +26,6 @@ public class CreateProductCommand {
     @NotNull
     private String slug;
 
-    @NotNull
     private String gender;
 
     @NotNull
@@ -39,4 +41,7 @@ public class CreateProductCommand {
 
     @NotNull
     private UUID size_id;
+
+    @NotNull
+    private UUID color_id;
 }
