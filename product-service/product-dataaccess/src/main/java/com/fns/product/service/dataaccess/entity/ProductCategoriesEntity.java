@@ -25,7 +25,7 @@ public class ProductCategoriesEntity {
 
     private String slug;
 
-    private UUID parent_id;
+    private UUID parentId;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductEntity> products;

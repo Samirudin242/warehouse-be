@@ -1,8 +1,7 @@
 package com.fns.product.service.domain.seeder;
 
 import com.fns.product.service.dataaccess.entity.ProductCategoriesEntity;
-import com.fns.product.service.dataaccess.repository.ProductCategoriesRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.fns.product.service.dataaccess.repository.ProductCategoriesJpaRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -11,16 +10,16 @@ import java.util.UUID;
 @Component
 public class ProductCategorySeeder implements CommandLineRunner {
 
-    private final ProductCategoriesRepository productCategoriesRepository;
+    private final ProductCategoriesJpaRepository productCategoriesJpaRepository;
 
-    public ProductCategorySeeder(ProductCategoriesRepository productCategoriesRep) {
-        this.productCategoriesRepository = productCategoriesRep;
+    public ProductCategorySeeder(ProductCategoriesJpaRepository productCategoriesRep) {
+        this.productCategoriesJpaRepository = productCategoriesRep;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
-        if(productCategoriesRepository.count() == 0) {
+        if(productCategoriesJpaRepository.count() == 0) {
             seedCategories();
         }
 
@@ -79,9 +78,9 @@ public class ProductCategorySeeder implements CommandLineRunner {
         ProductCategoriesEntity category = ProductCategoriesEntity.builder()
                 .name(name)
                 .slug(name.toLowerCase().replace(" ", "-"))
-                .parent_id(parentId)
+                .parentId(parentId)
                 .build();
 
-        return productCategoriesRepository.save(category);
+        return productCategoriesJpaRepository.save(category);
     }
 }

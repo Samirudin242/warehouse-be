@@ -23,9 +23,8 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<CreateProductResponse> createProduct(@RequestBody CreateProductCommand createProductCommand) {
-        log.info("Creating product with SKU: {}", createProductCommand.getSku());
         CreateProductResponse createProductResponse = productApplicationService.createProduct(createProductCommand);
-        log.info("Product created: {}", createProductResponse);
+        log.info("Product created: " + createProductResponse);
         return ResponseEntity.ok(createProductResponse);
     }
 
