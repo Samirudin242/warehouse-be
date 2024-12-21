@@ -46,5 +46,4 @@ public class ProductApplicationServiceImpl implements ProductApplicationService 
     public String deleteProductById(UUID id) {
         return productCreateCommandHandler.deleteProduct(id);
     }
-
 }

@@ -4,12 +4,12 @@ import java.util.UUID;
 
 // Entity: ProductPrices
 public class ProductPrices {
-    private final UUID id; // Unique ID for the price
-    private final UUID productId; // Associated Product ID
-    private String currency; // Currency code (e.g., "USD", "EUR")
-    private Double price; // Base price of the product
-    private Double discountedValue; // Discounted price, if applicable
-    private Boolean onSales; // Flag indicating if the product is on sale
+    private final UUID id;
+    private final UUID productId;
+    private String currency;
+    private Double price;
+    private Double discountedValue;
+    private Boolean onSales;
 
     // Constructor for creating a new ProductPrices instance
     public ProductPrices(UUID productId, String currency, Double price, Double discountedValue, Boolean onSales) {

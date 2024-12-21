@@ -6,8 +6,10 @@ import com.fns.product.service.domain.dto.edit.EditProductCommand;
 import com.fns.product.service.domain.entity.*;
 import com.fns.product.service.domain.mapper.ProductDataMapper;
 import com.fns.product.service.domain.ports.output.repository.*;
+import com.fns.product.service.domain.entity.ProductImages;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -18,33 +20,58 @@ import java.util.stream.Collectors;
 public class ProductCreateCommandHandler {
 
     private final ProductRepository productRepository;
+    private final ProductPricesRepository productPricesRepository;
     private final ProductDataMapper productDataMapper;
     private final ProductBrandRepository productBrandRepository;
     private final ProductCategoriesRepository productCategoriesRepository;
     private final ProductColorsRepository productColorsRepository;
     private final ProductSizesRepository productSizesRepository;
+    private final ProductImageRepository productImagesRepository;
 
     public ProductCreateCommandHandler(
-            ProductRepository productRepository,
+            ProductRepository productRepository, ProductPricesRepository productPricesRepository,
             ProductDataMapper productDataMapper,
             ProductBrandRepository productBrandRepository,
             ProductColorsRepository productColorsRepository,
             ProductCategoriesRepository productCategoriesRepository,
-            ProductSizesRepository productSizesRepository
+            ProductSizesRepository productSizesRepository,
+            ProductImageRepository productImagesRepository
     ) {
+        this.productImagesRepository = productImagesRepository;
         this.productRepository = productRepository;
+        this.productPricesRepository = productPricesRepository;
         this.productDataMapper = productDataMapper;
         this.productBrandRepository = productBrandRepository;
         this.productCategoriesRepository = productCategoriesRepository;
         this.productColorsRepository = productColorsRepository;
         this.productSizesRepository = productSizesRepository;
     }
-
+    @Transactional
     public ProductResponse createProduct(CreateProductCommand createProductCommand) {
 
         Product product = productDataMapper.createProduct(createProductCommand);
 
         Product savedProduct = saveProduct(product);
+
+        // Create and save the price
+        ProductPrices productPrice = ProductPrices.builder()
+                .currency("USD")
+                .price(createProductCommand.getPrice())
+                .discountedValue(null)
+                .onSales(false)
+                .productId(savedProduct.getId())
+                .build();
+
+        savePricesProduct(productPrice);
+        
+        //Create and save the image_url
+        ProductImages productImage = ProductImages.builder()
+                .productId(savedProduct.getId())
+                .imageUrl(createProductCommand.getImage_url())
+                .build();
+
+        saveProductImageUrl(productImage);
+        
 
         ProductBrand brand = productBrandRepository.findById(createProductCommand.getBrand_id())
                 .orElseThrow(() -> new RuntimeException("Brand not found"));
@@ -198,6 +225,38 @@ public class ProductCreateCommandHandler {
             throw new RuntimeException("Error while saving product", e);
         }
     }
+
+    private void savePricesProduct(ProductPrices productPrices) {
+        try {
+            // Attempt to save the product to the repository
+            ProductPrices savedProductProductPrices = productPricesRepository.savePrice(productPrices);
+
+            if (savedProductProductPrices == null) {
+                throw new RuntimeException("Failed to save product");
+            }
+
+        } catch (Exception e) {
+            log.error("Error while saving product: {}", e.getMessage(), e);
+            throw new RuntimeException("Error while saving product", e);
+        }
+    }
+
+    private void saveProductImageUrl(ProductImages productImages) {
+        try {
+            // Attempt to save the product image to the repository
+            ProductImages savedProductImages = productImagesRepository.saveProductImages(productImages);
+
+            if (savedProductImages == null) {
+                throw new RuntimeException("Failed to save product image");
+            }
+
+        } catch (Exception e) {
+            log.error("Error while saving product image: {}", e.getMessage(), e);
+            throw new RuntimeException("Error while saving product image", e);
+        }
+    }
+
+    
 
     private List<Product> getProducts() {
         return productRepository.getProducts();
