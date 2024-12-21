@@ -2,8 +2,11 @@ package com.fns.product.service.domain.rest;
 
 import com.fns.product.service.domain.dto.create.CreateProductCommand;
 import com.fns.product.service.domain.dto.create.ProductResponse;
+import com.fns.product.service.domain.dto.edit.EditProductCommand;
 import com.fns.product.service.domain.ports.input.service.ProductApplicationService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,6 +36,14 @@ public class ProductController {
         return ResponseEntity.ok(product);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductResponse> editProduct(
+            @PathVariable UUID id,
+            @RequestBody @Valid EditProductCommand editProductCommand) {
+        ProductResponse updatedProduct = productApplicationService.editProductById(id, editProductCommand);
+        return ResponseEntity.ok(updatedProduct);
+    }
+
 
     @PostMapping
     public ResponseEntity<ProductResponse> createProduct(@RequestBody CreateProductCommand createProductCommand) {
@@ -41,4 +52,15 @@ public class ProductController {
         return ResponseEntity.ok(productResponse);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable UUID id) {
+        try {
+            String product = productApplicationService.deleteProductById(id);
+            return ResponseEntity.ok("Product with ID " + id + " deleted successfully");
+        } catch (RuntimeException e) {
+            log.error("Error in deleteProduct API: {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to delete product: " + e.getMessage());
+        }
+    }
 }
