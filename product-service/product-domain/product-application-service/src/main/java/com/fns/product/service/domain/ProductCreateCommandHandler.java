@@ -8,6 +8,9 @@ import com.fns.product.service.domain.ports.output.repository.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Slf4j
 @Component
 public class ProductCreateCommandHandler {
@@ -24,7 +27,8 @@ public class ProductCreateCommandHandler {
             ProductDataMapper productDataMapper,
             ProductBrandRepository productBrandRepository,
             ProductColorsRepository productColorsRepository,
-            ProductCategoriesRepository productCategoriesRepository, ProductSizesRepository productSizesRepository
+            ProductCategoriesRepository productCategoriesRepository,
+            ProductSizesRepository productSizesRepository
     ) {
         this.productRepository = productRepository;
         this.productDataMapper = productDataMapper;
@@ -66,6 +70,43 @@ public class ProductCreateCommandHandler {
                 .build();
     }
 
+    public List<CreateProductResponse> getAllProducts() {
+        try {
+            // Fetch all products from the repository
+            List<Product> products = getProducts();
+
+            // Map each Product to a CreateProductResponse with detailed data
+            return products.stream()
+                    .map(product -> {
+                        ProductBrand brand = productBrandRepository.findById(product.getBrandId())
+                                .orElseThrow(() -> new RuntimeException("Brand not found for product: " + product.getId()));
+                        ProductCategories category = productCategoriesRepository.findById(product.getProductCategoryId())
+                                .orElseThrow(() -> new RuntimeException("Category not found for product: " + product.getId()));
+                        ProductColors color = productColorsRepository.findById(product.getColorId())
+                                .orElseThrow(() -> new RuntimeException("Color not found for product: " + product.getId()));
+                        ProductSizes size = productSizesRepository.findById(product.getSizeId())
+                                .orElseThrow(() -> new RuntimeException("Size not found for product: " + product.getId()));
+
+                        return CreateProductResponse.builder()
+                                .id(product.getId())
+                                .name(product.getName())
+                                .sku(product.getSku())
+                                .description(product.getDescription())
+                                .slug(product.getSlug())
+                                .gender(product.getGender())
+                                .sizes(size)
+                                .brand(brand)
+                                .productCategory(category)
+                                .color(color)
+                                .build();
+                    })
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            log.error("Error while fetching all products: {}", e.getMessage(), e);
+            throw new RuntimeException("Error while fetching all products", e);
+        }
+    }
+
     private Product saveProduct(Product product) {
         try {
             // Attempt to save the product to the repository
@@ -83,4 +124,7 @@ public class ProductCreateCommandHandler {
         }
     }
 
+    private List<Product> getProducts() {
+        return productRepository.getProducts();
+    }
 }

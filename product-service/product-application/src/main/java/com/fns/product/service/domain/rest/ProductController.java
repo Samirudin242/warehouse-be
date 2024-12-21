@@ -5,10 +5,9 @@ import com.fns.product.service.domain.dto.create.CreateProductResponse;
 import com.fns.product.service.domain.ports.input.service.ProductApplicationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -19,6 +18,12 @@ public class ProductController {
 
     public ProductController(ProductApplicationService productApplicationService) {
         this.productApplicationService = productApplicationService;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CreateProductResponse>> getAllProducts() {
+        List<CreateProductResponse> products = productApplicationService.getProducts();
+        return ResponseEntity.ok(products);
     }
 
     @PostMapping
