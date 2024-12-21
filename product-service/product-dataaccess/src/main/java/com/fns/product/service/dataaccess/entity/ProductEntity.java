@@ -59,7 +59,7 @@ public class ProductEntity {
 
     @OneToMany
     @JoinColumn(name = "product_id", referencedColumnName = "id")
-    private List<ProductImages> images;
+    private List<ProductImagesEntity> images;
 
     @OneToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id")
