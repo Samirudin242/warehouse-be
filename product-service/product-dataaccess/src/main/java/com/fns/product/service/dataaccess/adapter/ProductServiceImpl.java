@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -42,5 +43,12 @@ public class ProductServiceImpl implements ProductRepository {
                 .collect(Collectors.toList());
 
         return products;
+    }
+
+    @Override
+    public Product getProductById(UUID id) {
+        return productJpaRepository.findById(id)
+                .map(productMapper::productFromProductEntity)
+                .orElseThrow(() -> new RuntimeException("Product not found for ID: " + id));
     }
 }

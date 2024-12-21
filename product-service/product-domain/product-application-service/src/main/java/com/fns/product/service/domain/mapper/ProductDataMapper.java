@@ -1,18 +1,16 @@
 package com.fns.product.service.domain.mapper;
 
 import com.fns.product.service.domain.dto.create.CreateProductCommand;
-import com.fns.product.service.domain.dto.create.CreateProductResponse;
+import com.fns.product.service.domain.dto.create.ProductResponse;
 import com.fns.product.service.domain.entity.Product;
 import com.fns.product.service.domain.valueObject.Gender;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
-
 @Component
 public class ProductDataMapper {
 
-    public CreateProductResponse createProductResponse(CreateProductCommand createProductCommand) {
-        return CreateProductResponse.builder()
+    public ProductResponse createProductResponse(CreateProductCommand createProductCommand) {
+        return ProductResponse.builder()
                 .id(createProductCommand.getId())
                 .sku(createProductCommand.getSku())
                 .name(createProductCommand.getName())

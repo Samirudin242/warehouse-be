@@ -1,7 +1,7 @@
 package com.fns.product.service.domain;
 
 import com.fns.product.service.domain.dto.create.CreateProductCommand;
-import com.fns.product.service.domain.dto.create.CreateProductResponse;
+import com.fns.product.service.domain.dto.create.ProductResponse;
 import com.fns.product.service.domain.entity.*;
 import com.fns.product.service.domain.mapper.ProductDataMapper;
 import com.fns.product.service.domain.ports.output.repository.*;
@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -38,7 +39,7 @@ public class ProductCreateCommandHandler {
         this.productSizesRepository = productSizesRepository;
     }
 
-    public CreateProductResponse createProduct(CreateProductCommand createProductCommand) {
+    public ProductResponse createProduct(CreateProductCommand createProductCommand) {
 
         Product product = productDataMapper.createProduct(createProductCommand);
 
@@ -56,7 +57,7 @@ public class ProductCreateCommandHandler {
         ProductSizes size = productSizesRepository.findById(createProductCommand.getSize_id())
                 .orElseThrow(() -> new RuntimeException("Size not found"));
 
-        return CreateProductResponse.builder()
+        return ProductResponse.builder()
                 .id(savedProduct.getId())
                 .name(savedProduct.getName())
                 .sku(savedProduct.getSku())
@@ -70,7 +71,7 @@ public class ProductCreateCommandHandler {
                 .build();
     }
 
-    public List<CreateProductResponse> getAllProducts() {
+    public List<ProductResponse> getAllProducts() {
         try {
             // Fetch all products from the repository
             List<Product> products = getProducts();
@@ -87,7 +88,7 @@ public class ProductCreateCommandHandler {
                         ProductSizes size = productSizesRepository.findById(product.getSizeId())
                                 .orElseThrow(() -> new RuntimeException("Size not found for product: " + product.getId()));
 
-                        return CreateProductResponse.builder()
+                        return ProductResponse.builder()
                                 .id(product.getId())
                                 .name(product.getName())
                                 .sku(product.getSku())
@@ -106,6 +107,33 @@ public class ProductCreateCommandHandler {
             throw new RuntimeException("Error while fetching all products", e);
         }
     }
+
+    public ProductResponse getProductById(UUID id) {
+        Product product = getProduct(id);
+
+        ProductBrand brand = productBrandRepository.findById(product.getBrandId())
+                .orElseThrow(() -> new RuntimeException("Brand not found for product: " + id));
+        ProductCategories category = productCategoriesRepository.findById(product.getProductCategoryId())
+                .orElseThrow(() -> new RuntimeException("Category not found for product: " + id));
+        ProductColors color = productColorsRepository.findById(product.getColorId())
+                .orElseThrow(() -> new RuntimeException("Color not found for product: " + id));
+        ProductSizes size = productSizesRepository.findById(product.getSizeId())
+                .orElseThrow(() -> new RuntimeException("Size not found for product: " + id));
+
+        return ProductResponse.builder()
+                .id(product.getId())
+                .name(product.getName())
+                .sku(product.getSku())
+                .description(product.getDescription())
+                .slug(product.getSlug())
+                .gender(product.getGender())
+                .sizes(size)
+                .brand(brand)
+                .productCategory(category)
+                .color(color)
+                .build();
+    }
+
 
     private Product saveProduct(Product product) {
         try {
@@ -126,5 +154,9 @@ public class ProductCreateCommandHandler {
 
     private List<Product> getProducts() {
         return productRepository.getProducts();
+    }
+
+    private Product getProduct(UUID id) {
+        return productRepository.getProductById(id);
     }
 }

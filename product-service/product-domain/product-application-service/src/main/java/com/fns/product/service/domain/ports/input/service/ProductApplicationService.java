@@ -1,14 +1,17 @@
 package com.fns.product.service.domain.ports.input.service;
 
 import com.fns.product.service.domain.dto.create.CreateProductCommand;
-import com.fns.product.service.domain.dto.create.CreateProductResponse;
+import com.fns.product.service.domain.dto.create.ProductResponse;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.UUID;
 
 public interface ProductApplicationService {
-    CreateProductResponse createProduct (@Valid CreateProductCommand createProductCommand);
+    ProductResponse createProduct (@Valid CreateProductCommand createProductCommand);
 
-    List<CreateProductResponse> getProducts();
+    List<ProductResponse> getProducts();
+
+    ProductResponse getProductById(UUID id);
 
 }
