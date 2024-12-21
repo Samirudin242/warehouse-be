@@ -8,6 +8,9 @@ import com.fns.product.service.domain.ports.output.repository.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Slf4j
 @Component
 public class ProductServiceImpl implements ProductRepository {
@@ -26,5 +29,18 @@ public class ProductServiceImpl implements ProductRepository {
         ProductEntity savedProduct = productJpaRepository.save(productEntity);
 
         return productMapper.productFromProductEntity(savedProduct);
+    }
+
+    @Override
+    public List<Product> getProducts() {
+        // Fetch all product entities from the database
+        List<ProductEntity> productEntities = productJpaRepository.findAll();
+
+        // Map the list of ProductEntity to a list of Product
+        List<Product> products = productEntities.stream()
+                .map(productMapper::productFromProductEntity)
+                .collect(Collectors.toList());
+
+        return products;
     }
 }
