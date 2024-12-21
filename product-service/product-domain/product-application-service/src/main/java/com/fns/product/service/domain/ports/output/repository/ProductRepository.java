@@ -11,4 +11,6 @@ public interface ProductRepository {
     List<Product> getProducts();
 
     Product getProductById(UUID id);
+
+    String deleteProduct(UUID id);
 }

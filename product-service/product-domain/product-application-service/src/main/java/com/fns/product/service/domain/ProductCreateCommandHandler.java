@@ -2,6 +2,7 @@ package com.fns.product.service.domain;
 
 import com.fns.product.service.domain.dto.create.CreateProductCommand;
 import com.fns.product.service.domain.dto.create.ProductResponse;
+import com.fns.product.service.domain.dto.edit.EditProductCommand;
 import com.fns.product.service.domain.entity.*;
 import com.fns.product.service.domain.mapper.ProductDataMapper;
 import com.fns.product.service.domain.ports.output.repository.*;
@@ -64,6 +65,48 @@ public class ProductCreateCommandHandler {
                 .description(savedProduct.getDescription())
                 .slug(savedProduct.getSlug())
                 .gender(savedProduct.getGender())
+                .sizes(size)
+                .brand(brand)
+                .productCategory(category)
+                .color(color)
+                .build();
+    }
+
+    public ProductResponse editProductById(UUID id, EditProductCommand editProductCommand) {
+        Product existingProduct = getProduct(id);
+
+        // Update the product fields
+        existingProduct.setName(editProductCommand.getName());
+        existingProduct.setSku(editProductCommand.getSku());
+        existingProduct.setDescription(editProductCommand.getDescription());
+        existingProduct.setSlug(editProductCommand.getSlug());
+        existingProduct.setGender(editProductCommand.getGender());
+        existingProduct.setBrandId(editProductCommand.getBrand_id());
+        existingProduct.setProductCategoryId(editProductCommand.getProduct_categories_id());
+        existingProduct.setColorId(editProductCommand.getColor_id());
+        existingProduct.setSizeId(editProductCommand.getSize_id());
+
+        log.info("existing product: {}", existingProduct);
+        // Save updated product
+        Product updatedProduct = saveProduct(existingProduct);
+
+        // Fetch associated details
+        ProductBrand brand = productBrandRepository.findById(editProductCommand.getBrand_id())
+                .orElseThrow(() -> new RuntimeException("Brand not found"));
+        ProductCategories category = productCategoriesRepository.findById(editProductCommand.getProduct_categories_id())
+                .orElseThrow(() -> new RuntimeException("Category not found"));
+        ProductColors color = productColorsRepository.findById(editProductCommand.getColor_id())
+                .orElseThrow(() -> new RuntimeException("Color not found"));
+        ProductSizes size = productSizesRepository.findById(editProductCommand.getSize_id())
+                .orElseThrow(() -> new RuntimeException("Size not found"));
+
+        return ProductResponse.builder()
+                .id(updatedProduct.getId())
+                .name(updatedProduct.getName())
+                .sku(updatedProduct.getSku())
+                .description(updatedProduct.getDescription())
+                .slug(updatedProduct.getSlug())
+                .gender(updatedProduct.getGender())
                 .sizes(size)
                 .brand(brand)
                 .productCategory(category)
@@ -134,6 +177,10 @@ public class ProductCreateCommandHandler {
                 .build();
     }
 
+    public String deleteProduct(UUID id) {
+        deleteProductById(id);
+        return "delete product with id: " + id + "successfully deleted";
+    }
 
     private Product saveProduct(Product product) {
         try {
@@ -158,5 +205,9 @@ public class ProductCreateCommandHandler {
 
     private Product getProduct(UUID id) {
         return productRepository.getProductById(id);
+    }
+
+    private void deleteProductById(UUID id) {
+        productRepository.deleteProduct(id);
     }
 }

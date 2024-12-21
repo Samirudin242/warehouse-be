@@ -51,4 +51,10 @@ public class ProductServiceImpl implements ProductRepository {
                 .map(productMapper::productFromProductEntity)
                 .orElseThrow(() -> new RuntimeException("Product not found for ID: " + id));
     }
+
+    @Override
+    public String deleteProduct(UUID id) {
+        productJpaRepository.deleteById(id);
+        return "Product deleted successfully with ID: " + id;
+    }
 }
