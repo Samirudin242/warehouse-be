@@ -29,9 +29,9 @@ public class CreateProductCommand {
     private String gender;
 
     @NotNull
-    private Integer price;
+    private Double price;
 
-    private String imageUrl;
+    private String image_url;
 
     @NotNull
     private UUID brand_id;
