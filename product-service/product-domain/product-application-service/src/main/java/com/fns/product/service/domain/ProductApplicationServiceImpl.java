@@ -1,13 +1,14 @@
 package com.fns.product.service.domain;
 
 import com.fns.product.service.domain.dto.create.CreateProductCommand;
-import com.fns.product.service.domain.dto.create.CreateProductResponse;
+import com.fns.product.service.domain.dto.create.ProductResponse;
 import com.fns.product.service.domain.ports.input.service.ProductApplicationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @Validated
@@ -21,12 +22,17 @@ public class ProductApplicationServiceImpl implements ProductApplicationService 
     }
 
     @Override
-    public CreateProductResponse createProduct(CreateProductCommand createProductCommand) {
+    public ProductResponse createProduct(CreateProductCommand createProductCommand) {
         return productCreateCommandHandler.createProduct(createProductCommand);
     }
 
     @Override
-    public List<CreateProductResponse> getProducts() {
+    public List<ProductResponse> getProducts() {
         return productCreateCommandHandler.getAllProducts();
+    }
+
+    @Override
+    public ProductResponse getProductById(UUID id) {
+        return productCreateCommandHandler.getProductById(id);
     }
 }
