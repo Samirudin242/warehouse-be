@@ -1,0 +1,12 @@
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-domain-core/src/main/java/com/fns/product/service/domain/ProductDomainService.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-domain-core/src/main/java/com/fns/product/service/domain/ProductDomainServiceImpl.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-domain-core/src/main/java/com/fns/product/service/domain/entity/Product.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-domain-core/src/main/java/com/fns/product/service/domain/entity/ProductBrand.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-domain-core/src/main/java/com/fns/product/service/domain/entity/ProductCategories.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-domain-core/src/main/java/com/fns/product/service/domain/entity/ProductColors.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-domain-core/src/main/java/com/fns/product/service/domain/entity/ProductImages.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-domain-core/src/main/java/com/fns/product/service/domain/entity/ProductPrices.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-domain-core/src/main/java/com/fns/product/service/domain/entity/ProductSizes.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-domain-core/src/main/java/com/fns/product/service/domain/valueObject/Category.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-domain-core/src/main/java/com/fns/product/service/domain/valueObject/Gender.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-domain-core/src/main/java/com/fns/product/service/domain/valueObject/Price.java

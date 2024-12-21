@@ -26,7 +26,7 @@
 	</developers>
 
 	<modules>
-		<module>warehouse-service</module>
+<!--		<module>warehouse-service</module>-->
 		<module>common</module>
 		<module>common/common-domain</module>
 		<module>infrastructure</module>

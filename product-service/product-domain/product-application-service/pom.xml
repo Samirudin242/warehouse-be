@@ -77,14 +77,9 @@
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>6.1.13</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.fns</groupId>-->
+<!--            <artifactId>product-dataaccess</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 </project>
