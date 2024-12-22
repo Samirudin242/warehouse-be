@@ -11,8 +11,18 @@ spring:
         jdbc.time_zone: UTC  # Added to handle timezone settings
     hibernate:
       ddl-auto: update  # Automatically updates the database
+    servlet:
+      multipart:
+        max-file-size: 1MB
+        max-request-size: 1MB
   datasource:
     url: jdbc:postgresql://localhost:5432/warehouse?currentSchema=public&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     username: postgres
     password: theyaku
     driver-class-name: org.postgresql.Driver
+google:
+  cloud:
+    storage:
+      bucket-name: theyaku-bucket
+      project-id: inspired-gift-432915-h7
+      project-name: theyaku

@@ -49,9 +49,8 @@ public class ProductEntity {
     @JoinColumn(name = "product_categories_id", referencedColumnName = "id")
     private ProductCategoriesEntity category;
 
-    @ManyToOne
-    @JoinColumn(name = "size_id", referencedColumnName = "id")
-    private ProductSizesEntity productSize;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProductAndSizeEntity> productAndSizes;
 
     @ManyToOne
     @JoinColumn(name = "color_id", referencedColumnName = "id")
@@ -93,7 +92,7 @@ public class ProductEntity {
                 ", gender='" + gender + '\'' +
                 ", brand=" + (brand != null ? brand.getId() : "null") +
                 ", category=" + (category != null ? category.getId() : "null") +
-                ", productSize=" + (productSize != null ? productSize.getId() : "null") +
+                ", productSize=" + (productAndSizes != null ? productAndSizes : "null") +
                 ", productColor=" + (productColor != null ? productColor.getId() : "null") +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +

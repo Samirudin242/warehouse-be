@@ -1,3 +1,4 @@
+com/fns/product/service/dataaccess/config/GoogleCloudStorageConfig.class
 com/fns/product/service/dataaccess/mapper/ProductCategoryMapper.class
 com/fns/product/service/dataaccess/adapter/ProductSizesImpl.class
 com/fns/product/service/dataaccess/entity/ProductCategoriesEntity.class
@@ -5,6 +6,7 @@ com/fns/product/service/dataaccess/mapper/ProductMapper.class
 com/fns/product/service/dataaccess/adapter/ProductPricesImpl.class
 com/fns/product/service/dataaccess/entity/ProductPricesEntity$ProductPricesEntityBuilder.class
 com/fns/product/service/dataaccess/entity/ProductSizesEntity.class
+com/fns/product/service/dataaccess/entity/ProductAndSizeEntity$ProductAndSizeEntityBuilder.class
 com/fns/product/service/dataaccess/adapter/ProductColorImpl.class
 com/fns/product/service/dataaccess/adapter/ProductServiceImpl.class
 com/fns/product/service/dataaccess/entity/ProductColorsEntity.class
@@ -15,16 +17,20 @@ com/fns/product/service/dataaccess/entity/ProductImagesEntity.class
 com/fns/product/service/dataaccess/entity/ProductImagesEntity$ProductImagesEntityBuilder.class
 com/fns/product/service/dataaccess/mapper/ProductPriceMapper.class
 com/fns/product/service/dataaccess/entity/ProductReviews$ProductReviewsBuilder.class
+com/fns/product/service/dataaccess/mapper/ProductImageMapper.class
 com/fns/product/service/dataaccess/repository/ProductColorsJpaRepository.class
 com/fns/product/service/dataaccess/repository/ProductSizeJpaRepository.class
 com/fns/product/service/dataaccess/entity/ProductColorsEntity$ProductColorsEntityBuilder.class
 com/fns/product/service/dataaccess/repository/ProductJpaRepository.class
 com/fns/product/service/dataaccess/repository/ProductCategoriesJpaRepository.class
+com/fns/product/service/dataaccess/adapter/ProductPhotoImpl.class
 com/fns/product/service/dataaccess/entity/ProductBrandEntity.class
 com/fns/product/service/dataaccess/entity/ProductEntity$ProductEntityBuilder.class
 com/fns/product/service/dataaccess/mapper/ProductColorMapper.class
 com/fns/product/service/dataaccess/entity/ProductBrandEntity$ProductBrandEntityBuilder.class
 com/fns/product/service/dataaccess/entity/ProductReviews.class
+com/fns/product/service/dataaccess/entity/ProductAndSizeEntity.class
+com/fns/product/service/dataaccess/adapter/ProductImageImpl.class
 com/fns/product/service/dataaccess/adapter/ProductBrandImpl.class
 com/fns/product/service/dataaccess/entity/ProductEntity.class
 com/fns/product/service/dataaccess/repository/ProductBrandJpaRepository.class

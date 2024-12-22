@@ -3,6 +3,7 @@ package com.fns.product.service.domain;
 import com.fns.product.service.domain.dto.create.CreateProductCommand;
 import com.fns.product.service.domain.dto.create.ProductResponse;
 import com.fns.product.service.domain.dto.edit.EditProductCommand;
+import com.fns.product.service.domain.dto.edit.ListImage;
 import com.fns.product.service.domain.entity.*;
 import com.fns.product.service.domain.mapper.ProductDataMapper;
 import com.fns.product.service.domain.ports.output.repository.*;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -63,44 +65,27 @@ public class ProductCreateCommandHandler {
                 .build();
 
         savePricesProduct(productPrice);
-        
-        //Create and save the image_url
-        ProductImages productImage = ProductImages.builder()
-                .productId(savedProduct.getId())
-                .imageUrl(createProductCommand.getImage_url())
-                .build();
 
-        saveProductImageUrl(productImage);
-        
+        // Create and save the product images
+        if (createProductCommand.getImage_url() != null && !createProductCommand.getImage_url().isEmpty()) {
+            List<ProductImages> productImages = createProductCommand.getImage_url().stream()
+                    .map(imageUrl -> ProductImages.builder()
+                            .productId(savedProduct.getId())
+                            .imageUrl(imageUrl)
+                            .build())
+                    .collect(Collectors.toList());
 
-        ProductBrand brand = productBrandRepository.findById(createProductCommand.getBrand_id())
-                .orElseThrow(() -> new RuntimeException("Brand not found"));
+            saveProductImageUrl(productImages);
+        }
 
-        ProductCategories category = productCategoriesRepository.findById(createProductCommand.getProduct_categories_id())
-                .orElseThrow(() -> new RuntimeException("Category not found"));
-
-        ProductColors color = productColorsRepository.findById(createProductCommand.getColor_id())
-                .orElseThrow(() -> new RuntimeException("Color not found"));
-
-        ProductSizes size = productSizesRepository.findById(createProductCommand.getSize_id())
-                .orElseThrow(() -> new RuntimeException("Size not found"));
-
-        return ProductResponse.builder()
-                .id(savedProduct.getId())
-                .name(savedProduct.getName())
-                .sku(savedProduct.getSku())
-                .description(savedProduct.getDescription())
-                .slug(savedProduct.getSlug())
-                .gender(savedProduct.getGender())
-                .sizes(size)
-                .brand(brand)
-                .productCategory(category)
-                .color(color)
-                .build();
+        return productDataMapper.createProductResponse(createProductCommand, savedProduct);
     }
 
+    @Transactional
     public ProductResponse editProductById(UUID id, EditProductCommand editProductCommand) {
+        // Retrieve the existing product
         Product existingProduct = getProduct(id);
+
 
         // Update the product fields
         existingProduct.setName(editProductCommand.getName());
@@ -113,34 +98,67 @@ public class ProductCreateCommandHandler {
         existingProduct.setColorId(editProductCommand.getColor_id());
         existingProduct.setSizeId(editProductCommand.getSize_id());
 
-        log.info("existing product: {}", existingProduct);
+        // Update product images
+        if (editProductCommand.getImage_url() != null && !editProductCommand.getImage_url().isEmpty()) {
+            // Retrieve existing images from the database
+            List<ProductImages> existingImages = productImagesRepository.findByProductId(existingProduct.getId());
+
+            log.info("existingImages: {}", existingImages);
+
+            // Map incoming image URLs and IDs
+            List<UUID> incomingImageIds = editProductCommand.getImage_url().stream()
+                    .map(ListImage::getId)
+                    .filter(Objects::nonNull)
+                    .toList();
+
+            List<String> incomingImageUrls = editProductCommand.getImage_url().stream()
+                    .map(ListImage::getImage_url)
+                    .toList();
+
+            // Remove images not present in the incoming IDs
+            List<ProductImages> imagesToRemove = existingImages.stream()
+                    .filter(existingImage -> !incomingImageIds.contains(existingImage.getId()))
+                    .toList();
+
+//            productImagesRepository.deleteAll(imagesToRemove);
+
+            // Add new images (those with no ID in the request)
+//            List<ProductImages> imagesToAdd = editProductCommand.getImage_url().stream()
+//                    .filter(image -> image.getId() == null)
+//                    .map(image -> ProductImages.builder()
+//                            .productId(existingProduct.getId())
+//                            .imageUrl(image.getImageUrl())
+//                            .build())
+//                    .collect(Collectors.toList());
+//
+//                saveProductImageUrl(imagesToAdd);
+
+            // Update existing image URLs if necessary (matching IDs)
+            existingImages.forEach(existingImage -> {
+                editProductCommand.getImage_url().stream()
+                        .filter(image -> image.getId() != null && image.getId().equals(existingImage.getId()))
+                        .findFirst()
+                        .ifPresent(image -> existingImage.setImageUrl(image.getImage_url()));
+            });
+
+            log.info("existing images updated {}", existingImages);
+
+            saveProductImageUrl(existingImages);
+        }
+
+        // Update product prices
+//        if (editProductCommand.getProductPrices() != null && !editProductCommand.getProductPrices().isEmpty()) {
+//            List<ProductPrices> updatedPrices = editProductCommand.getProductPrices().stream()
+//                    .map(priceCommand -> productPriceMapper.priceToPriceEntity(priceCommand)) // Convert to entity
+//                    .collect(Collectors.toList());
+//            existingProduct.setProductPrices(updatedPrices);
+//        }
+
         // Save updated product
-        Product updatedProduct = saveProduct(existingProduct);
+        saveProduct(existingProduct);
 
-        // Fetch associated details
-        ProductBrand brand = productBrandRepository.findById(editProductCommand.getBrand_id())
-                .orElseThrow(() -> new RuntimeException("Brand not found"));
-        ProductCategories category = productCategoriesRepository.findById(editProductCommand.getProduct_categories_id())
-                .orElseThrow(() -> new RuntimeException("Category not found"));
-        ProductColors color = productColorsRepository.findById(editProductCommand.getColor_id())
-                .orElseThrow(() -> new RuntimeException("Color not found"));
-        ProductSizes size = productSizesRepository.findById(editProductCommand.getSize_id())
-                .orElseThrow(() -> new RuntimeException("Size not found"));
-
-        return ProductResponse.builder()
-                .id(updatedProduct.getId())
-                .name(updatedProduct.getName())
-                .sku(updatedProduct.getSku())
-                .description(updatedProduct.getDescription())
-                .slug(updatedProduct.getSlug())
-                .gender(updatedProduct.getGender())
-                .sizes(size)
-                .brand(brand)
-                .productCategory(category)
-                .color(color)
-                .build();
+        return productDataMapper.editProductResponse(editProductCommand, existingProduct);
     }
-
     public List<ProductResponse> getAllProducts() {
         try {
             // Fetch all products from the repository
@@ -241,22 +259,22 @@ public class ProductCreateCommandHandler {
         }
     }
 
-    private void saveProductImageUrl(ProductImages productImages) {
+    private void saveProductImageUrl(List<ProductImages> productImages) {
         try {
-            // Attempt to save the product image to the repository
-            ProductImages savedProductImages = productImagesRepository.saveProductImages(productImages);
+            for (ProductImages productImage : productImages) {
+                ProductImages savedProductImage = productImagesRepository.saveProductImages(productImage);
 
-            if (savedProductImages == null) {
-                throw new RuntimeException("Failed to save product image");
+                if (savedProductImage == null) {
+                    throw new RuntimeException("Failed to save product image with ID: " + productImage.getId());
+                }
             }
 
         } catch (Exception e) {
-            log.error("Error while saving product image: {}", e.getMessage(), e);
-            throw new RuntimeException("Error while saving product image", e);
+            log.error("Error while saving product images: {}", e.getMessage(), e);
+            throw new RuntimeException("Error while saving product images", e);
         }
     }
 
-    
 
     private List<Product> getProducts() {
         return productRepository.getProducts();

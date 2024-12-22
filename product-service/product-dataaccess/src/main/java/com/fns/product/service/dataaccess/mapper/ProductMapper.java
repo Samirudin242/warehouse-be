@@ -47,7 +47,7 @@ public class ProductMapper {
                 .description(product.getDescription())
                 .brand(productBrand)
                 .category(productCategory)
-                .productSize(productSize)
+//                .productAndSize(productSize)
                 .productColor(productColor)
                 .build();
     }
@@ -62,7 +62,7 @@ public class ProductMapper {
                 .description(productEntity.getDescription())
                .brandId(productEntity.getBrand().getId())
                .productCategoryId(productEntity.getCategory().getId())
-               .sizeId(productEntity.getProductSize().getId())
+//               .sizeId(productEntity.getProductAndSize().getId())
                 .colorId(productEntity.getProductColor().getId())
                .build();
     }
