@@ -9,19 +9,31 @@ import lombok.Builder;
 import lombok.Getter;
 
 import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 
 @Getter
 @AllArgsConstructor
 @Builder
 public class CreateUserCommand {
+
+    private final String name;
+
     @NotNull
-    private final String username;
+    private final String user_name;
+
     @NotNull
     private final String email;
-    @NotNull
+
     private final String password;
+
+    private final String phone_number;
+
+    private final String profile_picture;
+
+    private final Boolean is_verified;
+
     @NotNull
-    private final String role;
+    private final UUID role_id;
 
 }

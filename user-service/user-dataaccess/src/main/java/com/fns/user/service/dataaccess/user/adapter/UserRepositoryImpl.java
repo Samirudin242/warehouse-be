@@ -3,12 +3,9 @@ package com.fns.user.service.dataaccess.user.adapter;
 import com.fns.user.service.dataaccess.user.entity.UserEntity;
 import com.fns.user.service.dataaccess.user.mapper.UserDataAccessMapper;
 import com.fns.user.service.dataaccess.user.repository.UserJpaRepository;
-import com.fns.user.service.domain.UserGetAllHandler;
 import com.fns.user.service.domain.dto.create.GetAllUserResponse;
 import com.fns.user.service.domain.entity.User;
-import com.fns.user.service.domain.mapper.UserDataMapper;
 import com.fns.user.service.domain.ports.output.repository.UserRepository;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -58,10 +55,10 @@ public class UserRepositoryImpl implements UserRepository { // it will be provid
 
             return users.stream()
                     .map(user -> new GetAllUserResponse(
-                            user.getIdUser() != null ? user.getIdUser() : UUID.fromString("N/A"),
-                            user.getUsername(),
+                            user.getId() != null ? user.getId() : UUID.fromString("N/A"),
+                            user.getUser_name(),
                             user.getEmail(),
-                            user.getRole()
+                            user.getRole_id()
                     ))
                     .collect(Collectors.toList());
         } catch (RuntimeException e) {

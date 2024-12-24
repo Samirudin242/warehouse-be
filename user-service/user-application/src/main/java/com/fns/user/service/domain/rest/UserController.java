@@ -39,7 +39,6 @@ public class UserController {
     @PostMapping
     public ResponseEntity<CreateUserResponse> createUser(@RequestBody CreateUserCommand createUserCommand) {
         log.info(createUserCommand.toString());
-        log.info("Creating user {} at {}", createUserCommand.getUsername(), createUserCommand.getRole());
         CreateUserResponse createUserResponse = userApplicationService.createUser(createUserCommand);
         log.info("user created");
         return ResponseEntity.ok(createUserResponse);

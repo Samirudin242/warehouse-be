@@ -27,11 +27,13 @@ public class UserCreateHelper {
         this.userDataMapper = userDataMapper;
     }
 
-//    @Transactional
+    @Transactional
     public CreateUserResponse userCreateMethod(CreateUserCommand createUserCommand) {
         CreateUserResponse user = userDataMapper.userToCreateUserResponse(createUserCommand);
 
-        User userEntity = userDataMapper.createUser(createUserCommand);
+        log.info("user from helper, {}", user);
+        User userEntity = userDataMapper.createUser(user);
+
 
         saveUser(userEntity);
 
@@ -40,6 +42,7 @@ public class UserCreateHelper {
 
     private void saveUser(User user) {
         try {
+            log.info("this is user from create helper: {}", user);
             User userResult = userRepository.save(user);
 
             if (userResult == null) {

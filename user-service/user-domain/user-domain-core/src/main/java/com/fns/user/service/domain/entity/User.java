@@ -1,129 +1,46 @@
 package com.fns.user.service.domain.entity;
 
-//import com.fns.user.service.domain.entity.User
 import com.fns.domain.entity.AggregateRoot;
-import com.fns.domain.valueobject.EmailAddress;
 import com.fns.domain.valueobject.UserId;
 import com.fns.user.service.domain.exception.UserDomainException;
-import com.fns.user.service.domain.valueObject.Password;
-import com.fns.user.service.domain.valueObject.Role;
-import com.fns.user.service.domain.valueObject.UserName;
+
 
 import java.util.UUID;
 
-public class User extends AggregateRoot<UserId> {
+import lombok.*;
 
 
-    private final UUID id;
-    private final String username;
-    private final String password;
-    private final String role;
-    private final String email;
-    private boolean isActive;
+@Getter
+@Setter
+@Data
+public class User{
 
-    public User( UUID id, String username, String password, String email, String role) {
+    private UUID id;
+    private String name;
+    private String user_name;
+    private String password;
+    private UUID role_id;
+    private String email;
+    private String phone_number;
+    private Boolean is_verified;
+    private String profile_picture;
+
+
+    @Builder
+    public User(UUID id, String name, String userName, String password, String email, UUID role_id, Boolean is_verified, String phone_number, String profile_picture) {
+        if (userName == null) throw new UserDomainException("Username cannot be empty");
+        if (email == null) throw new UserDomainException("Email cannot be empty");
+        if (role_id == null) throw new UserDomainException("Role cannot be empty");
+
         this.id = id;
-        this.username = username;
+        this.name = name;
+        this.user_name = userName;
         this.password = password;
-        this.role = role;
         this.email = email;
-        this.isActive = true;
+        this.role_id = role_id;
+        this.is_verified = is_verified;
+        this.profile_picture = profile_picture;
+        this.phone_number = phone_number;
     }
 
-    private User(Builder builder) {
-//        super.setId(builder.userId);
-        this.id = builder.id;
-        this.username = builder.userName;
-        this.password = builder.password;
-        this.email = builder.email;
-        this.role = builder.role;
-    }
-
-    public static Builder builder() {
-        return new Builder();
-    }
-
-    //Getters
-    public String getUsername() {
-        return username;
-    }
-    public UUID getIdUser() { return  id;}
-    public String getPassword() {
-        return password;
-    }
-    public String getRole() {
-        return role;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public boolean isActive() {
-        return isActive;
-    }
-    public void deactivate() {
-        this.isActive = false;
-    }
-
-    //Builder class
-    public static class Builder {
-        private UUID id;
-        private String userName;
-        private String password;
-        private String email;
-        private String role;
-
-        public Builder id(UUID id) {
-            this.id = id;
-            return this;
-        }
-
-        public Builder userName(String userName) {
-            if (userName == null) {
-             throw new UserDomainException("User name cannot be empty");
-            }
-            this.userName = userName;
-            return this;
-        }
-
-        public Builder password(String password) {
-            if (userName == null) {
-                throw new UserDomainException("Password cannot be empty");
-            }
-            this.password = password;
-            return this;
-        }
-
-        public Builder emailAddress(String emailAddress) {
-            if (userName == null) {
-                throw new UserDomainException("Email cannot be empty");
-            }
-            this.email = emailAddress;
-            return this;
-        }
-
-        public Builder role (String role) {
-            if (role == null) {
-                throw new UserDomainException("Email cannot be empty");
-            }
-            this.role = role;
-            return this;
-        }
-
-        public User build() {
-            if(this.userName == null) {
-                throw new UserDomainException("Username must be set");
-            }
-            if(this.email == null) {
-                throw new UserDomainException("Email must be set");
-            }
-            if(this.password == null) {
-                throw new UserDomainException("Password must be set");
-            }
-            if(this.role == null) {
-                throw new UserDomainException("Role must be set");
-            }
-
-            return new User(this);
-        }
-    }
 }

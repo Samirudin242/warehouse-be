@@ -1,2 +1,3 @@
-com/fns/user/service/domainn/UserServiceApplication.class
-com/fns/user/service/domainn/BeanConfiguration.class
+com/fns/user/service/domain/UserServiceApplication.class
+com/fns/user/service/domain/seeder/UserRoleSeeder.class
+com/fns/user/service/domain/BeanConfiguration.class

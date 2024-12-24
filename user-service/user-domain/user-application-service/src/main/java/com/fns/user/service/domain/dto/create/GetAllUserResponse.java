@@ -13,5 +13,5 @@ public class GetAllUserResponse {
     private UUID id;
     private String username;
     private String email;
-    private String role;
+    private UUID role_id;
 }

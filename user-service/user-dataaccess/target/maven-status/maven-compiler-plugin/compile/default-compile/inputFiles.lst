@@ -3,6 +3,9 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-dataaccess/src/main/java/com/fns/user/service/dataaccess/user/converter/PasswordConverter.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-dataaccess/src/main/java/com/fns/user/service/dataaccess/user/converter/RoleConverter.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-dataaccess/src/main/java/com/fns/user/service/dataaccess/user/converter/UserNameConverter.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-dataaccess/src/main/java/com/fns/user/service/dataaccess/user/entity/BaseEntity.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-dataaccess/src/main/java/com/fns/user/service/dataaccess/user/entity/UserEntity.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-dataaccess/src/main/java/com/fns/user/service/dataaccess/user/entity/UserRoleEntity.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-dataaccess/src/main/java/com/fns/user/service/dataaccess/user/mapper/UserDataAccessMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-dataaccess/src/main/java/com/fns/user/service/dataaccess/user/repository/UserJpaRepository.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-dataaccess/src/main/java/com/fns/user/service/dataaccess/user/repository/UserRoleJpaRepository.java
