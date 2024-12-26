@@ -26,3 +26,7 @@ google:
       bucket-name: theyaku-bucket
       project-id: inspired-gift-432915-h7
       project-name: theyaku
+security:
+  jwt:
+    secret-key: theyakusecretkeysamirudinvidia1234567890123456
+

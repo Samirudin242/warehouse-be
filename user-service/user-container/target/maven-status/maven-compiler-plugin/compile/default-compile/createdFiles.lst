@@ -1,3 +1,4 @@
+com/fns/user/service/domain/SecurityConfig.class
 com/fns/user/service/domain/UserServiceApplication.class
 com/fns/user/service/domain/seeder/UserRoleSeeder.class
 com/fns/user/service/domain/BeanConfiguration.class

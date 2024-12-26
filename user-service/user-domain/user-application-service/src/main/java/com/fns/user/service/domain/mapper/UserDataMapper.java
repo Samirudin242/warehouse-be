@@ -1,9 +1,8 @@
 package com.fns.user.service.domain.mapper;
 
 import com.fns.user.service.domain.dto.create.CreateUserCommand;
-import com.fns.user.service.domain.dto.create.CreateUserResponse;
+import com.fns.user.service.domain.dto.get.UserResponse;
 import com.fns.user.service.domain.entity.User;
-import com.fns.user.service.domain.valueObject.UserName;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -11,8 +10,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserDataMapper {
 
-    public CreateUserResponse userToCreateUserResponse(CreateUserCommand createUserCommand) {
-        return CreateUserResponse.builder()
+    public UserResponse userToUserResponse(CreateUserCommand createUserCommand) {
+        return UserResponse.builder()
                 .name(createUserCommand.getName())
                 .user_name(createUserCommand.getUser_name())
                 .email(createUserCommand.getEmail())
@@ -21,10 +20,9 @@ public class UserDataMapper {
                 .is_verified(createUserCommand.getIs_verified())
                 .role_id(createUserCommand.getRole_id())
                 .build();
-
     }
 
-    public User createUser(CreateUserResponse createUserResponse) {
+    public User createUser(UserResponse createUserResponse) {
         return User.builder()
                 .name(createUserResponse.getName())
                 .userName(createUserResponse.getUser_name())
@@ -37,4 +35,17 @@ public class UserDataMapper {
                 .build();
     }
 
+    public UserResponse userResponseFromUser(User user) {
+        return UserResponse.builder()
+                .id(user.getId())
+                .name(user.getName())
+                .user_name(user.getUser_name())
+                .email(user.getEmail())
+                .password(user.getPassword())
+                .profile_picture(user.getProfile_picture())
+                .phone_number(user.getPhone_number())
+                .is_verified(user.getIs_verified())
+                .role_id(user.getRole_id())
+                .build();
+    }
 }

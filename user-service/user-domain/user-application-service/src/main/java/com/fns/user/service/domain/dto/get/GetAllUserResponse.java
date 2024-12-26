@@ -1,4 +1,4 @@
-package com.fns.user.service.domain.dto.create;
+package com.fns.user.service.domain.dto.get;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

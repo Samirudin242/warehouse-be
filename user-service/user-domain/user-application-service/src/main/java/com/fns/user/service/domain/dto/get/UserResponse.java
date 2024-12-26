@@ -1,4 +1,4 @@
-package com.fns.user.service.domain.dto.create;
+package com.fns.user.service.domain.dto.get;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +13,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Data
-public class CreateUserResponse {
+public class UserResponse {
+
+    private  final UUID id;
 
     @NotNull
     private final String name;

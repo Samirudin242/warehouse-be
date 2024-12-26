@@ -1,6 +1,6 @@
 package com.fns.user.service.domain;
 
-import com.fns.user.service.domain.dto.create.GetAllUserResponse;
+import com.fns.user.service.domain.dto.get.GetAllUserResponse;
 import com.fns.user.service.domain.ports.output.repository.UserRepository;
 import org.springframework.stereotype.Component;
 

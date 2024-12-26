@@ -36,9 +36,11 @@ public class UserDataAccessMapper {
     public User userEntityToUser(UserEntity userEntity) {
         return User.builder()
                 .id(userEntity.getId())
+                .name(userEntity.getName())
                 .userName(userEntity.getUser_name())
                 .password(userEntity.getPassword())
                 .email(userEntity.getEmail())
+                .phone_number(userEntity.getPhone_number())
                 .is_verified(userEntity.getIs_verified())
                 .role_id(userEntity.getUser_role().getId())
                 .profile_picture(userEntity.getProfile_picture())

@@ -1,15 +1,14 @@
 package com.fns.user.service.domain.rest;
 
-import com.fns.user.service.domain.dto.create.CreateUserCommand;
-import com.fns.user.service.domain.dto.create.CreateUserResponse;
-import com.fns.user.service.domain.dto.create.GetAllUserResponse;
+import com.fns.user.service.domain.dto.get.UserResponse;
+import com.fns.user.service.domain.dto.get.GetAllUserResponse;
 import com.fns.user.service.domain.ports.input.service.UserApplicationService;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.annotations.Any;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @RestController
@@ -28,20 +27,12 @@ public class UserController {
         return ResponseEntity.ok(userResponses);
     }
 
-//    @GetMapping("/{id}")
-//    public ResponseEntity<UserResponse> getUser(@PathVariable("id") Long id) {
-//        log.info("Fetching user with ID {}", id);
-//        UserResponse userResponse = userApplicationService.getUserById(id);
-//        log.info("User retrieved: {}", userResponse);
-//        return ResponseEntity.ok(userResponse);
-//    }
-
-    @PostMapping
-    public ResponseEntity<CreateUserResponse> createUser(@RequestBody CreateUserCommand createUserCommand) {
-        log.info(createUserCommand.toString());
-        CreateUserResponse createUserResponse = userApplicationService.createUser(createUserCommand);
-        log.info("user created");
-        return ResponseEntity.ok(createUserResponse);
+    @GetMapping("/{id}")
+    public ResponseEntity<UserResponse> getUser(@PathVariable("id") UUID id) {
+        log.info("Fetching user with ID {}", id);
+        UserResponse userResponse = userApplicationService.getUserById(id);
+        log.info("User retrieved: {}", userResponse);
+        return ResponseEntity.ok(userResponse);
     }
 
 }
