@@ -1,4 +1,6 @@
-com/fns/user/service/domain/SecurityConfig.class
-com/fns/user/service/domain/UserServiceApplication.class
-com/fns/user/service/domain/seeder/UserRoleSeeder.class
 com/fns/user/service/domain/BeanConfiguration.class
+com/fns/user/service/domain/UserServiceApplication.class
+com/fns/user/service/domain/security/JwtAuthenticationFilter.class
+com/fns/user/service/domain/seeder/UserRoleSeeder.class
+com/fns/user/service/domain/security/SecurityConfig.class
+com/fns/user/service/domain/security/UserAuthentication.class
