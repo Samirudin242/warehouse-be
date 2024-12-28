@@ -12,5 +12,5 @@ public interface ProductRepository {
 
     Product getProductById(UUID id);
 
-    String deleteProduct(UUID id);
+    void deleteProduct(UUID id);
 }

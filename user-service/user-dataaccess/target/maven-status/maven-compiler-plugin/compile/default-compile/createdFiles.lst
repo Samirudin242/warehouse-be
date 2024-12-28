@@ -1,3 +1,4 @@
+com/fns/user/service/dataaccess/user/config/GoogleCloudStorageConfig.class
 com/fns/user/service/dataaccess/user/entity/UserEntity$UserEntityBuilder.class
 com/fns/user/service/dataaccess/user/repository/UserJpaRepository.class
 com/fns/user/service/dataaccess/user/entity/UserEntity.class

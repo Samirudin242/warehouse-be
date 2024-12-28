@@ -7,6 +7,7 @@ import com.fns.product.service.domain.entity.Product;
 import com.fns.product.service.domain.ports.output.repository.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -24,6 +25,7 @@ public class ProductServiceImpl implements ProductRepository {
         this.productMapper = productMapper;
     }
 
+    @Transactional
     @Override
     public Product saveProduct(Product product) {
         ProductEntity productEntity = productMapper.productTotProductEntity(product);
@@ -53,8 +55,7 @@ public class ProductServiceImpl implements ProductRepository {
     }
 
     @Override
-    public String deleteProduct(UUID id) {
+    public void deleteProduct(UUID id) {
         productJpaRepository.deleteById(id);
-        return "Product deleted successfully with ID: " + id;
     }
 }

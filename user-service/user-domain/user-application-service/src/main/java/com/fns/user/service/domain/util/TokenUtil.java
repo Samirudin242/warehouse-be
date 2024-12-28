@@ -14,12 +14,11 @@ import java.util.Date;
 public class TokenUtil {
 
     @Value("${security.jwt.secret-key}")
-    private String secretKey; // Injected from application.yaml
+    private String secretKey;
 
     private static final long EXPIRATION_TIME = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
     public String generateToken(User user) {
-        log.info("secret key, {}", secretKey);
 
         // Use the secret key directly without decoding
         return Jwts.builder()

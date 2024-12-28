@@ -9,13 +9,22 @@ import com.fns.user.service.domain.entity.User;
 import com.fns.user.service.domain.ports.output.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import com.google.cloud.storage.BlobId;
+import com.google.cloud.storage.BlobInfo;
+import com.google.cloud.storage.Storage;
 
 @Slf4j
 @Component
@@ -24,9 +33,15 @@ public class UserRepositoryImpl implements UserRepository { // it will be provid
     private final UserJpaRepository userJpaRepository;
     private final UserDataAccessMapper userDataAccessMapper;
 
-    public UserRepositoryImpl(UserJpaRepository userJpaRepository, UserDataAccessMapper userDataAccessMapper) {
+    private final Storage storage;
+
+    @Value("${google.cloud.storage.bucket-name}")
+    private String bucketName;
+
+    public UserRepositoryImpl(UserJpaRepository userJpaRepository, UserDataAccessMapper userDataAccessMapper, Storage storage) {
         this.userJpaRepository = userJpaRepository;
         this.userDataAccessMapper = userDataAccessMapper;
+        this.storage = storage;
     }
 
 
@@ -106,5 +121,36 @@ public class UserRepositoryImpl implements UserRepository { // it will be provid
         return userDataAccessMapper.userEntityToUser(userEntity);
 
     }
+
+    @Override
+    public String uploadUserPhoto(MultipartFile file) throws IOException {
+        // Validate file size
+        if (file.getSize() > 1_048_576) {
+            throw new IllegalArgumentException("File size exceeds 1 MB limit");
+        }
+
+        // Validate file content type
+        if (!Objects.requireNonNull(file.getContentType()).startsWith("image/")) {
+            throw new IllegalArgumentException("Invalid file type. Only image files are allowed.");
+        }
+
+        // Generate a unique timestamp
+        String timestamp = LocalDateTime.now()
+                .format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+
+        // Create a unique file name using the timestamp
+        String fileName = String.format("users/%s_%s", timestamp, file.getOriginalFilename());
+
+        BlobId blobId = BlobId.of(bucketName, fileName);
+        BlobInfo blobInfo = BlobInfo.newBuilder(blobId)
+                .setContentType(file.getContentType())
+                .build();
+
+        storage.create(blobInfo, file.getBytes());
+
+        // Return the public URL of the uploaded file
+        return String.format("https://storage.googleapis.com/%s/%s", bucketName, fileName);
+    }
+
 
 }

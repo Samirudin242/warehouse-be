@@ -23,8 +23,8 @@ spring:
 google:
   cloud:
     storage:
-      bucket-name: theyaku-bucket
-      project-id: inspired-gift-432915-h7
+      bucket-name: theyaku-bucket11
+      project-id: civil-hash-446108-e1
       project-name: theyaku
 security:
   jwt:

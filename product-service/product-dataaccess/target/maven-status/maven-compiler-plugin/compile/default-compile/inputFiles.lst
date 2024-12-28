@@ -16,6 +16,7 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/ProductPricesEntity.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/ProductReviews.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/ProductSizesEntity.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/UserEntity.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/mapper/ProductBrandMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/mapper/ProductCategoryMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/mapper/ProductColorMapper.java

@@ -16,10 +16,12 @@ com/fns/product/service/dataaccess/entity/ProductSizesEntity$ProductSizesEntityB
 com/fns/product/service/dataaccess/entity/ProductImagesEntity.class
 com/fns/product/service/dataaccess/entity/ProductImagesEntity$ProductImagesEntityBuilder.class
 com/fns/product/service/dataaccess/mapper/ProductPriceMapper.class
+com/fns/product/service/dataaccess/entity/UserEntity.class
 com/fns/product/service/dataaccess/entity/ProductReviews$ProductReviewsBuilder.class
 com/fns/product/service/dataaccess/mapper/ProductImageMapper.class
 com/fns/product/service/dataaccess/repository/ProductColorsJpaRepository.class
 com/fns/product/service/dataaccess/repository/ProductSizeJpaRepository.class
+com/fns/product/service/dataaccess/entity/UserEntity$UserEntityBuilder.class
 com/fns/product/service/dataaccess/entity/ProductColorsEntity$ProductColorsEntityBuilder.class
 com/fns/product/service/dataaccess/repository/ProductJpaRepository.class
 com/fns/product/service/dataaccess/repository/ProductCategoriesJpaRepository.class

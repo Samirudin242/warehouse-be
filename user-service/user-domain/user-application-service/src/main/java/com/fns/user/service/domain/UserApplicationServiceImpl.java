@@ -6,10 +6,13 @@ import com.fns.user.service.domain.dto.get.LoginResponse;
 import com.fns.user.service.domain.dto.get.UserResponse;
 import com.fns.user.service.domain.dto.get.GetAllUserResponse;
 import com.fns.user.service.domain.ports.input.service.UserApplicationService;
+import com.fns.user.service.domain.ports.output.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,8 +23,11 @@ public class UserApplicationServiceImpl implements UserApplicationService {
 
     private final UserCommandHandler userCommandHandler;
 
-    public UserApplicationServiceImpl(UserCommandHandler userCommandHandler) {
+    private final UserRepository userRepository;
+
+    public UserApplicationServiceImpl(UserCommandHandler userCommandHandler, UserRepository userRepository) {
         this.userCommandHandler = userCommandHandler;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -47,5 +53,10 @@ public class UserApplicationServiceImpl implements UserApplicationService {
     @Override
     public LoginResponse login(LoginUserCommand loginCommand) {
         return userCommandHandler.login(loginCommand);
+    }
+
+    @Override
+    public String uploadProfilePhoto(MultipartFile file) throws IOException {
+        return userRepository.uploadUserPhoto(file);
     }
 }
