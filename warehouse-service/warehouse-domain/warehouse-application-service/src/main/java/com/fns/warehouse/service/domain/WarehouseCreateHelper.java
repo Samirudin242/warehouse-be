@@ -56,7 +56,7 @@ public class WarehouseCreateHelper {
 
         saveWarehouse(warehouse);
 
-        log.info("Warehouse is created with id: {}", warehouseCreatedEvent.getEntity().getId().getValue());
+//        log.info("Warehouse is created with id: {}", warehouseCreatedEvent.getEntity().getId().getValue());
         return warehouseCreatedEvent;
     }
 
@@ -66,7 +66,7 @@ public class WarehouseCreateHelper {
             log.error("Could not save order!");
             throw new WarehouseDomainException("Could not save order!");
         }
-        log.info("Warehouse is saved with id: {}", warehouseResult.getId().getValue());
+//        log.info("Warehouse is saved with id: {}", warehouseResult.getId().getValue());
         return warehouseResult;
     }
 

@@ -68,7 +68,7 @@ public class Warehouse extends AggregateRoot<WarehouseId> {
     public Location getLocation() { return location; }
     public WarehouseStatus getStatus() { return status; }
     public List<User> getWarehouseAdmins() { return warehouseAdmins; }
-    public WarehouseId getWarehouseId() { return getId(); }
+//    public WarehouseId getWarehouseId() { return getId(); }
     public List<String> getFailureMessages() {
         return failureMessages;
     }

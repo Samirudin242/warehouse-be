@@ -22,7 +22,7 @@ public class WarehouseDataMapper {
 
     public CreateWarehouseResponse warehouseToCreateWarehouseResponse(Warehouse warehouse, String message) {
         return CreateWarehouseResponse.builder()
-                .warehouseId(warehouse.getWarehouseId().getValue())
+//                .warehouseId(warehouse.getWarehouseId().getValue())
                 .warehouseStatus(warehouse.getStatus())
                 .message(message)
                 .build();

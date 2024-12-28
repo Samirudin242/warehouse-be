@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8083
 
 #spring:
 #  datasource:
@@ -20,18 +20,13 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/staging?currentSchema=multi-wh&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
+    url: jdbc:postgresql://localhost:5432/warehouse_service?currentSchema=multi-wh&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     username: postgres
-    password: admin123
+    password: theyaku
     driver-class-name: org.postgresql.Driver
-    schema: classpath:init-schema.sql
-
-sql:
-  init:
-    platform: postgres
-    mode: always
-    schema-locations: classpath:init-schema.sql
 
 warehouse-service:
   warehouseReportingRequestTopicName: warehouse-reporting-request

@@ -1,0 +1,10 @@
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/warehouse/entity/WarehouseEntity.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/warehouse/adapter/WarehouseRepositoryImpl.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/product/repository/ProductJpaRepository.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/product/mapper/ProductDataAccessMapper.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/warehouse/repository/StockJpaRepository.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/warehouse/mapper/WarehouseDataAccessMapper.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/warehouse/entity/WarehouseLocationEntity.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/product/entity/ProductEntity.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/product/adapter/ProductRepositoryImpl.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/warehouse/repository/WarehouseJpaRepository.java

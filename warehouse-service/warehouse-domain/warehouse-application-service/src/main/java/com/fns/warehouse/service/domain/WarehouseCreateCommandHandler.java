@@ -37,7 +37,7 @@ public class WarehouseCreateCommandHandler {
 
     public CreateWarehouseResponse createWarehouse(CreateWarehouseCommand createWarehouseCommand) {
         WarehouseCreatedEvent warehouseCreatedEvent = warehouseCreateHelper.persistWarehouse(createWarehouseCommand);
-        log.info("Warehouse is created with id: {}", warehouseCreatedEvent.getEntity().getId().getValue());
+//        log.info("Warehouse is created with id: {}", warehouseCreatedEvent.getEntity().getId().getValue());
         warehouseCreatedRequestMessagePublisher.publish(warehouseCreatedEvent);
         return warehouseDataMapper.warehouseToCreateWarehouseResponse(warehouseCreatedEvent.getEntity(),
                 "Warehouse created successfully");

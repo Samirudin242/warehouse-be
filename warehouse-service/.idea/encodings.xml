@@ -9,6 +9,8 @@
     <file url="file://$PROJECT_DIR$/warehouse-dataaccess/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/warehouse-domain/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/warehouse-domain/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/warehouse-domain/warehouse-application-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/warehouse-domain/warehouse-domain-core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/warehouse-messaging/src/main/java" charset="UTF-8" />
   </component>
 </project>
