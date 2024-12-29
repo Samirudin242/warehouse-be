@@ -36,6 +36,19 @@ public class UserResponse {
 
     private final String profile_picture;
 
+    private final String province;
+
+    private final String city;
+
+    private final String address;
+
+    private final String postal_code;
+
+    private final String province_id;
+
+    private final String city_id;
+
+
     @NotNull
     private final Boolean is_verified;
 }

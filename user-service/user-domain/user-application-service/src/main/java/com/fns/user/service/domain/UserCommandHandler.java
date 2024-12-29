@@ -5,12 +5,12 @@ import com.fns.user.service.domain.dto.create.LoginUserCommand;
 import com.fns.user.service.domain.dto.get.LoginResponse;
 import com.fns.user.service.domain.dto.get.UserResponse;
 import com.fns.user.service.domain.dto.get.GetAllUserResponse;
+import com.fns.user.service.domain.entity.Location;
 import com.fns.user.service.domain.entity.User;
 import com.fns.user.service.domain.mapper.UserDataMapper;
 import com.fns.user.service.domain.ports.output.repository.UserRepository;
 import com.fns.user.service.domain.util.TokenUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -45,8 +45,8 @@ public class UserCommandHandler {
         /*
             Event here if any
          */
-        UserResponse createUser = userHelper.userCreateMethod(createUserCommand);
-        return userDataMapper.userToUserResponse(createUserCommand);
+        return  userHelper.userCreateMethod(createUserCommand);
+
     }
 
     public UserResponse editUser(UUID id, CreateUserCommand createUserCommand) {

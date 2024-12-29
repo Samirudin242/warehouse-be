@@ -1,9 +1,13 @@
 package com.fns.user.service.dataaccess.user.adapter;
 
 import com.fns.user.service.dataaccess.user.entity.UserEntity;
+import com.fns.user.service.dataaccess.user.entity.UserRoleEntity;
 import com.fns.user.service.dataaccess.user.mapper.UserDataAccessMapper;
+import com.fns.user.service.dataaccess.user.mapper.UserRoleMapper;
 import com.fns.user.service.dataaccess.user.repository.UserJpaRepository;
+import com.fns.user.service.dataaccess.user.repository.UserRoleJpaRepository;
 import com.fns.user.service.domain.dto.get.GetAllUserResponse;
+import com.fns.user.service.domain.dto.get.RoleResponse;
 import com.fns.user.service.domain.dto.get.UserAlreadyExistsException;
 import com.fns.user.service.domain.entity.User;
 import com.fns.user.service.domain.ports.output.repository.UserRepository;
@@ -31,16 +35,20 @@ import com.google.cloud.storage.Storage;
 public class UserRepositoryImpl implements UserRepository { // it will be provide the implementations for all method that we define in interface
 
     private final UserJpaRepository userJpaRepository;
+    private final UserRoleJpaRepository userRoleJpaRepository;
     private final UserDataAccessMapper userDataAccessMapper;
+    private final UserRoleMapper userRoleMapper;
 
     private final Storage storage;
 
     @Value("${google.cloud.storage.bucket-name}")
     private String bucketName;
 
-    public UserRepositoryImpl(UserJpaRepository userJpaRepository, UserDataAccessMapper userDataAccessMapper, Storage storage) {
+    public UserRepositoryImpl(UserJpaRepository userJpaRepository, UserRoleJpaRepository userRoleJpaRepository, UserDataAccessMapper userDataAccessMapper, UserRoleMapper userRoleMapper, Storage storage) {
         this.userJpaRepository = userJpaRepository;
+        this.userRoleJpaRepository = userRoleJpaRepository;
         this.userDataAccessMapper = userDataAccessMapper;
+        this.userRoleMapper = userRoleMapper;
         this.storage = storage;
     }
 
@@ -152,5 +160,9 @@ public class UserRepositoryImpl implements UserRepository { // it will be provid
         return String.format("https://storage.googleapis.com/%s/%s", bucketName, fileName);
     }
 
-
+    @Override
+    public List<RoleResponse> getAllRoles() {
+        List<UserRoleEntity> userRoles = userRoleJpaRepository.findAll();
+        return userRoleMapper.userRoleEntitiesToResponse(userRoles);
+    }
 }

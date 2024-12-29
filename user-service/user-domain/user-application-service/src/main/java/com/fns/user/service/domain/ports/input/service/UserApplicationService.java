@@ -3,6 +3,7 @@ package com.fns.user.service.domain.ports.input.service;
 import com.fns.user.service.domain.dto.create.CreateUserCommand;
 import com.fns.user.service.domain.dto.create.LoginUserCommand;
 import com.fns.user.service.domain.dto.get.LoginResponse;
+import com.fns.user.service.domain.dto.get.RoleResponse;
 import com.fns.user.service.domain.dto.get.UserResponse;
 import com.fns.user.service.domain.dto.get.GetAllUserResponse;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,4 +25,6 @@ public interface UserApplicationService {
     LoginResponse login(LoginUserCommand loginCommand);
 
     String uploadProfilePhoto(MultipartFile file) throws IOException;
+
+    List<RoleResponse> getAllRoles();
 }

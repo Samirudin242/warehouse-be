@@ -3,8 +3,10 @@ package com.fns.user.service.domain;
 import com.fns.user.service.domain.dto.create.CreateUserCommand;
 import com.fns.user.service.domain.dto.get.UserAlreadyExistsException;
 import com.fns.user.service.domain.dto.get.UserResponse;
+import com.fns.user.service.domain.entity.Location;
 import com.fns.user.service.domain.entity.User;
 import com.fns.user.service.domain.mapper.UserDataMapper;
+import com.fns.user.service.domain.ports.output.repository.LocationRepository;
 import com.fns.user.service.domain.ports.output.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -15,29 +17,55 @@ import org.springframework.stereotype.Component;
 public class UserHelper {
 
     private final UserRepository userRepository; // this is just declare, different with initialize
+    private final LocationRepository locationRepository;
 
     private final UserDataMapper userDataMapper;
 
     public UserHelper(// this is called constructor, which is to initialize the object's state, that sets up the initial values for the object attributes
                       UserDomainService userDomainService,
-                      UserRepository userRepository,
+                      UserRepository userRepository, LocationRepository locationRepository,
                       UserDataMapper userDataMapper
             ) {
         this.userRepository = userRepository;
+        this.locationRepository = locationRepository;
         this.userDataMapper = userDataMapper;
     }
 
     @Transactional
     public UserResponse userCreateMethod(CreateUserCommand createUserCommand) {
-        UserResponse user = userDataMapper.userToUserResponse(createUserCommand);
 
-        log.info("user from helper, {}", user);
-        User userEntity = userDataMapper.createUser(user);
+        User userEntity = userDataMapper.userFromCreateCommand(createUserCommand);
 
+        User savedUser = saveUser(userEntity);
 
-        saveUser(userEntity);
+        Location location = Location.builder()
+                .user_id(savedUser.getId())
+                .city_id(createUserCommand.getCity_id())
+                .province_id(createUserCommand.getProvince_id())
+                .city(createUserCommand.getCity())
+                .province(createUserCommand.getProvince())
+                .address(createUserCommand.getAddress())
+                .postal_code(createUserCommand.getPostal_code())
+                .build();
 
-        return user;
+        saveLocation(location);
+
+        return UserResponse.builder()
+                .id(savedUser.getId())
+                .name(createUserCommand.getName())
+                .user_name(createUserCommand.getUser_name())
+                .email(createUserCommand.getEmail())
+                .profile_picture(createUserCommand.getProfile_picture())
+                .phone_number(createUserCommand.getPhone_number())
+                .is_verified(createUserCommand.getIs_verified())
+                .role_id(createUserCommand.getRole_id())
+                .city_id(createUserCommand.getCity_id())
+                .province_id(createUserCommand.getProvince_id())
+                .city(createUserCommand.getCity())
+                .province(createUserCommand.getProvince())
+                .address(createUserCommand.getAddress())
+                .postal_code(createUserCommand.getPostal_code())
+                .build();
     }
 
     public UserResponse userEditMethod(User user) {
@@ -52,7 +80,7 @@ public class UserHelper {
 
 
 
-    private void saveUser(User user) {
+    private User saveUser(User user) {
         try {
             User userResult = userRepository.save(user);
 
@@ -61,10 +89,26 @@ public class UserHelper {
                 throw new RuntimeException("Failed to save user");
             }
 
-            log.info("Successfully saved user with id from create helper: {}", userResult.getId());
+            return userResult;
+
         } catch (Exception e) {
             log.error("Error while saving user: {}", e.getMessage());
             throw new UserAlreadyExistsException("User with the same username or email already exists");
+        }
+    }
+
+    private void saveLocation(Location location) {
+        try {
+            Location locationResult = locationRepository.saveLocation(location);
+
+            if (locationResult == null) {
+                log.error("Failed to save location. The location entity was not persisted.");
+                throw new RuntimeException("Failed to save location");
+            }
+
+        } catch (Exception e) {
+            log.error("Error while saving location: {}", e.getMessage());
+            throw new RuntimeException("Failed to save location");
         }
     }
 

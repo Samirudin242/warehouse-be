@@ -37,7 +37,7 @@ public class UserDataAccessMapper {
         return User.builder()
                 .id(userEntity.getId())
                 .name(userEntity.getName())
-                .userName(userEntity.getUser_name())
+                .user_name(userEntity.getUser_name())
                 .password(userEntity.getPassword())
                 .email(userEntity.getEmail())
                 .phone_number(userEntity.getPhone_number())

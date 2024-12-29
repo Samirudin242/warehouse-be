@@ -1,5 +1,6 @@
 package com.fns.user.service.domain.util;
 
+import com.fns.user.service.domain.entity.Location;
 import com.fns.user.service.domain.entity.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

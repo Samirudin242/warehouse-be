@@ -1,6 +1,8 @@
 package com.fns.user.service.domain.ports.output.repository;
 
 import com.fns.user.service.domain.dto.get.GetAllUserResponse;
+import com.fns.user.service.domain.dto.get.RoleResponse;
+import com.fns.user.service.domain.entity.Location;
 import com.fns.user.service.domain.entity.User;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,4 +22,5 @@ public interface UserRepository {
 
    String uploadUserPhoto(MultipartFile file) throws IOException;
 
+   List<RoleResponse> getAllRoles();
 }

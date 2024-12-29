@@ -2,6 +2,7 @@ package com.fns.user.service.domain.mapper;
 
 import com.fns.user.service.domain.dto.create.CreateUserCommand;
 import com.fns.user.service.domain.dto.get.UserResponse;
+import com.fns.user.service.domain.entity.Location;
 import com.fns.user.service.domain.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,7 @@ public class UserDataMapper {
 
     public UserResponse userToUserResponse(CreateUserCommand createUserCommand) {
         return UserResponse.builder()
+                .id(createUserCommand.getId())
                 .name(createUserCommand.getName())
                 .user_name(createUserCommand.getUser_name())
                 .email(createUserCommand.getEmail())
@@ -19,13 +21,19 @@ public class UserDataMapper {
                 .phone_number(createUserCommand.getPhone_number())
                 .is_verified(createUserCommand.getIs_verified())
                 .role_id(createUserCommand.getRole_id())
+                .city_id(createUserCommand.getCity_id())
+                .province_id(createUserCommand.getProvince_id())
+                .city(createUserCommand.getCity())
+                .province(createUserCommand.getProvince())
+                .address(createUserCommand.getAddress())
+                .postal_code(createUserCommand.getPostal_code())
                 .build();
     }
 
     public User createUser(UserResponse createUserResponse) {
         return User.builder()
                 .name(createUserResponse.getName())
-                .userName(createUserResponse.getUser_name())
+                .user_name(createUserResponse.getUser_name())
                 .email(createUserResponse.getEmail())
                 .profile_picture(createUserResponse.getProfile_picture())
                 .role_id(createUserResponse.getRole_id())
@@ -47,5 +55,18 @@ public class UserDataMapper {
                 .is_verified(user.getIs_verified())
                 .role_id(user.getRole_id())
                 .build();
+    }
+
+    public User userFromCreateCommand(CreateUserCommand createUserCommand) {
+        return User.builder()
+               .name(createUserCommand.getName())
+               .user_name(createUserCommand.getUser_name())
+               .email(createUserCommand.getEmail())
+               .password(createUserCommand.getPassword())
+               .profile_picture(createUserCommand.getProfile_picture())
+               .phone_number(createUserCommand.getPhone_number())
+               .is_verified(createUserCommand.getIs_verified())
+               .role_id(createUserCommand.getRole_id())
+               .build();
     }
 }

@@ -42,4 +42,20 @@ public class UserEntity extends BaseEntity {
     public UserEntity(LocalDateTime createdAt, LocalDateTime updatedAt) {
         super(createdAt, updatedAt);
     }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", user_name='" + user_name + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", profile_picture='" + profile_picture + '\'' +
+                ", phone_number='" + phone_number + '\'' +
+                ", is_verified=" + is_verified +
+                ", user_role=" + user_role +
+                '}';
+    }
+
 }

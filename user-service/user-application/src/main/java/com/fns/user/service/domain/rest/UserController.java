@@ -1,5 +1,6 @@
 package com.fns.user.service.domain.rest;
 
+import com.fns.user.service.domain.dto.get.RoleResponse;
 import com.fns.user.service.domain.dto.get.UserResponse;
 import com.fns.user.service.domain.dto.get.GetAllUserResponse;
 import com.fns.user.service.domain.ports.input.service.UserApplicationService;
@@ -52,4 +53,10 @@ public class UserController {
         }
     }
 
+    @GetMapping("/get-roles")
+    public ResponseEntity<List<RoleResponse>> getAllRoles() {
+        List<RoleResponse> roleResponse = userApplicationService.getAllRoles();
+
+        return ResponseEntity.ok(roleResponse);
+    }
 }
