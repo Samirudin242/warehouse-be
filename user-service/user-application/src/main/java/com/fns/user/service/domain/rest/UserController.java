@@ -53,10 +53,4 @@ public class UserController {
         }
     }
 
-    @GetMapping("/get-roles")
-    public ResponseEntity<List<RoleResponse>> getAllRoles() {
-        List<RoleResponse> roleResponse = userApplicationService.getAllRoles();
-
-        return ResponseEntity.ok(roleResponse);
-    }
 }

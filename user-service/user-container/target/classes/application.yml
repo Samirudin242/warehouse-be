@@ -29,4 +29,7 @@ google:
 security:
   jwt:
     secret-key: theyakusecretkeysamirudinvidia1234567890123456
+app:
+  cors:
+    allowed-origins: "http://localhost:3000"
 

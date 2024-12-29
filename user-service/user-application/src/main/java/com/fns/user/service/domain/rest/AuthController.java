@@ -3,6 +3,7 @@ package com.fns.user.service.domain.rest;
 import com.fns.user.service.domain.dto.create.CreateUserCommand;
 import com.fns.user.service.domain.dto.create.LoginUserCommand;
 import com.fns.user.service.domain.dto.get.LoginResponse;
+import com.fns.user.service.domain.dto.get.RoleResponse;
 import com.fns.user.service.domain.dto.get.UserResponse;
 import com.fns.user.service.domain.ports.input.service.UserApplicationService;
 import jakarta.servlet.http.HttpServletResponse;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -68,5 +70,11 @@ public class AuthController {
         response.addHeader("Set-Cookie", cookie.toString());
 
         return ResponseEntity.ok(loginResponse);
+    }
+
+    @GetMapping("/get-roles")
+    public ResponseEntity<List<RoleResponse>> getAllRoles() {
+        List<RoleResponse> roleResponse = userApplicationService.getAllRoles();
+        return ResponseEntity.ok(roleResponse);
     }
 }
