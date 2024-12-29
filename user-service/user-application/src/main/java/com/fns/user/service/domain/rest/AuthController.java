@@ -3,15 +3,19 @@ package com.fns.user.service.domain.rest;
 import com.fns.user.service.domain.dto.create.CreateUserCommand;
 import com.fns.user.service.domain.dto.create.LoginUserCommand;
 import com.fns.user.service.domain.dto.get.LoginResponse;
+import com.fns.user.service.domain.dto.get.ProfilePhotoResponse;
 import com.fns.user.service.domain.dto.get.RoleResponse;
 import com.fns.user.service.domain.dto.get.UserResponse;
 import com.fns.user.service.domain.ports.input.service.UserApplicationService;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -70,6 +74,21 @@ public class AuthController {
         response.addHeader("Set-Cookie", cookie.toString());
 
         return ResponseEntity.ok(loginResponse);
+    }
+
+    @PostMapping("/profile-photo")
+    public ResponseEntity<ProfilePhotoResponse> uploadProductPhoto(
+            @RequestParam("file") MultipartFile file) {
+        try {
+            // Upload the photo and get the URL
+            ProfilePhotoResponse photoUrl = userApplicationService.uploadProfilePhoto(file);
+            log.info("Photo uploaded successfully for Product ID {}:", photoUrl);
+            return ResponseEntity.ok(photoUrl);
+        } catch (IOException e) {
+            log.error("Failed to upload photo: {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ProfilePhotoResponse("failed to get the url", "failed to upload"));
+        }
     }
 
     @GetMapping("/get-roles")

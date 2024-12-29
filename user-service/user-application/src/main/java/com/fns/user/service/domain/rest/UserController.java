@@ -39,18 +39,4 @@ public class UserController {
         return ResponseEntity.ok(userResponse);
     }
 
-    @PostMapping("/profile-photo")
-    public ResponseEntity<String> uploadProductPhoto(
-            @RequestParam("file") MultipartFile file) {
-        try {
-            // Upload the photo and get the URL
-            String photoUrl = userApplicationService.uploadProfilePhoto(file);
-            log.info("Photo uploaded successfully for Product ID {}:", photoUrl);
-            return ResponseEntity.ok(photoUrl);
-        } catch (IOException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Failed to upload photo: " + e.getMessage());
-        }
-    }
-
 }

@@ -7,6 +7,7 @@ import com.fns.user.service.dataaccess.user.mapper.UserRoleMapper;
 import com.fns.user.service.dataaccess.user.repository.UserJpaRepository;
 import com.fns.user.service.dataaccess.user.repository.UserRoleJpaRepository;
 import com.fns.user.service.domain.dto.get.GetAllUserResponse;
+import com.fns.user.service.domain.dto.get.ProfilePhotoResponse;
 import com.fns.user.service.domain.dto.get.RoleResponse;
 import com.fns.user.service.domain.dto.get.UserAlreadyExistsException;
 import com.fns.user.service.domain.entity.User;
@@ -131,7 +132,7 @@ public class UserRepositoryImpl implements UserRepository { // it will be provid
     }
 
     @Override
-    public String uploadUserPhoto(MultipartFile file) throws IOException {
+    public ProfilePhotoResponse uploadUserPhoto(MultipartFile file) throws IOException {
         // Validate file size
         if (file.getSize() > 1_048_576) {
             throw new IllegalArgumentException("File size exceeds 1 MB limit");
@@ -157,7 +158,10 @@ public class UserRepositoryImpl implements UserRepository { // it will be provid
         storage.create(blobInfo, file.getBytes());
 
         // Return the public URL of the uploaded file
-        return String.format("https://storage.googleapis.com/%s/%s", bucketName, fileName);
+        return ProfilePhotoResponse.builder()
+                .url(String.format("https://storage.googleapis.com/%s/%s", bucketName, fileName))
+                .message("Successfully uploaded file")
+                .build();
     }
 
     @Override

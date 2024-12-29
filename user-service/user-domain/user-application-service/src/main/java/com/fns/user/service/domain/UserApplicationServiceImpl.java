@@ -2,10 +2,7 @@ package com.fns.user.service.domain;
 
 import com.fns.user.service.domain.dto.create.CreateUserCommand;
 import com.fns.user.service.domain.dto.create.LoginUserCommand;
-import com.fns.user.service.domain.dto.get.LoginResponse;
-import com.fns.user.service.domain.dto.get.RoleResponse;
-import com.fns.user.service.domain.dto.get.UserResponse;
-import com.fns.user.service.domain.dto.get.GetAllUserResponse;
+import com.fns.user.service.domain.dto.get.*;
 import com.fns.user.service.domain.ports.input.service.UserApplicationService;
 import com.fns.user.service.domain.ports.output.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -57,7 +54,7 @@ public class UserApplicationServiceImpl implements UserApplicationService {
     }
 
     @Override
-    public String uploadProfilePhoto(MultipartFile file) throws IOException {
+    public ProfilePhotoResponse uploadProfilePhoto(MultipartFile file) throws IOException {
         return userRepository.uploadUserPhoto(file);
     }
 

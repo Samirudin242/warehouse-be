@@ -1,6 +1,7 @@
 package com.fns.user.service.domain.ports.output.repository;
 
 import com.fns.user.service.domain.dto.get.GetAllUserResponse;
+import com.fns.user.service.domain.dto.get.ProfilePhotoResponse;
 import com.fns.user.service.domain.dto.get.RoleResponse;
 import com.fns.user.service.domain.entity.Location;
 import com.fns.user.service.domain.entity.User;
@@ -20,7 +21,7 @@ public interface UserRepository {
 
    User findByUsernameOrEmail(String username, String password);
 
-   String uploadUserPhoto(MultipartFile file) throws IOException;
+   ProfilePhotoResponse uploadUserPhoto(MultipartFile file) throws IOException;
 
    List<RoleResponse> getAllRoles();
 }
