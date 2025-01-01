@@ -2,7 +2,6 @@ package com.fns.user.service.domain.mapper;
 
 import com.fns.user.service.domain.dto.create.CreateUserCommand;
 import com.fns.user.service.domain.dto.get.UserResponse;
-import com.fns.user.service.domain.entity.Location;
 import com.fns.user.service.domain.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

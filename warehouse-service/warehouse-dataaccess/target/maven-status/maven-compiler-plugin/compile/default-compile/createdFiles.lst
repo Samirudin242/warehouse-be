@@ -1,0 +1,17 @@
+com/fns/warehouse/service/dataaccess/entity/BaseEntity.class
+com/fns/warehouse/service/dataaccess/entity/UserEntity$UserEntityBuilder.class
+com/fns/warehouse/service/dataaccess/entity/StockEntity.class
+com/fns/warehouse/service/dataaccess/entity/WarehouseEntity$WarehouseEntityBuilder.class
+com/fns/warehouse/service/dataaccess/entity/MutationTypeEntity.class
+com/fns/warehouse/service/dataaccess/entity/ProductEntity.class
+com/fns/warehouse/service/dataaccess/entity/UserEntity.class
+com/fns/warehouse/service/dataaccess/entity/StockMutationEntity$StockMutationEntityBuilder.class
+com/fns/warehouse/service/dataaccess/repository/StockMutationTypeJpaRepository.class
+com/fns/warehouse/service/dataaccess/entity/MutationTypeEntity$MutationTypeEntityBuilder.class
+com/fns/warehouse/service/dataaccess/entity/ProductEntity$ProductEntityBuilder.class
+com/fns/warehouse/service/dataaccess/entity/StockMutationEntity.class
+com/fns/warehouse/service/dataaccess/entity/WarehouseEntity.class
+com/fns/warehouse/service/dataaccess/repository/WarehouseJpaRepository.class
+com/fns/warehouse/service/dataaccess/entity/StockEntity$StockEntityBuilder.class
+com/fns/warehouse/service/dataaccess/entity/LocationEntity.class
+com/fns/warehouse/service/dataaccess/entity/LocationEntity$LocationEntityBuilder.class

@@ -3,7 +3,11 @@ com/fns/user/service/domain/entity/User$UserBuilder.class
 com/fns/user/service/domain/exception/UserDomainException.class
 com/fns/user/service/domain/valueObject/Role.class
 com/fns/user/service/domain/UserDomainService.class
-com/fns/user/service/domain/valueObject/UserRoleType.class
+com/fns/user/service/domain/event/UserCreatedEvent.class
 com/fns/user/service/domain/valueObject/UserName.class
-com/fns/user/service/domain/entity/User.class
 com/fns/user/service/domain/UserDomainServiceImpl.class
+com/fns/user/service/domain/event/UserEvent.class
+com/fns/user/service/domain/valueObject/UserRoleType.class
+com/fns/user/service/domain/entity/Location$LocationBuilder.class
+com/fns/user/service/domain/entity/User.class
+com/fns/user/service/domain/entity/Location.class

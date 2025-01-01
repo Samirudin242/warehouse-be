@@ -10,7 +10,7 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
     hibernate:
-      ddl-auto: update  # Automatically generate and update tables
+      ddl-auto: update
     servlet:
       multipart:
         max-file-size: 1MB
@@ -20,6 +20,16 @@ spring:
     username: postgres
     password: theyaku
     driver-class-name: org.postgresql.Driver
+  kafka:
+    properties:
+      sasl.mechanism: PLAIN
+      sasl.jaas.config: >
+        org.apache.kafka.common.security.plain.PlainLoginModule required
+        username='A2VCCYFEXERRJFK7'
+        password='T1PRDVTCvX0z7sKX3daWHwJC0KS8rWIJwjKrsvIiMJkwEVqIWkEH8YQESlHSS4ni';
+      security.protocol: SASL_SSL
+      session.timeout.ms: 45000
+    bootstrap-servers: pkc-ldvr1.asia-southeast1.gcp.confluent.cloud:9092
 google:
   cloud:
     storage:
@@ -31,5 +41,4 @@ security:
     secret-key: theyakusecretkeysamirudinvidia1234567890123456
 app:
   cors:
-    allowed-origins: "http://localhost:3000"
-
+    allowed-origins: "http://localhost:3001"

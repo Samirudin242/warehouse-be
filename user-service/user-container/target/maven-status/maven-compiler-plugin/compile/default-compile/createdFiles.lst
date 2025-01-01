@@ -1,3 +1,5 @@
+com/fns/user/service/domain/security/WebConfig$1.class
+com/fns/user/service/domain/security/WebConfig.class
 com/fns/user/service/domain/BeanConfiguration.class
 com/fns/user/service/domain/UserServiceApplication.class
 com/fns/user/service/domain/security/JwtAuthenticationFilter.class

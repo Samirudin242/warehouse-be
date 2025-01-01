@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.fns.warehouse.service.domain.WarehouseApplicationServiceTest
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.900 s -- in com.fns.warehouse.service.domain.WarehouseApplicationServiceTest

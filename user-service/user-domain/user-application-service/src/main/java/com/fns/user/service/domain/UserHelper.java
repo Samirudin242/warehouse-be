@@ -5,7 +5,9 @@ import com.fns.user.service.domain.dto.get.UserAlreadyExistsException;
 import com.fns.user.service.domain.dto.get.UserResponse;
 import com.fns.user.service.domain.entity.Location;
 import com.fns.user.service.domain.entity.User;
+import com.fns.user.service.domain.event.UserCreatedEvent;
 import com.fns.user.service.domain.mapper.UserDataMapper;
+import com.fns.user.service.domain.ports.output.message.UserMessagePublisher;
 import com.fns.user.service.domain.ports.output.repository.LocationRepository;
 import com.fns.user.service.domain.ports.output.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -18,16 +20,20 @@ public class UserHelper {
 
     private final UserRepository userRepository; // this is just declare, different with initialize
     private final LocationRepository locationRepository;
+    private final UserMessagePublisher userMessagePublisher;
+    private final UserDomainService userDomainService;
 
     private final UserDataMapper userDataMapper;
 
     public UserHelper(// this is called constructor, which is to initialize the object's state, that sets up the initial values for the object attributes
                       UserDomainService userDomainService,
-                      UserRepository userRepository, LocationRepository locationRepository,
+                      UserRepository userRepository, LocationRepository locationRepository, UserMessagePublisher userMessagePublisher, UserDomainService userDomainService1,
                       UserDataMapper userDataMapper
             ) {
         this.userRepository = userRepository;
         this.locationRepository = locationRepository;
+        this.userMessagePublisher = userMessagePublisher;
+        this.userDomainService = userDomainService1;
         this.userDataMapper = userDataMapper;
     }
 
@@ -36,7 +42,12 @@ public class UserHelper {
 
         User userEntity = userDataMapper.userFromCreateCommand(createUserCommand);
 
+        UserCreatedEvent userEvent = userDomainService.createUser(userEntity.getName(), userMessagePublisher);
+
         User savedUser = saveUser(userEntity);
+
+        //publish the user
+        userMessagePublisher.publish(userEvent);
 
         Location location = Location.builder()
                 .user_id(savedUser.getId())

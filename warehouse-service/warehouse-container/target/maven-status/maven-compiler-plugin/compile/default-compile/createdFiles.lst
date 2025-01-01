@@ -1,0 +1,3 @@
+com/fns/warehouse/service/domain/WarehouseServiceApplication.class
+com/fns/warehouse/service/domain/seeder/WarehouseSeeder.class
+com/fns/warehouse/service/domain/seeder/StockMutationTypeSeeder.class
