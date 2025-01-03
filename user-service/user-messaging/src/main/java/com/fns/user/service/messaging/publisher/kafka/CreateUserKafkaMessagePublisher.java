@@ -33,6 +33,7 @@ public class CreateUserKafkaMessagePublisher implements UserMessagePublisher {
     @Override
     public void publish(UserCreatedEvent domainEvent) {
         try {
+            logger.info("Publishing");
             // Convert domain event to JSON
             String message = objectMapper.writeValueAsString(userKafkaMapper.convertToUser(domainEvent.getEntity()));
 
@@ -45,6 +46,4 @@ public class CreateUserKafkaMessagePublisher implements UserMessagePublisher {
             throw new RuntimeException("Error publishing user_created event to Kafka", e);
         }
     }
-
-
 }

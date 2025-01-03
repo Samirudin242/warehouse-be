@@ -1,7 +1,7 @@
 package com.fns.product.service.domain;
 
 import com.fns.product.service.domain.dto.create.CreateProductCommand;
-import com.fns.product.service.domain.dto.create.ProductResponse;
+import com.fns.product.service.domain.dto.get.ProductResponse;
 import com.fns.product.service.domain.dto.edit.EditProductCommand;
 import com.fns.product.service.domain.dto.edit.ListImage;
 import com.fns.product.service.domain.entity.*;

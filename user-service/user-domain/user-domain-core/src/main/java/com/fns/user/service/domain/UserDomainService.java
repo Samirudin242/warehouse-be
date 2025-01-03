@@ -4,7 +4,19 @@ import com.fns.domain.event.publisher.DomainEventPublisher;
 import com.fns.user.service.domain.event.UserCreatedEvent;
 import com.fns.user.service.domain.exception.UserDomainException;
 
-public interface UserDomainService {
-    UserCreatedEvent createUser(String name, DomainEventPublisher<UserCreatedEvent> publisher) throws UserDomainException;
+import java.util.UUID;
 
+public interface UserDomainService {
+    UserCreatedEvent createUser(
+            UUID id,
+            String name,
+            String username,
+            String email,
+            String phoneNumber,
+            String profilePicture,
+            String address,
+            String cityId,
+            String provinceId,
+            UUID roleId,
+            DomainEventPublisher<UserCreatedEvent> publisher) throws UserDomainException;
 }

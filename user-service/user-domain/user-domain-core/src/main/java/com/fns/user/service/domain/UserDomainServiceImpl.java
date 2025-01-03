@@ -6,13 +6,24 @@ import com.fns.user.service.domain.event.UserCreatedEvent;
 import com.fns.user.service.domain.exception.UserDomainException;
 
 import java.time.ZonedDateTime;
+import java.util.UUID;
 
 public class UserDomainServiceImpl implements UserDomainService{
 
     @Override
-    public UserCreatedEvent createUser(String name, DomainEventPublisher<UserCreatedEvent> publisher) throws UserDomainException {
+    public UserCreatedEvent createUser(UUID id, String name, String username, String email, String phoneNumber, String profilePicture, String address, String cityId, String provinceId, UUID roleId, DomainEventPublisher<UserCreatedEvent> publisher) throws UserDomainException {
         User user = User.builder()
+                .id(id)
                 .name(name)
+                .user_name(username)
+                .email(email)
+                .phone_number(phoneNumber)
+                .profile_picture(profilePicture)
+                .address(address)
+                .city_id(cityId)
+                .province_id(provinceId)
+                .role_id(roleId)
+                .is_verified(true)
                 .build();
 
         return new UserCreatedEvent(user, ZonedDateTime.now(), publisher);

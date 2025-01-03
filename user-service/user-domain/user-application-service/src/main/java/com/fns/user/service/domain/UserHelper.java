@@ -42,12 +42,10 @@ public class UserHelper {
 
         User userEntity = userDataMapper.userFromCreateCommand(createUserCommand);
 
-        UserCreatedEvent userEvent = userDomainService.createUser(userEntity.getName(), userMessagePublisher);
-
         User savedUser = saveUser(userEntity);
 
-        //publish the user
-        userMessagePublisher.publish(userEvent);
+        log.info("Saved user: " + savedUser);
+
 
         Location location = Location.builder()
                 .user_id(savedUser.getId())
@@ -59,7 +57,26 @@ public class UserHelper {
                 .postal_code(createUserCommand.getPostal_code())
                 .build();
 
-        saveLocation(location);
+        Location savedLocation = saveLocation(location);
+
+        UserCreatedEvent userEvent = userDomainService.createUser(
+                savedUser.getId(),
+                savedUser.getName(),
+                savedUser.getUser_name(),
+                savedUser.getEmail(),
+                savedUser.getPhone_number(),
+                savedUser.getProfile_picture(),
+                savedLocation.getAddress(),
+                savedLocation.getCity_id(),
+                savedLocation.getProvince_id(),
+                savedUser.getRole_id(),
+                userMessagePublisher
+        );
+
+        log.info("User event saved, {}", userEvent);
+
+        //publish the user
+        userMessagePublisher.publish(userEvent);
 
         return UserResponse.builder()
                 .id(savedUser.getId())
@@ -108,7 +125,7 @@ public class UserHelper {
         }
     }
 
-    private void saveLocation(Location location) {
+    private Location saveLocation(Location location) {
         try {
             Location locationResult = locationRepository.saveLocation(location);
 
@@ -117,6 +134,7 @@ public class UserHelper {
                 throw new RuntimeException("Failed to save location");
             }
 
+            return locationResult;
         } catch (Exception e) {
             log.error("Error while saving location: {}", e.getMessage());
             throw new RuntimeException("Failed to save location");
