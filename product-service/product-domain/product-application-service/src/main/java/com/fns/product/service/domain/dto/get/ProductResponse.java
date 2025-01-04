@@ -1,4 +1,4 @@
-package com.fns.product.service.domain.dto.create;
+package com.fns.product.service.domain.dto.get;
 
 import com.fns.product.service.domain.entity.ProductBrand;
 import com.fns.product.service.domain.entity.ProductCategories;

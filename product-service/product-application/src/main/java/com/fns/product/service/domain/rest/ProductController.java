@@ -1,8 +1,10 @@
 package com.fns.product.service.domain.rest;
 
 import com.fns.product.service.domain.dto.create.CreateProductCommand;
-import com.fns.product.service.domain.dto.create.ProductResponse;
+import com.fns.product.service.domain.dto.get.ProductCategoryResponse;
+import com.fns.product.service.domain.dto.get.ProductResponse;
 import com.fns.product.service.domain.dto.edit.EditProductCommand;
+import com.fns.product.service.domain.dto.get.ProductSizeResponse;
 import com.fns.product.service.domain.ports.input.service.ProductApplicationService;
 import com.fns.product.service.domain.ports.input.service.ProductPhotoService;
 import jakarta.validation.Valid;
@@ -34,6 +36,26 @@ public class ProductController {
         List<ProductResponse> products = productApplicationService.getProducts();
         return ResponseEntity.ok(products);
     }
+
+    @GetMapping("/products-size")
+    public ResponseEntity<List<ProductSizeResponse>> getAllProductSize() {
+        List<ProductSizeResponse> products = productApplicationService.getProductSize();
+        return ResponseEntity.ok(products);
+    }
+
+    @GetMapping("/products-category")
+    public ResponseEntity<List<ProductCategoryResponse>> getAllProductCategory() {
+        List<ProductCategoryResponse> products = productApplicationService.getProductCategory();
+        return ResponseEntity.ok(products);
+    }
+
+    @GetMapping("/products-brand")
+    public ResponseEntity<List<ProductCategoryResponse>> getAllProductBrand() {
+        List<ProductCategoryResponse> products = productApplicationService.getProductCategory();
+        return ResponseEntity.ok(products);
+    }
+
+
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductResponse> getProduct(@PathVariable UUID id) {

@@ -5,7 +5,7 @@ import com.fns.product.service.domain.entity.ProductSizes;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ProductSizeMapper {
+public class ProductSizeMapperDomain {
 
     public ProductSizeResponse productSizeResponse(ProductSizes productSize) {
         return ProductSizeResponse.builder()

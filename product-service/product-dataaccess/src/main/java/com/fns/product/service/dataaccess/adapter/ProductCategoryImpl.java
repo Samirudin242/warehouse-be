@@ -9,8 +9,10 @@ import com.fns.product.service.domain.ports.output.repository.ProductCategoriesR
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Component
@@ -28,5 +30,14 @@ public class ProductCategoryImpl implements ProductCategoriesRepository {
     public Optional<ProductCategories> findById(UUID categoryId) {
         Optional<ProductCategoriesEntity> optionalProductCategoriesEntity = productCategoriesJpaRepository.findById(categoryId);
         return optionalProductCategoriesEntity.map(productCategoryMapper::categoryFromCategoryEntity);
+    }
+
+    @Override
+    public List<ProductCategories> findAllCategories() {
+        List<ProductCategoriesEntity> productCategories = productCategoriesJpaRepository.findAll();
+
+        return productCategories.stream()
+                .map(productCategoryMapper::categoryFromCategoryEntity)
+                .collect(Collectors.toList());
     }
 }

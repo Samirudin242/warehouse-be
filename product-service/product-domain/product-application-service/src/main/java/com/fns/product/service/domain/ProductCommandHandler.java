@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Component
-public class ProductCreateCommandHandler {
+public class ProductCommandHandler {
 
     private final ProductRepository productRepository;
     private final ProductPricesRepository productPricesRepository;
@@ -30,7 +30,7 @@ public class ProductCreateCommandHandler {
     private final ProductSizesRepository productSizesRepository;
     private final ProductImageRepository productImagesRepository;
 
-    public ProductCreateCommandHandler(
+    public ProductCommandHandler(
             ProductRepository productRepository, ProductPricesRepository productPricesRepository,
             ProductDataMapper productDataMapper,
             ProductBrandRepository productBrandRepository,

@@ -20,17 +20,17 @@ public class KafkaProducer {
     private KafkaTemplate<String, String> kafkaTemplate;
 
     public void sendMessage(String key, String value) {
-        ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(TOPIC, key, value);
-        future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
-            @Override
-            public void onSuccess(SendResult<String, String> result) {
-                logger.info(String.format("\n\n Produced event to topic %s: key = %-10s value = %s \n\n", TOPIC, key, value));
-            }
-
-            @Override
-            public void onFailure(Throwable ex) {
-                ex.printStackTrace();
-            }
-        });
+//        ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(TOPIC, key, value);
+//        future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
+//            @Override
+//            public void onSuccess(SendResult<String, String> result) {
+//                logger.info(String.format("\n\n Produced event to topic %s: key = %-10s value = %s \n\n", TOPIC, key, value));
+//            }
+//
+//            @Override
+//            public void onFailure(Throwable ex) {
+//                ex.printStackTrace();
+//            }
+//        });
     }
 }

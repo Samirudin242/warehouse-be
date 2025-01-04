@@ -1,5 +1,6 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-domain-core/src/main/java/com/fns/product/service/domain/ProductDomainService.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-domain-core/src/main/java/com/fns/product/service/domain/ProductDomainServiceImpl.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-domain-core/src/main/java/com/fns/product/service/domain/dto/ErrorResponse.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-domain-core/src/main/java/com/fns/product/service/domain/entity/Product.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-domain-core/src/main/java/com/fns/product/service/domain/entity/ProductBrand.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-domain-core/src/main/java/com/fns/product/service/domain/entity/ProductCategories.java

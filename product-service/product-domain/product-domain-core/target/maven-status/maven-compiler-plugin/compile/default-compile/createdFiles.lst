@@ -15,5 +15,7 @@ com/fns/product/service/domain/entity/ProductBrand$Builder.class
 com/fns/product/service/domain/entity/ProductCategories.class
 com/fns/product/service/domain/entity/ProductBrand.class
 com/fns/product/service/domain/entity/ProductColors$Builder.class
+com/fns/product/service/domain/dto/ErrorResponse$ErrorResponseBuilder.class
+com/fns/product/service/domain/dto/ErrorResponse.class
 com/fns/product/service/domain/entity/ProductImages$Builder.class
 com/fns/product/service/domain/entity/Product.class

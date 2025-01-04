@@ -8,8 +8,10 @@ import com.fns.product.service.domain.ports.output.repository.ProductSizesReposi
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Component
@@ -28,5 +30,14 @@ public class ProductSizesImpl implements ProductSizesRepository {
         Optional<ProductSizesEntity> optionalProductSizesEntity = productSizesJpaRepository.findById(sizeId);
 
         return optionalProductSizesEntity.map(productSizeMapper::sizeFromSizeEntity);
+    }
+
+    @Override
+    public List<ProductSizes> findAllProductSizes() {
+        List<ProductSizesEntity> productSizes = productSizesJpaRepository.findAll();
+
+        return productSizes.stream()
+                .map(productSizeMapper::sizeFromSizeEntity)
+               .collect(Collectors.toList());
     }
 }

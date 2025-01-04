@@ -1,1 +1,2 @@
 com/fns/product/service/domain/rest/ProductController.class
+com/fns/product/service/domain/rest/GlobalExceptionHandler.class
