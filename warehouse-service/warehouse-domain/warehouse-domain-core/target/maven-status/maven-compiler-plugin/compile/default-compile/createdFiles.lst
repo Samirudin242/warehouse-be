@@ -1,1 +1,5 @@
-com/fns/Main.class
+com/fns/warehouse/service/domain/entity/Warehouse$WarehouseBuilder.class
+com/fns/warehouse/service/domain/entity/Warehouse.class
+com/fns/warehouse/service/domain/entity/User.class
+com/fns/warehouse/service/domain/exception/WarehouseDomainException.class
+com/fns/warehouse/service/domain/entity/User$UserBuilder.class

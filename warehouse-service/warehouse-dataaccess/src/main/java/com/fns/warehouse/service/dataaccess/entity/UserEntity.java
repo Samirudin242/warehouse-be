@@ -17,8 +17,6 @@ import java.util.UUID;
 public class UserEntity extends BaseEntity {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "uuid2")
     private UUID id;
 
     private String name;

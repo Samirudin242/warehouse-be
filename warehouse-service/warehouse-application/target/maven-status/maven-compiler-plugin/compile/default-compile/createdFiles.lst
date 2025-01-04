@@ -1,1 +1,2 @@
-com/fns/warehouse/service/domain/rest/WarehouseController.class
+com/fns/warehouse/service/rest/exception/GlobalExceptionHandler.class
+com/fns/warehouse/service/rest/WarehouseController.class

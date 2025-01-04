@@ -1,5 +1,14 @@
 server:
-  port: 8081
+  port: 8080
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:
+  level:
+    root: INFO
+    com.fns.warehouse: INFO
 spring:
   jpa:
     open-in-view: false
@@ -20,6 +29,15 @@ spring:
     username: postgres
     password: theyaku
     driver-class-name: org.postgresql.Driver
+  kafka:
+    consumer:
+      group-id: warehouse-group
+      auto-offset-reset: earliest
+      bootstrap-servers: pkc-ldvr1.asia-southeast1.gcp.confluent.cloud:9092
+    properties:
+      security.protocol: SASL_SSL
+      sasl.mechanism: PLAIN
+      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username='A2VCCYFEXERRJFK7' password='T1PRDVTCvX0z7sKX3daWHwJC0KS8rWIJwjKrsvIiMJkwEVqIWkEH8YQESlHSS4ni';
 google:
   cloud:
     storage:
@@ -32,4 +50,3 @@ security:
 app:
   cors:
     allowed-origins: "http://localhost:3001"
-
