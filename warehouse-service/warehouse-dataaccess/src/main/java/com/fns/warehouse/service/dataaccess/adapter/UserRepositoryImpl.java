@@ -5,9 +5,11 @@ import com.fns.warehouse.service.dataaccess.mapper.UserDataAccessMapper;
 import com.fns.warehouse.service.dataaccess.repository.UserJpaRepository;
 import com.fns.warehouse.service.domain.entity.User;
 import com.fns.warehouse.service.domain.ports.output.repository.UserRepository;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
+@Primary
 public class UserRepositoryImpl implements UserRepository {
 
     private final UserJpaRepository userJpaRepository;

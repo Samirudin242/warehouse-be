@@ -3,7 +3,9 @@ package com.fns.warehouse.service.domain;
 import com.fns.warehouse.service.domain.dto.create.CreateWarehouseCommand;
 import com.fns.warehouse.service.domain.dto.get.CreateWarehouseResponse;
 import com.fns.warehouse.service.domain.entity.Location;
+import com.fns.warehouse.service.domain.event.WarehouseCreatedEvent;
 import com.fns.warehouse.service.domain.mapper.WarehouseDataMapper;
+import com.fns.warehouse.service.domain.ports.output.message.WarehouseMessagePublisher;
 import com.fns.warehouse.service.domain.ports.output.repository.LocationRepository;
 import com.fns.warehouse.service.domain.ports.output.repository.WarehouseRepository;
 import com.fns.warehouse.service.domain.entity.Warehouse;
@@ -18,11 +20,14 @@ public class WarehouseCommandHandler {
     private final WarehouseDataMapper warehouseDataMapper;
     private final WarehouseRepository warehouseRepository;
     private final LocationRepository locationRepository;
-
-    public WarehouseCommandHandler(WarehouseDataMapper warehouseDataMapper, WarehouseRepository warehouseRepository, LocationRepository locationRepository) {
+    private final WarehouseMessagePublisher warehouseMessagePublisher;
+    private final WarehouseDomainService warehouseDomainService;
+    public WarehouseCommandHandler(WarehouseDataMapper warehouseDataMapper, WarehouseRepository warehouseRepository, LocationRepository locationRepository, WarehouseMessagePublisher warehouseMessagePublisher, WarehouseDomainService warehouseDomainService) {
         this.warehouseDataMapper = warehouseDataMapper;
         this.warehouseRepository = warehouseRepository;
         this.locationRepository = locationRepository;
+        this.warehouseMessagePublisher = warehouseMessagePublisher;
+        this.warehouseDomainService = warehouseDomainService;
     }
 
     @Transactional
@@ -34,7 +39,23 @@ public class WarehouseCommandHandler {
 
         Location savedLocation = warehouseDataMapper.commandToLocation(createWarehouseCommand, warehouse);
 
-        saveLocation(savedLocation);
+        Location location = saveLocation(savedLocation);
+
+        WarehouseCreatedEvent warehouseEvent = warehouseDomainService.createWarehouse(
+                warehouse.getId(),
+                createWarehouseCommand.getAdmin_id(),
+                location.getId(),
+                warehouse.getName(),
+                location.getAddress(),
+                location.getCity(),
+                location.getCity_id(),
+                location.getProvince(),
+                location.getProvince_id(),
+                location.getPostal_code(),
+                warehouseMessagePublisher
+        );
+
+        warehouseMessagePublisher.publish(warehouseEvent);
 
         return warehouseDataMapper.createWarehouseResponse(savedWarehouse);
     }

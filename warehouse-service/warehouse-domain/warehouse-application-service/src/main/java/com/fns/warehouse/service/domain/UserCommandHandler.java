@@ -20,7 +20,7 @@ public class UserCommandHandler {
             return userRepository.save(user);
         } catch (Exception e) {
             log.error("Failed to save user: {}", user, e);
-            throw new RuntimeException(e);  // rethrow the exception to propagate it upwards
+            throw new RuntimeException(e);
         }
     }
 

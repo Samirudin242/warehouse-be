@@ -1,4 +1,8 @@
+com/fns/warehouse/service/messaging/publisher/kafka/CreateWarehouseKafkaPublisher.class
+com/fns/warehouse/service/messaging/producer/KafkaProducerService.class
+com/fns/warehouse/service/messaging/mapper/WarehouseMessagingMapper.class
 com/fns/warehouse/service/messaging/model/UserKafkaModel.class
+com/fns/warehouse/service/messaging/config/KafkaConfig.class
 com/fns/warehouse/service/messaging/listener/UserCreatedListener.class
 com/fns/warehouse/service/messaging/config/KafkaConsumerConfig.class
-com/fns/warehouse/service/messaging/publisher/kafka/CreateWarehouseKafkaPublisher.class
+com/fns/warehouse/service/messaging/model/WarehouseKafkaModel.class

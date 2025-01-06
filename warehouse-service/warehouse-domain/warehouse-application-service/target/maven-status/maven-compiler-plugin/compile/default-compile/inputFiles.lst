@@ -10,5 +10,7 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/mapper/WarehouseDataMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/ports/input/message/UserMessageListener.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/ports/input/service/WarehouseApplicationService.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/ports/output/message/WarehouseMessagePublisher.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/ports/output/repository/LocationRepository.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/ports/output/repository/UserRepository.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/ports/output/repository/WarehouseRepository.java

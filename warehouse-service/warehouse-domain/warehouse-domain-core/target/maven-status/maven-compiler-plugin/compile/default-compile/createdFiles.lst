@@ -1,5 +1,13 @@
+enitity/Warehouse.class
+com/fns/warehouse/service/domain/entity/User.class
+com/fns/warehouse/service/domain/WarehouseDomainService.class
+com/fns/warehouse/service/domain/entity/Location.class
+com/fns/warehouse/service/domain/event/WarehouseCreatedEvent.class
+enitity/Warehouse$WarehouseBuilder.class
+com/fns/warehouse/service/domain/entity/Location$LocationBuilder.class
+com/fns/warehouse/service/domain/event/WarehouseEvent.class
+com/fns/warehouse/service/domain/WarehouseDomainServiceImpl.class
 com/fns/warehouse/service/domain/entity/Warehouse$WarehouseBuilder.class
 com/fns/warehouse/service/domain/entity/Warehouse.class
-com/fns/warehouse/service/domain/entity/User.class
-com/fns/warehouse/service/domain/exception/WarehouseDomainException.class
 com/fns/warehouse/service/domain/entity/User$UserBuilder.class
+com/fns/warehouse/service/domain/exception/WarehouseDomainException.class
