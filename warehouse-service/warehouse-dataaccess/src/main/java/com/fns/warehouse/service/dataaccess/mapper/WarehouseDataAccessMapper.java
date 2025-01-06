@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 public class WarehouseDataAccessMapper {
 
     public WarehouseEntity warehouseToWarehouseEntity(Warehouse warehouse) {
+
         // Map the Warehouse to WarehouseEntity
         return WarehouseEntity.builder()
                 .id(warehouse.getId())

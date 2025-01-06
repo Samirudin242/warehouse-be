@@ -14,4 +14,10 @@ import java.util.UUID;
 public class CreateWarehouseCommand {
     private final String name;
     private final UUID admin_id;
+    private final String address;
+    private final String city_id;
+    private final String city;
+    private final String province_id;
+    private final String province;
+    private final String postal_code;
 }

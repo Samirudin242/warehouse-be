@@ -1,6 +1,5 @@
 package com.fns.warehouse.service.rest;
 
-//import com.fns.warehouse.service.domain.ports.input.service.WarehouseApplicationService;
 import com.fns.warehouse.service.domain.dto.create.CreateWarehouseCommand;
 import com.fns.warehouse.service.domain.dto.get.CreateWarehouseResponse;
 import com.fns.warehouse.service.domain.ports.input.service.WarehouseApplicationService;

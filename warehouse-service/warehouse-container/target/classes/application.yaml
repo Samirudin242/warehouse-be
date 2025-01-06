@@ -49,4 +49,4 @@ security:
     secret-key: theyakusecretkeysamirudinvidia1234567890123456
 app:
   cors:
-    allowed-origins: "http://localhost:3001"
+    allowed-origins: "http://localhost:3000"
