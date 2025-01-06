@@ -33,12 +33,14 @@ public class LocationDataAccessMapper {
 
     public Location locationEntityToLocation(LocationEntity locationEntity) {
         return Location.builder()
+                .id(locationEntity.getId())
                .address(locationEntity.getAddress())
                .city_id(locationEntity.getCity_id())
                .province_id(locationEntity.getProvince_id())
                .warehouse_id(locationEntity.getWarehouses().getId())
                .city(locationEntity.getCity())
                .province(locationEntity.getProvince())
+                .postal_code(locationEntity.getPostal_code())
                .build();
     }
 

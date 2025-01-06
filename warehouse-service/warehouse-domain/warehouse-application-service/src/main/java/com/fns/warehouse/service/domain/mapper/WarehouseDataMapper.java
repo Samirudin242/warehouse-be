@@ -31,6 +31,7 @@ public class WarehouseDataMapper {
                 .warehouse_id(warehouse.getId())
                 .city(createWarehouseCommand.getCity())
                 .province(createWarehouseCommand.getProvince())
+                .postal_code(createWarehouseCommand.getPostal_code())
                 .build();
     }
 

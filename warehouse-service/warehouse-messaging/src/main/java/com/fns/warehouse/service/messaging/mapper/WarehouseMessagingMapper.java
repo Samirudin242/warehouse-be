@@ -30,10 +30,10 @@ public class WarehouseMessagingMapper {
                 warehouse.getId(),
                 warehouse.getAdmin_id(),
                 warehouse.getLocation_id(),
-                warehouse.getCity_id(),
                 warehouse.getName(),
                 warehouse.getAddress(),
                 warehouse.getCity(),
+                warehouse.getCity_id(),
                 warehouse.getProvince(),
                 warehouse.getProvince_id(),
                 warehouse.getPostal_code()
