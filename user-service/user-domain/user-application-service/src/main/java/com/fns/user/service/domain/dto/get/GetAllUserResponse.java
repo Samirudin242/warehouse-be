@@ -1,6 +1,7 @@
 package com.fns.user.service.domain.dto.get;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,7 +9,7 @@ import java.util.UUID;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Builder
 public class GetAllUserResponse {
     private UUID id;
     private String name;

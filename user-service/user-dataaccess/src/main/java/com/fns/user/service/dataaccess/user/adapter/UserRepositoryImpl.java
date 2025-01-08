@@ -104,11 +104,11 @@ public class UserRepositoryImpl implements UserRepository { // it will be provid
                             user.getUser_name(),
                             user.getEmail(),
                             user.getRole_id().toString(),
-                            user.getProfile_picture(),
                             user.getRole_name(),
                             user.getAddress(),
                             user.getCity(),
-                            user.getProvince()
+                            user.getProvince(),
+                            user.getProfile_picture()
                     ))
                     .collect(Collectors.toList());
 
