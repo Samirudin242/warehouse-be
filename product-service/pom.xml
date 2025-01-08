@@ -23,6 +23,7 @@
         <module>product-container</module>
         <module>product-application</module>
         <module>product-dataaccess</module>
+        <module>product-messaging</module>
     </modules>
 
     <dependencyManagement>
