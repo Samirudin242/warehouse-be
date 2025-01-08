@@ -13,6 +13,7 @@ import com.fns.user.service.domain.ports.output.repository.UserRepository;
 import com.fns.user.service.domain.ports.output.repository.UserRoleRepository;
 import com.fns.user.service.domain.util.TokenUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -97,7 +98,7 @@ public class UserCommandHandler {
         return userRepository.getUserById(id);
     }
 
-    public List<GetAllUserResponse> getAllUsers() {
-        return userGetAllHandler.getAllUser();
+    public Page<GetAllUserResponse> getAllUsers(Integer page, Integer  pageSize) {
+        return userGetAllHandler.getAllUser(page, pageSize);
     }
 }

@@ -15,6 +15,10 @@ import com.fns.user.service.domain.ports.output.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -84,24 +88,32 @@ public class UserRepositoryImpl implements UserRepository { // it will be provid
 
 
     @Override
-    public List<GetAllUserResponse> getAllUsers() {
+    public Page<GetAllUserResponse> getAllUsers(Integer page, Integer size) {
         try {
-            List<UserEntity> userEntities = userJpaRepository.findAll();
+            Pageable pageable = PageRequest.of(page, size);
+            Page<UserEntity> userEntitiesPage = userJpaRepository.findAll(pageable);
 
-            if (userEntities.stream().anyMatch(userEntity -> userEntity.getId() == null)) {
-                throw new IllegalStateException("One or more UserEntities have null IDs");
-            }
+            // Convert UserEntity to User
+            List<User> users = userDataAccessMapper.userEntitiesToUsers(userEntitiesPage.getContent());
 
-            List<User> users = userDataAccessMapper.userEntitiesToUsers(userEntities);
-
-            return users.stream()
+            // Convert User to GetAllUserResponse
+            List<GetAllUserResponse> userResponses = users.stream()
                     .map(user -> new GetAllUserResponse(
                             user.getId() != null ? user.getId() : UUID.fromString("N/A"),
+                            user.getName(),
                             user.getUser_name(),
                             user.getEmail(),
-                            user.getRole_id()
+                            user.getRole_id().toString(),
+                            user.getProfile_picture(),
+                            user.getRole_name(),
+                            user.getAddress(),
+                            user.getCity(),
+                            user.getProvince()
                     ))
                     .collect(Collectors.toList());
+
+            // Return a paginated response
+            return new PageImpl<>(userResponses, pageable, userEntitiesPage.getTotalElements());
         } catch (RuntimeException e) {
             log.error("Error fetching all users: {}", e.getMessage(), e);
             throw new RuntimeException("Error fetching all users", e);

@@ -12,6 +12,7 @@ com/fns/user/service/dataaccess/user/entity/LocationEntity$LocationEntityBuilder
 com/fns/user/service/dataaccess/user/converter/EmailAddressConverter.class
 com/fns/user/service/dataaccess/user/repository/UserRoleJpaRepository.class
 com/fns/user/service/dataaccess/user/converter/PasswordConverter.class
+com/fns/user/service/dataaccess/user/adapter/UserRoleRepositoryImpl.class
 com/fns/user/service/dataaccess/user/entity/LocationEntity.class
 com/fns/user/service/dataaccess/user/entity/BaseEntity.class
 com/fns/user/service/dataaccess/user/mapper/UserDataAccessMapper.class

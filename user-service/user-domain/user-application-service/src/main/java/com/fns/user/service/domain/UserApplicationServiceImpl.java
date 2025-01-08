@@ -6,6 +6,7 @@ import com.fns.user.service.domain.dto.get.*;
 import com.fns.user.service.domain.ports.input.service.UserApplicationService;
 import com.fns.user.service.domain.ports.output.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.multipart.MultipartFile;
@@ -39,8 +40,8 @@ public class UserApplicationServiceImpl implements UserApplicationService {
     }
 
     @Override
-    public List<GetAllUserResponse> getAllUsers() {
-        return userCommandHandler.getAllUsers();
+    public Page<GetAllUserResponse> getAllUsers(int page, int pageSize) {
+        return userCommandHandler.getAllUsers(page, pageSize);
     }
 
     @Override

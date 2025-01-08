@@ -1,5 +1,6 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-dataaccess/src/main/java/com/fns/user/service/dataaccess/user/adapter/LocationRepositoryImpl.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-dataaccess/src/main/java/com/fns/user/service/dataaccess/user/adapter/UserRepositoryImpl.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-dataaccess/src/main/java/com/fns/user/service/dataaccess/user/adapter/UserRoleRepositoryImpl.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-dataaccess/src/main/java/com/fns/user/service/dataaccess/user/config/GoogleCloudStorageConfig.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-dataaccess/src/main/java/com/fns/user/service/dataaccess/user/converter/EmailAddressConverter.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-dataaccess/src/main/java/com/fns/user/service/dataaccess/user/converter/PasswordConverter.java

@@ -3,6 +3,7 @@ package com.fns.user.service.domain.ports.input.service;
 import com.fns.user.service.domain.dto.create.CreateUserCommand;
 import com.fns.user.service.domain.dto.create.LoginUserCommand;
 import com.fns.user.service.domain.dto.get.*;
+import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -15,7 +16,7 @@ public interface UserApplicationService {
 
     UserResponse editUser(UUID id, CreateUserCommand createUserCommand);
 
-    List<GetAllUserResponse> getAllUsers();
+    Page<GetAllUserResponse> getAllUsers(int page, int pageSize);
 
     UserResponse getUserById(UUID id);
 

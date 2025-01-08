@@ -16,4 +16,5 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-domain/user-application-service/src/main/java/com/fns/user/service/domain/ports/output/message/UserMessagePublisher.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-domain/user-application-service/src/main/java/com/fns/user/service/domain/ports/output/repository/LocationRepository.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-domain/user-application-service/src/main/java/com/fns/user/service/domain/ports/output/repository/UserRepository.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-domain/user-application-service/src/main/java/com/fns/user/service/domain/ports/output/repository/UserRoleRepository.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-domain/user-application-service/src/main/java/com/fns/user/service/domain/util/TokenUtil.java

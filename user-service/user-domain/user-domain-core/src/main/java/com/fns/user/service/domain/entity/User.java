@@ -27,5 +27,6 @@ public class User{
     private String postal_code;
     private String province_id;
     private String city_id;
+    private String role_name;
 
 }

@@ -5,6 +5,7 @@ import com.fns.user.service.domain.dto.get.UserResponse;
 import com.fns.user.service.domain.dto.get.GetAllUserResponse;
 import com.fns.user.service.domain.ports.input.service.UserApplicationService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,9 +25,12 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<GetAllUserResponse>> getAllUsers() {
+    public ResponseEntity<Page<GetAllUserResponse>> getAllUsers(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
         log.info("Fetching al es.size()");
-        List<GetAllUserResponse> userResponses = userApplicationService.getAllUsers();
+        Page<GetAllUserResponse> userResponses = userApplicationService.getAllUsers(page, size);
 
         return ResponseEntity.ok(userResponses);
     }

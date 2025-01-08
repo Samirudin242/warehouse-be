@@ -1,7 +1,9 @@
 package com.fns.user.service.dataaccess.user.mapper;
 
+import com.fns.user.service.dataaccess.user.entity.LocationEntity;
 import com.fns.user.service.dataaccess.user.entity.UserEntity;
 import com.fns.user.service.dataaccess.user.entity.UserRoleEntity;
+import com.fns.user.service.dataaccess.user.repository.LocationJpaRepository;
 import com.fns.user.service.dataaccess.user.repository.UserRoleJpaRepository;
 import com.fns.user.service.domain.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,9 @@ public class UserDataAccessMapper {
 
     @Autowired
     private UserRoleJpaRepository userRoleJpaRepository;
+
+    @Autowired
+    private LocationJpaRepository locationJpaRepository;
 
     public UserEntity userToUserEntity(User user) {
 
@@ -34,6 +39,10 @@ public class UserDataAccessMapper {
     }
 
     public User userEntityToUser(UserEntity userEntity) {
+
+        UserRoleEntity userRole = userEntity.getUser_role();
+        LocationEntity location = getLocationsByUserId(userEntity.getId());
+
         return User.builder()
                 .id(userEntity.getId())
                 .name(userEntity.getName())
@@ -44,10 +53,15 @@ public class UserDataAccessMapper {
                 .is_verified(userEntity.getIs_verified())
                 .role_id(userEntity.getUser_role().getId())
                 .profile_picture(userEntity.getProfile_picture())
+                .role_name(userRole.getRole_name())
+                .address(location.getAddress())
+                .city(location.getCity())
+                .province(location.getProvince())
                 .build();
     }
 
     public List<User> userEntitiesToUsers(List<UserEntity> userEntities) {
+
         return userEntities.stream()
                 .map(this::userEntityToUser)
                 .collect(Collectors.toList());
@@ -56,6 +70,15 @@ public class UserDataAccessMapper {
     private UserRoleEntity getRoleEntityById(UUID roleId) {
         return userRoleJpaRepository.findById(roleId)
                 .orElseThrow(() -> new IllegalArgumentException("Role not found with id: " + roleId));
+    }
+
+    public LocationEntity getLocationsByUserId(UUID userId) {
+        List<LocationEntity> locations = locationJpaRepository.findByUsers_Id(userId);
+        if (!locations.isEmpty()) {
+            return locations.get(0);
+        } else {
+            return null;
+        }
     }
 
 }

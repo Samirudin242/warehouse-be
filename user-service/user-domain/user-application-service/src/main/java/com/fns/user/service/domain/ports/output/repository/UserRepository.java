@@ -5,6 +5,7 @@ import com.fns.user.service.domain.dto.get.ProfilePhotoResponse;
 import com.fns.user.service.domain.dto.get.RoleResponse;
 import com.fns.user.service.domain.entity.Location;
 import com.fns.user.service.domain.entity.User;
+import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -15,7 +16,7 @@ import java.util.UUID;
 public interface UserRepository {
    User save(User user);
 
-   List<GetAllUserResponse> getAllUsers();
+   Page<GetAllUserResponse> getAllUsers(Integer page, Integer pageSize);
 
    User getUserById(UUID id);
 

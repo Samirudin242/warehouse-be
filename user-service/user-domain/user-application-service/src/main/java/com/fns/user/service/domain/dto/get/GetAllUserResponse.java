@@ -11,7 +11,13 @@ import java.util.UUID;
 @NoArgsConstructor
 public class GetAllUserResponse {
     private UUID id;
+    private String name;
     private String username;
     private String email;
-    private UUID role_id;
+    private String role_id;
+    private String role_name;
+    private String address;
+    private String city;
+    private String province;
+    private String profile_picture;
 }

@@ -2,6 +2,7 @@ com/fns/user/service/domain/dto/get/LoginResponse.class
 com/fns/user/service/domain/UserCommandHandler.class
 com/fns/user/service/domain/dto/create/LoginUserCommand$LoginUserCommandBuilder.class
 com/fns/user/service/domain/dto/get/RoleResponse.class
+com/fns/user/service/domain/ports/output/repository/UserRoleRepository.class
 com/fns/user/service/domain/ports/output/repository/UserRepository.class
 com/fns/user/service/domain/dto/create/LoginUserCommand.class
 com/fns/user/service/domain/ports/output/message/UserMessagePublisher.class
