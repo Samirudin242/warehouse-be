@@ -6,9 +6,11 @@ import com.fns.user.service.domain.dto.get.LoginResponse;
 import com.fns.user.service.domain.dto.get.UserResponse;
 import com.fns.user.service.domain.dto.get.GetAllUserResponse;
 import com.fns.user.service.domain.entity.Location;
+import com.fns.user.service.domain.entity.Role;
 import com.fns.user.service.domain.entity.User;
 import com.fns.user.service.domain.mapper.UserDataMapper;
 import com.fns.user.service.domain.ports.output.repository.UserRepository;
+import com.fns.user.service.domain.ports.output.repository.UserRoleRepository;
 import com.fns.user.service.domain.util.TokenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,15 +30,16 @@ public class UserCommandHandler {
     private final UserDataMapper userDataMapper;
 
     private final UserGetAllHandler userGetAllHandler;
-
+    private final UserRoleRepository userRoleRepository;
     private final UserRepository userRepository;
 
     private final TokenUtil tokenUtil;
 
-    public UserCommandHandler(UserHelper userHelper, UserDataMapper userDataMapper, UserGetAllHandler userGetAllHandler, UserRepository userRepository, TokenUtil tokenUtil) {
+    public UserCommandHandler(UserHelper userHelper, UserDataMapper userDataMapper, UserGetAllHandler userGetAllHandler, UserRoleRepository userRoleRepository, UserRepository userRepository, TokenUtil tokenUtil) {
         this.userHelper = userHelper;
         this.userDataMapper = userDataMapper;
         this.userGetAllHandler = userGetAllHandler;
+        this.userRoleRepository = userRoleRepository;
         this.userRepository = userRepository;
         this.tokenUtil = tokenUtil;
     }
@@ -79,12 +82,13 @@ public class UserCommandHandler {
 
     public LoginResponse login(LoginUserCommand loginUserCommand) {
         User user = userRepository.findByUsernameOrEmail(loginUserCommand.getUsernameEmail(), loginUserCommand.getPassword());
+        Role role = userRoleRepository.getRoleById(user.getRole_id());
 
         // Generate the token (e.g., JWT)
-        String accessToken = tokenUtil.generateToken(user);
+        String accessToken = tokenUtil.generateToken(user, role);
 
         // Return the LoginResponse
-        return new LoginResponse("successfully login", accessToken);
+        return new LoginResponse("successfully login", accessToken, true);
     }
 
 

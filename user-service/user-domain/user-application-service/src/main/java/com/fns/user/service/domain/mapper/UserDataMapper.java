@@ -4,6 +4,7 @@ import com.fns.user.service.domain.dto.create.CreateUserCommand;
 import com.fns.user.service.domain.dto.get.UserResponse;
 import com.fns.user.service.domain.entity.User;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -57,11 +58,13 @@ public class UserDataMapper {
     }
 
     public User userFromCreateCommand(CreateUserCommand createUserCommand) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(createUserCommand.getPassword());
         return User.builder()
                .name(createUserCommand.getName())
                .user_name(createUserCommand.getUser_name())
                .email(createUserCommand.getEmail())
-               .password(createUserCommand.getPassword())
+               .password(hashedPassword)
                .profile_picture(createUserCommand.getProfile_picture())
                .phone_number(createUserCommand.getPhone_number())
                .is_verified(createUserCommand.getIs_verified())

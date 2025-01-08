@@ -2,6 +2,7 @@ package com.fns.user.service.dataaccess.user.mapper;
 
 import com.fns.user.service.dataaccess.user.entity.UserRoleEntity;
 import com.fns.user.service.domain.dto.get.RoleResponse;
+import com.fns.user.service.domain.entity.Role;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -21,5 +22,12 @@ public class UserRoleMapper {
             return userRole.stream()
                     .map(this::userRoleEntityToResponse)
                     .collect(Collectors.toList());
+    }
+
+    public Role roleEntityToRole(UserRoleEntity roleEntity) {
+        return Role.builder()
+                .id(roleEntity.getId())
+                .role_name(roleEntity.getRole_name())
+                .build();
     }
 }
