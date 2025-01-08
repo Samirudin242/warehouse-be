@@ -60,6 +60,24 @@ public class UserDataAccessMapper {
                 .build();
     }
 
+    public User userEntityToUserGet(UserEntity userEntity) {
+
+        UserRoleEntity userRole = userEntity.getUser_role();
+
+        return User.builder()
+                .id(userEntity.getId())
+                .name(userEntity.getName())
+                .user_name(userEntity.getUser_name())
+                .password(userEntity.getPassword())
+                .email(userEntity.getEmail())
+                .phone_number(userEntity.getPhone_number())
+                .is_verified(userEntity.getIs_verified())
+                .role_id(userEntity.getUser_role().getId())
+                .profile_picture(userEntity.getProfile_picture())
+                .role_name(userRole.getRole_name())
+                .build();
+    }
+
     public List<User> userEntitiesToUsers(List<UserEntity> userEntities) {
 
         return userEntities.stream()

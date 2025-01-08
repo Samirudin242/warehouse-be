@@ -71,15 +71,13 @@ public class UserRepositoryImpl implements UserRepository { // it will be provid
                 throw new UserAlreadyExistsException("User with the same username or email already exists");
             }
 
-            // Map the domain user to a JPA entity
             UserEntity userEntity = userDataAccessMapper.userToUserEntity(user);
 
-            // Save the entity to the database
             UserEntity savedEntity = userJpaRepository.save(userEntity);
             log.info("Saved Entity: {}", savedEntity);
 
             // Map the saved entity back to a domain user
-            return userDataAccessMapper.userEntityToUser(savedEntity);
+            return userDataAccessMapper.userEntityToUserGet(savedEntity);
         } catch (Exception e) {
             log.error("Error saving user: {}", e.getMessage());
             throw new RuntimeException("Error saving user", e);
