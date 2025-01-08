@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="warehouse-application-service" />
+        <module name="warehouse-domain-core" />
+        <module name="warehouse-application" />
+        <module name="warehouse-container" />
+        <module name="warehouse-messaging" />
+        <module name="warehouse-dataaccess" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="warehouse-application" options="-parameters" />
+      <module name="warehouse-application-service" options="-parameters" />
+      <module name="warehouse-container" options="-parameters" />
+      <module name="warehouse-dataaccess" options="-parameters" />
+      <module name="warehouse-domain-core" options="-parameters" />
+      <module name="warehouse-messaging" options="-parameters" />
+    </option>
+  </component>
+</project>
