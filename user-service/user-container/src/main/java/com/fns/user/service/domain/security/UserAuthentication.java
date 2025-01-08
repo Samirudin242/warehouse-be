@@ -8,9 +8,9 @@ public class UserAuthentication extends AbstractAuthenticationToken {
     private final String username;
 
     public UserAuthentication(String username) {
-        super(null); // No authorities provided
+        super(null);
         this.username = username;
-        setAuthenticated(true); // Mark as authenticated
+        setAuthenticated(true);
     }
 
     @Override
@@ -20,6 +20,6 @@ public class UserAuthentication extends AbstractAuthenticationToken {
 
     @Override
     public Object getCredentials() {
-        return null; // No credentials required here
+        return null;
     }
 }

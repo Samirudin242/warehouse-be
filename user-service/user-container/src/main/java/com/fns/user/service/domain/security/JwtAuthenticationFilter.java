@@ -30,7 +30,6 @@ public class JwtAuthenticationFilter extends org.springframework.web.filter.Once
 
         String requestURI = request.getRequestURI();
 
-        // Skip the filter for /auth/** paths
         if (requestURI.startsWith("/auth/")) {
             filterChain.doFilter(request, response);
             return;

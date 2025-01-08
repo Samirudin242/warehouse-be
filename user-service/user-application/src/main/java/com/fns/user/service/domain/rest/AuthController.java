@@ -2,13 +2,11 @@ package com.fns.user.service.domain.rest;
 
 import com.fns.user.service.domain.dto.create.CreateUserCommand;
 import com.fns.user.service.domain.dto.create.LoginUserCommand;
-import com.fns.user.service.domain.dto.get.LoginResponse;
-import com.fns.user.service.domain.dto.get.ProfilePhotoResponse;
-import com.fns.user.service.domain.dto.get.RoleResponse;
-import com.fns.user.service.domain.dto.get.UserResponse;
+import com.fns.user.service.domain.dto.get.*;
 import com.fns.user.service.domain.ports.input.service.UserApplicationService;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +28,7 @@ public class AuthController {
     public AuthController(UserApplicationService userApplicationService) {
         this.userApplicationService = userApplicationService;
     }
+
 
     @PutMapping("/edit-user/{id}")
     public ResponseEntity<UserResponse> editUser(
@@ -61,13 +60,12 @@ public class AuthController {
             return ResponseEntity.status(401).body("Invalid username/email or password");
         }
 
-        // Set the token as a cookie
         ResponseCookie cookie = ResponseCookie.from("accessToken", loginResponse.getAccessToken())
                 .httpOnly(true)  // Prevent JavaScript access
-                .secure(true)    // Use only with HTTPS
+                .secure(false)   // HTTPS is not required for local development
                 .path("/")       // Cookie available site-wide
                 .maxAge(24 * 60 * 60)  // Expiry time in seconds
-                .sameSite("Strict")    // Prevent CSRF
+                .sameSite("None") // Allow cross-origin requests
                 .build();
 
         // Add the cookie to the response
@@ -96,4 +94,6 @@ public class AuthController {
         List<RoleResponse> roleResponse = userApplicationService.getAllRoles();
         return ResponseEntity.ok(roleResponse);
     }
+
+
 }
