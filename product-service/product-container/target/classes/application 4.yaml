@@ -1,0 +1,41 @@
+server:
+  port: 8081
+spring:
+  jpa:
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        jdbc.time_zone: UTC  # Added to handle timezone settings
+    hibernate:
+<<<<<<< HEAD
+      ddl-auto: update  # Automatically updates the database
+    servlet:
+      multipart:
+        max-file-size: 1MB
+        max-request-size: 1MB
+=======
+      ddl-auto: create  # Automatically generate and update tables
+>>>>>>> 7e83cec (add new entity in product service)
+  datasource:
+    url: jdbc:postgresql://localhost:5432/product_service?currentSchema=public&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
+    username: postgres
+    password: theyaku
+    driver-class-name: org.postgresql.Driver
+  kafka:
+    consumer:
+      group-id: warehouse-group
+      auto-offset-reset: earliest
+      bootstrap-servers: pkc-ldvr1.asia-southeast1.gcp.confluent.cloud:9092
+    properties:
+      security.protocol: SASL_SSL
+      sasl.mechanism: PLAIN
+      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username='A2VCCYFEXERRJFK7' password='T1PRDVTCvX0z7sKX3daWHwJC0KS8rWIJwjKrsvIiMJkwEVqIWkEH8YQESlHSS4ni';
+google:
+  cloud:
+    storage:
+      bucket-name: theyaku-bucket11
+      project-id: civil-hash-446108-e1
+      project-name: theyaku
