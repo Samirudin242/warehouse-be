@@ -16,8 +16,6 @@ import java.util.UUID;
 @Entity
 public class LocationEntity extends BaseEntity {
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "uuid2")
     private UUID id;
 
     private String address;

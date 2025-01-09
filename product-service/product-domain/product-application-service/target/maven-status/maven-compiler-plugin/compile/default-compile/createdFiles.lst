@@ -6,6 +6,7 @@ com/fns/product/service/domain/dto/create/CreateProductCommand.class
 com/fns/product/service/domain/mapper/ProductCategoryDomainMapper.class
 com/fns/product/service/domain/mapper/ProductDataMapper.class
 com/fns/product/service/domain/dto/get/ProductResponse$ProductResponseBuilder.class
+com/fns/product/service/domain/ports/output/message/WarehouseMessageListener.class
 com/fns/product/service/domain/dto/get/ProductResponse.class
 com/fns/product/service/domain/dto/create/CreatePriceCommand.class
 com/fns/product/service/domain/dto/get/ProductCategoryResponse.class
@@ -14,8 +15,12 @@ com/fns/product/service/domain/dto/edit/ListImage.class
 com/fns/product/service/domain/ProductSizeCommandHandler.class
 com/fns/product/service/domain/dto/get/ProductSizeResponse.class
 com/fns/product/service/domain/dto/get/ProductSizeResponse$ProductSizeResponseBuilder.class
+com/fns/product/service/domain/mapper/WarehouseDataMapper.class
+com/fns/product/service/domain/ports/output/repository/WarehouseRepository.class
 com/fns/product/service/domain/dto/edit/ListImage$ListImageBuilder.class
 com/fns/product/service/domain/dto/get/ProductCategoryResponse$ProductCategoryResponseBuilder.class
+com/fns/product/service/domain/dto/message/WarehouseModel$WarehouseModelBuilder.class
+com/fns/product/service/domain/dto/message/WarehouseModel.class
 com/fns/product/service/domain/ports/output/repository/ProductImageRepository.class
 com/fns/product/service/domain/ports/output/repository/ProductColorsRepository.class
 com/fns/product/service/domain/ports/output/repository/ProductPricesRepository.class
@@ -23,7 +28,9 @@ com/fns/product/service/domain/ProductPhotoServiceImpl.class
 com/fns/product/service/domain/ports/output/repository/ProductCategoriesRepository.class
 com/fns/product/service/domain/mapper/ProductSizeMapperDomain.class
 com/fns/product/service/domain/ProductCommandHandler.class
+com/fns/product/service/domain/WarehouseMessageImpl.class
 com/fns/product/service/domain/ProductCategoryCommandHandler.class
+com/fns/product/service/domain/ports/input/message/listener/WarehouseMessageListener.class
 com/fns/product/service/domain/ports/output/repository/ProductSizesRepository.class
 com/fns/product/service/domain/ports/output/repository/ProductBrandRepository.class
 com/fns/product/service/domain/ports/output/repository/ProductRepository.class

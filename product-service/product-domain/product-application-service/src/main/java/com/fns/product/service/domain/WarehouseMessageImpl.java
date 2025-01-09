@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class WarehouseMessageImpl implements WarehouseMessageListener {
 
-    private WarehouseRepository warehouseRepository;
+    private final WarehouseRepository warehouseRepository;
     private WarehouseDataMapper warehouseDataMapper;
 
     public WarehouseMessageImpl(WarehouseRepository warehouseRepository, WarehouseDataMapper warehouseDataMapper) {
@@ -23,7 +23,9 @@ public class WarehouseMessageImpl implements WarehouseMessageListener {
     @Override
     public void savedWarehouse(WarehouseModel warehouse) {
         try {
-//            Warehouse warehouse
+            log.info("Received saved warehouse event: {}", warehouse);
+            Warehouse warehouseSave = warehouseDataMapper.warehouseModelToWarehouse(warehouse);
+            warehouseRepository.saveWarehouse(warehouseSave);
         } catch (Exception e) {
             log.error("Failed to save warehouse: {}", warehouse, e);
             throw new RuntimeException(e);

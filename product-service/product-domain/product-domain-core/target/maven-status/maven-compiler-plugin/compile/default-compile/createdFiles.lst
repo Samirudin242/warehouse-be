@@ -5,9 +5,11 @@ com/fns/product/service/domain/entity/ProductColors.class
 com/fns/product/service/domain/entity/ProductPrices$Builder.class
 com/fns/product/service/domain/entity/ProductSizes$Builder.class
 com/fns/product/service/domain/valueObject/Price.class
+com/fns/product/service/domain/entity/Warehouse.class
 com/fns/product/service/domain/entity/ProductPrices.class
 com/fns/product/service/domain/ProductDomainService.class
 com/fns/product/service/domain/valueObject/Gender.class
+com/fns/product/service/domain/entity/Warehouse$WarehouseBuilder.class
 com/fns/product/service/domain/ProductDomainServiceImpl.class
 com/fns/product/service/domain/entity/ProductSizes.class
 com/fns/product/service/domain/valueObject/Category.class

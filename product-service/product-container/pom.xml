@@ -24,10 +24,11 @@
             <artifactId>product-domain-core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.fns</groupId>-->
-<!--            <artifactId>product-messaging</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.fns</groupId>
+            <artifactId>product-messaging</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>com.fns</groupId>
             <artifactId>product-application</artifactId>

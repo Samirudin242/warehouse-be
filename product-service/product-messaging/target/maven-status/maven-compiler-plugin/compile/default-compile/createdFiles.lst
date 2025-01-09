@@ -1,0 +1,6 @@
+com/fns/product/service/messaging/mapper/ProductMessagingMapper.class
+com/fns/product/service/messaging/model/WarehouseKafkaModel.class
+com/fns/product/service/messaging/model/WarehouseKafkaModel$WarehouseKafkaModelBuilder.class
+com/fns/product/service/messaging/config/KafkaConsumerConfig.class
+com/fns/product/service/messaging/listener/WarehouseCreatedListener.class
+com/fns/product/service/messaging/config/KafkaConfig.class
