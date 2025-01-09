@@ -2,6 +2,7 @@ package com.fns.warehouse.service.domain;
 
 import com.fns.warehouse.service.domain.dto.create.CreateWarehouseCommand;
 import com.fns.warehouse.service.domain.dto.get.CreateWarehouseResponse;
+import com.fns.warehouse.service.domain.dto.get.GetAllWarehouseResponse;
 import com.fns.warehouse.service.domain.entity.Location;
 import com.fns.warehouse.service.domain.event.WarehouseCreatedEvent;
 import com.fns.warehouse.service.domain.mapper.WarehouseDataMapper;
@@ -10,6 +11,7 @@ import com.fns.warehouse.service.domain.ports.output.repository.LocationReposito
 import com.fns.warehouse.service.domain.ports.output.repository.WarehouseRepository;
 import com.fns.warehouse.service.domain.entity.Warehouse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -60,6 +62,9 @@ public class WarehouseCommandHandler {
         return warehouseDataMapper.createWarehouseResponse(savedWarehouse);
     }
 
+    public Page<GetAllWarehouseResponse> getAllWarehouse(Integer page, Integer pageSize) {
+        return warehouseRepository.getAllWarehouse(page, pageSize);
+    }
 
     private Warehouse saveWarehouse(Warehouse warehouse) {
 

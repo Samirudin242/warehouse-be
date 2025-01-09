@@ -1,3 +1,7 @@
+com/fns/warehouse/service/domain/security/JwtAuthenticationFilter.class
+com/fns/warehouse/service/domain/security/WebConfig.class
+com/fns/warehouse/service/domain/security/UserAuthentication.class
+com/fns/warehouse/service/domain/security/SecurityConfig.class
 com/fns/warehouse/service/domain/WarehouseServiceApplication.class
 com/fns/warehouse/service/domain/seeder/WarehouseSeeder.class
 com/fns/warehouse/service/domain/BeanConfiguration.class

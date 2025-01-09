@@ -2,8 +2,10 @@ package com.fns.warehouse.service.rest;
 
 import com.fns.warehouse.service.domain.dto.create.CreateWarehouseCommand;
 import com.fns.warehouse.service.domain.dto.get.CreateWarehouseResponse;
+import com.fns.warehouse.service.domain.dto.get.GetAllWarehouseResponse;
 import com.fns.warehouse.service.domain.ports.input.service.WarehouseApplicationService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,9 +23,14 @@ public class WarehouseController {
     }
 
     @GetMapping
-    public ResponseEntity<String> getAllProducts() {
+    public ResponseEntity<Page<GetAllWarehouseResponse>> getAllProducts(
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "10") Integer size
+    ) {
 
-        return ResponseEntity.ok("OKE");
+        Page<GetAllWarehouseResponse> response  = warehouseApplicationService.getAllWarehouse(page, size);
+
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping

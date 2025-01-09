@@ -11,9 +11,11 @@ com/fns/warehouse/service/domain/dto/create/CreateWarehouseCommand$CreateWarehou
 com/fns/warehouse/service/domain/dto/response/ErrorResponse.class
 com/fns/warehouse/service/domain/ports/output/message/WarehouseMessagePublisher.class
 com/fns/warehouse/service/domain/WarehouseCommandHandler.class
+com/fns/warehouse/service/domain/dto/get/GetAllWarehouseResponse.class
 com/fns/warehouse/service/domain/dto/response/ErrorResponse$ErrorResponseBuilder.class
 com/fns/warehouse/service/domain/WarehouseApplicationServiceImpl.class
 com/fns/warehouse/service/domain/ports/output/repository/WarehouseRepository.class
+com/fns/warehouse/service/domain/dto/get/GetAllWarehouseResponse$GetAllWarehouseResponseBuilder.class
 com/fns/warehouse/service/domain/mapper/UserDataMapper.class
 com/fns/warehouse/service/domain/dto/get/CreateWarehouseResponse.class
 com/fns/warehouse/service/domain/ports/output/repository/LocationRepository.class

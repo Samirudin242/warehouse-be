@@ -2,8 +2,10 @@ package com.fns.warehouse.service.domain;
 
 import com.fns.warehouse.service.domain.dto.create.CreateWarehouseCommand;
 import com.fns.warehouse.service.domain.dto.get.CreateWarehouseResponse;
+import com.fns.warehouse.service.domain.dto.get.GetAllWarehouseResponse;
 import com.fns.warehouse.service.domain.ports.input.service.WarehouseApplicationService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -22,5 +24,10 @@ public class WarehouseApplicationServiceImpl implements WarehouseApplicationServ
     @Override
     public CreateWarehouseResponse createWarehouse(CreateWarehouseCommand createWarehouseCommand) {
         return warehouseCommandHandler.createWarehouse(createWarehouseCommand);
+    }
+
+    @Override
+    public Page<GetAllWarehouseResponse> getAllWarehouse(Integer page, Integer pageSize) {
+        return warehouseCommandHandler.getAllWarehouse(page, pageSize);
     }
 }
