@@ -27,10 +27,12 @@ public class UserController {
     @GetMapping
     public ResponseEntity<Page<GetAllUserResponse>> getAllUsers(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(required = false) UUID role,
+            @RequestParam(required = false) String name
     ) {
         log.info("Fetching al es.size()");
-        Page<GetAllUserResponse> userResponses = userApplicationService.getAllUsers(page, size);
+        Page<GetAllUserResponse> userResponses = userApplicationService.getAllUsers(page, size, role, name);
 
         return ResponseEntity.ok(userResponses);
     }

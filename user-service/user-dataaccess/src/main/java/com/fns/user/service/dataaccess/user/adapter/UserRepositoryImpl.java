@@ -26,10 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
@@ -86,10 +83,17 @@ public class UserRepositoryImpl implements UserRepository { // it will be provid
 
 
     @Override
-    public Page<GetAllUserResponse> getAllUsers(Integer page, Integer size) {
+    public Page<GetAllUserResponse> getAllUsers(Integer page, Integer size, UUID role, String name) {
         try {
+
             Pageable pageable = PageRequest.of(page, size);
-            Page<UserEntity> userEntitiesPage = userJpaRepository.findAll(pageable);
+
+            Page<UserEntity> userEntitiesPage;
+            if (role == null && (name == null || name.isEmpty())) {
+                userEntitiesPage = userJpaRepository.findAll(pageable);
+            } else {
+                userEntitiesPage = userJpaRepository.findByRoleIdAndName(role, name, pageable);
+            }
 
             // Convert UserEntity to User
             List<User> users = userDataAccessMapper.userEntitiesToUsers(userEntitiesPage.getContent());

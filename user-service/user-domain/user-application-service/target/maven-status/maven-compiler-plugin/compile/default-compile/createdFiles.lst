@@ -17,6 +17,7 @@ com/fns/user/service/domain/dto/get/ProfilePhotoResponse.class
 com/fns/user/service/domain/dto/get/GetAllUserResponse.class
 com/fns/user/service/domain/dto/get/ProfilePhotoResponse$ProfilePhotoResponseBuilder.class
 com/fns/user/service/domain/UserApplicationServiceImpl.class
+com/fns/user/service/domain/dto/get/GetAllUserResponse$GetAllUserResponseBuilder.class
 com/fns/user/service/domain/dto/get/UserResponse$UserResponseBuilder.class
 com/fns/user/service/domain/dto/response/ErrorResponse.class
 com/fns/user/service/domain/ports/input/service/UserApplicationService.class

@@ -40,8 +40,8 @@ public class UserApplicationServiceImpl implements UserApplicationService {
     }
 
     @Override
-    public Page<GetAllUserResponse> getAllUsers(int page, int pageSize) {
-        return userCommandHandler.getAllUsers(page, pageSize);
+    public Page<GetAllUserResponse> getAllUsers(int page, int pageSize, UUID role, String name) {
+        return userCommandHandler.getAllUsers(page, pageSize, role, name);
     }
 
     @Override

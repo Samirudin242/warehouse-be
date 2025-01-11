@@ -16,7 +16,7 @@ import java.util.UUID;
 public interface UserRepository {
    User save(User user);
 
-   Page<GetAllUserResponse> getAllUsers(Integer page, Integer pageSize);
+   Page<GetAllUserResponse> getAllUsers(Integer page, Integer pageSize, UUID role, String name);
 
    User getUserById(UUID id);
 

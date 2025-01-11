@@ -13,6 +13,13 @@ import java.util.UUID;
 @Repository
 public interface UserJpaRepository extends JpaRepository<UserEntity, UUID> {
 
+        @Query("""
+       SELECT u FROM UserEntity u
+       WHERE (u.user_role.id = :role_id)
+       AND (u.name LIKE CONCAT('%', :name, '%'))
+       """)
+        Page<UserEntity> findByRoleIdAndName(UUID role_id, String name, Pageable pageable);
+
         @Query("SELECT u FROM UserEntity u WHERE u.user_name = :usernameOrEmail OR u.email = :usernameOrEmail")
         UserEntity findByUsernameOrEmail(String usernameOrEmail);
 
