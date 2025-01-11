@@ -98,7 +98,7 @@ public class UserCommandHandler {
         return userRepository.getUserById(id);
     }
 
-    public Page<GetAllUserResponse> getAllUsers(Integer page, Integer  pageSize) {
-        return userGetAllHandler.getAllUser(page, pageSize);
+    public Page<GetAllUserResponse> getAllUsers(Integer page, Integer  pageSize, UUID role, String name) {
+        return userGetAllHandler.getAllUser(page, pageSize, role, name);
     }
 }

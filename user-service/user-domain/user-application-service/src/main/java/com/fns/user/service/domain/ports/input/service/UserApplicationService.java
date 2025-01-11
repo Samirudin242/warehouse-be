@@ -16,7 +16,7 @@ public interface UserApplicationService {
 
     UserResponse editUser(UUID id, CreateUserCommand createUserCommand);
 
-    Page<GetAllUserResponse> getAllUsers(int page, int pageSize);
+    Page<GetAllUserResponse> getAllUsers(int page, int pageSize, UUID role, String name);
 
     UserResponse getUserById(UUID id);
 

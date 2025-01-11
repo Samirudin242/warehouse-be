@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class UserGetAllHandler {
@@ -16,8 +17,8 @@ public class UserGetAllHandler {
         this.userRepository = userRepository;
     }
 
-    public Page<GetAllUserResponse> getAllUser(Integer page, Integer pageSize) {
-        return userRepository.getAllUsers(page, pageSize);
+    public Page<GetAllUserResponse> getAllUser(Integer page, Integer pageSize, UUID role, String name) {
+        return userRepository.getAllUsers(page, pageSize, role, name);
     }
 
 }
