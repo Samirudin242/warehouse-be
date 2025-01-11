@@ -1,0 +1,6 @@
+# Ignore target folder
+target/
+
+# Ignore IDE files
+.idea/
+*.iml
