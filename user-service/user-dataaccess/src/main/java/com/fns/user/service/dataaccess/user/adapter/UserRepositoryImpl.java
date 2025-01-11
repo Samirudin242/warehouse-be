@@ -89,8 +89,10 @@ public class UserRepositoryImpl implements UserRepository { // it will be provid
             Pageable pageable = PageRequest.of(page, size);
 
             Page<UserEntity> userEntitiesPage;
-            if (role == null && (name == null || name.isEmpty())) {
+            if (role == null && (name == null )) {
                 userEntitiesPage = userJpaRepository.findAll(pageable);
+            } else if(name == null) {
+                userEntitiesPage = userJpaRepository.findByRoleId(role, pageable);
             } else {
                 userEntitiesPage = userJpaRepository.findByRoleIdAndName(role, name, pageable);
             }

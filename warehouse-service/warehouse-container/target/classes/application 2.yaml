@@ -1,26 +1,31 @@
 server:
-  port: 8081
+  port: 8080
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:
+  level:
+    root: INFO
+    com.fns.warehouse: INFO
 spring:
   jpa:
     open-in-view: false
     show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
-        jdbc.time_zone: UTC  # Added to handle timezone settings
     hibernate:
-<<<<<<< HEAD
-      ddl-auto: update  # Automatically updates the database
+      ddl-auto: update  # Automatically generate and update tables
     servlet:
       multipart:
         max-file-size: 1MB
         max-request-size: 1MB
-=======
-      ddl-auto: create  # Automatically generate and update tables
->>>>>>> 7e83cec (add new entity in product service)
   datasource:
-    url: jdbc:postgresql://localhost:5432/product_service?currentSchema=public&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
+    url: jdbc:postgresql://localhost:5432/warehouse_service?currentSchema=public&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     username: postgres
     password: theyaku
     driver-class-name: org.postgresql.Driver
@@ -39,3 +44,9 @@ google:
       bucket-name: theyaku-bucket11
       project-id: civil-hash-446108-e1
       project-name: theyaku
+security:
+  jwt:
+    secret-key: theyakusecretkeysamirudinvidia1234567890123456
+app:
+  cors:
+    allowed-origins: "http://localhost:3000"
