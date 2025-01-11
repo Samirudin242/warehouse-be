@@ -67,7 +67,7 @@ public class ProductCreateCommandHandler {
         //Create and save the image_url
         ProductImages productImage = ProductImages.builder()
                 .productId(savedProduct.getId())
-                .imageUrl(createProductCommand.getImage_url())
+                .imageUrl(createProductCommand.getImage_url().get(0))
                 .build();
 
         saveProductImageUrl(productImage);
