@@ -1,0 +1,144 @@
+[
+  {
+    "sku": "M0E20000000EAAK",
+    "parentID": "101H",
+    "name": "Sneakers “101H“ Springa multi",
+    "description": "",
+    "slug": "springa-sneaker-101h-multicolor",
+    "brand": "Springa",
+    "gender": "men",
+    "hierarchical_categories": {
+      "lvl0": "Men",
+      "lvl1": "Men > Shoes",
+      "lvl2": "Men > Shoes > Sneakers"
+    },
+    "list_categories": ["Men", "Shoes", "Sneakers"],
+    "category_page_id": ["Men > Shoes", "Men > Shoes > Sneakers"],
+    "image_urls": [
+      "https://res.cloudinary.com/hilnmyskv/image/upload/v1638371244/flagship_sunrise/M0E20000000EAAK_0.jpg",
+      "https://res.cloudinary.com/hilnmyskv/image/upload/v1638371245/flagship_sunrise/M0E20000000EAAK_1.jpg",
+      "https://res.cloudinary.com/hilnmyskv/image/upload/v1638371246/flagship_sunrise/M0E20000000EAAK_2.jpg"
+    ],
+    "image_blurred": "LNSPX]M{-;xu_4xuIURjRiofoMWA",
+    "reviews": { "rating": 4, "count": 99, "bayesian_avg": 3.96 },
+    "color": {
+      "filter_group": "multicolor;https://res.cloudinary.com/hilnmyskv/image/upload/v1639065885/flagship_sunrise/color_wheel.svg",
+      "original_name": "multi"
+    },
+    "available_sizes": [
+      "34",
+      "34.5",
+      "35",
+      "35.5",
+      "36",
+      "36.5",
+      "37",
+      "37.5",
+      "38",
+      "38.5",
+      "39",
+      "39.5",
+      "40",
+      "40.5",
+      "41",
+      "41.5",
+      "42",
+      "42.5",
+      "43",
+      "43.5",
+      "44",
+      "44.5",
+      "45",
+      "45.5",
+      "46"
+    ],
+    "variants": [
+      {
+        "sku": "M0E20000000EAAL",
+        "abbreviated_size": "34.5",
+        "in_stock": false
+      },
+      { "sku": "M0E20000000EAAM", "abbreviated_size": "35", "in_stock": false },
+      {
+        "sku": "M0E20000000EAAN",
+        "abbreviated_size": "35.5",
+        "in_stock": false
+      },
+      { "sku": "M0E20000000EAAO", "abbreviated_size": "36", "in_stock": false },
+      {
+        "sku": "M0E20000000EAAP",
+        "abbreviated_size": "36.5",
+        "in_stock": false
+      },
+      { "sku": "M0E20000000EAAQ", "abbreviated_size": "37", "in_stock": false },
+      {
+        "sku": "M0E20000000EAAR",
+        "abbreviated_size": "37.5",
+        "in_stock": false
+      },
+      { "sku": "M0E20000000EAAS", "abbreviated_size": "38", "in_stock": false },
+      {
+        "sku": "M0E20000000EAAT",
+        "abbreviated_size": "38.5",
+        "in_stock": false
+      },
+      { "sku": "M0E20000000EAAU", "abbreviated_size": "39", "in_stock": false },
+      {
+        "sku": "M0E20000000EAAV",
+        "abbreviated_size": "39.5",
+        "in_stock": false
+      },
+      { "sku": "M0E20000000EAAW", "abbreviated_size": "40", "in_stock": false },
+      {
+        "sku": "M0E20000000EAAX",
+        "abbreviated_size": "40.5",
+        "in_stock": false
+      },
+      { "sku": "M0E20000000EAAY", "abbreviated_size": "41", "in_stock": true },
+      {
+        "sku": "M0E20000000EAAZ",
+        "abbreviated_size": "41.5",
+        "in_stock": false
+      },
+      { "sku": "M0E20000000EAB0", "abbreviated_size": "42", "in_stock": true },
+      {
+        "sku": "M0E20000000EAB1",
+        "abbreviated_size": "42.5",
+        "in_stock": false
+      },
+      { "sku": "M0E20000000EAB2", "abbreviated_size": "43", "in_stock": false },
+      {
+        "sku": "M0E20000000EAB3",
+        "abbreviated_size": "43.5",
+        "in_stock": false
+      },
+      { "sku": "M0E20000000EAB4", "abbreviated_size": "44", "in_stock": false },
+      {
+        "sku": "M0E20000000EAB5",
+        "abbreviated_size": "44.5",
+        "in_stock": false
+      },
+      { "sku": "M0E20000000EAB6", "abbreviated_size": "45", "in_stock": false },
+      {
+        "sku": "M0E20000000EAB7",
+        "abbreviated_size": "45.5",
+        "in_stock": false
+      },
+      { "sku": "M0E20000000EAB8", "abbreviated_size": "46", "in_stock": false },
+      { "sku": "M0E20000000EAAK", "abbreviated_size": "34", "in_stock": false }
+    ],
+    "price": {
+      "currency": "EUR",
+      "value": 186.25,
+      "discounted_value": 0,
+      "discount_level": -100,
+      "on_sales": false
+    },
+    "units_in_stock": 0,
+    "created_at": 0,
+    "updated_at": 0,
+    "related_products": null,
+    "product_type": "Sneakers",
+    "objectID": "M0E20000000EAAK"
+  }
+]

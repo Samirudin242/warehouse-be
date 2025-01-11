@@ -47,17 +47,13 @@ public class WarehouseRepositoryImpl implements WarehouseRepository {
                     // Use dataAccessMapper to get Warehouse object
                     Warehouse warehouse = warehouseDataAccessMapper.warehouseEntityToWarehouseGet(warehouseEntity);
 
-                    // Combine location details into a single string
-                    String location = String.format("%s, %s, %s",
-                            warehouse.getAddress(),
-                            warehouse.getCity(),
-                            warehouse.getProvince());
-
                     // Map to GetAllWarehouseResponse
                     return GetAllWarehouseResponse.builder()
                             .id(warehouse.getId())
                             .name(warehouse.getName())
-                            .location(location)
+                            .location(warehouse.getAddress())
+                            .province(warehouse.getProvince())
+                            .city(warehouse.getCity())
                             .build();
                 }).toList();
 

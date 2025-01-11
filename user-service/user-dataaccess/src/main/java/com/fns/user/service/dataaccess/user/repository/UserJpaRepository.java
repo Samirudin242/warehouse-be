@@ -20,6 +20,12 @@ public interface UserJpaRepository extends JpaRepository<UserEntity, UUID> {
        """)
         Page<UserEntity> findByRoleIdAndName(UUID role_id, String name, Pageable pageable);
 
+        @Query("""
+       SELECT u FROM UserEntity u
+       WHERE u.user_role.id = :role_id
+       """)
+        Page<UserEntity> findByRoleId(UUID role_id, Pageable pageable);
+
         @Query("SELECT u FROM UserEntity u WHERE u.user_name = :usernameOrEmail OR u.email = :usernameOrEmail")
         UserEntity findByUsernameOrEmail(String usernameOrEmail);
 
