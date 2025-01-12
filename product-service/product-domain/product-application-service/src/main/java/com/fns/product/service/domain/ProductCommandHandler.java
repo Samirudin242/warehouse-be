@@ -104,7 +104,7 @@ public class ProductCommandHandler {
                 createProductCommand.getSlug(),
                 createProductCommand.getDescription(),
                 createProductCommand.getGender(),
-                new Price(createProductCommand.getPrice()),
+                createProductCommand.getPrice(),
                 createProductCommand.getBrand_id(),
                 createProductCommand.getProduct_categories_id(),
                 createProductCommand.getSize_id(),

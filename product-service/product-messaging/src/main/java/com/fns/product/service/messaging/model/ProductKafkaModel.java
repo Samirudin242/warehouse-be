@@ -19,7 +19,7 @@ public class ProductKafkaModel {
     private String slug;
     private String description;
     private String gender;
-    private Price price;
+    private Double price;
     private UUID brandId;
     private UUID productCategoryId;
     private UUID sizeId;

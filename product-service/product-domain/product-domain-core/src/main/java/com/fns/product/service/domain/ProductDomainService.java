@@ -15,7 +15,7 @@ public interface ProductDomainService {
             String slug,
             String description,
             String gender,
-            Price price,
+            Double price,
             UUID brandId,
             UUID productCategoryId,
             UUID sizeId,

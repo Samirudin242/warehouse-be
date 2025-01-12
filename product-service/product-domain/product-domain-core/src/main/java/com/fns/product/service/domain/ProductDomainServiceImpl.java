@@ -12,7 +12,7 @@ import java.util.UUID;
 public class ProductDomainServiceImpl implements ProductDomainService {
 
     @Override
-    public ProductCreatedEvent createProduct(UUID id, String sku, String name, String slug, String description, String gender, Price price, UUID brandId, UUID productCategoryId, UUID sizeId, UUID colorId, String imageUrl, UUID warehouseId, Integer stock, DomainEventPublisher<ProductCreatedEvent> eventPublisher) throws ProductDomainException {
+    public ProductCreatedEvent createProduct(UUID id, String sku, String name, String slug, String description, String gender, Double price, UUID brandId, UUID productCategoryId, UUID sizeId, UUID colorId, String imageUrl, UUID warehouseId, Integer stock, DomainEventPublisher<ProductCreatedEvent> eventPublisher) throws ProductDomainException {
         Product product = Product.builder()
                 .id(id)
                 .sku(sku)

@@ -3,6 +3,7 @@ package com.fns.product.service.domain.entity;
 import com.fns.product.service.domain.valueObject.Price;
 import lombok.*;
 
+import java.lang.annotation.Documented;
 import java.util.UUID;
 
 // Aggregate Root: Product
@@ -19,7 +20,7 @@ public class Product {
     private String slug;
     private String description;
     private String gender;
-    private Price price;
+    private Double price;
     private UUID brandId;
     private UUID productCategoryId;
     private UUID sizeId;
@@ -82,7 +83,7 @@ public class Product {
         private String slug;
         private String description;
         private String gender;
-        private Price price;
+        private Double price;
         private UUID brandId;
         private UUID productCategoryId;
         private UUID sizeId;
@@ -126,7 +127,7 @@ public class Product {
             return this;
         }
 
-        public Builder price(Price price) {
+        public Builder price(Double price) {
             if (price == null) {
                 throw new IllegalArgumentException("Product price cannot be null.");
             }
