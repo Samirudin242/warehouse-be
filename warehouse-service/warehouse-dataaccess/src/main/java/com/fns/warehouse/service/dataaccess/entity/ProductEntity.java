@@ -24,11 +24,6 @@ import java.util.UUID;
 @Entity
 public class ProductEntity extends BaseEntity {
     @Id
-    @GeneratedValue(generator = "UUID", strategy = GenerationType.AUTO)
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
     private UUID id;
 
     private String sku;
@@ -40,6 +35,10 @@ public class ProductEntity extends BaseEntity {
     private String slug;
 
     private String gender;
+
+    private Double price;
+
+    private String image;
 //
 //    @ManyToOne
 //    @JoinColumn(name = "brand_id", referencedColumnName = "id")

@@ -37,5 +37,4 @@ public class UserCreatedListener {
             log.error("Error processing user_created event", e);
         }
     }
-
 }

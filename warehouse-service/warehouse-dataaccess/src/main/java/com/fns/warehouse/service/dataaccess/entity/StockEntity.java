@@ -22,11 +22,8 @@ public class StockEntity extends BaseEntity {
 
     private Integer quantity;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
-    private ProductEntity product;
+    private UUID product_id;
 
-    @ManyToOne
-    @JoinColumn(name = "warehouse_id", referencedColumnName = "id")
-    private WarehouseEntity warehouse;
+    private UUID warehouse_id;
+
 }
