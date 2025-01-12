@@ -13,6 +13,7 @@ public class StockMapper {
                 .id(stock.getId())
                 .warehouseId(stock.getWarehouse_id())
                 .productId(stock.getProduct_id())
+                .quantity(stock.getQuantity())
                 .build();
     }
 
@@ -22,6 +23,7 @@ public class StockMapper {
                 .id(stockEntity.getId())
                 .warehouse_id(stockEntity.getWarehouseId())
                 .product_id(stockEntity.getProductId())
+                .quantity(stockEntity.getQuantity())
                 .build();
     }
 
