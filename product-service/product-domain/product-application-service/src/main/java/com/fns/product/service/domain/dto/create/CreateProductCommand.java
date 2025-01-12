@@ -45,4 +45,10 @@ public class CreateProductCommand {
 
     @NotNull
     private UUID color_id;
+
+    @NotNull
+    private UUID warehouse_id;
+
+    @NotNull
+    private Integer quantity;
 }

@@ -25,6 +25,8 @@ public class Product {
     private UUID sizeId;
     private UUID colorId;
     private String imageUrl;
+    private UUID warehouseId;
+    private Integer stock;
 
     // Private constructor for builder
     private Product(Builder builder) {
@@ -40,6 +42,8 @@ public class Product {
         this.sizeId = builder.sizeId;
         this.colorId = builder.colorId;
         this.imageUrl = builder.imageUrl;
+        this.warehouseId = builder.warehouseId;
+        this.stock = builder.stock;
     }
 
 
@@ -83,6 +87,8 @@ public class Product {
         private UUID productCategoryId;
         private UUID sizeId;
         private String imageUrl;
+        private UUID warehouseId;
+        private Integer stock;
 
         public Builder id(UUID id) {
             this.id = id;
@@ -165,6 +171,15 @@ public class Product {
             return this;
         }
 
+        public Builder warehouseId(UUID warehouseId) {
+            this.warehouseId = warehouseId;
+            return this;
+        }
+
+        public Builder stock(Integer stock) {
+            this.stock = stock;
+            return this;
+        }
         public Product build() {
             return new Product(this);
         }

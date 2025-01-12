@@ -5,16 +5,16 @@ import java.util.Objects;
 
 // Value Object untuk Harga Produk
 public class Price {
-    private final BigDecimal value;
+    private final Double value;
 
-    public Price(BigDecimal value) {
-        if (value == null || value.compareTo(BigDecimal.ZERO) <= 0) {
+    public Price(Double value) {
+        if (value == null) {
             throw new IllegalArgumentException("Price must be greater than zero.");
         }
         this.value = value;
     }
 
-    public BigDecimal getValue() {
+    public Double getValue() {
         return value;
     }
 
