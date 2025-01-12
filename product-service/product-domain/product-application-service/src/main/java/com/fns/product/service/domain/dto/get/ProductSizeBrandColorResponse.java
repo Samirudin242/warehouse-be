@@ -9,7 +9,9 @@ import java.util.UUID;
 @Getter
 @AllArgsConstructor
 @Builder
-public class ProductSizeBrandResponse {
+public class ProductSizeBrandColorResponse {
     private final UUID id;
     private final String size;
+    private final String brand;
+    private final String name;
 }

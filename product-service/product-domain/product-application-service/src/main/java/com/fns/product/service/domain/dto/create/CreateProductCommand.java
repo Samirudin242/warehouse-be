@@ -24,7 +24,6 @@ public class CreateProductCommand {
 
     private String description;
 
-    @NotNull
     private String slug;
 
     private String gender;
