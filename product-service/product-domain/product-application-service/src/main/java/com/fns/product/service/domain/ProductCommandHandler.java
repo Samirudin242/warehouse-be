@@ -10,12 +10,10 @@ import com.fns.product.service.domain.mapper.ProductDataMapper;
 import com.fns.product.service.domain.ports.output.message.ProductMessagePublisher;
 import com.fns.product.service.domain.ports.output.repository.*;
 import com.fns.product.service.domain.entity.ProductImages;
-import com.fns.product.service.domain.valueObject.Price;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -31,7 +29,7 @@ public class ProductCommandHandler {
     private final ProductBrandRepository productBrandRepository;
     private final ProductCategoriesRepository productCategoriesRepository;
     private final ProductColorsRepository productColorsRepository;
-    private final ProductSizesRepository productSizesRepository;
+    private final ProductSizesColorBrandRepository productSizesColorBrandRepository;
     private final ProductImageRepository productImagesRepository;
     private final StockRepository stockRepository;
     private final ProductMessagePublisher productMessagePublisher;
@@ -43,7 +41,7 @@ public class ProductCommandHandler {
             ProductBrandRepository productBrandRepository,
             ProductColorsRepository productColorsRepository,
             ProductCategoriesRepository productCategoriesRepository,
-            ProductSizesRepository productSizesRepository,
+            ProductSizesColorBrandRepository productSizesColorBrandRepository,
             ProductImageRepository productImagesRepository, StockRepository stockRepository, ProductMessagePublisher productMessagePublisher, ProductDomainService productDomainService
     ) {
         this.productImagesRepository = productImagesRepository;
@@ -53,7 +51,7 @@ public class ProductCommandHandler {
         this.productBrandRepository = productBrandRepository;
         this.productCategoriesRepository = productCategoriesRepository;
         this.productColorsRepository = productColorsRepository;
-        this.productSizesRepository = productSizesRepository;
+        this.productSizesColorBrandRepository = productSizesColorBrandRepository;
         this.stockRepository = stockRepository;
         this.productMessagePublisher = productMessagePublisher;
         this.productDomainService = productDomainService;
@@ -213,7 +211,7 @@ public class ProductCommandHandler {
                                 .orElseThrow(() -> new RuntimeException("Category not found for product: " + product.getId()));
                         ProductColors color = productColorsRepository.findById(product.getColorId())
                                 .orElseThrow(() -> new RuntimeException("Color not found for product: " + product.getId()));
-                        ProductSizes size = productSizesRepository.findById(product.getSizeId())
+                        ProductSizes size = productSizesColorBrandRepository.findById(product.getSizeId())
                                 .orElseThrow(() -> new RuntimeException("Size not found for product: " + product.getId()));
 
                         return ProductResponse.builder()
@@ -245,7 +243,7 @@ public class ProductCommandHandler {
                 .orElseThrow(() -> new RuntimeException("Category not found for product: " + id));
         ProductColors color = productColorsRepository.findById(product.getColorId())
                 .orElseThrow(() -> new RuntimeException("Color not found for product: " + id));
-        ProductSizes size = productSizesRepository.findById(product.getSizeId())
+        ProductSizes size = productSizesColorBrandRepository.findById(product.getSizeId())
                 .orElseThrow(() -> new RuntimeException("Size not found for product: " + id));
 
         return ProductResponse.builder()

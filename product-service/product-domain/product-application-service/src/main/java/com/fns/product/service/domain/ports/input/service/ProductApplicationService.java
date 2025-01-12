@@ -4,7 +4,7 @@ import com.fns.product.service.domain.dto.create.CreateProductCommand;
 import com.fns.product.service.domain.dto.get.ProductCategoryResponse;
 import com.fns.product.service.domain.dto.get.ProductResponse;
 import com.fns.product.service.domain.dto.edit.EditProductCommand;
-import com.fns.product.service.domain.dto.get.ProductSizeBrandResponse;
+import com.fns.product.service.domain.dto.get.ProductSizeBrandColorResponse;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -21,10 +21,11 @@ public interface ProductApplicationService {
 
     String deleteProductById(UUID id);
 
-    List<ProductSizeBrandResponse> getProductSize();
+    List<ProductSizeBrandColorResponse> getProductSize();
 
     List<ProductCategoryResponse> getProductCategory();
 
-    List<ProductSizeBrandResponse> getProductBrand();
+    List<ProductSizeBrandColorResponse> getProductBrand();
 
+    List<ProductSizeBrandColorResponse> getProductColor();
 }

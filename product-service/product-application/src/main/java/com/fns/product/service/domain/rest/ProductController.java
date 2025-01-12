@@ -4,7 +4,7 @@ import com.fns.product.service.domain.dto.create.CreateProductCommand;
 import com.fns.product.service.domain.dto.get.ProductCategoryResponse;
 import com.fns.product.service.domain.dto.get.ProductResponse;
 import com.fns.product.service.domain.dto.edit.EditProductCommand;
-import com.fns.product.service.domain.dto.get.ProductSizeBrandResponse;
+import com.fns.product.service.domain.dto.get.ProductSizeBrandColorResponse;
 import com.fns.product.service.domain.ports.input.service.ProductApplicationService;
 import com.fns.product.service.domain.ports.input.service.ProductPhotoService;
 import jakarta.validation.Valid;
@@ -38,8 +38,8 @@ public class ProductController {
     }
 
     @GetMapping("/products-size")
-    public ResponseEntity<List<ProductSizeBrandResponse>> getAllProductSize() {
-        List<ProductSizeBrandResponse> products = productApplicationService.getProductSize();
+    public ResponseEntity<List<ProductSizeBrandColorResponse>> getAllProductSize() {
+        List<ProductSizeBrandColorResponse> products = productApplicationService.getProductSize();
         return ResponseEntity.ok(products);
     }
 
@@ -50,8 +50,14 @@ public class ProductController {
     }
 
     @GetMapping("/products-brand")
-    public ResponseEntity<List<ProductSizeBrandResponse>> getAllProductBrand() {
-        List<ProductSizeBrandResponse> products = productApplicationService.getProductBrand();
+    public ResponseEntity<List<ProductSizeBrandColorResponse>> getAllProductBrand() {
+        List<ProductSizeBrandColorResponse> products = productApplicationService.getProductBrand();
+        return ResponseEntity.ok(products);
+    }
+
+    @GetMapping("/products-color")
+    public ResponseEntity<List<ProductSizeBrandColorResponse>> getAllProductColor() {
+        List<ProductSizeBrandColorResponse> products = productApplicationService.getProductColor();
         return ResponseEntity.ok(products);
     }
 

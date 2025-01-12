@@ -14,14 +14,14 @@ public class ProductDataMapper {
     private final ProductBrandRepository productBrandRepository;
     private final ProductCategoriesRepository productCategoriesRepository;
     private final ProductColorsRepository productColorsRepository;
-    private final ProductSizesRepository productSizesRepository;
+    private final ProductSizesColorBrandRepository productSizesColorBrandRepository;
     private final ProductImageRepository productImagesRepository;
 
-    public ProductDataMapper(ProductBrandRepository productBrandRepository, ProductCategoriesRepository productCategoriesRepository, ProductColorsRepository productColorsRepository, ProductSizesRepository productSizesRepository, ProductImageRepository productImagesRepository) {
+    public ProductDataMapper(ProductBrandRepository productBrandRepository, ProductCategoriesRepository productCategoriesRepository, ProductColorsRepository productColorsRepository, ProductSizesColorBrandRepository productSizesColorBrandRepository, ProductImageRepository productImagesRepository) {
         this.productBrandRepository = productBrandRepository;
         this.productCategoriesRepository = productCategoriesRepository;
         this.productColorsRepository = productColorsRepository;
-        this.productSizesRepository = productSizesRepository;
+        this.productSizesColorBrandRepository = productSizesColorBrandRepository;
         this.productImagesRepository = productImagesRepository;
     }
 
@@ -37,7 +37,7 @@ public class ProductDataMapper {
         ProductColors color = productColorsRepository.findById(createProductCommand.getColor_id())
                 .orElseThrow(() -> new RuntimeException("Color not found"));
 
-        ProductSizes size = productSizesRepository.findById(createProductCommand.getSize_id())
+        ProductSizes size = productSizesColorBrandRepository.findById(createProductCommand.getSize_id())
                 .orElseThrow(() -> new RuntimeException("Size not found"));
 
         return ProductResponse.builder()
@@ -79,7 +79,7 @@ public class ProductDataMapper {
         ProductColors color = productColorsRepository.findById(editProductCommand.getColor_id())
                 .orElseThrow(() -> new RuntimeException("Color not found"));
 
-        ProductSizes size = productSizesRepository.findById(editProductCommand.getSize_id())
+        ProductSizes size = productSizesColorBrandRepository.findById(editProductCommand.getSize_id())
                 .orElseThrow(() -> new RuntimeException("Size not found"));
 
         return ProductResponse.builder()
