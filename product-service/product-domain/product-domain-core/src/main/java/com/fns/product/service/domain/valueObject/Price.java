@@ -1,6 +1,5 @@
 package com.fns.product.service.domain.valueObject;
 
-import java.math.BigDecimal;
 import java.util.Objects;
 
 // Value Object untuk Harga Produk
