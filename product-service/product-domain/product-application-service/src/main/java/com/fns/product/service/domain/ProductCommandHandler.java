@@ -5,13 +5,17 @@ import com.fns.product.service.domain.dto.get.ProductResponse;
 import com.fns.product.service.domain.dto.edit.EditProductCommand;
 import com.fns.product.service.domain.dto.edit.ListImage;
 import com.fns.product.service.domain.entity.*;
+import com.fns.product.service.domain.event.ProductCreatedEvent;
 import com.fns.product.service.domain.mapper.ProductDataMapper;
+import com.fns.product.service.domain.ports.output.message.ProductMessagePublisher;
 import com.fns.product.service.domain.ports.output.repository.*;
 import com.fns.product.service.domain.entity.ProductImages;
+import com.fns.product.service.domain.valueObject.Price;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -29,6 +33,9 @@ public class ProductCommandHandler {
     private final ProductColorsRepository productColorsRepository;
     private final ProductSizesRepository productSizesRepository;
     private final ProductImageRepository productImagesRepository;
+    private final StockRepository stockRepository;
+    private final ProductMessagePublisher productMessagePublisher;
+    private final ProductDomainService productDomainService;
 
     public ProductCommandHandler(
             ProductRepository productRepository, ProductPricesRepository productPricesRepository,
@@ -37,7 +44,7 @@ public class ProductCommandHandler {
             ProductColorsRepository productColorsRepository,
             ProductCategoriesRepository productCategoriesRepository,
             ProductSizesRepository productSizesRepository,
-            ProductImageRepository productImagesRepository
+            ProductImageRepository productImagesRepository, StockRepository stockRepository, ProductMessagePublisher productMessagePublisher, ProductDomainService productDomainService
     ) {
         this.productImagesRepository = productImagesRepository;
         this.productRepository = productRepository;
@@ -47,6 +54,9 @@ public class ProductCommandHandler {
         this.productCategoriesRepository = productCategoriesRepository;
         this.productColorsRepository = productColorsRepository;
         this.productSizesRepository = productSizesRepository;
+        this.stockRepository = stockRepository;
+        this.productMessagePublisher = productMessagePublisher;
+        this.productDomainService = productDomainService;
     }
     @Transactional
     public ProductResponse createProduct(CreateProductCommand createProductCommand) {
@@ -66,6 +76,14 @@ public class ProductCommandHandler {
 
         savePricesProduct(productPrice);
 
+        Stock stock = Stock.builder()
+                .product_id(savedProduct.getId())
+                .warehouse_id(createProductCommand.getWarehouse_id())
+                .quantity(createProductCommand.getQuantity())
+                .build();
+
+        saveStock(stock);
+
         // Create and save the product images
         if (createProductCommand.getImage_url() != null && !createProductCommand.getImage_url().isEmpty()) {
             List<ProductImages> productImages = createProductCommand.getImage_url().stream()
@@ -77,6 +95,28 @@ public class ProductCommandHandler {
 
             saveProductImageUrl(productImages);
         }
+
+        assert createProductCommand.getImage_url() != null;
+        ProductCreatedEvent productEvent = productDomainService.createProduct(
+                savedProduct.getId(),
+                createProductCommand.getSku(),
+                createProductCommand.getName(),
+                createProductCommand.getSlug(),
+                createProductCommand.getDescription(),
+                createProductCommand.getGender(),
+                new Price(createProductCommand.getPrice()),
+                createProductCommand.getBrand_id(),
+                createProductCommand.getProduct_categories_id(),
+                createProductCommand.getSize_id(),
+                createProductCommand.getColor_id(),
+                createProductCommand.getImage_url().get(0),
+                createProductCommand.getWarehouse_id(),
+                createProductCommand.getQuantity(),
+                productMessagePublisher
+        );
+
+        //publish product;
+        productMessagePublisher.publish(productEvent);
 
         return productDataMapper.createProductResponse(createProductCommand, savedProduct);
     }
@@ -259,6 +299,20 @@ public class ProductCommandHandler {
         }
     }
 
+    private void saveStock(Stock stock) {
+        try {
+            Stock savedStock = stockRepository.saveStock(stock);
+
+            if (savedStock == null) {
+                throw new RuntimeException("Failed to save stock");
+            }
+
+        } catch (Exception e) {
+            log.error("Error while saving stock: {}", e.getMessage(), e);
+            throw new RuntimeException("Error while saving stock", e);
+        }
+    }
+
     private void saveProductImageUrl(List<ProductImages> productImages) {
         try {
             for (ProductImages productImage : productImages) {
@@ -274,7 +328,6 @@ public class ProductCommandHandler {
             throw new RuntimeException("Error while saving product images", e);
         }
     }
-
 
     private List<Product> getProducts() {
         return productRepository.getProducts();

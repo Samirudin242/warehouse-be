@@ -4,7 +4,7 @@ import com.fns.product.service.domain.dto.create.CreateProductCommand;
 import com.fns.product.service.domain.dto.get.ProductCategoryResponse;
 import com.fns.product.service.domain.dto.get.ProductResponse;
 import com.fns.product.service.domain.dto.edit.EditProductCommand;
-import com.fns.product.service.domain.dto.get.ProductSizeResponse;
+import com.fns.product.service.domain.dto.get.ProductSizeBrandResponse;
 import com.fns.product.service.domain.ports.input.service.ProductApplicationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -53,12 +53,17 @@ public class ProductApplicationServiceImpl implements ProductApplicationService 
     }
 
     @Override
-    public List<ProductSizeResponse> getProductSize() {
+    public List<ProductSizeBrandResponse> getProductSize() {
         return productSizeCommandHandler.getAllProductSize();
     }
 
     @Override
     public List<ProductCategoryResponse> getProductCategory() {
         return productCategoryCommandHandler.getProductCategories();
+    }
+
+    @Override
+    public List<ProductSizeBrandResponse> getProductBrand() {
+        return productSizeCommandHandler.getAllProductSize();
     }
 }

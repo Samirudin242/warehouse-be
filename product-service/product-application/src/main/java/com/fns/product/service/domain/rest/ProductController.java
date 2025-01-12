@@ -4,7 +4,7 @@ import com.fns.product.service.domain.dto.create.CreateProductCommand;
 import com.fns.product.service.domain.dto.get.ProductCategoryResponse;
 import com.fns.product.service.domain.dto.get.ProductResponse;
 import com.fns.product.service.domain.dto.edit.EditProductCommand;
-import com.fns.product.service.domain.dto.get.ProductSizeResponse;
+import com.fns.product.service.domain.dto.get.ProductSizeBrandResponse;
 import com.fns.product.service.domain.ports.input.service.ProductApplicationService;
 import com.fns.product.service.domain.ports.input.service.ProductPhotoService;
 import jakarta.validation.Valid;
@@ -38,8 +38,8 @@ public class ProductController {
     }
 
     @GetMapping("/products-size")
-    public ResponseEntity<List<ProductSizeResponse>> getAllProductSize() {
-        List<ProductSizeResponse> products = productApplicationService.getProductSize();
+    public ResponseEntity<List<ProductSizeBrandResponse>> getAllProductSize() {
+        List<ProductSizeBrandResponse> products = productApplicationService.getProductSize();
         return ResponseEntity.ok(products);
     }
 
@@ -50,11 +50,10 @@ public class ProductController {
     }
 
     @GetMapping("/products-brand")
-    public ResponseEntity<List<ProductCategoryResponse>> getAllProductBrand() {
-        List<ProductCategoryResponse> products = productApplicationService.getProductCategory();
+    public ResponseEntity<List<ProductSizeBrandResponse>> getAllProductBrand() {
+        List<ProductSizeBrandResponse> products = productApplicationService.getProductBrand();
         return ResponseEntity.ok(products);
     }
-
 
 
     @GetMapping("/{id}")

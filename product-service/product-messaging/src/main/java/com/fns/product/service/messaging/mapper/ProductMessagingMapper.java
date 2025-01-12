@@ -1,6 +1,8 @@
 package com.fns.product.service.messaging.mapper;
 
 import com.fns.product.service.domain.dto.message.WarehouseModel;
+import com.fns.product.service.domain.entity.Product;
+import com.fns.product.service.messaging.model.ProductKafkaModel;
 import com.fns.product.service.messaging.model.WarehouseKafkaModel;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +22,25 @@ public class ProductMessagingMapper {
                 .provinceId(warehouseKafkaModel.getProvince_id())
                 .postalCode(warehouseKafkaModel.getPostal_code())
                 .build();
+    }
+
+    public ProductKafkaModel covertToProductKafkaModel(Product product) {
+        return ProductKafkaModel.builder()
+               .id(product.getId())
+               .sku(product.getSku())
+               .name(product.getName())
+               .slug(product.getSlug())
+               .description(product.getDescription())
+               .gender(product.getGender())
+               .price(product.getPrice())
+               .brandId(product.getBrandId())
+               .productCategoryId(product.getProductCategoryId())
+               .sizeId(product.getSizeId())
+               .colorId(product.getColorId())
+               .imageUrl(product.getImageUrl())
+               .warehouseId(product.getWarehouseId())
+                .stock(product.getStock())
+               .build();
     }
 
 }
