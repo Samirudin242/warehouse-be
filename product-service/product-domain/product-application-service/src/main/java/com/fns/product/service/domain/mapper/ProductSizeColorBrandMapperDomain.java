@@ -26,7 +26,7 @@ public class ProductSizeColorBrandMapperDomain {
     public ProductSizeBrandColorResponse productColorResponse(ProductColors productColors) {
         return ProductSizeBrandColorResponse.builder()
                 .id(productColors.getId())
-                .brand(productColors.getOriginalName())
+                .name(productColors.getOriginalName())
                 .build();
     }
 }

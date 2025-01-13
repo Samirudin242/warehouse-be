@@ -41,8 +41,8 @@ public class ProductSizeBrandColorCommandHandler {
     }
 
     public List<ProductSizeBrandColorResponse> getAllProductColor() {
-        List<ProductColors> getAllProductBrand = productSizesColorBrandRepository.findAllColors();
-        return getAllProductBrand.stream()
+        List<ProductColors> getAllProductColor = productSizesColorBrandRepository.findAllColors();
+        return getAllProductColor.stream()
                 .map(productSizeColorBrandMapper::productColorResponse)
                 .collect(Collectors.toList());
     }
