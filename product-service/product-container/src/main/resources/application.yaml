@@ -35,3 +35,9 @@ google:
       bucket-name: theyaku-bucket11
       project-id: civil-hash-446108-e1
       project-name: theyaku
+security:
+  jwt:
+    secret-key: theyakusecretkeysamirudinvidia1234567890123456
+app:
+  cors:
+    allowed-origins: "http://localhost:3000"

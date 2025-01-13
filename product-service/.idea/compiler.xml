@@ -9,6 +9,7 @@
         <module name="product-container" />
         <module name="product-application-service" />
         <module name="product-domain-core" />
+        <module name="product-messaging" />
         <module name="product-application" />
         <module name="product-dataaccess" />
       </profile>
@@ -21,6 +22,7 @@
       <module name="product-container" options="-parameters" />
       <module name="product-dataaccess" options="-parameters" />
       <module name="product-domain-core" options="-parameters" />
+      <module name="product-messaging" options="-parameters" />
     </option>
   </component>
 </project>
