@@ -107,7 +107,7 @@ public class ProductCommandHandler {
                 createProductCommand.getProduct_categories_id(),
                 createProductCommand.getSize_id(),
                 createProductCommand.getColor_id(),
-                createProductCommand.getImage_url().get(0),
+                createProductCommand.getImage_url().isEmpty() ? null : createProductCommand.getImage_url().get(0),
                 createProductCommand.getWarehouse_id(),
                 createProductCommand.getQuantity(),
                 productMessagePublisher
