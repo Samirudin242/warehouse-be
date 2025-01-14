@@ -1,3 +1,4 @@
+com/fns/product/service/dataaccess/entity/StockEntity.class
 com/fns/product/service/dataaccess/mapper/ProductMapper.class
 com/fns/product/service/dataaccess/adapter/ProductPricesImpl.class
 com/fns/product/service/dataaccess/entity/ProductSizesEntity.class
@@ -5,6 +6,7 @@ com/fns/product/service/dataaccess/entity/ProductAndSizeEntity$ProductAndSizeEnt
 com/fns/product/service/dataaccess/adapter/ProductColorImpl.class
 com/fns/product/service/dataaccess/mapper/WarehouseDataAccessMapper.class
 com/fns/product/service/dataaccess/entity/ProductColorsEntity.class
+com/fns/product/service/dataaccess/adapter/StockRepositoryImpl.class
 com/fns/product/service/dataaccess/entity/WarehouseEntity$WarehouseEntityBuilder.class
 com/fns/product/service/dataaccess/entity/UserEntity.class
 com/fns/product/service/dataaccess/entity/ProductReviews$ProductReviewsBuilder.class
@@ -17,18 +19,19 @@ com/fns/product/service/dataaccess/entity/ProductBrandEntity.class
 com/fns/product/service/dataaccess/adapter/WarehouseRepositoryImpl.class
 com/fns/product/service/dataaccess/entity/ProductEntity$ProductEntityBuilder.class
 com/fns/product/service/dataaccess/entity/WarehouseEntity.class
+com/fns/product/service/dataaccess/mapper/ProductSizeColorBrandMapper.class
 com/fns/product/service/dataaccess/mapper/ProductColorMapper.class
 com/fns/product/service/dataaccess/entity/ProductBrandEntity$ProductBrandEntityBuilder.class
 com/fns/product/service/dataaccess/entity/LocationEntity$LocationEntityBuilder.class
 com/fns/product/service/dataaccess/adapter/ProductImageImpl.class
 com/fns/product/service/dataaccess/adapter/ProductBrandImpl.class
 com/fns/product/service/dataaccess/repository/LocationJpaRepository.class
+com/fns/product/service/dataaccess/repository/StockJpaRepository.class
 com/fns/product/service/dataaccess/entity/ProductEntity.class
 com/fns/product/service/dataaccess/repository/ProductBrandJpaRepository.class
-com/fns/product/service/dataaccess/mapper/ProductSizeMapper.class
+com/fns/product/service/dataaccess/entity/StockEntity$StockEntityBuilder.class
 com/fns/product/service/dataaccess/config/GoogleCloudStorageConfig.class
 com/fns/product/service/dataaccess/mapper/ProductCategoryMapper.class
-com/fns/product/service/dataaccess/adapter/ProductSizesImpl.class
 com/fns/product/service/dataaccess/entity/ProductCategoriesEntity.class
 com/fns/product/service/dataaccess/entity/ProductPricesEntity$ProductPricesEntityBuilder.class
 com/fns/product/service/dataaccess/adapter/ProductServiceImpl.class
@@ -39,6 +42,7 @@ com/fns/product/service/dataaccess/entity/ProductImagesEntity.class
 com/fns/product/service/dataaccess/entity/ProductImagesEntity$ProductImagesEntityBuilder.class
 com/fns/product/service/dataaccess/mapper/ProductPriceMapper.class
 com/fns/product/service/dataaccess/mapper/ProductImageMapper.class
+com/fns/product/service/dataaccess/adapter/ProductSizesColorBrandImpl.class
 com/fns/product/service/dataaccess/repository/ProductColorsJpaRepository.class
 com/fns/product/service/dataaccess/repository/ProductJpaRepository.class
 com/fns/product/service/dataaccess/entity/LocationEntity.class
@@ -47,5 +51,6 @@ com/fns/product/service/dataaccess/entity/ProductReviews.class
 com/fns/product/service/dataaccess/entity/ProductAndSizeEntity.class
 com/fns/product/service/dataaccess/entity/ProductCategoriesEntity$ProductCategoriesEntityBuilder.class
 com/fns/product/service/dataaccess/mapper/ProductBrandMapper.class
+com/fns/product/service/dataaccess/mapper/StockMapper.class
 com/fns/product/service/dataaccess/repository/ProductImageUrlJpaRepository.class
 com/fns/product/service/dataaccess/adapter/ProductCategoryImpl.class

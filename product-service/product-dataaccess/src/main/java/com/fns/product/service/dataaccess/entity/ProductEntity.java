@@ -17,8 +17,8 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Table(name = "products")
 @EntityListeners(AuditingEntityListener.class)
 @Entity
@@ -76,26 +76,4 @@ public class ProductEntity {
     @Column()
     private LocalDateTime updatedAt = LocalDateTime.now();
 
-    @PrePersist
-    public void beforeSave() {
-        log.info("Before saving: {}", this);
-    }
-
-    @Override
-    public String toString() {
-        return "ProductEntity{" +
-                "id=" + id +
-                ", sku='" + sku + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", slug='" + slug + '\'' +
-                ", gender='" + gender + '\'' +
-                ", brand=" + (brand != null ? brand.getId() : "null") +
-                ", category=" + (category != null ? category.getId() : "null") +
-                ", productSize=" + (productAndSizes != null ? productAndSizes : "null") +
-                ", productColor=" + (productColor != null ? productColor.getId() : "null") +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
-    }
 }

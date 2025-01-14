@@ -65,6 +65,7 @@ public class ProductDataMapper {
                 .productCategoryId(createProductCommand.getProduct_categories_id())
                 .sizeId(createProductCommand.getSize_id())
                 .colorId(createProductCommand.getColor_id())
+                .warehouseId(createProductCommand.getWarehouse_id())
                 .build();
     }
 
