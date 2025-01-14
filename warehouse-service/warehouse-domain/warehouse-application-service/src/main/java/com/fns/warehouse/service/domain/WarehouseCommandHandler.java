@@ -62,8 +62,8 @@ public class WarehouseCommandHandler {
         return warehouseDataMapper.createWarehouseResponse(savedWarehouse);
     }
 
-    public Page<GetAllWarehouseResponse> getAllWarehouse(Integer page, Integer pageSize) {
-        return warehouseRepository.getAllWarehouse(page, pageSize);
+    public Page<GetAllWarehouseResponse> getAllWarehouse(Integer page, Integer pageSize, String name) {
+        return warehouseRepository.getAllWarehouse(page, pageSize, name);
     }
 
     private Warehouse saveWarehouse(Warehouse warehouse) {

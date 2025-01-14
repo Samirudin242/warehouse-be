@@ -28,8 +28,8 @@ public class UserController {
     public ResponseEntity<Page<GetAllUserResponse>> getAllUsers(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
-            @RequestParam(required = false) UUID role,
-            @RequestParam(required = false) String name
+            @RequestParam(required = false, defaultValue = "") UUID role,
+            @RequestParam(required = false, defaultValue = "") String name
     ) {
         log.info("Fetching al es.size()");
         Page<GetAllUserResponse> userResponses = userApplicationService.getAllUsers(page, size, role, name);

@@ -12,5 +12,5 @@ import javax.validation.Valid;
 public interface WarehouseApplicationService {
     CreateWarehouseResponse createWarehouse(@Valid CreateWarehouseCommand createWarehouseCommand);
 
-    Page<GetAllWarehouseResponse> getAllWarehouse(Integer page, Integer pageSize);
+    Page<GetAllWarehouseResponse> getAllWarehouse(Integer page, Integer pageSize, String name);
 }

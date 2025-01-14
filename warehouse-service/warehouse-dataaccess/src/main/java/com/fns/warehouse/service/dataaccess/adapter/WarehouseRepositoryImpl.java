@@ -34,20 +34,21 @@ public class WarehouseRepositoryImpl implements WarehouseRepository {
     }
 
     @Override
-    public Page<GetAllWarehouseResponse> getAllWarehouse(Integer page, Integer size) {
-        // Create pageable request
+    public Page<GetAllWarehouseResponse> getAllWarehouse(Integer page, Integer size, String name) {
         Pageable pageable = PageRequest.of(page, size);
 
-        // Fetch paginated WarehouseEntity data from the repository
-        Page<WarehouseEntity> warehouseEntitiesPage = warehouseJpaRepository.findAll(pageable);
+        Page<WarehouseEntity> warehouseEntitiesPage;
 
-        // Map WarehouseEntity to GetAllWarehouseResponse using the dataAccessMapper
+        if(name.isEmpty()) {
+            warehouseEntitiesPage = warehouseJpaRepository.findAll(pageable);
+        } else {
+            warehouseEntitiesPage = warehouseJpaRepository.findByNameILike(name, pageable);
+        }
+
         List<GetAllWarehouseResponse> getAllWarehouseResponses = warehouseEntitiesPage.getContent().stream()
                 .map(warehouseEntity -> {
-                    // Use dataAccessMapper to get Warehouse object
                     Warehouse warehouse = warehouseDataAccessMapper.warehouseEntityToWarehouseGet(warehouseEntity);
 
-                    // Map to GetAllWarehouseResponse
                     return GetAllWarehouseResponse.builder()
                             .id(warehouse.getId())
                             .name(warehouse.getName())
@@ -57,7 +58,6 @@ public class WarehouseRepositoryImpl implements WarehouseRepository {
                             .build();
                 }).toList();
 
-        // Return paginated response
         return new PageImpl<>(getAllWarehouseResponses, pageable, warehouseEntitiesPage.getTotalElements());
     }
 

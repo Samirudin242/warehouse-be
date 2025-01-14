@@ -27,7 +27,7 @@ public class WarehouseApplicationServiceImpl implements WarehouseApplicationServ
     }
 
     @Override
-    public Page<GetAllWarehouseResponse> getAllWarehouse(Integer page, Integer pageSize) {
-        return warehouseCommandHandler.getAllWarehouse(page, pageSize);
+    public Page<GetAllWarehouseResponse> getAllWarehouse(Integer page, Integer pageSize, String name) {
+        return warehouseCommandHandler.getAllWarehouse(page, pageSize, name);
     }
 }

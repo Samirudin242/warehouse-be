@@ -9,6 +9,6 @@ public interface WarehouseRepository {
 
     Warehouse saveWarehouse(Warehouse warehouse);
 
-    Page<GetAllWarehouseResponse> getAllWarehouse(Integer page, Integer size);
+    Page<GetAllWarehouseResponse> getAllWarehouse(Integer page, Integer size, String name);
 
 }
