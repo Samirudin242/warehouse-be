@@ -35,8 +35,6 @@ public class ProductMapper {
     public ProductEntity productTotProductEntity(Product product) {
         ProductBrandEntity productBrand = getProductBrandById(product.getBrandId());
         ProductCategoriesEntity productCategory = getProductCategoryById(product.getProductCategoryId());
-        ProductSizesEntity productSize = getProductSizeById(product.getSizeId());
-        ProductColorsEntity productColor = getProductColorById(product.getColorId());
 
         return ProductEntity.builder()
                 .id(product.getId())
@@ -48,7 +46,6 @@ public class ProductMapper {
                 .brand(productBrand)
                 .category(productCategory)
 //                .productAndSize(productSize)
-                .productColor(productColor)
                 .build();
     }
 
@@ -62,8 +59,6 @@ public class ProductMapper {
                 .description(productEntity.getDescription())
                .brandId(productEntity.getBrand().getId())
                .productCategoryId(productEntity.getCategory().getId())
-//               .sizeId(productEntity.getProductAndSize().getId())
-                .colorId(productEntity.getProductColor().getId())
                .build();
     }
 

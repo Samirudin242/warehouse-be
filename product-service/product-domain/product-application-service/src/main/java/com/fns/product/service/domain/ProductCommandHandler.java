@@ -34,6 +34,8 @@ public class ProductCommandHandler {
     private final StockRepository stockRepository;
     private final ProductMessagePublisher productMessagePublisher;
     private final ProductDomainService productDomainService;
+    private final ProductAndSizeRepository productAndSizeRepository;
+    private final ProductAndColorRepository productAndColorRepository;
 
     public ProductCommandHandler(
             ProductRepository productRepository, ProductPricesRepository productPricesRepository,
@@ -42,7 +44,7 @@ public class ProductCommandHandler {
             ProductColorsRepository productColorsRepository,
             ProductCategoriesRepository productCategoriesRepository,
             ProductSizesColorBrandRepository productSizesColorBrandRepository,
-            ProductImageRepository productImagesRepository, StockRepository stockRepository, ProductMessagePublisher productMessagePublisher, ProductDomainService productDomainService
+            ProductImageRepository productImagesRepository, StockRepository stockRepository, ProductMessagePublisher productMessagePublisher, ProductDomainService productDomainService, ProductAndSizeRepository productAndSizeRepository, ProductAndColorRepository productAndColorRepository
     ) {
         this.productImagesRepository = productImagesRepository;
         this.productRepository = productRepository;
@@ -55,6 +57,8 @@ public class ProductCommandHandler {
         this.stockRepository = stockRepository;
         this.productMessagePublisher = productMessagePublisher;
         this.productDomainService = productDomainService;
+        this.productAndSizeRepository = productAndSizeRepository;
+        this.productAndColorRepository = productAndColorRepository;
     }
     @Transactional
     public ProductResponse createProduct(CreateProductCommand createProductCommand) {
@@ -94,6 +98,28 @@ public class ProductCommandHandler {
             saveProductImageUrl(productImages);
         }
 
+        if(createProductCommand.getSize_id() != null && !createProductCommand.getSize_id().isEmpty()) {
+            List<ProductAndSize> productAndSize = createProductCommand.getSize_id().stream()
+                    .map(productAndSizeId-> ProductAndSize.builder()
+                            .size_id(productAndSizeId)
+                            .product_id(savedProduct.getId())
+                            .build())
+                    .toList();
+
+            saveProductAndSize(productAndSize);
+        }
+
+        if(createProductCommand.getColor_id() != null && !createProductCommand.getColor_id().isEmpty()) {
+            List<ProductAndColor> productAndColor = createProductCommand.getColor_id().stream()
+                    .map(productAndColorId-> ProductAndColor.builder()
+                            .color_id(productAndColorId)
+                            .product_id(savedProduct.getId())
+                            .build())
+                    .toList();
+
+            saveProductAndColor(productAndColor);
+        }
+
         assert createProductCommand.getImage_url() != null;
         ProductCreatedEvent productEvent = productDomainService.createProduct(
                 savedProduct.getId(),
@@ -105,8 +131,8 @@ public class ProductCommandHandler {
                 createProductCommand.getPrice(),
                 createProductCommand.getBrand_id(),
                 createProductCommand.getProduct_categories_id(),
-                createProductCommand.getSize_id(),
-                createProductCommand.getColor_id(),
+                createProductCommand.getSize_id().isEmpty() ? null : createProductCommand.getSize_id().get(0),
+                createProductCommand.getColor_id().isEmpty() ? null : createProductCommand.getColor_id().get(0),
                 createProductCommand.getImage_url().isEmpty() ? null : createProductCommand.getImage_url().get(0),
                 createProductCommand.getWarehouse_id(),
                 createProductCommand.getQuantity(),
@@ -133,8 +159,6 @@ public class ProductCommandHandler {
         existingProduct.setGender(editProductCommand.getGender());
         existingProduct.setBrandId(editProductCommand.getBrand_id());
         existingProduct.setProductCategoryId(editProductCommand.getProduct_categories_id());
-        existingProduct.setColorId(editProductCommand.getColor_id());
-        existingProduct.setSizeId(editProductCommand.getSize_id());
 
         // Update product images
         if (editProductCommand.getImage_url() != null && !editProductCommand.getImage_url().isEmpty()) {
@@ -209,10 +233,6 @@ public class ProductCommandHandler {
                                 .orElseThrow(() -> new RuntimeException("Brand not found for product: " + product.getId()));
                         ProductCategories category = productCategoriesRepository.findById(product.getProductCategoryId())
                                 .orElseThrow(() -> new RuntimeException("Category not found for product: " + product.getId()));
-                        ProductColors color = productColorsRepository.findById(product.getColorId())
-                                .orElseThrow(() -> new RuntimeException("Color not found for product: " + product.getId()));
-                        ProductSizes size = productSizesColorBrandRepository.findById(product.getSizeId())
-                                .orElseThrow(() -> new RuntimeException("Size not found for product: " + product.getId()));
 
                         return ProductResponse.builder()
                                 .id(product.getId())
@@ -221,10 +241,8 @@ public class ProductCommandHandler {
                                 .description(product.getDescription())
                                 .slug(product.getSlug())
                                 .gender(product.getGender())
-                                .sizes(size)
                                 .brand(brand)
                                 .productCategory(category)
-                                .color(color)
                                 .build();
                     })
                     .collect(Collectors.toList());
@@ -241,10 +259,6 @@ public class ProductCommandHandler {
                 .orElseThrow(() -> new RuntimeException("Brand not found for product: " + id));
         ProductCategories category = productCategoriesRepository.findById(product.getProductCategoryId())
                 .orElseThrow(() -> new RuntimeException("Category not found for product: " + id));
-        ProductColors color = productColorsRepository.findById(product.getColorId())
-                .orElseThrow(() -> new RuntimeException("Color not found for product: " + id));
-        ProductSizes size = productSizesColorBrandRepository.findById(product.getSizeId())
-                .orElseThrow(() -> new RuntimeException("Size not found for product: " + id));
 
         return ProductResponse.builder()
                 .id(product.getId())
@@ -253,10 +267,8 @@ public class ProductCommandHandler {
                 .description(product.getDescription())
                 .slug(product.getSlug())
                 .gender(product.getGender())
-                .sizes(size)
                 .brand(brand)
                 .productCategory(category)
-                .color(color)
                 .build();
     }
 
@@ -337,5 +349,27 @@ public class ProductCommandHandler {
 
     private void deleteProductById(UUID id) {
         productRepository.deleteProduct(id);
+    }
+
+    private void saveProductAndSize(List<ProductAndSize> productAndSize) {
+        try {
+            for (ProductAndSize productAndSizeSave: productAndSize) {
+                productAndSizeRepository.save(productAndSizeSave);
+            }
+        } catch (Exception e) {
+            log.error("Error while saving product images: {}", e.getMessage(), e);
+            throw new RuntimeException("Error while saving product images", e);
+        }
+    }
+
+    private void saveProductAndColor(List<ProductAndColor> productAndColors) {
+        try {
+            for (ProductAndColor productAndColorSave: productAndColors) {
+                productAndColorRepository.save(productAndColorSave);
+            }
+        } catch (Exception e) {
+            log.error("Error while saving product images: {}", e.getMessage(), e);
+            throw new RuntimeException("Error while saving product images", e);
+        }
     }
 }

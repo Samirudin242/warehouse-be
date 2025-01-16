@@ -34,11 +34,6 @@ public class ProductDataMapper {
         ProductCategories category = productCategoriesRepository.findById(createProductCommand.getProduct_categories_id())
                 .orElseThrow(() -> new RuntimeException("Category not found"));
 
-        ProductColors color = productColorsRepository.findById(createProductCommand.getColor_id())
-                .orElseThrow(() -> new RuntimeException("Color not found"));
-
-        ProductSizes size = productSizesColorBrandRepository.findById(createProductCommand.getSize_id())
-                .orElseThrow(() -> new RuntimeException("Size not found"));
 
         return ProductResponse.builder()
                 .id(savedProduct.getId())
@@ -47,10 +42,8 @@ public class ProductDataMapper {
                 .description(savedProduct.getDescription())
                 .slug(savedProduct.getSlug())
                 .gender(savedProduct.getGender())
-                .sizes(size)
                 .brand(brand)
                 .productCategory(category)
-                .color(color)
                 .build();
     }
 
@@ -63,8 +56,6 @@ public class ProductDataMapper {
                 .description(createProductCommand.getDescription())
                 .brandId(createProductCommand.getBrand_id())
                 .productCategoryId(createProductCommand.getProduct_categories_id())
-                .sizeId(createProductCommand.getSize_id())
-                .colorId(createProductCommand.getColor_id())
                 .warehouseId(createProductCommand.getWarehouse_id())
                 .build();
     }

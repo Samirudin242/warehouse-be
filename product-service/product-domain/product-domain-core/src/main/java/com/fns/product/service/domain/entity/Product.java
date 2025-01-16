@@ -11,7 +11,6 @@ import java.util.UUID;
 @Setter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
 public class Product {
 
     private UUID id;
@@ -23,11 +22,10 @@ public class Product {
     private Double price;
     private UUID brandId;
     private UUID productCategoryId;
-    private UUID sizeId;
-    private UUID colorId;
     private String imageUrl;
     private UUID warehouseId;
     private Integer stock;
+
 
     // Private constructor for builder
     private Product(Builder builder) {
@@ -40,8 +38,6 @@ public class Product {
         this.description = builder.description;
         this.brandId = builder.brandId;
         this.productCategoryId = builder.productCategoryId;
-        this.sizeId = builder.sizeId;
-        this.colorId = builder.colorId;
         this.imageUrl = builder.imageUrl;
         this.warehouseId = builder.warehouseId;
         this.stock = builder.stock;
@@ -68,7 +64,6 @@ public class Product {
                 ", price=" + price +
                 ", brandId=" + brandId +
                 ", productCategoryId=" + productCategoryId +
-                ", sizeId=" + sizeId +
                 ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
@@ -76,7 +71,6 @@ public class Product {
 
     // Builder class
     public static class Builder {
-        public UUID colorId;
         private UUID id;
         private String sku;
         private String name;
@@ -86,7 +80,6 @@ public class Product {
         private Double price;
         private UUID brandId;
         private UUID productCategoryId;
-        private UUID sizeId;
         private String imageUrl;
         private UUID warehouseId;
         private Integer stock;
@@ -151,21 +144,6 @@ public class Product {
             return this;
         }
 
-        public Builder sizeId(UUID sizeId) {
-            if (sizeId == null) {
-                throw new IllegalArgumentException("Size ID cannot be null.");
-            }
-            this.sizeId = sizeId;
-            return this;
-        }
-
-        public Builder colorId(UUID colorId) {
-            if (colorId == null) {
-                throw new IllegalArgumentException("Color ID cannot be null.");
-            }
-            this.colorId = colorId;
-            return this;
-        }
 
         public Builder imageUrl(String imageUrl) {
             this.imageUrl = imageUrl;

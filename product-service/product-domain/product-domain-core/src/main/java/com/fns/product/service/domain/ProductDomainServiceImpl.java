@@ -23,8 +23,6 @@ public class ProductDomainServiceImpl implements ProductDomainService {
                 .price(price)
                 .brandId(brandId)
                 .productCategoryId(productCategoryId)
-                .sizeId(sizeId)
-                .colorId(colorId)
                 .imageUrl(imageUrl)
                 .warehouseId(warehouseId)
                 .stock(stock)

@@ -35,8 +35,6 @@ public class ProductMessagingMapper {
                .price(product.getPrice())
                .brandId(product.getBrandId())
                .productCategoryId(product.getProductCategoryId())
-               .sizeId(product.getSizeId())
-               .colorId(product.getColorId())
                .imageUrl(product.getImageUrl())
                .warehouseId(product.getWarehouseId())
                 .stock(product.getStock())
