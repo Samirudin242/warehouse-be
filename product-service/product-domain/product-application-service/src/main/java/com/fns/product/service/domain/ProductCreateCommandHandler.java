@@ -79,11 +79,6 @@ public class ProductCreateCommandHandler {
         ProductCategories category = productCategoriesRepository.findById(createProductCommand.getProduct_categories_id())
                 .orElseThrow(() -> new RuntimeException("Category not found"));
 
-        ProductColors color = productColorsRepository.findById(createProductCommand.getColor_id())
-                .orElseThrow(() -> new RuntimeException("Color not found"));
-
-        ProductSizes size = productSizesColorBrandRepository.findById(createProductCommand.getSize_id())
-                .orElseThrow(() -> new RuntimeException("Size not found"));
 
         return ProductResponse.builder()
                 .id(savedProduct.getId())
@@ -92,10 +87,8 @@ public class ProductCreateCommandHandler {
                 .description(savedProduct.getDescription())
                 .slug(savedProduct.getSlug())
                 .gender(savedProduct.getGender())
-                .sizes(size)
                 .brand(brand)
                 .productCategory(category)
-                .color(color)
                 .build();
     }
 
@@ -110,8 +103,6 @@ public class ProductCreateCommandHandler {
         existingProduct.setGender(editProductCommand.getGender());
         existingProduct.setBrandId(editProductCommand.getBrand_id());
         existingProduct.setProductCategoryId(editProductCommand.getProduct_categories_id());
-        existingProduct.setColorId(editProductCommand.getColor_id());
-        existingProduct.setSizeId(editProductCommand.getSize_id());
 
         log.info("existing product: {}", existingProduct);
         // Save updated product
@@ -153,11 +144,6 @@ public class ProductCreateCommandHandler {
                                 .orElseThrow(() -> new RuntimeException("Brand not found for product: " + product.getId()));
                         ProductCategories category = productCategoriesRepository.findById(product.getProductCategoryId())
                                 .orElseThrow(() -> new RuntimeException("Category not found for product: " + product.getId()));
-                        ProductColors color = productColorsRepository.findById(product.getColorId())
-                                .orElseThrow(() -> new RuntimeException("Color not found for product: " + product.getId()));
-                        ProductSizes size = productSizesColorBrandRepository.findById(product.getSizeId())
-                                .orElseThrow(() -> new RuntimeException("Size not found for product: " + product.getId()));
-
                         return ProductResponse.builder()
                                 .id(product.getId())
                                 .name(product.getName())
@@ -165,10 +151,8 @@ public class ProductCreateCommandHandler {
                                 .description(product.getDescription())
                                 .slug(product.getSlug())
                                 .gender(product.getGender())
-                                .sizes(size)
                                 .brand(brand)
                                 .productCategory(category)
-                                .color(color)
                                 .build();
                     })
                     .collect(Collectors.toList());
@@ -185,10 +169,10 @@ public class ProductCreateCommandHandler {
                 .orElseThrow(() -> new RuntimeException("Brand not found for product: " + id));
         ProductCategories category = productCategoriesRepository.findById(product.getProductCategoryId())
                 .orElseThrow(() -> new RuntimeException("Category not found for product: " + id));
-        ProductColors color = productColorsRepository.findById(product.getColorId())
-                .orElseThrow(() -> new RuntimeException("Color not found for product: " + id));
-        ProductSizes size = productSizesColorBrandRepository.findById(product.getSizeId())
-                .orElseThrow(() -> new RuntimeException("Size not found for product: " + id));
+//        ProductColors color = productColorsRepository.findById(product.getColorId())
+//                .orElseThrow(() -> new RuntimeException("Color not found for product: " + id));
+//        ProductSizes size = productSizesColorBrandRepository.findById(product.getSizeId())
+//                .orElseThrow(() -> new RuntimeException("Size not found for product: " + id));
 
         return ProductResponse.builder()
                 .id(product.getId())
@@ -197,10 +181,10 @@ public class ProductCreateCommandHandler {
                 .description(product.getDescription())
                 .slug(product.getSlug())
                 .gender(product.getGender())
-                .sizes(size)
+//                .sizes(size)
                 .brand(brand)
                 .productCategory(category)
-                .color(color)
+//                .color(color)
                 .build();
     }
 

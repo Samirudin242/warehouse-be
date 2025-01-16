@@ -12,7 +12,7 @@ import java.util.UUID;
 @Service
 public class ProductPhotoServiceImpl implements ProductPhotoService {
 
-     private final ProductPhotoRepository productPhotoRepository;
+    private final ProductPhotoRepository productPhotoRepository;
 
     public ProductPhotoServiceImpl(ProductPhotoRepository productPhotoRepository) {
         this.productPhotoRepository = productPhotoRepository;

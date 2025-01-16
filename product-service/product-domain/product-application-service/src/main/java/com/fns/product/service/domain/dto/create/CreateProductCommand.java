@@ -40,10 +40,10 @@ public class CreateProductCommand {
     private UUID product_categories_id;
 
     @NotNull
-    private UUID size_id;
+    private List<UUID> size_id;
 
     @NotNull
-    private UUID color_id;
+    private List<UUID> color_id;
 
     @NotNull
     private UUID warehouse_id;

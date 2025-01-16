@@ -52,9 +52,6 @@ public class ProductEntity {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductAndSizeEntity> productAndSizes;
 
-    @ManyToOne
-    @JoinColumn(name = "color_id", referencedColumnName = "id")
-    private ProductColorsEntity productColor;
 
     @OneToMany
     @JoinColumn(name = "product_id", referencedColumnName = "id")

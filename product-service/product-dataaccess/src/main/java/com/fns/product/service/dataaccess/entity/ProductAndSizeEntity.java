@@ -2,6 +2,8 @@ package com.fns.product.service.dataaccess.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -31,11 +33,10 @@ public class ProductAndSizeEntity {
     @JoinColumn(name = "size_id", nullable = false)
     private ProductSizesEntity size;
 
-    @CreatedDate
+    @CreationTimestamp
     @Column(updatable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime createdAt;
 
-    @LastModifiedDate
-    @Column()
-    private LocalDateTime updatedAt = LocalDateTime.now();
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 }
