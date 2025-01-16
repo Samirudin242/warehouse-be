@@ -4,3 +4,6 @@ target/
 # Ignore IDE files
 .idea/
 *.iml
+
+infrastructure/docker-compose/volumes/kafka/
+

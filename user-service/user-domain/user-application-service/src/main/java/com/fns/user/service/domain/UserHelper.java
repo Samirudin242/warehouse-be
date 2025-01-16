@@ -121,7 +121,7 @@ public class UserHelper {
 
         } catch (Exception e) {
             log.error("Error while saving user: {}", e.getMessage());
-            throw new UserAlreadyExistsException("User with the same username or email already exists");
+            throw new UserAlreadyExistsException(e.getMessage());
         }
     }
 
