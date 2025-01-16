@@ -19,9 +19,6 @@ import java.util.UUID;
 @Data
 public class CreateUserCommand {
 
-
-    private  final UUID id;
-
     private final String name;
 
     @NotNull

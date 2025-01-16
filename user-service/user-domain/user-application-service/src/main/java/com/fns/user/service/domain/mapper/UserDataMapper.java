@@ -13,7 +13,7 @@ public class UserDataMapper {
 
     public UserResponse userToUserResponse(CreateUserCommand createUserCommand) {
         return UserResponse.builder()
-                .id(createUserCommand.getId())
+//                .id(createUserCommand.getId())
                 .name(createUserCommand.getName())
                 .user_name(createUserCommand.getUser_name())
                 .email(createUserCommand.getEmail())

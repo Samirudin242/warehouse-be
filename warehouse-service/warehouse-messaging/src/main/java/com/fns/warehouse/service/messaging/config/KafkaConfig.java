@@ -17,14 +17,15 @@ public class KafkaConfig {
     @Bean
     public Map<String, Object> producerConfigs() {
         Map<String, Object> props = new HashMap<>();
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "pkc-ldvr1.asia-southeast1.gcp.confluent.cloud:9092");
-        props.put("sasl.mechanism", "PLAIN");
-        props.put("sasl.jaas.config",
-                "org.apache.kafka.common.security.plain.PlainLoginModule required username='A2VCCYFEXERRJFK7' password='T1PRDVTCvX0z7sKX3daWHwJC0KS8rWIJwjKrsvIiMJkwEVqIWkEH8YQESlHSS4ni';");
-        props.put("security.protocol", "SASL_SSL");
+
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:19092,localhost:29092,localhost:39092");
+
+        props.put("security.protocol", "PLAINTEXT");
+
         props.put("session.timeout.ms", "45000");
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+
         return props;
     }
 
