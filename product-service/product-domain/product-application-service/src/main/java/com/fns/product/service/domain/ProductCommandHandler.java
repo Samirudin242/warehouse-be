@@ -11,6 +11,9 @@ import com.fns.product.service.domain.ports.output.message.ProductMessagePublish
 import com.fns.product.service.domain.ports.output.repository.*;
 import com.fns.product.service.domain.entity.ProductImages;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -221,13 +224,16 @@ public class ProductCommandHandler {
 
         return productDataMapper.editProductResponse(editProductCommand, existingProduct);
     }
-    public List<ProductResponse> getAllProducts() {
+    public Page<ProductResponse> getAllProducts(Integer page, Integer size, String name) {
         try {
-            // Fetch all products from the repository
-            List<Product> products = getProducts();
+            // Create a pageable object
+            PageRequest pageable = PageRequest.of(page, size);
 
-            // Map each Product to a CreateProductResponse with detailed data
-            return products.stream()
+            // Fetch paginated products from the repository
+            Page<Product> products = getProducts(page, size, name);
+
+            // Map each Product to a ProductResponse
+            List<ProductResponse> productResponses = products.getContent().stream()
                     .map(product -> {
                         ProductBrand brand = productBrandRepository.findById(product.getBrandId())
                                 .orElseThrow(() -> new RuntimeException("Brand not found for product: " + product.getId()));
@@ -246,6 +252,9 @@ public class ProductCommandHandler {
                                 .build();
                     })
                     .collect(Collectors.toList());
+
+            // Return a new Page with the mapped content
+            return new PageImpl<>(productResponses, pageable, products.getTotalElements());
         } catch (Exception e) {
             log.error("Error while fetching all products: {}", e.getMessage(), e);
             throw new RuntimeException("Error while fetching all products", e);
@@ -339,8 +348,8 @@ public class ProductCommandHandler {
         }
     }
 
-    private List<Product> getProducts() {
-        return productRepository.getProducts();
+    private Page<Product> getProducts(Integer page, Integer size, String name) {
+        return productRepository.getProducts(page, size, name);
     }
 
     private Product getProduct(UUID id) {

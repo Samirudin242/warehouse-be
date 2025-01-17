@@ -1,9 +1,12 @@
 com/fns/product/service/domain/entity/ProductColors.class
+com/fns/product/service/domain/entity/ProductAndSize$ProductAndSizeBuilder.class
 com/fns/product/service/domain/entity/ProductSizes$Builder.class
 com/fns/product/service/domain/valueObject/Price.class
+com/fns/product/service/domain/entity/ProductAndSize.class
 com/fns/product/service/domain/ProductDomainService.class
 com/fns/product/service/domain/valueObject/Gender.class
 com/fns/product/service/domain/ProductDomainServiceImpl.class
+com/fns/product/service/domain/entity/ProductAndColor.class
 com/fns/product/service/domain/entity/Stock$StockBuilder.class
 com/fns/product/service/domain/entity/ProductBrand$Builder.class
 com/fns/product/service/domain/event/ProductCreatedEvent.class
@@ -26,3 +29,4 @@ com/fns/product/service/domain/event/ProductEvent.class
 com/fns/product/service/domain/dto/ErrorResponse.class
 com/fns/product/service/domain/entity/ProductImages$Builder.class
 com/fns/product/service/domain/entity/Product.class
+com/fns/product/service/domain/entity/ProductAndColor$ProductAndColorBuilder.class

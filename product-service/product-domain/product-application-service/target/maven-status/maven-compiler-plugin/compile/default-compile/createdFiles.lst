@@ -1,5 +1,6 @@
 com/fns/product/service/domain/dto/get/ProductSizeBrandColorResponse$ProductSizeBrandColorResponseBuilder.class
 com/fns/product/service/domain/dto/edit/EditProductCommand$EditProductCommandBuilder.class
+com/fns/product/service/domain/ports/output/repository/ProductAndColorRepository.class
 com/fns/product/service/domain/dto/create/CreateProductCommand$CreateProductCommandBuilder.class
 com/fns/product/service/domain/ProductApplicationServiceImpl.class
 com/fns/product/service/domain/dto/edit/EditProductCommand.class
@@ -33,6 +34,7 @@ com/fns/product/service/domain/ports/output/message/ProductMessagePublisher.clas
 com/fns/product/service/domain/dto/get/ProductSizeBrandColorResponse.class
 com/fns/product/service/domain/ProductCommandHandler.class
 com/fns/product/service/domain/WarehouseMessageImpl.class
+com/fns/product/service/domain/ports/output/repository/ProductAndSizeRepository.class
 com/fns/product/service/domain/ProductSizeBrandColorCommandHandler.class
 com/fns/product/service/domain/ProductCategoryCommandHandler.class
 com/fns/product/service/domain/ports/input/message/listener/WarehouseMessageListener.class

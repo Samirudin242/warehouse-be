@@ -9,6 +9,7 @@ import com.fns.product.service.domain.ports.input.service.ProductApplicationServ
 import com.fns.product.service.domain.ports.input.service.ProductPhotoService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,8 +33,12 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductResponse>> getAllProducts() {
-        List<ProductResponse> products = productApplicationService.getProducts();
+    public ResponseEntity<Page<ProductResponse>> getAllProducts(
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "10") Integer size,
+            @RequestParam(required = false, defaultValue = "") String name
+    ) {
+        Page<ProductResponse> products = productApplicationService.getProducts(page, size, name);
         return ResponseEntity.ok(products);
     }
 

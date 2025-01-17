@@ -6,6 +6,10 @@ import com.fns.product.service.dataaccess.repository.ProductJpaRepository;
 import com.fns.product.service.domain.entity.Product;
 import com.fns.product.service.domain.ports.output.repository.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,16 +39,16 @@ public class ProductServiceImpl implements ProductRepository {
     }
 
     @Override
-    public List<Product> getProducts() {
-        // Fetch all product entities from the database
-        List<ProductEntity> productEntities = productJpaRepository.findAll();
+    public Page<Product> getProducts(Integer page, Integer size, String name) {
+        Pageable pageable = PageRequest.of(page, size);
 
-        // Map the list of ProductEntity to a list of Product
+        Page<ProductEntity> productEntities = productJpaRepository.findAll(pageable);
+
         List<Product> products = productEntities.stream()
                 .map(productMapper::productFromProductEntity)
                 .collect(Collectors.toList());
 
-        return products;
+        return new PageImpl<>(products, pageable, productEntities.getTotalElements());
     }
 
     @Override

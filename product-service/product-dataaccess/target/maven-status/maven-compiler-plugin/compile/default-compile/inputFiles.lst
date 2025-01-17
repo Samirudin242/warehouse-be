@@ -1,3 +1,5 @@
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/adapter/ProductAndColorImpl.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/adapter/ProductAndSizeImpl.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/adapter/ProductBrandImpl.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/adapter/ProductCategoryImpl.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/adapter/ProductColorImpl.java
@@ -10,6 +12,7 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/adapter/WarehouseRepositoryImpl.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/config/GoogleCloudStorageConfig.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/LocationEntity.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/ProductAndColorEntity.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/ProductAndSizeEntity.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/ProductBrandEntity.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/ProductCategoriesEntity.java
@@ -22,6 +25,8 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/StockEntity.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/UserEntity.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/entity/WarehouseEntity.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/mapper/ProductAndColorMapper.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/mapper/ProductAndSizeMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/mapper/ProductBrandMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/mapper/ProductCategoryMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/mapper/ProductColorMapper.java
@@ -32,6 +37,8 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/mapper/StockMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/mapper/WarehouseDataAccessMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/repository/LocationJpaRepository.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/repository/ProductAndColorJpaRepository.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/repository/ProductAndSizeJpaRepository.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/repository/ProductBrandJpaRepository.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/repository/ProductCategoriesJpaRepository.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/repository/ProductColorsJpaRepository.java
