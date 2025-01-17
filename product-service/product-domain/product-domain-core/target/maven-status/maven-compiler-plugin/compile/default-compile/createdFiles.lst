@@ -15,7 +15,7 @@ com/fns/product/service/domain/dto/ErrorResponse$ErrorResponseBuilder.class
 com/fns/product/service/domain/entity/ProductImages.class
 com/fns/product/service/domain/entity/Product$Builder.class
 com/fns/product/service/domain/entity/ProductCategories$Builder.class
-com/fns/product/service/domain/entity/ProductPrices$Builder.class
+com/fns/product/service/domain/entity/ProductPrices$ProductPricesBuilder.class
 com/fns/product/service/domain/entity/Warehouse.class
 com/fns/product/service/domain/entity/ProductPrices.class
 com/fns/product/service/domain/entity/Warehouse$WarehouseBuilder.class

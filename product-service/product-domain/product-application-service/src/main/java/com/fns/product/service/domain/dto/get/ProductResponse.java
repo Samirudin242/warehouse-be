@@ -22,7 +22,11 @@ public class ProductResponse {
     private final String slug;
     private final String gender;
     private ProductSizes sizes;
-    private ProductBrand brand;  // Add brand information
-    private ProductCategories productCategory;  // Add product category information
-    private ProductColors color;  // Add color information
+    private ProductBrand brand;
+    private ProductCategories productCategory;
+    private ProductColors color;
+    private String warehouse;
+    private String imageUrl;
+    private Integer stock;
+    private final Double price;
 }

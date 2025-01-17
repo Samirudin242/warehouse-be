@@ -226,10 +226,8 @@ public class ProductCommandHandler {
     }
     public Page<ProductResponse> getAllProducts(Integer page, Integer size, String name) {
         try {
-            // Create a pageable object
             PageRequest pageable = PageRequest.of(page, size);
 
-            // Fetch paginated products from the repository
             Page<Product> products = getProducts(page, size, name);
 
             // Map each Product to a ProductResponse
@@ -237,8 +235,19 @@ public class ProductCommandHandler {
                     .map(product -> {
                         ProductBrand brand = productBrandRepository.findById(product.getBrandId())
                                 .orElseThrow(() -> new RuntimeException("Brand not found for product: " + product.getId()));
+
                         ProductCategories category = productCategoriesRepository.findById(product.getProductCategoryId())
                                 .orElseThrow(() -> new RuntimeException("Category not found for product: " + product.getId()));
+
+                        ProductPrices prices = productPricesRepository.getPriceByProductId(product.getId());
+
+                        List<ProductImages> productImages  = productImagesRepository.findByProductId(product.getId());
+
+                        List<Stock> allStock = stockRepository.findByProductId(product.getId());
+
+                        Integer totalStock = allStock.stream()
+                                .mapToInt(Stock::getQuantity)
+                                .sum();
 
                         return ProductResponse.builder()
                                 .id(product.getId())
@@ -249,6 +258,9 @@ public class ProductCommandHandler {
                                 .gender(product.getGender())
                                 .brand(brand)
                                 .productCategory(category)
+                                .stock(totalStock)
+                                .imageUrl(productImages.isEmpty() ? null : productImages.get(0).getImageUrl())
+                                .price(prices.getPrice())
                                 .build();
                     })
                     .collect(Collectors.toList());
