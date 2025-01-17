@@ -5,6 +5,7 @@ import com.fns.product.service.domain.dto.get.ProductCategoryResponse;
 import com.fns.product.service.domain.dto.get.ProductResponse;
 import com.fns.product.service.domain.dto.edit.EditProductCommand;
 import com.fns.product.service.domain.dto.get.ProductSizeBrandColorResponse;
+import org.springframework.data.domain.Page;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.UUID;
 public interface ProductApplicationService {
     ProductResponse createProduct (@Valid CreateProductCommand createProductCommand);
 
-    List<ProductResponse> getProducts();
+    Page<ProductResponse> getProducts(Integer page, Integer size, String name);
 
     ProductResponse getProductById(UUID id);
 

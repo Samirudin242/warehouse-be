@@ -7,6 +7,7 @@ import com.fns.product.service.domain.dto.edit.EditProductCommand;
 import com.fns.product.service.domain.dto.get.ProductSizeBrandColorResponse;
 import com.fns.product.service.domain.ports.input.service.ProductApplicationService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -34,8 +35,8 @@ public class ProductApplicationServiceImpl implements ProductApplicationService 
     }
 
     @Override
-    public List<ProductResponse> getProducts() {
-        return productCommandHandler.getAllProducts();
+    public Page<ProductResponse> getProducts(Integer page, Integer size, String name) {
+        return productCommandHandler.getAllProducts(page, size, name);
     }
 
     @Override
