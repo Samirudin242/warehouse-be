@@ -33,6 +33,7 @@ com/fns/product/service/dataaccess/repository/LocationJpaRepository.class
 com/fns/product/service/dataaccess/repository/StockJpaRepository.class
 com/fns/product/service/dataaccess/entity/ProductEntity.class
 com/fns/product/service/dataaccess/repository/ProductBrandJpaRepository.class
+com/fns/product/service/dataaccess/adapter/ProductReviewImpl.class
 com/fns/product/service/dataaccess/entity/StockEntity$StockEntityBuilder.class
 com/fns/product/service/dataaccess/config/GoogleCloudStorageConfig.class
 com/fns/product/service/dataaccess/mapper/ProductCategoryMapper.class

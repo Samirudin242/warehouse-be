@@ -23,14 +23,9 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public void save(Product product) {
 
-        log.info("Received product to save: {}", product);
-
         ProductEntity entity = productDataAccessMapper.productToProductEntity(product);
-
-        log.info("Saving product to database: {}", entity);
 
         ProductEntity saved =  productJpaRepository.save(entity);
 
-        log.info("Saved product<<<<<<<<<<<<: {}", saved);
     }
 }

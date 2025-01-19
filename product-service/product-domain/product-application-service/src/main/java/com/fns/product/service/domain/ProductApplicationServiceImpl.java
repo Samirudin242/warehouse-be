@@ -73,4 +73,9 @@ public class ProductApplicationServiceImpl implements ProductApplicationService 
     public List<ProductSizeBrandColorResponse> getProductColor() {
         return productSizeBrandColorCommandHandler.getAllProductColor();
     }
+
+    @Override
+    public Page<ProductResponse> getAllProductName(Integer page, Integer size, String name) {
+        return null;
+    }
 }

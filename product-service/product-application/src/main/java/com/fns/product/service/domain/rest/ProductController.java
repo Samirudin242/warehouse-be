@@ -42,27 +42,13 @@ public class ProductController {
         return ResponseEntity.ok(products);
     }
 
-    @GetMapping("/products-size")
-    public ResponseEntity<List<ProductSizeBrandColorResponse>> getAllProductSize() {
-        List<ProductSizeBrandColorResponse> products = productApplicationService.getProductSize();
-        return ResponseEntity.ok(products);
-    }
-
-    @GetMapping("/products-category")
-    public ResponseEntity<List<ProductCategoryResponse>> getAllProductCategory() {
-        List<ProductCategoryResponse> products = productApplicationService.getProductCategory();
-        return ResponseEntity.ok(products);
-    }
-
-    @GetMapping("/products-brand")
-    public ResponseEntity<List<ProductSizeBrandColorResponse>> getAllProductBrand() {
-        List<ProductSizeBrandColorResponse> products = productApplicationService.getProductBrand();
-        return ResponseEntity.ok(products);
-    }
-
-    @GetMapping("/products-color")
-    public ResponseEntity<List<ProductSizeBrandColorResponse>> getAllProductColor() {
-        List<ProductSizeBrandColorResponse> products = productApplicationService.getProductColor();
+    @GetMapping("/products-name")
+    public ResponseEntity<Page<ProductResponse>> getAllProductName(
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "10") Integer size,
+            @RequestParam(required = false, defaultValue = "") String name
+    ) {
+        Page<ProductResponse> products = productApplicationService.getProducts(page, size, name);
         return ResponseEntity.ok(products);
     }
 

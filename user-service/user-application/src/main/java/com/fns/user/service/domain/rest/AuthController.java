@@ -61,11 +61,11 @@ public class AuthController {
         }
 
         ResponseCookie cookie = ResponseCookie.from("accessToken", loginResponse.getAccessToken())
-                .httpOnly(true)  // Prevent JavaScript access
-                .secure(false)   // HTTPS is not required for local development
-                .path("/")       // Cookie available site-wide
-                .maxAge(24 * 60 * 60)  // Expiry time in seconds
-                .sameSite("None") // Allow cross-origin requests
+                .httpOnly(true)
+                .secure(false)
+                .path("/")
+                .maxAge(24 * 60 * 60)
+                .sameSite("None")
                 .build();
 
         // Add the cookie to the response

@@ -1,3 +1,4 @@
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/ProductMessageListenerImpl.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/UserCommandHandler.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/UserMessageListenerImpl.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/WarehouseApplicationServiceImpl.java
@@ -5,13 +6,18 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/create/CreateWarehouseCommand.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/get/CreateWarehouseResponse.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/get/GetAllWarehouseResponse.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/message/ProductModel.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/message/UserModel.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/response/ErrorResponse.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/mapper/ProductDataMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/mapper/UserDataMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/mapper/WarehouseDataMapper.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/ports/input/message/ProductMessageListener.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/ports/input/message/UserMessageListener.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/ports/input/service/WarehouseApplicationService.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/ports/output/message/WarehouseMessagePublisher.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/ports/output/repository/LocationRepository.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/ports/output/repository/ProductRepository.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/ports/output/repository/StockRepository.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/ports/output/repository/UserRepository.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/ports/output/repository/WarehouseRepository.java

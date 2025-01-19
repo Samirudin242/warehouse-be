@@ -42,7 +42,13 @@ public class ProductServiceImpl implements ProductRepository {
     public Page<Product> getProducts(Integer page, Integer size, String name) {
         Pageable pageable = PageRequest.of(page, size);
 
-        Page<ProductEntity> productEntities = productJpaRepository.findAll(pageable);
+        Page<ProductEntity> productEntities;
+
+        if(name.isEmpty()) {
+            productEntities  = productJpaRepository.findAll(pageable);
+        } else {
+            productEntities = productJpaRepository.findByNameILike(name, pageable);
+        }
 
         List<Product> products = productEntities.stream()
                 .map(productMapper::productFromProductEntity)

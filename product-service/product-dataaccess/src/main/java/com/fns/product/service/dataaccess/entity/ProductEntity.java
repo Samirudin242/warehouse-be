@@ -42,6 +42,10 @@ public class ProductEntity {
 
     private String gender;
 
+    private Integer totalSell;
+
+    private Integer rating;
+
     @ManyToOne
     @JoinColumn(name = "brand_id", referencedColumnName = "id")
     private ProductBrandEntity brand;

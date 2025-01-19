@@ -25,6 +25,8 @@ public class Product {
     private String imageUrl;
     private UUID warehouseId;
     private Integer stock;
+    private Integer totalSell;
+    private Integer rating;
 
 
     // Private constructor for builder
@@ -41,6 +43,8 @@ public class Product {
         this.imageUrl = builder.imageUrl;
         this.warehouseId = builder.warehouseId;
         this.stock = builder.stock;
+        this.totalSell = builder.totalSell;
+        this.rating = builder.rating;
     }
 
 
@@ -83,11 +87,25 @@ public class Product {
         private String imageUrl;
         private UUID warehouseId;
         private Integer stock;
+        private Integer totalSell;
+        private Integer rating;
 
         public Builder id(UUID id) {
             this.id = id;
             return this;
         }
+
+        public Builder rating(Integer rating) {
+            this.rating = rating;
+            return this;
+        }
+
+        public Builder totalSell(Integer totalSell) {
+            this.totalSell = totalSell;
+            return this;
+        }
+
+
 
         public Builder sku(String sku) {
             this.sku = sku;

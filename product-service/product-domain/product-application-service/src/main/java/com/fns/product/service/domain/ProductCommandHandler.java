@@ -39,6 +39,7 @@ public class ProductCommandHandler {
     private final ProductDomainService productDomainService;
     private final ProductAndSizeRepository productAndSizeRepository;
     private final ProductAndColorRepository productAndColorRepository;
+    private final ProductReviewRepository productReviewRepository;
 
     public ProductCommandHandler(
             ProductRepository productRepository, ProductPricesRepository productPricesRepository,
@@ -47,7 +48,7 @@ public class ProductCommandHandler {
             ProductColorsRepository productColorsRepository,
             ProductCategoriesRepository productCategoriesRepository,
             ProductSizesColorBrandRepository productSizesColorBrandRepository,
-            ProductImageRepository productImagesRepository, StockRepository stockRepository, ProductMessagePublisher productMessagePublisher, ProductDomainService productDomainService, ProductAndSizeRepository productAndSizeRepository, ProductAndColorRepository productAndColorRepository
+            ProductImageRepository productImagesRepository, StockRepository stockRepository, ProductMessagePublisher productMessagePublisher, ProductDomainService productDomainService, ProductAndSizeRepository productAndSizeRepository, ProductAndColorRepository productAndColorRepository, ProductReviewRepository productReviewRepository
     ) {
         this.productImagesRepository = productImagesRepository;
         this.productRepository = productRepository;
@@ -62,6 +63,7 @@ public class ProductCommandHandler {
         this.productDomainService = productDomainService;
         this.productAndSizeRepository = productAndSizeRepository;
         this.productAndColorRepository = productAndColorRepository;
+        this.productReviewRepository = productReviewRepository;
     }
     @Transactional
     public ProductResponse createProduct(CreateProductCommand createProductCommand) {
@@ -261,6 +263,8 @@ public class ProductCommandHandler {
                                 .stock(totalStock)
                                 .imageUrl(productImages.isEmpty() ? null : productImages.get(0).getImageUrl())
                                 .price(prices.getPrice())
+                                .rating(product.getRating())
+                                .totalSell(product.getTotalSell())
                                 .build();
                     })
                     .collect(Collectors.toList());

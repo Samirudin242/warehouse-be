@@ -34,6 +34,7 @@ com/fns/product/service/domain/ports/output/message/ProductMessagePublisher.clas
 com/fns/product/service/domain/dto/get/ProductSizeBrandColorResponse.class
 com/fns/product/service/domain/ProductCommandHandler.class
 com/fns/product/service/domain/WarehouseMessageImpl.class
+com/fns/product/service/domain/ports/output/repository/ProductReviewRepository.class
 com/fns/product/service/domain/ports/output/repository/ProductAndSizeRepository.class
 com/fns/product/service/domain/ProductSizeBrandColorCommandHandler.class
 com/fns/product/service/domain/ProductCategoryCommandHandler.class

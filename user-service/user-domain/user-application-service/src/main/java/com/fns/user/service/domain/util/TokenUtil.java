@@ -22,7 +22,6 @@ public class TokenUtil {
 
     public String generateToken(User user, Role role) {
 
-        // Use the secret key directly without decoding
         return Jwts.builder()
                 .setSubject(user.getId().toString())
                 .claim("username", user.getUser_name())
