@@ -1,6 +1,8 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/com/fns/warehouse/service/domain/WarehouseDomainService.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/com/fns/warehouse/service/domain/WarehouseDomainServiceImpl.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/com/fns/warehouse/service/domain/entity/Location.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/com/fns/warehouse/service/domain/entity/Product.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/com/fns/warehouse/service/domain/entity/Stock.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/com/fns/warehouse/service/domain/entity/User.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/com/fns/warehouse/service/domain/entity/Warehouse.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/com/fns/warehouse/service/domain/event/WarehouseCreatedEvent.java

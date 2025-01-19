@@ -6,6 +6,7 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/adapter/ProductImageImpl.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/adapter/ProductPhotoImpl.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/adapter/ProductPricesImpl.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/adapter/ProductReviewImpl.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/adapter/ProductServiceImpl.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/adapter/ProductSizesColorBrandImpl.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-dataaccess/src/main/java/com/fns/product/service/dataaccess/adapter/StockRepositoryImpl.java

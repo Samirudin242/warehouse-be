@@ -8,6 +8,7 @@ com/fns/product/service/domain/valueObject/Gender.class
 com/fns/product/service/domain/ProductDomainServiceImpl.class
 com/fns/product/service/domain/entity/ProductAndColor.class
 com/fns/product/service/domain/entity/Stock$StockBuilder.class
+com/fns/product/service/domain/entity/ProductReviews$ProductReviewsBuilder.class
 com/fns/product/service/domain/entity/ProductBrand$Builder.class
 com/fns/product/service/domain/event/ProductCreatedEvent.class
 com/fns/product/service/domain/entity/ProductBrand.class
@@ -15,6 +16,7 @@ com/fns/product/service/domain/dto/ErrorResponse$ErrorResponseBuilder.class
 com/fns/product/service/domain/entity/ProductImages.class
 com/fns/product/service/domain/entity/Product$Builder.class
 com/fns/product/service/domain/entity/ProductCategories$Builder.class
+com/fns/product/service/domain/entity/ProductReviews.class
 com/fns/product/service/domain/entity/ProductPrices$ProductPricesBuilder.class
 com/fns/product/service/domain/entity/Warehouse.class
 com/fns/product/service/domain/entity/ProductPrices.class

@@ -29,4 +29,7 @@ public interface ProductApplicationService {
     List<ProductSizeBrandColorResponse> getProductBrand();
 
     List<ProductSizeBrandColorResponse> getProductColor();
+
+    Page<ProductResponse> getAllProductName(Integer page, Integer size, String name);
+
 }

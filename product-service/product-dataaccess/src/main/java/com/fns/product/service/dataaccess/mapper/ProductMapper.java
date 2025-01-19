@@ -59,6 +59,8 @@ public class ProductMapper {
                 .description(productEntity.getDescription())
                .brandId(productEntity.getBrand().getId())
                .productCategoryId(productEntity.getCategory().getId())
+                .totalSell(productEntity.getTotalSell())
+                .rating(productEntity.getRating())
                .build();
     }
 

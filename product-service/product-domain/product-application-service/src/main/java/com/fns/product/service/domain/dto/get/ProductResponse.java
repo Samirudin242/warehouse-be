@@ -21,12 +21,14 @@ public class ProductResponse {
     private final String description;
     private final String slug;
     private final String gender;
-    private ProductSizes sizes;
-    private ProductBrand brand;
-    private ProductCategories productCategory;
-    private ProductColors color;
-    private String warehouse;
-    private String imageUrl;
-    private Integer stock;
+    private final ProductSizes sizes;
+    private final ProductBrand brand;
+    private final ProductCategories productCategory;
+    private final ProductColors color;
+    private final String warehouse;
+    private final String imageUrl;
+    private final Integer stock;
     private final Double price;
+    private final Integer totalSell;
+    private final Integer rating;
 }
