@@ -1,13 +1,11 @@
 package com.fns.product.service.domain.dto.get;
 
-import com.fns.product.service.domain.entity.ProductBrand;
-import com.fns.product.service.domain.entity.ProductCategories;
-import com.fns.product.service.domain.entity.ProductColors;
-import com.fns.product.service.domain.entity.ProductSizes;
+import com.fns.product.service.domain.entity.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -21,14 +19,16 @@ public class ProductResponse {
     private final String description;
     private final String slug;
     private final String gender;
-    private final ProductSizes sizes;
     private final ProductBrand brand;
     private final ProductCategories productCategory;
-    private final ProductColors color;
     private final String warehouse;
     private final String imageUrl;
     private final Integer stock;
     private final Double price;
     private final Integer totalSell;
     private final Integer rating;
+    private final List<ProductAndSize> productAndSizes;
+    private final List<ProductAndColor> productAndColors;
+    private final List<ProductImages> listImages;
+    private final ProductPrices productPrice;
 }

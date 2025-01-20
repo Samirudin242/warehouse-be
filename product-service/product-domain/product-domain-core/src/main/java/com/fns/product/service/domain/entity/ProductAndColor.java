@@ -13,4 +13,5 @@ public class ProductAndColor {
     private UUID id;
     private UUID product_id;
     private UUID color_id;
+    private String color;
 }
