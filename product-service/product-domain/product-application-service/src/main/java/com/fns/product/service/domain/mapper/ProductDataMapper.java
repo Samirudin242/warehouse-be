@@ -81,10 +81,8 @@ public class ProductDataMapper {
                 .description(savedProduct.getDescription())
                 .slug(savedProduct.getSlug())
                 .gender(savedProduct.getGender())
-                .sizes(size)
                 .brand(brand)
                 .productCategory(category)
-                .color(color)
                 .build();
     }
 

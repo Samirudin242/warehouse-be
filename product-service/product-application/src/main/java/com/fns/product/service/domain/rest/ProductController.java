@@ -71,7 +71,7 @@ public class ProductController {
     @PostMapping
     public ResponseEntity<ProductResponse> createProduct(@RequestBody CreateProductCommand createProductCommand) {
         ProductResponse productResponse = productApplicationService.createProduct(createProductCommand);
-        log.info("Product created: " + productResponse);
+        log.info("Product created: {}", productResponse);
         return ResponseEntity.ok(productResponse);
     }
 

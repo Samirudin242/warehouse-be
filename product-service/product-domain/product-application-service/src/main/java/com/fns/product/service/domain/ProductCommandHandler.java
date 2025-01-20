@@ -39,7 +39,8 @@ public class ProductCommandHandler {
     private final ProductDomainService productDomainService;
     private final ProductAndSizeRepository productAndSizeRepository;
     private final ProductAndColorRepository productAndColorRepository;
-    private final ProductReviewRepository productReviewRepository;
+
+//    private final ProductReviewRepository productReviewRepository;
 
     public ProductCommandHandler(
             ProductRepository productRepository, ProductPricesRepository productPricesRepository,
@@ -63,7 +64,7 @@ public class ProductCommandHandler {
         this.productDomainService = productDomainService;
         this.productAndSizeRepository = productAndSizeRepository;
         this.productAndColorRepository = productAndColorRepository;
-        this.productReviewRepository = productReviewRepository;
+//        this.productReviewRepository = productReviewRepository;
     }
     @Transactional
     public ProductResponse createProduct(CreateProductCommand createProductCommand) {
@@ -285,6 +286,17 @@ public class ProductCommandHandler {
         ProductCategories category = productCategoriesRepository.findById(product.getProductCategoryId())
                 .orElseThrow(() -> new RuntimeException("Category not found for product: " + id));
 
+        List<ProductAndSize> productSizeList = productAndSizeRepository.getAllByProductId(product.getId());
+        List<ProductAndColor> productColorList = productAndColorRepository.getAllByProductId(product.getId());
+        List<ProductImages> productImagesList = productImagesRepository.findByProductId(product.getId());
+        ProductPrices pricesList = productPricesRepository.getPriceByProductId(product.getId());
+
+        List<Stock> allStock = stockRepository.findByProductId(product.getId());
+
+        Integer totalStock = allStock.stream()
+                .mapToInt(Stock::getQuantity)
+                .sum();
+
         return ProductResponse.builder()
                 .id(product.getId())
                 .name(product.getName())
@@ -294,6 +306,11 @@ public class ProductCommandHandler {
                 .gender(product.getGender())
                 .brand(brand)
                 .productCategory(category)
+                .productAndSizes(productSizeList)
+                .productAndColors(productColorList)
+                .listImages(productImagesList)
+                .productPrice(pricesList)
+                .stock(totalStock)
                 .build();
     }
 
