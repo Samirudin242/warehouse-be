@@ -26,7 +26,7 @@ public class WarehouseCreatedListener {
         this.warehouseMessageListener = warehouseMessageListener;
     }
 
-    @KafkaListener(topics = "warehouse_created", groupId = "warehouse-group")
+    @KafkaListener(topics = "warehouse_created", groupId = "product-group")
     public void listenWarehouse (String message) {
         try {
             WarehouseKafkaModel warehouseKafkaModel = objectMapper.readValue(message, WarehouseKafkaModel.class);

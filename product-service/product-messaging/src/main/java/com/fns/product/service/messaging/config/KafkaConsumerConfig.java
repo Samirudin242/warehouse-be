@@ -24,7 +24,7 @@ public class KafkaConsumerConfig {
 
         props.put("security.protocol", "PLAINTEXT");
 
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, "warehouse-group");
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, "product-group");
 
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
