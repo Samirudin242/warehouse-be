@@ -10,37 +10,22 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "cart_item")
+@Table(name = "product_images", schema = "public")
 @Entity
-public class CartItemEntity {
+public class ProductImages {
 
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
 
-    private UUID selected_color;
-
-    private UUID selected_size;
-
-    private Integer quantity;
-
-    private Integer price;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private CartStatus status;
-
-    @OneToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
-    private ProductEntity product;
+    private String image_url;
 
     @ManyToOne
-    @JoinColumn(name = "cart_id", referencedColumnName = "id", nullable = false)
-    private CartEntity cart;
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private ProductEntity product;
 
     @CreationTimestamp
     @Column(updatable = false)
@@ -48,10 +33,4 @@ public class CartItemEntity {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
-
-    public enum CartStatus {
-        ACTIVE,
-        COMPLETED,
-        CANCELLED
-    }
 }

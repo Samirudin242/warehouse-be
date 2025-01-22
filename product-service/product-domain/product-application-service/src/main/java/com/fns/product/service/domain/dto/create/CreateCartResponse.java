@@ -4,29 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
-import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
 @Builder
-public class CreateCartCommand {
-
-    @NotNull
-    private UUID user_id;
-
-    @NotNull
-    private UUID product_id;
-
-    @NotNull
+public class CreateCartResponse {
+    private UUID id;
     private UUID selected_color;
-
-    @NotNull
     private UUID selected_size;
-
-    @NotNull
+    private UUID user_id;
+    private UUID product_id;
     private Integer quantity;
-
-    @NotNull
     private Double price;
 }

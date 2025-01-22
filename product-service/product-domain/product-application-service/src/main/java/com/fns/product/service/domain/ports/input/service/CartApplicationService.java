@@ -1,4 +1,11 @@
 package com.fns.product.service.domain.ports.input.service;
 
+import com.fns.product.service.domain.dto.create.CreateCartCommand;
+import com.fns.product.service.domain.dto.create.CreateCartResponse;
+import com.fns.product.service.domain.entity.Cart;
+
+import javax.validation.Valid;
+
 public interface CartApplicationService {
+    CreateCartResponse saveCart(@Valid CreateCartCommand createCartCommand);
 }
