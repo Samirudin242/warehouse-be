@@ -1,6 +1,5 @@
 package com.fns.product.service.dataaccess.entity;
 
-import com.fns.domain.entity.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -16,7 +15,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Table(name = "stock")
 @Entity
-public class StockEntity extends BaseEntity {
+public class StockEntity  {
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;

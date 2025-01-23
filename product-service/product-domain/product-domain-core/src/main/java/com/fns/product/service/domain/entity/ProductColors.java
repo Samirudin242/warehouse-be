@@ -9,7 +9,7 @@ public class ProductColors {
     private String filterGroup;
 
     // Constructor for creating a new ProductColors instance
-    public ProductColors(String originalName, String filterGroup) {
+    public ProductColors(UUID id, String originalName, String filterGroup) {
         if (originalName == null || originalName.trim().isEmpty()) {
             throw new IllegalArgumentException("Original name cannot be null or empty.");
         }
@@ -17,7 +17,7 @@ public class ProductColors {
             throw new IllegalArgumentException("Filter group cannot be null or empty.");
         }
 
-        this.id = UUID.randomUUID();
+        this.id = id;
         this.originalName = originalName;
         this.filterGroup = filterGroup;
     }

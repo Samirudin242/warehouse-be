@@ -32,16 +32,6 @@ public class ProductController {
         this.productPhotoService = productPhotoService;
     }
 
-    @GetMapping
-    public ResponseEntity<Page<ProductResponse>> getAllProducts(
-            @RequestParam(defaultValue = "0") Integer page,
-            @RequestParam(defaultValue = "10") Integer size,
-            @RequestParam(required = false, defaultValue = "") String name
-    ) {
-        Page<ProductResponse> products = productApplicationService.getProducts(page, size, name);
-        return ResponseEntity.ok(products);
-    }
-
     @GetMapping("/products-name")
     public ResponseEntity<Page<ProductResponse>> getAllProductName(
             @RequestParam(defaultValue = "0") Integer page,
@@ -52,12 +42,6 @@ public class ProductController {
         return ResponseEntity.ok(products);
     }
 
-
-    @GetMapping("/{id}")
-    public ResponseEntity<ProductResponse> getProduct(@PathVariable UUID id) {
-        ProductResponse product = productApplicationService.getProductById(id);
-        return ResponseEntity.ok(product);
-    }
 
     @PutMapping("/{id}")
     public ResponseEntity<ProductResponse> editProduct(

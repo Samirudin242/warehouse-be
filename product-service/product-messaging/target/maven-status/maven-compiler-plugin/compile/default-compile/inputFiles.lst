@@ -1,9 +1,12 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-messaging/src/main/java/com/fns/product/service/messaging/config/KafkaConfig.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-messaging/src/main/java/com/fns/product/service/messaging/config/KafkaConsumerConfig.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-messaging/src/main/java/com/fns/product/service/messaging/config/MessagingConfig.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-messaging/src/main/java/com/fns/product/service/messaging/listener/UserCreatedListener.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-messaging/src/main/java/com/fns/product/service/messaging/listener/WarehouseCreatedListener.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-messaging/src/main/java/com/fns/product/service/messaging/mapper/ProductMessagingMapper.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-messaging/src/main/java/com/fns/product/service/messaging/mapper/UserMessagingMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-messaging/src/main/java/com/fns/product/service/messaging/model/ProductKafkaModel.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-messaging/src/main/java/com/fns/product/service/messaging/model/UserKafkaModel.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-messaging/src/main/java/com/fns/product/service/messaging/model/WarehouseKafkaModel.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-messaging/src/main/java/com/fns/product/service/messaging/producer/KafkaProducerService.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-messaging/src/main/java/com/fns/product/service/messaging/publisher/kafka/CreateProductKafkaMessagePublisher.java

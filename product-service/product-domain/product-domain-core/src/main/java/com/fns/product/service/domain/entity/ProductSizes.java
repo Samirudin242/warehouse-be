@@ -9,7 +9,7 @@ public class ProductSizes {
     private Boolean isStock;
 
     // Constructor for creating a new ProductSizes instance
-    public ProductSizes(String size, Boolean isStock) {
+    public ProductSizes(UUID id, String size, Boolean isStock) {
         if (size == null || size.trim().isEmpty()) {
             throw new IllegalArgumentException("Size cannot be null or empty.");
         }
@@ -17,7 +17,7 @@ public class ProductSizes {
             throw new IllegalArgumentException("Stock status cannot be null.");
         }
 
-        this.id = UUID.randomUUID();
+        this.id = id;
         this.size = size;
         this.isStock = isStock;
     }

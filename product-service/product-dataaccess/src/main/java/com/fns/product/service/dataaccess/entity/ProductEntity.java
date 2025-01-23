@@ -70,6 +70,7 @@ public class ProductEntity {
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private List<ProductReviews> reviews;
 
+
     @CreatedDate
     @Column(updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();

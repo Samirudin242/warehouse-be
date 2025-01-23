@@ -31,7 +31,7 @@ public class JwtAuthenticationFilter extends org.springframework.web.filter.Once
 
         String requestURI = request.getRequestURI();
 
-        if (requestURI.startsWith("/auth/")) {
+        if (requestURI.startsWith("/product-public/")) {
             filterChain.doFilter(request, response);
             return;
         }

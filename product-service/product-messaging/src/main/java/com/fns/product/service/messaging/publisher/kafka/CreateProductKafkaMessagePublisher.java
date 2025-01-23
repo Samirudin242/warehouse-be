@@ -8,8 +8,12 @@ import com.fns.product.service.messaging.producer.KafkaProducerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Component;
 
+@Component
+@Primary
 public class CreateProductKafkaMessagePublisher implements ProductMessagePublisher {
     private final ProductMessagingMapper productMessagingMapper;
     private KafkaProducerService kafkaProducerService;

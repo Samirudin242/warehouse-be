@@ -4,6 +4,6 @@ import com.fns.domain.event.publisher.DomainEventPublisher;
 import com.fns.product.service.domain.event.ProductCreatedEvent;
 import org.springframework.stereotype.Component;
 
-@Component
+
 public interface ProductMessagePublisher extends DomainEventPublisher<ProductCreatedEvent> {
 }

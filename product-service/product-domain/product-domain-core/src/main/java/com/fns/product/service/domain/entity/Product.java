@@ -106,7 +106,6 @@ public class Product {
         }
 
 
-
         public Builder sku(String sku) {
             this.sku = sku;
             return this;
@@ -123,41 +122,26 @@ public class Product {
         }
 
         public Builder name(String name) {
-            if (name == null || name.trim().isEmpty()) {
-                throw new IllegalArgumentException("Product name cannot be empty.");
-            }
             this.name = name;
             return this;
         }
 
         public Builder gender(String gender) {
-            if (gender == null) {
-                throw new IllegalArgumentException("Product gender cannot be null.");
-            }
             this.gender = gender;
             return this;
         }
 
         public Builder price(Double price) {
-            if (price == null) {
-                throw new IllegalArgumentException("Product price cannot be null.");
-            }
             this.price = price;
             return this;
         }
 
         public Builder brandId(UUID brandId) {
-            if (brandId == null) {
-                throw new IllegalArgumentException("Brand ID cannot be null.");
-            }
             this.brandId = brandId;
             return this;
         }
 
         public Builder productCategoryId(UUID productCategoryId) {
-            if (productCategoryId == null) {
-                throw new IllegalArgumentException("Product category ID cannot be null.");
-            }
             this.productCategoryId = productCategoryId;
             return this;
         }

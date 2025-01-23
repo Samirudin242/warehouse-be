@@ -20,9 +20,12 @@ com/fns/product/service/domain/entity/ProductReviews.class
 com/fns/product/service/domain/entity/ProductPrices$ProductPricesBuilder.class
 com/fns/product/service/domain/entity/Warehouse.class
 com/fns/product/service/domain/entity/ProductPrices.class
+com/fns/product/service/domain/entity/User.class
+com/fns/product/service/domain/entity/Cart$CartBuilder.class
 com/fns/product/service/domain/entity/Warehouse$WarehouseBuilder.class
 com/fns/product/service/domain/entity/ProductSizes.class
 com/fns/product/service/domain/entity/Stock.class
+com/fns/product/service/domain/entity/Cart.class
 com/fns/product/service/domain/exception/ProductDomainException.class
 com/fns/product/service/domain/valueObject/Category.class
 com/fns/product/service/domain/entity/ProductCategories.class
