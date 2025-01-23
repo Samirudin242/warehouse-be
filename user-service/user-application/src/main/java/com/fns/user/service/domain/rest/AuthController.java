@@ -41,10 +41,20 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<UserResponse> createUser(@RequestBody CreateUserCommand createUserCommand) {
+    public ResponseEntity<UserResponse> createUser(@RequestBody CreateUserCommand createUserCommand, HttpServletResponse response) {
         log.info(createUserCommand.toString());
         UserResponse createUserResponse = userApplicationService.createUser(createUserCommand);
-        log.info("user created");
+        log.info("user access token {}", createUserResponse.getAccessToken());
+        ResponseCookie cookie = ResponseCookie.from("accessToken", createUserResponse.getAccessToken())
+                .httpOnly(true)
+                .secure(false)
+                .path("/")
+                .maxAge(24 * 60 * 60)
+                .sameSite("None")
+                .build();
+
+        // Add the cookie to the response
+        response.addHeader("Set-Cookie", cookie.toString());
         return ResponseEntity.ok(createUserResponse);
     }
 
