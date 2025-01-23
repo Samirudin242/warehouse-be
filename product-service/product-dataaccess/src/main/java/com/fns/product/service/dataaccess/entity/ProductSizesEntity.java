@@ -1,5 +1,6 @@
 package com.fns.product.service.dataaccess.entity;
 
+import com.fns.product.service.domain.entity.ProductSizes;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -36,4 +37,7 @@ public class ProductSizesEntity {
     @OneToMany(mappedBy = "size", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductAndSizeEntity> productAndSizes;
 
+    public Object toDomain() {
+        return new ProductSizes(this.id, this.size, this.isStock);
+    }
 }

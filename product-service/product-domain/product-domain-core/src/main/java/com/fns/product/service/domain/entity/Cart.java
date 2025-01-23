@@ -14,10 +14,10 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Cart {
     private UUID id;
-    private UUID selected_color;
-    private UUID selected_size;
+    private ProductColors selected_color;
+    private ProductSizes selected_size;
     private UUID user_id;
-    private UUID product_id;
+    private Product product;
     private Integer quantity;
     private Double price;
 }

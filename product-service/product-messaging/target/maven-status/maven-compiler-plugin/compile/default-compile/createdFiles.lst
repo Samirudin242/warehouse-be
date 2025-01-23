@@ -1,11 +1,14 @@
-com/fns/product/service/messaging/mapper/ProductMessagingMapper.class
 com/fns/product/service/messaging/model/ProductKafkaModel$ProductKafkaModelBuilder.class
 com/fns/product/service/messaging/model/WarehouseKafkaModel$WarehouseKafkaModelBuilder.class
+com/fns/product/service/messaging/model/UserKafkaModel.class
 com/fns/product/service/messaging/model/ProductKafkaModel.class
-com/fns/product/service/messaging/publisher/kafka/CreateProductKafkaMessagePublisher.class
 com/fns/product/service/messaging/model/WarehouseKafkaModel.class
 com/fns/product/service/messaging/config/KafkaConsumerConfig.class
 com/fns/product/service/messaging/listener/WarehouseCreatedListener.class
 com/fns/product/service/messaging/producer/KafkaProducerService.class
 com/fns/product/service/messaging/config/KafkaConfig.class
 com/fns/product/service/messaging/config/MessagingConfig.class
+com/fns/product/service/messaging/mapper/ProductMessagingMapper.class
+com/fns/product/service/messaging/mapper/UserMessagingMapper.class
+com/fns/product/service/messaging/publisher/kafka/CreateProductKafkaMessagePublisher.class
+com/fns/product/service/messaging/listener/UserCreatedListener.class

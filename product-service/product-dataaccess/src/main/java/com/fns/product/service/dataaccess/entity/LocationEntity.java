@@ -1,9 +1,7 @@
 package com.fns.product.service.dataaccess.entity;
 
-import com.fns.domain.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.util.UUID;
 
@@ -14,7 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Table(name = "location")
 @Entity
-public class LocationEntity extends BaseEntity {
+public class LocationEntity  {
     @Id
     private UUID id;
 
