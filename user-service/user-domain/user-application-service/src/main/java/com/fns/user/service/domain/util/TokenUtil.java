@@ -18,7 +18,7 @@ public class TokenUtil {
     @Value("${security.jwt.secret-key}")
     private String secretKey;
 
-    private static final long EXPIRATION_TIME = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+    private static final long EXPIRATION_TIME = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
 
     public String generateToken(User user, Role role) {
 

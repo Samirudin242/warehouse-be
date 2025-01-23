@@ -48,6 +48,7 @@ public class UserResponse {
 
     private final String city_id;
 
+    private final String accessToken;
 
     @NotNull
     private final Boolean is_verified;

@@ -4,12 +4,15 @@ import com.fns.user.service.domain.dto.create.CreateUserCommand;
 import com.fns.user.service.domain.dto.get.UserAlreadyExistsException;
 import com.fns.user.service.domain.dto.get.UserResponse;
 import com.fns.user.service.domain.entity.Location;
+import com.fns.user.service.domain.entity.Role;
 import com.fns.user.service.domain.entity.User;
 import com.fns.user.service.domain.event.UserCreatedEvent;
 import com.fns.user.service.domain.mapper.UserDataMapper;
 import com.fns.user.service.domain.ports.output.message.UserMessagePublisher;
 import com.fns.user.service.domain.ports.output.repository.LocationRepository;
 import com.fns.user.service.domain.ports.output.repository.UserRepository;
+import com.fns.user.service.domain.ports.output.repository.UserRoleRepository;
+import com.fns.user.service.domain.util.TokenUtil;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -24,17 +27,22 @@ public class UserHelper {
     private final UserDomainService userDomainService;
 
     private final UserDataMapper userDataMapper;
+    private final UserRoleRepository userRoleRepository;
+    private final TokenUtil tokenUtil;
+
 
     public UserHelper(// this is called constructor, which is to initialize the object's state, that sets up the initial values for the object attributes
                       UserDomainService userDomainService,
                       UserRepository userRepository, LocationRepository locationRepository, UserMessagePublisher userMessagePublisher, UserDomainService userDomainService1,
-                      UserDataMapper userDataMapper
-            ) {
+                      UserDataMapper userDataMapper, UserRoleRepository userRoleRepository, TokenUtil tokenUtil
+    ) {
         this.userRepository = userRepository;
         this.locationRepository = locationRepository;
         this.userMessagePublisher = userMessagePublisher;
         this.userDomainService = userDomainService1;
         this.userDataMapper = userDataMapper;
+        this.userRoleRepository = userRoleRepository;
+        this.tokenUtil = tokenUtil;
     }
 
     @Transactional
@@ -43,6 +51,9 @@ public class UserHelper {
         User userEntity = userDataMapper.userFromCreateCommand(createUserCommand);
 
         User savedUser = saveUser(userEntity);
+
+        Role role = userRoleRepository.getRoleById(savedUser.getRole_id());
+
 
         log.info("Saved user: " + savedUser);
 
@@ -78,6 +89,10 @@ public class UserHelper {
         //publish the user
         userMessagePublisher.publish(userEvent);
 
+        // Generate the token (e.g., JWT)
+        String accessToken = tokenUtil.generateToken(savedUser, role);
+
+
         return UserResponse.builder()
                 .id(savedUser.getId())
                 .name(createUserCommand.getName())
@@ -93,6 +108,7 @@ public class UserHelper {
                 .province(createUserCommand.getProvince())
                 .address(createUserCommand.getAddress())
                 .postal_code(createUserCommand.getPostal_code())
+                .accessToken(accessToken)
                 .build();
     }
 
