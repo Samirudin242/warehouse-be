@@ -34,7 +34,7 @@ public class CartItemEntity {
     @Column(nullable = false)
     private CartStatus status;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private ProductEntity product;
 
