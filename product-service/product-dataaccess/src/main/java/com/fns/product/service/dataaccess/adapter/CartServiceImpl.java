@@ -45,6 +45,7 @@ public class CartServiceImpl implements CartRepository {
         Optional<CartEntity> cartEntityOptional = cartJpaRepository.findByUsersId(cart.getUser_id());
         CartEntity cartEntity;
 
+
         if (cartEntityOptional.isPresent()) {
             cartEntity = cartEntityOptional.get();
         } else {
@@ -62,7 +63,8 @@ public class CartServiceImpl implements CartRepository {
         ProductEntity productEntity = productJpaRepository.findById(cart.getProduct().getId())
                 .orElseThrow(() -> new IllegalArgumentException("Product not found for id: " + cart.getProduct().getId()));
 
-        Optional<CartItemEntity> existingCartItem = cartItemJpaRepository.findByCartIdAndProductId(cartEntity.getId(), cart.getProduct().getId());
+        Optional<CartItemEntity> existingCartItem = cartItemJpaRepository.findByCart_IdAndProduct_Id(cartEntity.getId(), cart.getProduct().getId());
+
 
         if (existingCartItem.isPresent()) {
             CartItemEntity cartItemEntity = existingCartItem.get();
@@ -81,21 +83,22 @@ public class CartServiceImpl implements CartRepository {
             int updatedTotalPrice = cartEntity.getTotal_price() + (cart.getQuantity() * cart.getPrice().intValue());
             cartEntity.setTotal_price(updatedTotalPrice);
         } else {
-            CartItemEntity cartItemEntity = CartItemEntity.builder()
-                    .selected_color(cart.getSelected_color().getId())
-                    .selected_size(cart.getSelected_size().getId())
-                    .quantity(cart.getQuantity())
-                    .price(cart.getPrice().intValue())
-                    .product(productEntity)
-                    .cart(cartEntity)
-                    .status(CartItemEntity.CartStatus.ACTIVE)
-                    .build();
+                CartItemEntity cartItemEntity = CartItemEntity.builder()
+                        .selected_color(cart.getSelected_color().getId())
+                        .selected_size(cart.getSelected_size().getId())
+                        .quantity(cart.getQuantity())
+                        .price(cart.getPrice().intValue())
+                        .product(productEntity)
+                        .cart(cartEntity)
+                        .status(CartItemEntity.CartStatus.ACTIVE)
+                        .build();
 
-            cartItemJpaRepository.save(cartItemEntity);
+                cartItemJpaRepository.save(cartItemEntity);
 
-            // Update the total price of the cart
-            int updatedTotalPrice = cartEntity.getTotal_price() + (cart.getQuantity() * cart.getPrice().intValue());
-            cartEntity.setTotal_price(updatedTotalPrice);
+                // Update the total price of the cart
+                int updatedTotalPrice = cartEntity.getTotal_price() + (cart.getQuantity() * cart.getPrice().intValue());
+                cartEntity.setTotal_price(updatedTotalPrice);
+
         }
 
         // Save the updated cart
