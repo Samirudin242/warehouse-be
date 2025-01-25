@@ -1,6 +1,6 @@
 package com.fns.product.service.domain.mapper;
 
-import com.fns.product.service.domain.dto.create.CreateCartCommand;
+import com.fns.product.service.domain.dto.create.CartCommand;
 import com.fns.product.service.domain.dto.create.CreateCartResponse;
 import com.fns.product.service.domain.dto.get.CartResponse;
 import com.fns.product.service.domain.entity.Cart;
@@ -28,22 +28,22 @@ public class CartDataMapper {
         this.productSizesColorBrandRepository = productSizesColorBrandRepository;
     }
 
-    public Cart createCart(CreateCartCommand createCartCommand) {
+    public Cart createCart(CartCommand cartCommand) {
 
-        Product product = productRepository.getProductById(createCartCommand.getProduct_id());
-        ProductSizes size = productSizesColorBrandRepository.findById(createCartCommand.getSelected_size())
+        Product product = productRepository.getProductById(cartCommand.getProduct_id());
+        ProductSizes size = productSizesColorBrandRepository.findById(cartCommand.getSelected_size())
                 .orElseThrow(() -> new RuntimeException("Size not found"));
-        ProductColors color = productColorsRepository.findById(createCartCommand.getSelected_color())
+        ProductColors color = productColorsRepository.findById(cartCommand.getSelected_color())
                 .orElseThrow(() -> new RuntimeException("color not found"));
 
         return Cart
                 .builder()
                 .selected_color(color)
                 .selected_size(size)
-                .quantity(createCartCommand.getQuantity())
+                .quantity(cartCommand.getQuantity())
                 .product(product)
-                .user_id(createCartCommand.getUser_id())
-                .price(createCartCommand.getPrice())
+                .user_id(cartCommand.getUser_id())
+                .price(cartCommand.getPrice())
                 .build();
     }
 

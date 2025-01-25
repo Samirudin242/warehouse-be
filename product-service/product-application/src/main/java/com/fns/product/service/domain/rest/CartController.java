@@ -1,11 +1,10 @@
 package com.fns.product.service.domain.rest;
 
 
-import com.fns.product.service.domain.dto.create.CreateCartCommand;
+import com.fns.product.service.domain.dto.create.CartCommand;
 import com.fns.product.service.domain.dto.create.CreateCartResponse;
 import com.fns.product.service.domain.dto.create.CreateProductCommand;
 import com.fns.product.service.domain.dto.get.CartResponse;
-import com.fns.product.service.domain.dto.get.ProductResponse;
 import com.fns.product.service.domain.ports.input.service.CartApplicationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +25,8 @@ public class CartController {
     }
 
     @PostMapping
-    public ResponseEntity<CreateCartResponse> createCart(@RequestBody CreateCartCommand createCartCommand) {
-        CreateCartResponse createCartResponse = cartApplicationService.saveCart(createCartCommand);
+    public ResponseEntity<CreateCartResponse> createCart(@RequestBody CartCommand cartCommand) {
+        CreateCartResponse createCartResponse = cartApplicationService.saveCart(cartCommand);
         log.info("Product created: {}", createCartResponse);
         return ResponseEntity.ok(createCartResponse);
     }
@@ -38,4 +37,15 @@ public class CartController {
         return ResponseEntity.ok(getAllCart);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<CreateCartResponse> editCart(@RequestBody CartCommand cartCommand, @PathVariable UUID id) {
+
+        log.info("cart command {}", cartCommand);
+        log.info("id {}", id);
+
+        CreateCartResponse updatedCart = cartApplicationService.editCart(cartCommand, id);
+
+        return ResponseEntity.ok(updatedCart);
+
+    }
 }
