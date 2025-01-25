@@ -10,7 +10,7 @@ import java.util.UUID;
 @Getter
 @AllArgsConstructor
 @Builder
-public class CreateCartCommand {
+public class CartCommand {
 
     @NotNull
     private UUID user_id;
@@ -28,5 +28,5 @@ public class CreateCartCommand {
     private Integer quantity;
 
     @NotNull
-    private Double price;
+    private Integer price;
 }

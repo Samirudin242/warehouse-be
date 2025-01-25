@@ -1,6 +1,6 @@
 package com.fns.product.service.domain;
 
-import com.fns.product.service.domain.dto.create.CreateCartCommand;
+import com.fns.product.service.domain.dto.create.CartCommand;
 import com.fns.product.service.domain.dto.create.CreateCartResponse;
 import com.fns.product.service.domain.dto.get.CartResponse;
 import com.fns.product.service.domain.entity.Cart;
@@ -23,12 +23,20 @@ public class CartCommandHandler {
         this.cartDataMapper = cartDataMapper;
     }
 
-    CreateCartResponse saveCart(CreateCartCommand createCartCommand) {
-        Cart createCart = cartDataMapper.createCart(createCartCommand);
+    CreateCartResponse saveCart(CartCommand cartCommand) {
+        Cart createCart = cartDataMapper.createCart(cartCommand);
 
         Cart saved = createCart(createCart);
 
         return cartDataMapper.getCreateCartResponse(saved);
+    }
+
+    CreateCartResponse editCart(CartCommand cartCommand, UUID id) {
+        Cart cart = cartDataMapper.createCart(cartCommand);
+
+        Cart edited = updateCart(cart, id);
+
+        return cartDataMapper.getCreateCartResponse(edited);
     }
 
     List<CartResponse> getCarts(UUID userId) {
@@ -45,6 +53,15 @@ public class CartCommandHandler {
             throw new RuntimeException("Failed to create cart", e);
         }
     }
+    Cart updateCart(Cart cart, UUID id) {
+        try {
+            return cartRepository.editCart(cart, id);
+        } catch (Exception e) {
+            log.error("Failed to create cart: {}", cart, e);
+            throw new RuntimeException("Failed to create cart", e);
+        }
+    }
+
 
     List<Cart> getAllCart(UUID userId) {
         try {

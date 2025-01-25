@@ -8,5 +8,7 @@ import java.util.UUID;
 public interface CartRepository {
     Cart saveCart(Cart cart);
 
+    Cart editCart(Cart cart, UUID id);
+
     List<Cart> getAllCart(UUID userId);
 }

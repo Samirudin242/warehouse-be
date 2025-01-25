@@ -19,5 +19,5 @@ public class Cart {
     private UUID user_id;
     private Product product;
     private Integer quantity;
-    private Double price;
+    private Integer price;
 }

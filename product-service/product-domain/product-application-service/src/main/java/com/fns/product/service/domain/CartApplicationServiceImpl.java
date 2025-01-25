@@ -1,10 +1,8 @@
 package com.fns.product.service.domain;
 
-import com.fns.product.service.domain.dto.create.CreateCartCommand;
+import com.fns.product.service.domain.dto.create.CartCommand;
 import com.fns.product.service.domain.dto.create.CreateCartResponse;
-import com.fns.product.service.domain.dto.get.CartResponse;
 import com.fns.product.service.domain.ports.input.service.CartApplicationService;
-import com.fns.product.service.domain.ports.output.repository.CartRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -24,12 +22,17 @@ public class CartApplicationServiceImpl implements CartApplicationService {
     }
 
     @Override
-    public CreateCartResponse saveCart(CreateCartCommand createCartCommand) {
-        return cartCommandHandler.saveCart(createCartCommand);
+    public CreateCartResponse saveCart(CartCommand cartCommand) {
+        return cartCommandHandler.saveCart(cartCommand);
     }
 
     @Override
-    public List<CartResponse> getCartResponseList(UUID userId) {
+    public List<com.fns.product.service.domain.dto.get.CartResponse> getCartResponseList(UUID userId) {
         return cartCommandHandler.getCarts(userId);
+    }
+
+    @Override
+    public CreateCartResponse editCart(CartCommand cartCommand, UUID id) {
+        return cartCommandHandler.editCart(cartCommand, id);
     }
 }

@@ -111,7 +111,46 @@ public class CartServiceImpl implements CartRepository {
                 cart.getUser_id(),
                 cart.getProduct(),
                 cart.getQuantity(),
-                (double) cartEntity.getTotal_price()
+                cartEntity.getTotal_price()
+        );
+    }
+
+    @Override
+    @Transactional
+    public Cart editCart(Cart cart, UUID id) {
+        CartItemEntity existingCartItemEntityOptional = cartItemJpaRepository.findById(id)
+                                    .orElseThrow(() -> new IllegalArgumentException("cart item not found for id: " + cart.getId()));
+
+
+        CartEntity cartEntityOptional = cartJpaRepository.findById(existingCartItemEntityOptional.getCart().getId())
+                                    .orElseThrow(() -> new IllegalArgumentException("cart not found for id: " + existingCartItemEntityOptional.getCart().getId()));
+
+        int updatedTotalPrice = cartEntityOptional.getTotal_price() - existingCartItemEntityOptional.getPrice() + (cart.getPrice());
+        cartEntityOptional.setTotal_price(updatedTotalPrice);
+
+        cartJpaRepository.save(cartEntityOptional);
+
+        log.info("selected color {}", existingCartItemEntityOptional.getSelected_color());
+
+        existingCartItemEntityOptional.setQuantity(cart.getQuantity());
+        existingCartItemEntityOptional.setPrice(cart.getPrice());
+        existingCartItemEntityOptional.setStatus(existingCartItemEntityOptional.getStatus());
+        existingCartItemEntityOptional.setSelected_color(existingCartItemEntityOptional.getSelected_color());
+        existingCartItemEntityOptional.setSelected_size(existingCartItemEntityOptional.getSelected_size());
+        existingCartItemEntityOptional.setProduct(existingCartItemEntityOptional.getProduct());
+        existingCartItemEntityOptional.setCart(existingCartItemEntityOptional.getCart());
+
+        // Save the updated entity back to the database
+        CartItemEntity updatedCartEntity = cartItemJpaRepository.save(existingCartItemEntityOptional);
+
+        return new Cart(
+                updatedCartEntity.getId(),
+                cart.getSelected_color(),
+                cart.getSelected_size(),
+                cart.getUser_id(),
+                cart.getProduct(),
+                cart.getQuantity(),
+                cartEntityOptional.getTotal_price()
         );
     }
 

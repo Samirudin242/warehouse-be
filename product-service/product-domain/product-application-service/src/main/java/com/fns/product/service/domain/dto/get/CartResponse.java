@@ -22,6 +22,6 @@ public class CartResponse {
     private final ProductSizes size;
     private final Product product;
     private final Integer quantity;
-    private final Double price;
+    private final Integer price;
 
 }
