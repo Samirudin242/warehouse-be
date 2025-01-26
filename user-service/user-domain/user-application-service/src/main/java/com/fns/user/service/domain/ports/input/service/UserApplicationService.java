@@ -1,5 +1,6 @@
 package com.fns.user.service.domain.ports.input.service;
 
+import com.fns.user.service.domain.dto.create.CreateLocation;
 import com.fns.user.service.domain.dto.create.CreateUserCommand;
 import com.fns.user.service.domain.dto.create.LoginUserCommand;
 import com.fns.user.service.domain.dto.get.*;
@@ -25,4 +26,9 @@ public interface UserApplicationService {
     ProfilePhotoResponse uploadProfilePhoto(MultipartFile file) throws IOException;
 
     List<RoleResponse> getAllRoles();
+
+    List<LocationResponse> getAllLocation(UUID userId);
+
+    LocationResponse createLocation(@Valid CreateLocation createLocation);
+
 }

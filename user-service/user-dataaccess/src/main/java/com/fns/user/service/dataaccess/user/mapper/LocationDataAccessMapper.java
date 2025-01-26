@@ -30,6 +30,7 @@ public class LocationDataAccessMapper {
                 .city_id(location.getCity_id())
                 .postal_code(location.getPostal_code())
                 .users(userEntity)
+                .phone_number(location.getPhone_number())
                 .build();
     }
 
@@ -40,6 +41,7 @@ public class LocationDataAccessMapper {
 
     public Location locationEntityToLocation(LocationEntity locationEntity) {
         return Location.builder()
+                .id(locationEntity.getId())
                 .user_id(locationEntity.getUsers().getId())
                 .address(locationEntity.getAddress())
                 .province(locationEntity.getProvince())
@@ -47,6 +49,14 @@ public class LocationDataAccessMapper {
                 .province_id(locationEntity.getProvince_id())
                 .city_id(locationEntity.getCity_id())
                 .postal_code(locationEntity.getPostal_code())
+                .name(locationEntity.getUsers().getName())
+                .phone_number(
+                        (locationEntity.getPhone_number() == null || locationEntity.getPhone_number().isEmpty())
+                                ? locationEntity.getUsers().getPhone_number()
+                                : locationEntity.getPhone_number()
+                )
                 .build();
     }
+
+
 }

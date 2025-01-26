@@ -1,11 +1,16 @@
 package com.fns.user.service.domain.mapper;
 
 import com.fns.user.service.domain.dto.create.CreateUserCommand;
+import com.fns.user.service.domain.dto.get.LocationResponse;
 import com.fns.user.service.domain.dto.get.UserResponse;
+import com.fns.user.service.domain.entity.Location;
 import com.fns.user.service.domain.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Component
@@ -61,14 +66,31 @@ public class UserDataMapper {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(createUserCommand.getPassword());
         return User.builder()
-               .name(createUserCommand.getName())
-               .user_name(createUserCommand.getUser_name())
-               .email(createUserCommand.getEmail())
-               .password(hashedPassword)
-               .profile_picture(createUserCommand.getProfile_picture())
-               .phone_number(createUserCommand.getPhone_number())
-               .is_verified(createUserCommand.getIs_verified())
-               .role_id(createUserCommand.getRole_id())
-               .build();
+                .name(createUserCommand.getName())
+                .user_name(createUserCommand.getUser_name())
+                .email(createUserCommand.getEmail())
+                .password(hashedPassword)
+                .profile_picture(createUserCommand.getProfile_picture())
+                .phone_number(createUserCommand.getPhone_number())
+                .is_verified(createUserCommand.getIs_verified())
+                .role_id(createUserCommand.getRole_id())
+                .build();
+    }
+
+    public List<LocationResponse> getLocationResponse(List<Location> locations) {
+        return locations.stream()
+                .map(location -> LocationResponse.builder()
+                        .id(location.getId())
+                        .province(location.getProvince())
+                        .provinceId(location.getProvince_id())
+                        .city(location.getCity())
+                        .cityId(location.getCity_id())
+                        .address(location.getAddress())
+                        .postal_code(location.getPostal_code())
+                        .name(location.getName())
+                        .phone_number(location.getPhone_number())
+                        .build())
+                .collect(Collectors.toList());
     }
 }
+

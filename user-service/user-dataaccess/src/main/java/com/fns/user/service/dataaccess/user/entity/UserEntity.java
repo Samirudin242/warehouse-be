@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -34,6 +35,10 @@ public class UserEntity extends BaseEntity {
     private String phone_number;
 
     private Boolean is_verified;
+
+    @OneToMany
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    private List<LocationEntity> locations;
 
     @ManyToOne
     @JoinColumn(name = "role_id", referencedColumnName = "id")

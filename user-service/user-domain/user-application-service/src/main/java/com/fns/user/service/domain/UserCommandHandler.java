@@ -2,6 +2,7 @@ package com.fns.user.service.domain;
 
 import com.fns.user.service.domain.dto.create.CreateUserCommand;
 import com.fns.user.service.domain.dto.create.LoginUserCommand;
+import com.fns.user.service.domain.dto.get.LocationResponse;
 import com.fns.user.service.domain.dto.get.LoginResponse;
 import com.fns.user.service.domain.dto.get.UserResponse;
 import com.fns.user.service.domain.dto.get.GetAllUserResponse;
@@ -9,6 +10,7 @@ import com.fns.user.service.domain.entity.Location;
 import com.fns.user.service.domain.entity.Role;
 import com.fns.user.service.domain.entity.User;
 import com.fns.user.service.domain.mapper.UserDataMapper;
+import com.fns.user.service.domain.ports.output.repository.LocationRepository;
 import com.fns.user.service.domain.ports.output.repository.UserRepository;
 import com.fns.user.service.domain.ports.output.repository.UserRoleRepository;
 import com.fns.user.service.domain.util.TokenUtil;
@@ -33,15 +35,17 @@ public class UserCommandHandler {
     private final UserGetAllHandler userGetAllHandler;
     private final UserRoleRepository userRoleRepository;
     private final UserRepository userRepository;
+    private final LocationRepository locationRepository;
 
     private final TokenUtil tokenUtil;
 
-    public UserCommandHandler(UserHelper userHelper, UserDataMapper userDataMapper, UserGetAllHandler userGetAllHandler, UserRoleRepository userRoleRepository, UserRepository userRepository, TokenUtil tokenUtil) {
+    public UserCommandHandler(UserHelper userHelper, UserDataMapper userDataMapper, UserGetAllHandler userGetAllHandler, UserRoleRepository userRoleRepository, UserRepository userRepository, LocationRepository locationRepository, TokenUtil tokenUtil) {
         this.userHelper = userHelper;
         this.userDataMapper = userDataMapper;
         this.userGetAllHandler = userGetAllHandler;
         this.userRoleRepository = userRoleRepository;
         this.userRepository = userRepository;
+        this.locationRepository = locationRepository;
         this.tokenUtil = tokenUtil;
     }
 
@@ -94,7 +98,6 @@ public class UserCommandHandler {
 
 
     private User getUser(UUID id) {
-        // Implement your logic here
         return userRepository.getUserById(id);
     }
 
