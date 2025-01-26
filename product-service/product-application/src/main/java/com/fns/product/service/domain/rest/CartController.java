@@ -3,7 +3,7 @@ package com.fns.product.service.domain.rest;
 
 import com.fns.product.service.domain.dto.create.CartCommand;
 import com.fns.product.service.domain.dto.create.CreateCartResponse;
-import com.fns.product.service.domain.dto.create.CreateProductCommand;
+import com.fns.product.service.domain.dto.delete.DeleteCartItemResponse;
 import com.fns.product.service.domain.dto.get.CartResponse;
 import com.fns.product.service.domain.ports.input.service.CartApplicationService;
 import lombok.extern.slf4j.Slf4j;
@@ -39,13 +39,13 @@ public class CartController {
 
     @PutMapping("/{id}")
     public ResponseEntity<CreateCartResponse> editCart(@RequestBody CartCommand cartCommand, @PathVariable UUID id) {
-
-        log.info("cart command {}", cartCommand);
-        log.info("id {}", id);
-
         CreateCartResponse updatedCart = cartApplicationService.editCart(cartCommand, id);
-
         return ResponseEntity.ok(updatedCart);
+    }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<DeleteCartItemResponse> deleteCartItem(@PathVariable UUID id) {
+        DeleteCartItemResponse updatedCart = cartApplicationService.deleteCart(id);
+        return ResponseEntity.ok(updatedCart);
     }
 }

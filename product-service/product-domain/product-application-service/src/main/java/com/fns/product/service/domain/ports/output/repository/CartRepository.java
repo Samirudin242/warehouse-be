@@ -1,5 +1,6 @@
 package com.fns.product.service.domain.ports.output.repository;
 
+import com.fns.product.service.domain.dto.delete.DeleteCartItemResponse;
 import com.fns.product.service.domain.entity.Cart;
 
 import java.util.List;
@@ -11,4 +12,6 @@ public interface CartRepository {
     Cart editCart(Cart cart, UUID id);
 
     List<Cart> getAllCart(UUID userId);
+
+    DeleteCartItemResponse deleteCartItem(UUID cartItemId);
 }

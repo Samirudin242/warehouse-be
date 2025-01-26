@@ -2,6 +2,8 @@ package com.fns.product.service.domain.ports.input.service;
 
 import com.fns.product.service.domain.dto.create.CartCommand;
 import com.fns.product.service.domain.dto.create.CreateCartResponse;
+import com.fns.product.service.domain.dto.delete.DeleteCartItemResponse;
+import com.fns.product.service.domain.dto.get.CartResponse;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -13,5 +15,7 @@ public interface CartApplicationService {
     List<com.fns.product.service.domain.dto.get.CartResponse> getCartResponseList(UUID userId);
 
     CreateCartResponse editCart(@Valid CartCommand cartCommand, UUID id);
+
+    DeleteCartItemResponse deleteCart(UUID cartItemId);
 
 }

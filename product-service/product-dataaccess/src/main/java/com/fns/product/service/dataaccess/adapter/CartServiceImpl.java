@@ -9,6 +9,7 @@ import com.fns.product.service.dataaccess.repository.CartItemJpaRepository;
 import com.fns.product.service.dataaccess.repository.CartJpaRepository;
 import com.fns.product.service.dataaccess.repository.ProductJpaRepository;
 import com.fns.product.service.dataaccess.repository.UserJpaRepository;
+import com.fns.product.service.domain.dto.delete.DeleteCartItemResponse;
 import com.fns.product.service.domain.entity.Cart;
 import com.fns.product.service.domain.entity.Product;
 import com.fns.product.service.domain.ports.output.repository.CartRepository;
@@ -130,8 +131,6 @@ public class CartServiceImpl implements CartRepository {
 
         cartJpaRepository.save(cartEntityOptional);
 
-        log.info("selected color {}", existingCartItemEntityOptional.getSelected_color());
-
         existingCartItemEntityOptional.setQuantity(cart.getQuantity());
         existingCartItemEntityOptional.setPrice(cart.getPrice());
         existingCartItemEntityOptional.setStatus(existingCartItemEntityOptional.getStatus());
@@ -160,14 +159,35 @@ public class CartServiceImpl implements CartRepository {
         // Attempt to retrieve the cart entity
         Optional<CartEntity> optionalCartEntity = cartJpaRepository.findByUsersId(userId);
 
-        // If the cart is not found, return an empty list
         if (optionalCartEntity.isEmpty()) {
             return new ArrayList<>();
         }
 
-        // If found, map and return the cart
         CartEntity cartEntity = optionalCartEntity.get();
         return cartDataAccessMapper.getAllCart(cartEntity, userId);
+    }
+
+    @Override
+    @Transactional
+    public DeleteCartItemResponse deleteCartItem(UUID cartItemId) {
+        CartItemEntity existingCartItemEntityOptional = cartItemJpaRepository.findById(cartItemId)
+                .orElseThrow(() -> new IllegalArgumentException("cart item not found for id: " + cartItemId));
+
+        CartEntity cartEntityOptional = cartJpaRepository.findById(existingCartItemEntityOptional.getCart().getId())
+                .orElseThrow(() -> new IllegalArgumentException("cart not found for id: " + existingCartItemEntityOptional.getCart().getId()));
+
+
+        int updatedTotalPrice = cartEntityOptional.getTotal_price() - existingCartItemEntityOptional.getPrice();
+        cartEntityOptional.setTotal_price(updatedTotalPrice);
+
+        cartJpaRepository.save(cartEntityOptional);
+
+        cartItemJpaRepository.deleteById(cartItemId);
+
+        return DeleteCartItemResponse.builder()
+                .cartItemId(cartItemId)
+                .message("Successfully deleted cart item with id " + cartItemId)
+                .build();
     }
 
 
