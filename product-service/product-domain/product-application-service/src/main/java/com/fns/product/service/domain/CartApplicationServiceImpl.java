@@ -2,6 +2,8 @@ package com.fns.product.service.domain;
 
 import com.fns.product.service.domain.dto.create.CartCommand;
 import com.fns.product.service.domain.dto.create.CreateCartResponse;
+import com.fns.product.service.domain.dto.delete.DeleteCartItemResponse;
+import com.fns.product.service.domain.dto.get.CartResponse;
 import com.fns.product.service.domain.ports.input.service.CartApplicationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -34,5 +36,10 @@ public class CartApplicationServiceImpl implements CartApplicationService {
     @Override
     public CreateCartResponse editCart(CartCommand cartCommand, UUID id) {
         return cartCommandHandler.editCart(cartCommand, id);
+    }
+
+    @Override
+    public DeleteCartItemResponse deleteCart(UUID cartItemId) {
+        return cartCommandHandler.deleteCart(cartItemId);
     }
 }

@@ -2,6 +2,7 @@ package com.fns.product.service.domain;
 
 import com.fns.product.service.domain.dto.create.CartCommand;
 import com.fns.product.service.domain.dto.create.CreateCartResponse;
+import com.fns.product.service.domain.dto.delete.DeleteCartItemResponse;
 import com.fns.product.service.domain.dto.get.CartResponse;
 import com.fns.product.service.domain.entity.Cart;
 import com.fns.product.service.domain.mapper.CartDataMapper;
@@ -43,6 +44,15 @@ public class CartCommandHandler {
         List<Cart> carts = getAllCart(userId);
 
         return cartDataMapper.getAllCart(carts);
+    }
+
+    DeleteCartItemResponse deleteCart(UUID cartItemId) {
+        try {
+            return cartRepository.deleteCartItem(cartItemId);
+        } catch (Exception e) {
+            log.error("Failed to delete cart: {}", cartItemId, e);
+            throw new RuntimeException("Failed to delete cart", e);
+        }
     }
 
     Cart createCart(Cart cart) {
