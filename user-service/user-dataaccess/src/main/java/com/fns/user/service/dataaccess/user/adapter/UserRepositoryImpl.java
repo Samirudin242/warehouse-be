@@ -1,15 +1,18 @@
 package com.fns.user.service.dataaccess.user.adapter;
 
+import com.fns.user.service.dataaccess.user.entity.LocationEntity;
 import com.fns.user.service.dataaccess.user.entity.UserEntity;
 import com.fns.user.service.dataaccess.user.entity.UserRoleEntity;
 import com.fns.user.service.dataaccess.user.mapper.UserDataAccessMapper;
 import com.fns.user.service.dataaccess.user.mapper.UserRoleMapper;
+import com.fns.user.service.dataaccess.user.repository.LocationJpaRepository;
 import com.fns.user.service.dataaccess.user.repository.UserJpaRepository;
 import com.fns.user.service.dataaccess.user.repository.UserRoleJpaRepository;
 import com.fns.user.service.domain.dto.get.GetAllUserResponse;
 import com.fns.user.service.domain.dto.get.ProfilePhotoResponse;
 import com.fns.user.service.domain.dto.get.RoleResponse;
 import com.fns.user.service.domain.dto.get.UserAlreadyExistsException;
+import com.fns.user.service.domain.entity.Location;
 import com.fns.user.service.domain.entity.User;
 import com.fns.user.service.domain.ports.output.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -38,6 +41,8 @@ public class UserRepositoryImpl implements UserRepository { // it will be provid
 
     private final UserJpaRepository userJpaRepository;
     private final UserRoleJpaRepository userRoleJpaRepository;
+    private final LocationJpaRepository locationJpaRepository;
+
     private final UserDataAccessMapper userDataAccessMapper;
     private final UserRoleMapper userRoleMapper;
 
@@ -46,9 +51,10 @@ public class UserRepositoryImpl implements UserRepository { // it will be provid
     @Value("${google.cloud.storage.bucket-name}")
     private String bucketName;
 
-    public UserRepositoryImpl(UserJpaRepository userJpaRepository, UserRoleJpaRepository userRoleJpaRepository, UserDataAccessMapper userDataAccessMapper, UserRoleMapper userRoleMapper, Storage storage) {
+    public UserRepositoryImpl(UserJpaRepository userJpaRepository, UserRoleJpaRepository userRoleJpaRepository, LocationJpaRepository locationJpaRepository, UserDataAccessMapper userDataAccessMapper, UserRoleMapper userRoleMapper, Storage storage) {
         this.userJpaRepository = userJpaRepository;
         this.userRoleJpaRepository = userRoleJpaRepository;
+        this.locationJpaRepository = locationJpaRepository;
         this.userDataAccessMapper = userDataAccessMapper;
         this.userRoleMapper = userRoleMapper;
         this.storage = storage;
@@ -185,4 +191,6 @@ public class UserRepositoryImpl implements UserRepository { // it will be provid
         List<UserRoleEntity> userRoles = userRoleJpaRepository.findAll();
         return userRoleMapper.userRoleEntitiesToResponse(userRoles);
     }
+
+
 }

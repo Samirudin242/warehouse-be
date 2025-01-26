@@ -1,5 +1,6 @@
 package com.fns.user.service.domain.rest;
 
+import com.fns.user.service.domain.dto.get.LocationResponse;
 import com.fns.user.service.domain.dto.get.RoleResponse;
 import com.fns.user.service.domain.dto.get.UserResponse;
 import com.fns.user.service.domain.dto.get.GetAllUserResponse;
@@ -36,6 +37,9 @@ public class UserController {
 
         return ResponseEntity.ok(userResponses);
     }
+
+
+
 
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse> getUser(@PathVariable("id") UUID id) {

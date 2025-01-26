@@ -1,25 +1,22 @@
-package com.fns.user.service.domain.entity;
+package com.fns.user.service.domain.dto.get;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.UUID;
 
-import lombok.*;
-
-@AllArgsConstructor
 @Getter
 @Setter
-@Data
 @Builder
-public class Location {
-
+public class LocationResponse {
     private UUID id;
-    private UUID user_id;
     private String province;
+    private String provinceId;
     private String city;
+    private String cityId;
     private String address;
     private String postal_code;
-    private String province_id;
-    private String city_id;
     private String name;
     private String phone_number;
 }

@@ -1,5 +1,6 @@
 package com.fns.user.service.domain;
 
+import com.fns.user.service.domain.dto.create.CreateLocation;
 import com.fns.user.service.domain.dto.create.CreateUserCommand;
 import com.fns.user.service.domain.dto.create.LoginUserCommand;
 import com.fns.user.service.domain.dto.get.*;
@@ -21,11 +22,13 @@ import java.util.UUID;
 public class UserApplicationServiceImpl implements UserApplicationService {
 
     private final UserCommandHandler userCommandHandler;
+    private final LocationCommandHandler locationCommandHandler;
 
     private final UserRepository userRepository;
 
-    public UserApplicationServiceImpl(UserCommandHandler userCommandHandler, UserRepository userRepository) {
+    public UserApplicationServiceImpl(UserCommandHandler userCommandHandler, LocationCommandHandler locationCommandHandler, UserRepository userRepository) {
         this.userCommandHandler = userCommandHandler;
+        this.locationCommandHandler = locationCommandHandler;
         this.userRepository = userRepository;
     }
 
@@ -62,5 +65,15 @@ public class UserApplicationServiceImpl implements UserApplicationService {
     @Override
     public List<RoleResponse> getAllRoles() {
         return userRepository.getAllRoles();
+    }
+
+    @Override
+    public List<LocationResponse> getAllLocation(UUID userId) {
+        return locationCommandHandler.getAllLocation(userId);
+    }
+
+    @Override
+    public LocationResponse createLocation(CreateLocation createLocation) {
+        return locationCommandHandler.createLocation(createLocation);
     }
 }

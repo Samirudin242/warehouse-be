@@ -31,6 +31,8 @@ public class LocationEntity extends BaseEntity{
 
     private String postal_code;
 
+    private String phone_number;
+
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private UserEntity users;
