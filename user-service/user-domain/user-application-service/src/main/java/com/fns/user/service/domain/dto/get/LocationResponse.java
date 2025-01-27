@@ -19,4 +19,6 @@ public class LocationResponse {
     private String postal_code;
     private String name;
     private String phone_number;
+    private Double latitude;
+    private Double longitude;
 }

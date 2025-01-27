@@ -17,4 +17,6 @@ public class WarehouseKafkaModel {
     String province;
     String provinceId;
     String postalCode;
+    Double latitude;
+    Double longitude;
 }

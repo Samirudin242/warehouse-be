@@ -23,4 +23,6 @@ public class Warehouse {
     private final String province;
     private final String province_id;
     private final String postal_code;
+    private final Double latitude;
+    private final Double longitude;
 }

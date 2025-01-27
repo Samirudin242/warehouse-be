@@ -19,7 +19,7 @@ public class LocationRepositoryImpl implements LocationRepository {
     }
 
     @Override
-    public Location savedLocaion(Location location) {
+    public Location savedLocation(Location location) {
         LocationEntity savedLocation = locationJpaRepository.save(locationDataAccessMapper.locationToLocationEntity(location));
         return locationDataAccessMapper.locationEntityToLocation(savedLocation);
     }

@@ -24,7 +24,6 @@ public class AuthController {
 
     private final UserApplicationService userApplicationService;
 
-
     public AuthController(UserApplicationService userApplicationService) {
         this.userApplicationService = userApplicationService;
     }

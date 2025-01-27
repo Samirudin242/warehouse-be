@@ -20,6 +20,8 @@ public interface WarehouseDomainService {
             String province,
             String provinceId,
             String postalCode,
+            Double latitude,
+            Double longitude,
             DomainEventPublisher<WarehouseCreatedEvent> publisher
     ) throws WarehouseDomainException;
 }

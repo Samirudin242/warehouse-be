@@ -8,8 +8,8 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "location")
 @Entity
 public class LocationEntity  {
@@ -27,6 +27,10 @@ public class LocationEntity  {
     private String city_id;
 
     private String postal_code;
+
+    private Double latitude;
+
+    private Double longitude;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")

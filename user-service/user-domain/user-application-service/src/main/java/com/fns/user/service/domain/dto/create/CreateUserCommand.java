@@ -50,4 +50,7 @@ public class CreateUserCommand {
     @NotNull
     private final UUID role_id;
 
+    private Double latitude;
+    private Double longitude;
+
 }

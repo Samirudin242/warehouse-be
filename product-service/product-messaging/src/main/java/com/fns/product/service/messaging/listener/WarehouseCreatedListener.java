@@ -29,7 +29,11 @@ public class WarehouseCreatedListener {
     @KafkaListener(topics = "warehouse_created", groupId = "product-group")
     public void listenWarehouse (String message) {
         try {
+            log.info("Received warehouse_created event: {}", message);
             WarehouseKafkaModel warehouseKafkaModel = objectMapper.readValue(message, WarehouseKafkaModel.class);
+
+            log.info("warehouse_created event kafka model: {}", warehouseKafkaModel);
+
             WarehouseModel warehouse = productMessagingMapper.mapToWarehouseModel(warehouseKafkaModel);
 
             warehouseMessageListener.savedWarehouse(warehouse);

@@ -1,8 +1,10 @@
 package com.fns.warehouse.service.domain;
 
 import com.fns.warehouse.service.domain.dto.create.CreateWarehouseCommand;
+import com.fns.warehouse.service.domain.dto.create.NearestWarehouseCommand;
 import com.fns.warehouse.service.domain.dto.get.CreateWarehouseResponse;
 import com.fns.warehouse.service.domain.dto.get.GetAllWarehouseResponse;
+import com.fns.warehouse.service.domain.dto.get.GetNearestWarehouseResponse;
 import com.fns.warehouse.service.domain.ports.input.service.WarehouseApplicationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -16,9 +18,10 @@ import org.springframework.validation.annotation.Validated;
 public class WarehouseApplicationServiceImpl implements WarehouseApplicationService {
 
     private final WarehouseCommandHandler warehouseCommandHandler;
-
-    public WarehouseApplicationServiceImpl(WarehouseCommandHandler warehouseCommandHandler) {
+    private final OrderCommandHandler orderCommandHandler;
+    public WarehouseApplicationServiceImpl(WarehouseCommandHandler warehouseCommandHandler, OrderCommandHandler orderCommandHandler) {
         this.warehouseCommandHandler = warehouseCommandHandler;
+        this.orderCommandHandler = orderCommandHandler;
     }
 
     @Override
@@ -29,5 +32,10 @@ public class WarehouseApplicationServiceImpl implements WarehouseApplicationServ
     @Override
     public Page<GetAllWarehouseResponse> getAllWarehouse(Integer page, Integer pageSize, String name) {
         return warehouseCommandHandler.getAllWarehouse(page, pageSize, name);
+    }
+
+    @Override
+    public GetNearestWarehouseResponse getNearestWarehouse(NearestWarehouseCommand warehouseCommand) {
+        return orderCommandHandler.getNearestWarehouse(warehouseCommand);
     }
 }

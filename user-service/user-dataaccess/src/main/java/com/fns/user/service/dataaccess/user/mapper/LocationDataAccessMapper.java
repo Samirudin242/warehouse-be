@@ -31,6 +31,8 @@ public class LocationDataAccessMapper {
                 .postal_code(location.getPostal_code())
                 .users(userEntity)
                 .phone_number(location.getPhone_number())
+                .latitude(location.getLatitude())
+                .longitude(location.getLongitude())
                 .build();
     }
 
@@ -55,6 +57,8 @@ public class LocationDataAccessMapper {
                                 ? locationEntity.getUsers().getPhone_number()
                                 : locationEntity.getPhone_number()
                 )
+                .latitude(locationEntity.getLatitude())
+                .longitude(locationEntity.getLongitude())
                 .build();
     }
 

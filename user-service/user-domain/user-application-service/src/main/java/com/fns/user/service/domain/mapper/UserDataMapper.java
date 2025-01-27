@@ -89,6 +89,8 @@ public class UserDataMapper {
                         .postal_code(location.getPostal_code())
                         .name(location.getName())
                         .phone_number(location.getPhone_number())
+                        .latitude(location.getLatitude())
+                        .longitude(location.getLongitude())
                         .build())
                 .collect(Collectors.toList());
     }

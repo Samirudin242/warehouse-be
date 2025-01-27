@@ -66,6 +66,8 @@ public class UserHelper {
                 .province(createUserCommand.getProvince())
                 .address(createUserCommand.getAddress())
                 .postal_code(createUserCommand.getPostal_code())
+                .latitude(createUserCommand.getLatitude())
+                .longitude(createUserCommand.getLongitude())
                 .build();
 
         Location savedLocation = saveLocation(location);

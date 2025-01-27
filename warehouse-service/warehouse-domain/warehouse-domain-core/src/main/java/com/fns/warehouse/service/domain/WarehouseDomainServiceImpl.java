@@ -9,8 +9,9 @@ import java.time.ZonedDateTime;
 import java.util.UUID;
 
 public class WarehouseDomainServiceImpl implements WarehouseDomainService {
+
     @Override
-    public WarehouseCreatedEvent createWarehouse(UUID id, UUID adminId, UUID locationId, String name, String address, String city, String cityId, String province, String provinceId, String postalCode, DomainEventPublisher<WarehouseCreatedEvent> publisher) throws WarehouseDomainException {
+    public WarehouseCreatedEvent createWarehouse(UUID id, UUID adminId, UUID locationId, String name, String address, String city, String cityId, String province, String provinceId, String postalCode, Double latitude, Double longitude, DomainEventPublisher<WarehouseCreatedEvent> publisher) throws WarehouseDomainException {
         Warehouse warehouse = Warehouse.builder()
                 .id(id)
                 .admin_id(adminId)
@@ -22,6 +23,8 @@ public class WarehouseDomainServiceImpl implements WarehouseDomainService {
                 .province(province)
                 .province_id(provinceId)
                 .postal_code(postalCode)
+                .latitude(latitude)
+                .longitude(longitude)
                 .build();
 
         return new WarehouseCreatedEvent(warehouse, ZonedDateTime.now(), publisher);

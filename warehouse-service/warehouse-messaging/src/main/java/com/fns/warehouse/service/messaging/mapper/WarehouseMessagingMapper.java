@@ -36,7 +36,9 @@ public class WarehouseMessagingMapper {
                 warehouse.getCity_id(),
                 warehouse.getProvince(),
                 warehouse.getProvince_id(),
-                warehouse.getPostal_code()
+                warehouse.getPostal_code(),
+                warehouse.getLatitude(),
+                warehouse.getLongitude()
         );
     }
 }

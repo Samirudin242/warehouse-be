@@ -12,15 +12,17 @@ public class ProductMessagingMapper {
     public WarehouseModel mapToWarehouseModel(WarehouseKafkaModel warehouseKafkaModel) {
         return WarehouseModel.builder()
                 .id(warehouseKafkaModel.getId())
-                .adminId(warehouseKafkaModel.getAdmin_id())
-                .locationId(warehouseKafkaModel.getLocation_id())
+                .adminId(warehouseKafkaModel.getAdminId())
+                .locationId(warehouseKafkaModel.getLocationId())
                 .name(warehouseKafkaModel.getName())
                 .address(warehouseKafkaModel.getAddress())
                 .city(warehouseKafkaModel.getCity())
-                .cityId(warehouseKafkaModel.getCity_id())
+                .cityId(warehouseKafkaModel.getCityId())
                 .province(warehouseKafkaModel.getProvince())
-                .provinceId(warehouseKafkaModel.getProvince_id())
-                .postalCode(warehouseKafkaModel.getPostal_code())
+                .provinceId(warehouseKafkaModel.getProvinceId())
+                .postalCode(warehouseKafkaModel.getPostalCode())
+                .latitude(warehouseKafkaModel.getLatitude())
+                .longitude(warehouseKafkaModel.getLongitude())
                 .build();
     }
 

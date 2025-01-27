@@ -18,4 +18,6 @@ public class Location {
     private String city;
     private String postal_code;
     private UUID warehouse_id;
+    private Double latitude;
+    private Double longitude;
 }

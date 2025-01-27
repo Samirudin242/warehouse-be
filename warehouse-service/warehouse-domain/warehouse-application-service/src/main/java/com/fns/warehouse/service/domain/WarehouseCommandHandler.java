@@ -54,6 +54,8 @@ public class WarehouseCommandHandler {
                 location.getProvince(),
                 location.getProvince_id(),
                 location.getPostal_code(),
+                location.getLatitude(),
+                location.getLongitude(),
                 warehouseMessagePublisher
         );
 
@@ -78,7 +80,7 @@ public class WarehouseCommandHandler {
 
     private Location saveLocation(Location location) {
         try {
-            return locationRepository.savedLocaion(location);
+            return locationRepository.savedLocation(location);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -20,4 +20,6 @@ public class CreateLocation {
     private String postal_code;
     private String phone_number;
     private UUID user_id;
+    private Double latitude;
+    private Double longitude;
 }

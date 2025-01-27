@@ -18,6 +18,8 @@ public class LocationDataMapper {
                 .postal_code(createLocation.getPostal_code())
                 .phone_number(createLocation.getPhone_number())
                 .user_id(createLocation.getUser_id())
+                .latitude(createLocation.getLatitude())
+                .longitude(createLocation.getLongitude())
                 .build();
     }
 
@@ -32,6 +34,8 @@ public class LocationDataMapper {
                 .postal_code(location.getPostal_code())
                 .name(location.getName())
                 .phone_number(location.getPhone_number())
+                .latitude(location.getLatitude())
+                .longitude(location.getLongitude())
                 .build();
     }
 

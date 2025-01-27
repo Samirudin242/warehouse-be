@@ -16,7 +16,6 @@ import java.util.UUID;
 public class LocationEntity extends BaseEntity{
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "uuid2")
     private UUID id;
 
     private String address;
@@ -30,6 +29,10 @@ public class LocationEntity extends BaseEntity{
     private String city_id;
 
     private String postal_code;
+
+    private Double latitude;
+
+    private Double longitude;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")

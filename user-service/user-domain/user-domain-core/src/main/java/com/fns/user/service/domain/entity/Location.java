@@ -22,4 +22,6 @@ public class Location {
     private String city_id;
     private String name;
     private String phone_number;
+    private Double latitude;
+    private Double longitude;
 }

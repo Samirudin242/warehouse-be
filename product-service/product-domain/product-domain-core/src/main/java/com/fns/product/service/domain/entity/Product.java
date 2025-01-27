@@ -4,6 +4,7 @@ import com.fns.product.service.domain.valueObject.Price;
 import lombok.*;
 
 import java.lang.annotation.Documented;
+import java.util.List;
 import java.util.UUID;
 
 // Aggregate Root: Product
@@ -27,6 +28,7 @@ public class Product {
     private Integer stock;
     private Integer totalSell;
     private Integer rating;
+    private List<Warehouse> warehouseProduct;
 
 
     // Private constructor for builder
@@ -45,6 +47,7 @@ public class Product {
         this.stock = builder.stock;
         this.totalSell = builder.totalSell;
         this.rating = builder.rating;
+        this.warehouseProduct = builder.warehouse;
     }
 
 
@@ -89,9 +92,14 @@ public class Product {
         private Integer stock;
         private Integer totalSell;
         private Integer rating;
-
+        private List<Warehouse> warehouse;
         public Builder id(UUID id) {
             this.id = id;
+            return this;
+        }
+
+        public Builder warehouse(List<Warehouse> warehouse) {
+            this.warehouse = warehouse;
             return this;
         }
 
