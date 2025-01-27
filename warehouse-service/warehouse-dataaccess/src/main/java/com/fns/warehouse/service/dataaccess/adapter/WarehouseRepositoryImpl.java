@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Component
@@ -61,5 +62,10 @@ public class WarehouseRepositoryImpl implements WarehouseRepository {
         return new PageImpl<>(getAllWarehouseResponses, pageable, warehouseEntitiesPage.getTotalElements());
     }
 
+    @Override
+    public List<Warehouse> getAllWarehouse(List<UUID> ids) {
+        List<WarehouseEntity> warehouseEntities = warehouseJpaRepository.findAllById(ids);
+        return warehouseDataAccessMapper.warehouseList(warehouseEntities);
+    }
 
 }

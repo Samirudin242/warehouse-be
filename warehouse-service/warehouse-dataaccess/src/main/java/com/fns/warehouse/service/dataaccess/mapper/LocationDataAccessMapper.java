@@ -28,6 +28,8 @@ public class LocationDataAccessMapper {
                 .city_id(location.getCity_id())
                 .postal_code(location.getPostal_code())
                 .warehouses(warehouse)
+                .latitude(location.getLatitude())
+                .longitude(location.getLongitude())
                 .build();
     }
 
@@ -41,6 +43,8 @@ public class LocationDataAccessMapper {
                .city(locationEntity.getCity())
                .province(locationEntity.getProvince())
                 .postal_code(locationEntity.getPostal_code())
+                .latitude(locationEntity.getLatitude())
+                .longitude(locationEntity.getLongitude())
                .build();
     }
 

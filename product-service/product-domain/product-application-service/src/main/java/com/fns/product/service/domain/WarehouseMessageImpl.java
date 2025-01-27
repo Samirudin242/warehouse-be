@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class WarehouseMessageImpl implements WarehouseMessageListener {
 
     private final WarehouseRepository warehouseRepository;
-    private WarehouseDataMapper warehouseDataMapper;
+    private final WarehouseDataMapper warehouseDataMapper;
 
     public WarehouseMessageImpl(WarehouseRepository warehouseRepository, WarehouseDataMapper warehouseDataMapper) {
         this.warehouseRepository = warehouseRepository;

@@ -18,4 +18,6 @@ public class WarehouseModel {
     String province;
     String provinceId;
     String postalCode;
+    Double latitude;
+    Double longitude;
 }

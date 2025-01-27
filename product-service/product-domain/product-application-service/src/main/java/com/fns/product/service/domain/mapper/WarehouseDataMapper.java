@@ -20,6 +20,8 @@ public class WarehouseDataMapper {
                 .province(warehouseModel.getProvince())
                 .province_id(warehouseModel.getProvinceId())
                 .postal_code(warehouseModel.getPostalCode())
+                .latitude(warehouseModel.getLatitude())
+                .longitude(warehouseModel.getLongitude())
                 .build();
     }
 }

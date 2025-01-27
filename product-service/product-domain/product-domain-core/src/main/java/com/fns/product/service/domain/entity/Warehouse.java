@@ -1,9 +1,6 @@
 package com.fns.product.service.domain.entity;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -11,6 +8,7 @@ import java.util.UUID;
 @Setter
 @Data
 @Builder
+@AllArgsConstructor
 public class Warehouse {
 
     private final UUID id;
@@ -23,4 +21,6 @@ public class Warehouse {
     private final String province;
     private final String province_id;
     private final String postal_code;
+    private final Double latitude;
+    private final Double longitude;
 }

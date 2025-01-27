@@ -48,6 +48,7 @@ com/fns/product/service/dataaccess/mapper/ProductAndSizeMapper.class
 com/fns/product/service/dataaccess/entity/ProductCategoriesEntity.class
 com/fns/product/service/dataaccess/entity/ProductPricesEntity$ProductPricesEntityBuilder.class
 com/fns/product/service/dataaccess/adapter/ProductServiceImpl.class
+com/fns/product/service/dataaccess/entity/WarehouseEntity$WarehouseStatus.class
 com/fns/product/service/dataaccess/repository/ProductPricesJpaRepository.class
 com/fns/product/service/dataaccess/entity/ProductPricesEntity.class
 com/fns/product/service/dataaccess/entity/ProductSizesEntity$ProductSizesEntityBuilder.class

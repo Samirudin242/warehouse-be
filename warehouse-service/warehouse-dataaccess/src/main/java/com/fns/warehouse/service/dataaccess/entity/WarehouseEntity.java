@@ -17,12 +17,19 @@ import java.util.UUID;
 public class WarehouseEntity extends BaseEntity {
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "uuid2")
     private UUID id;
 
     private String name;
 
+    private WarehouseStatus status;
+
     @OneToOne
     @JoinColumn(name = "admin_id", referencedColumnName = "id")
     private UserEntity user;
+
+    public enum WarehouseStatus {
+        ACTIVE,
+        INACTIVE,
+    }
+
 }

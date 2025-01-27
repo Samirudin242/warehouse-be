@@ -9,6 +9,7 @@ import java.util.UUID;
 @Setter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "warehouse")
 @Entity
 public class WarehouseEntity{
@@ -17,8 +18,15 @@ public class WarehouseEntity{
 
     private String name;
 
+    private WarehouseStatus status;
+
     @OneToOne
     @JoinColumn(name = "admin_id", referencedColumnName = "id")
     private UserEntity user;
+
+    public enum WarehouseStatus {
+        ACTIVE,
+        INACTIVE,
+    }
 }
 
