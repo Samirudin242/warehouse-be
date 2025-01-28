@@ -26,7 +26,7 @@ public class WarehouseCreatedListener {
         this.warehouseMessageListener = warehouseMessageListener;
     }
 
-    @KafkaListener(topics = "warehouse_created", groupId = "product-group")
+    @KafkaListener(topics = "warehouse-created", groupId = "product-group")
     public void listenWarehouse (String message) {
         try {
             log.info("Received warehouse_created event: {}", message);
