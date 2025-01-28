@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class CreateWarehouseKafkaPublisher implements WarehouseMessagePublisher {
 
     private final WarehouseMessagingMapper warehouseMessagingMapper;
-    private static final String TOPIC = "warehouse_created";
+    private static final String TOPIC = "warehouse-created";
 
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final ObjectMapper objectMapper;
