@@ -20,7 +20,7 @@ public class CreateProductKafkaMessagePublisher implements ProductMessagePublish
 
     private static final Logger logger = LoggerFactory.getLogger(CreateProductKafkaMessagePublisher.class);
 
-    private static final String TOPIC = "product_created";
+    private static final String TOPIC = "product-created";
 
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final ObjectMapper objectMapper;
