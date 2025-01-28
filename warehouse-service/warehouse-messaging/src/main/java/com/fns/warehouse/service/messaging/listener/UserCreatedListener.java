@@ -23,7 +23,7 @@ public class UserCreatedListener {
         this.warehouseMessagingMapper = warehouseMessagingMapper;
     }
 
-    @KafkaListener(topics = "user_created", groupId = "warehouse-group")
+    @KafkaListener(topics = "user-created", groupId = "warehouse-group")
     public void listen(String message) {
         try {
             UserKafkaModel userKafkaModel = objectMapper.readValue(message, UserKafkaModel.class);
