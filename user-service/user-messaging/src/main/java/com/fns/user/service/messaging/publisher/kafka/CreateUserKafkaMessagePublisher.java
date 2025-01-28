@@ -17,7 +17,7 @@ public class CreateUserKafkaMessagePublisher implements UserMessagePublisher {
 
     private static final Logger logger = LoggerFactory.getLogger(CreateUserKafkaMessagePublisher.class);
 
-    private static final String TOPIC = "user_created";
+    private static final String TOPIC = "user-created";
 
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final ObjectMapper objectMapper;
