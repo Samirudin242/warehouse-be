@@ -4,10 +4,13 @@ import com.fns.warehouse.service.domain.dto.create.CreateOrderCommand;
 import com.fns.warehouse.service.domain.dto.get.GetOrderResponse;
 import com.fns.warehouse.service.domain.dto.response.CreateOrderResponse;
 import com.fns.warehouse.service.domain.ports.input.service.OrderApplicationService;
+import com.fns.warehouse.service.domain.ports.output.repository.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,9 +20,11 @@ import java.util.UUID;
 public class OrderApplicationServiceImpl implements OrderApplicationService {
 
     private final OrderCommandHandler orderCommandHandler;
+    private final OrderRepository orderRepository;
 
-    public OrderApplicationServiceImpl(OrderCommandHandler orderCommandHandler) {
+    public OrderApplicationServiceImpl(OrderCommandHandler orderCommandHandler, OrderRepository orderRepository) {
         this.orderCommandHandler = orderCommandHandler;
+        this.orderRepository = orderRepository;
     }
 
     @Override
@@ -30,5 +35,10 @@ public class OrderApplicationServiceImpl implements OrderApplicationService {
     @Override
     public List<GetOrderResponse> getAllOrderUser(UUID userId) {
         return orderCommandHandler.getAllOrder(userId);
+    }
+
+    @Override
+    public String uploadPayment(UUID orderId, MultipartFile file) throws IOException {
+        return orderRepository.uploadPayment(orderId, file);
     }
 }

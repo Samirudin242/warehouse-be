@@ -10,9 +10,12 @@ import com.fns.warehouse.service.domain.dto.response.CreateOrderResponse;
 import com.fns.warehouse.service.domain.ports.input.service.OrderApplicationService;
 import com.fns.warehouse.service.domain.ports.input.service.WarehouseApplicationService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -41,6 +44,21 @@ public class OrderController {
         GetNearestWarehouseResponse nearestWarehouseResponse = warehouseApplicationService.getNearestWarehouse(nearestWarehouseCommand);
 
         return ResponseEntity.ok(nearestWarehouseResponse);
+    }
+
+    @PostMapping("/upload-payment/{id}")
+    public ResponseEntity<String> uploadProductPhoto(
+            @PathVariable UUID id,
+            @RequestParam("file") MultipartFile file) {
+        try {
+            // Upload the photo and get the URL
+            String photoUrl = orderApplicationService.uploadPayment(id, file);
+            log.info("payment uploaded successfully for Product ID {}: {}", id, photoUrl);
+            return ResponseEntity.ok(photoUrl);
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to upload payment: " + e.getMessage());
+        }
     }
 
     @PostMapping
