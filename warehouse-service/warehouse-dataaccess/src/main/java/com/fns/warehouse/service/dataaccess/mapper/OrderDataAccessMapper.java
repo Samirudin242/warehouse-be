@@ -134,6 +134,7 @@ public class OrderDataAccessMapper {
                     .id(productEntity.getId())
                     .name(productEntity.getName())
                     .description(productEntity.getDescription())
+                    .imageUrl(productEntity.getImage())
                     .build();
 
             ProductColor productColor = ProductColor.builder()
