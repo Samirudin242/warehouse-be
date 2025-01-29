@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -18,4 +19,5 @@ public class CreateOrderItemCommand {
     private UUID color_id;
     private Integer quantity;
     private Double price;
+    private List<UUID> warehouse_id;
 }

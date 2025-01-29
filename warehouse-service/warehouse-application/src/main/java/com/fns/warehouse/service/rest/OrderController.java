@@ -5,15 +5,16 @@ import com.fns.warehouse.service.domain.dto.create.CreateWarehouseCommand;
 import com.fns.warehouse.service.domain.dto.create.NearestWarehouseCommand;
 import com.fns.warehouse.service.domain.dto.get.CreateWarehouseResponse;
 import com.fns.warehouse.service.domain.dto.get.GetNearestWarehouseResponse;
+import com.fns.warehouse.service.domain.dto.get.GetOrderResponse;
 import com.fns.warehouse.service.domain.dto.response.CreateOrderResponse;
 import com.fns.warehouse.service.domain.ports.input.service.OrderApplicationService;
 import com.fns.warehouse.service.domain.ports.input.service.WarehouseApplicationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @RestController
@@ -26,6 +27,13 @@ public class OrderController {
     public OrderController(WarehouseApplicationService warehouseApplicationService, OrderApplicationService orderApplicationService) {
         this.warehouseApplicationService = warehouseApplicationService;
         this.orderApplicationService = orderApplicationService;
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<List<GetOrderResponse>> getAllOrder(@PathVariable UUID id)  {
+        List<GetOrderResponse> getOrderResponses = orderApplicationService.getAllOrderUser(id);
+
+        return ResponseEntity.ok(getOrderResponses);
     }
 
     @PostMapping("/nearest-warehouse")
