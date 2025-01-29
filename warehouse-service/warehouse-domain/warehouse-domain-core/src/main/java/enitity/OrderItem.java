@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Builder
@@ -19,4 +20,5 @@ public class OrderItem {
     private UUID product_id;
     private UUID size_id;
     private UUID color_id;
+    private List<UUID> warehouse;
 }

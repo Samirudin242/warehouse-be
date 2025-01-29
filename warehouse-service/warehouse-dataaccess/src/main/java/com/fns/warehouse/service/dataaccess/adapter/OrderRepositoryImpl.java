@@ -7,12 +7,15 @@ import com.fns.warehouse.service.dataaccess.mapper.OrderDataAccessMapper;
 import com.fns.warehouse.service.dataaccess.repository.OrderItemJpaRepository;
 import com.fns.warehouse.service.dataaccess.repository.OrderJpaRepository;
 import com.fns.warehouse.service.dataaccess.repository.PaymentJpaRepository;
+import com.fns.warehouse.service.domain.dto.get.GetOrderResponse;
 import com.fns.warehouse.service.domain.ports.output.repository.OrderRepository;
 import enitity.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class OrderRepositoryImpl implements OrderRepository {
@@ -45,5 +48,17 @@ public class OrderRepositoryImpl implements OrderRepository {
         paymentJpaRepository.save(paymentEntity);
 
         return orderDataAccessMapper.orderFromEntity(savedOrderEntity);
+    }
+
+    @Override
+    @Transactional
+    public List<GetOrderResponse> getAllOrder(UUID userId) {
+        List<OrderEntity> orders = orderJpaRepository.findByUser_IdOrderByOrderDateDesc(userId);
+
+        if (orders.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        return orderDataAccessMapper.getAllOrders(orders);
     }
 }

@@ -3,6 +3,7 @@ package com.fns.warehouse.service.dataaccess.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -20,6 +21,9 @@ public class OrderItemEntity extends BaseEntity {
     private Integer quantity;
 
     private Double price;
+
+    @Column(name = "warehouse_id", columnDefinition = "UUID[]")
+    private List<UUID> warehouse_id;
 
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id")

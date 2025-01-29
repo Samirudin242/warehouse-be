@@ -1,5 +1,6 @@
 package com.fns.warehouse.service.dataaccess.entity;
 
+import com.fns.warehouse.service.domain.entity.PaymentType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,16 +29,5 @@ public class PaymentEntity extends BaseEntity {
     @OneToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     private OrderEntity order;
-
-    public enum PaymentType {
-        CREDIT_CARD,
-        CASH,
-        ONLINE_TRANSFER,
-        PAYPAL,
-        BANK_TRANSFER,
-        OTHER
-    }
-
-
 
 }

@@ -2,6 +2,10 @@ package com.fns.warehouse.service.dataaccess.mapper;
 
 import com.fns.warehouse.service.dataaccess.entity.*;
 import com.fns.warehouse.service.dataaccess.repository.*;
+import com.fns.warehouse.service.domain.dto.get.GetOrderResponse;
+import com.fns.warehouse.service.domain.dto.get.OrderItemResponse;
+import com.fns.warehouse.service.domain.dto.get.PaymentResponse;
+import com.fns.warehouse.service.domain.entity.*;
 import enitity.Order;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -39,14 +43,14 @@ public class OrderDataAccessMapper {
         return OrderEntity.builder()
                 .id(order.getId())
                 .user(userEntity)
-                .order_date(order.getOrder_date())
+                .orderDate(order.getOrder_date())
                 .total_amount(order.getTotal_amount())
                 .total_shipping(order.getTotal_shipping())
                 .warehouse(warehouseEntity)
                 .user_address(order.getUser_address())
                 .user_latitude(order.getUser_latitude())
                 .user_longitude(order.getUser_longitude())
-                .status(OrderEntity.OrderStatus.PAYMENT_WAITING)
+                .status(OrderStatus.PAYMENT_WAITING)
                 .build();
     }
 
@@ -72,6 +76,7 @@ public class OrderDataAccessMapper {
                             .product(productEntity)
                             .productSize(sizeEntity)
                             .productColor(colorEntity)
+                            .warehouse_id(orderItem.getWarehouse())
                             .build();
                 })
                 .collect(Collectors.toList());
@@ -83,7 +88,7 @@ public class OrderDataAccessMapper {
         return PaymentEntity.builder()
                .id(order.getId())
                .order(savedOrderEntity)
-                .payment_type(Objects.equals(payment, "bank_transfer") ? PaymentEntity.PaymentType.BANK_TRANSFER : PaymentEntity.PaymentType.CASH)
+                .payment_type(Objects.equals(payment, "bank_transfer") ? PaymentType.BANK_TRANSFER : PaymentType.CASH)
                .payment_date(new Date())
                .build();
     }
@@ -93,7 +98,7 @@ public class OrderDataAccessMapper {
                .id(order.getId())
                .user_id(order.getUser().getId())
                .warehouse_id(order.getWarehouse().getId())
-               .order_date(order.getOrder_date())
+               .order_date(order.getOrderDate())
                .total_amount(order.getTotal_amount())
                .total_shipping(order.getTotal_shipping())
                .user_address(order.getUser_address())
@@ -102,5 +107,71 @@ public class OrderDataAccessMapper {
                .build();
     }
 
+    public GetOrderResponse getOrderResponse(OrderEntity orderEntity) {
+        return GetOrderResponse.builder()
+               .id(orderEntity.getId())
+               .order_date(orderEntity.getOrderDate())
+               .total_amount(orderEntity.getTotal_amount())
+               .total_shipping(orderEntity.getTotal_shipping())
+               .user_address(orderEntity.getUser_address())
+               .user_latitude(orderEntity.getUser_latitude())
+               .user_longitude(orderEntity.getUser_longitude())
+               .status(orderEntity.getStatus())
+               .payment(orderEntity.getPayment() == null ? null : entityToResponsePayment(orderEntity.getPayment()))
+                .order_items(entityToOrderItemResponse(orderEntity.getItems()))
+                .build();
+    }
+
+    public List<OrderItemResponse> entityToOrderItemResponse(List<OrderItemEntity> orderItemEntity) {
+
+        return orderItemEntity.stream().map( orderItem -> {
+
+            ProductEntity productEntity = orderItem.getProduct();
+            ProductColorEntity colorEntity = orderItem.getProductColor();
+            ProductSizeEntity sizeEntity = orderItem.getProductSize();
+
+            Product product = Product.builder()
+                    .id(productEntity.getId())
+                    .name(productEntity.getName())
+                    .description(productEntity.getDescription())
+                    .build();
+
+            ProductColor productColor = ProductColor.builder()
+                    .id(colorEntity.getId())
+                    .originalName(colorEntity.getOriginalName())
+                    .build();
+
+            ProductSizes productSizes = ProductSizes.builder()
+                    .id(sizeEntity.getId())
+                    .size(sizeEntity.getSize())
+                    .build();
+
+            return OrderItemResponse.builder()
+                   .id(orderItem.getId())
+                   .quantity(orderItem.getQuantity())
+                   .price(orderItem.getPrice())
+                   .product(product)
+                   .productColor(productColor)
+                    .productSize(productSizes)
+                   .warehouse_id(orderItem.getWarehouse_id())
+                   .build();
+        }).toList();
+    }
+
+
+    public PaymentResponse entityToResponsePayment(PaymentEntity  paymentEntity) {
+        return PaymentResponse.builder()
+               .id(paymentEntity.getId())
+               .payment_type(paymentEntity.getPayment_type())
+               .payment_date(paymentEntity.getPayment_date())
+               .build();
+    }
+
+
+    public List<GetOrderResponse> getAllOrders(List<OrderEntity> orderEntities) {
+        return orderEntities.stream()
+               .map(this::getOrderResponse)
+               .collect(Collectors.toList());
+    }
 
 }

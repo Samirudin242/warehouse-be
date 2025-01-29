@@ -1,5 +1,6 @@
 package com.fns.warehouse.service.dataaccess.entity;
 
+import com.fns.warehouse.service.domain.entity.OrderStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,12 +20,20 @@ public class OrderEntity extends BaseEntity {
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
-    private Date order_date;
+
+    @Column(name = "order_date")
+    private Date orderDate;
+
     private Double total_amount;
+
     private Double total_shipping;
+
     private String user_address;
+
     private Double user_latitude;
+
     private Double user_longitude;
+
     private OrderStatus status;
 
     @ManyToOne
@@ -42,13 +51,6 @@ public class OrderEntity extends BaseEntity {
     private UserEntity user;
 
 
-
-    public enum OrderStatus {
-        PAYMENT_WAITING,
-        PAYMENT_COMPLETED,
-        SHIPPING,
-        COMPLETED
-    }
 
 }
 
