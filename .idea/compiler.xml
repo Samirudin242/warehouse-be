@@ -8,39 +8,49 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="product-application-service" />
+        <module name="warehouse-application-service" />
+        <module name="warehouse-domain-core" />
         <module name="user-dataaccess" />
-        <module name="reporting-domain-core" />
-        <module name="kafka-model" />
-        <module name="kafka-consumer" />
-        <module name="kafka-producer" />
         <module name="product-container" />
-        <module name="kafka-config-data" />
+        <module name="warehouse-messaging" />
         <module name="user-application-service" />
         <module name="user-container" />
-        <module name="reporting-container" />
+        <module name="warehouse-dataaccess" />
         <module name="product-domain-core" />
-        <module name="reporting-application-service" />
+        <module name="warehouse-application" />
+        <module name="product-messaging" />
         <module name="common-domain" />
-        <module name="reporting-messaging" />
         <module name="user-messaging" />
+        <module name="warehouse-container" />
         <module name="user-domain-core" />
         <module name="user-application" />
-        <module name="saga" />
         <module name="product-application" />
         <module name="product-dataaccess" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="infrastructure" target="1.5" />
+      <module name="kafka" target="1.5" />
+      <module name="kafka-config-data" target="17" />
+      <module name="kafka-consumer" target="17" />
+      <module name="kafka-model" target="17" />
+      <module name="kafka-producer" target="17" />
+      <module name="kafka-service" target="17" />
+      <module name="kafka-service-config" target="17" />
+      <module name="kafka-service-consumer" target="17" />
+      <module name="kafka-service-producer" target="17" />
       <module name="product-application-service (1)" target="17" />
       <module name="product-domain2" target="17" />
-      <module name="warehouse-application" target="17" />
-      <module name="warehouse-application-service" target="17" />
-      <module name="warehouse-container" target="17" />
-      <module name="warehouse-dataaccess" target="17" />
-      <module name="warehouse-domain" target="17" />
-      <module name="warehouse-domain-core" target="17" />
-      <module name="warehouse-messaging" target="17" />
-      <module name="warehouse-service" target="17" />
+      <module name="reporting-application-service" target="17" />
+      <module name="reporting-container" target="1.8" />
+      <module name="reporting-domain" target="17" />
+      <module name="reporting-domain-core" target="17" />
+      <module name="reporting-messaging" target="17" />
+      <module name="reporting-service" target="17" />
+      <module name="saga" target="17" />
+      <module name="untitled" target="17" />
+      <module name="ware-house-domain" target="17" />
+      <module name="ware-house-service" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -50,6 +60,10 @@
       <module name="kafka-consumer" options="-parameters" />
       <module name="kafka-model" options="-parameters" />
       <module name="kafka-producer" options="-parameters" />
+      <module name="kafka-service" options="" />
+      <module name="kafka-service-config" options="-parameters" />
+      <module name="kafka-service-consumer" options="-parameters" />
+      <module name="kafka-service-producer" options="-parameters" />
       <module name="product-application" options="-parameters" />
       <module name="product-application-service" options="-parameters" />
       <module name="product-application-service (1)" options="-parameters" />
@@ -58,26 +72,30 @@
       <module name="product-domain" options="" />
       <module name="product-domain-core" options="-parameters" />
       <module name="product-domain2" options="-parameters" />
+      <module name="product-messaging" options="-parameters" />
       <module name="product-service" options="" />
       <module name="reporting-application-service" options="-parameters" />
       <module name="reporting-container" options="-parameters" />
       <module name="reporting-domain-core" options="-parameters" />
       <module name="reporting-messaging" options="-parameters" />
       <module name="saga" options="-parameters" />
+      <module name="untitled" options="-parameters" />
       <module name="user-application" options="-parameters" />
       <module name="user-application-service" options="-parameters" />
       <module name="user-container" options="-parameters" />
       <module name="user-dataaccess" options="-parameters" />
       <module name="user-domain-core" options="-parameters" />
       <module name="user-messaging" options="-parameters" />
+      <module name="ware-house-domain" options="-parameters" />
+      <module name="ware-house-service" options="" />
       <module name="warehouse-application" options="-parameters" />
       <module name="warehouse-application-service" options="-parameters" />
       <module name="warehouse-container" options="-parameters" />
       <module name="warehouse-dataaccess" options="-parameters" />
-      <module name="warehouse-domain" options="-parameters" />
+      <module name="warehouse-domain" options="" />
       <module name="warehouse-domain-core" options="-parameters" />
       <module name="warehouse-messaging" options="-parameters" />
-      <module name="warehouse-service" options="-parameters" />
+      <module name="warehouse-service" options="" />
     </option>
   </component>
 </project>

@@ -1,15 +1,20 @@
 package com.fns.user.service.domain.rest;
 
-import com.fns.user.service.domain.dto.create.CreateUserCommand;
-import com.fns.user.service.domain.dto.create.CreateUserResponse;
-import com.fns.user.service.domain.dto.create.GetAllUserResponse;
+import com.fns.user.service.domain.dto.get.LocationResponse;
+import com.fns.user.service.domain.dto.get.RoleResponse;
+import com.fns.user.service.domain.dto.get.UserResponse;
+import com.fns.user.service.domain.dto.get.GetAllUserResponse;
 import com.fns.user.service.domain.ports.input.service.UserApplicationService;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.annotations.Any;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @RestController
@@ -21,28 +26,25 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<GetAllUserResponse>> getAllUsers() {
+    public ResponseEntity<Page<GetAllUserResponse>> getAllUsers(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(required = false, defaultValue = "") UUID role,
+            @RequestParam(required = false, defaultValue = "") String name
+    ) {
         log.info("Fetching al es.size()");
-        List<GetAllUserResponse> userResponses = userApplicationService.getAllUsers();
+        Page<GetAllUserResponse> userResponses = userApplicationService.getAllUsers(page, size, role, name);
 
         return ResponseEntity.ok(userResponses);
     }
 
-//    @GetMapping("/{id}")
-//    public ResponseEntity<UserResponse> getUser(@PathVariable("id") Long id) {
-//        log.info("Fetching user with ID {}", id);
-//        UserResponse userResponse = userApplicationService.getUserById(id);
-//        log.info("User retrieved: {}", userResponse);
-//        return ResponseEntity.ok(userResponse);
-//    }
 
-    @PostMapping
-    public ResponseEntity<CreateUserResponse> createUser(@RequestBody CreateUserCommand createUserCommand) {
-        log.info(createUserCommand.toString());
-        log.info("Creating user {} at {}", createUserCommand.getUsername(), createUserCommand.getRole());
-        CreateUserResponse createUserResponse = userApplicationService.createUser(createUserCommand);
-        log.info("user created");
-        return ResponseEntity.ok(createUserResponse);
+    @GetMapping("/{id}")
+    public ResponseEntity<UserResponse> getUser(@PathVariable("id") UUID id) {
+        log.info("Fetching user with ID {}", id);
+        UserResponse userResponse = userApplicationService.getUserById(id);
+        log.info("User retrieved: {}", userResponse);
+        return ResponseEntity.ok(userResponse);
     }
 
 }

@@ -1,67 +1,53 @@
 package com.fns.warehouse.service.domain.mapper;
 
-import com.fns.domain.valueobject.ProductId;
-import com.fns.domain.valueobject.WarehouseId;
-import com.fns.warehouse.service.domain.dto.create.*;
-import com.fns.warehouse.service.domain.entity.Stock;
+import com.fns.warehouse.service.domain.dto.create.CreateWarehouseCommand;
+import com.fns.warehouse.service.domain.dto.get.CreateWarehouseResponse;
+import com.fns.warehouse.service.domain.dto.get.GetNearestWarehouseResponse;
+import com.fns.warehouse.service.domain.entity.Location;
 import com.fns.warehouse.service.domain.entity.Warehouse;
-import com.fns.warehouse.service.domain.exception.WarehouseDomainException;
-import com.fns.warehouse.service.domain.valueobject.Location;
 import org.springframework.stereotype.Component;
 
 @Component
 public class WarehouseDataMapper {
-    public Warehouse createWarehouseCommandToWarehouse(CreateWarehouseCommand createWarehouseCommand) {
+    public  Warehouse warehouseCommandToWarehouse(CreateWarehouseCommand createWarehouseCommand) {
         return Warehouse.builder()
-                .warehouseId(new WarehouseId(createWarehouseCommand.getWarehouseId()))
                 .name(createWarehouseCommand.getName())
-                .location(warehouseLocationToLocation(createWarehouseCommand.getLocation()))
-//                .warehouseAdmins(usersToUserEntities(createOrderCommand.getItems()))
+                .admin_id(createWarehouseCommand.getAdmin_id())
                 .build();
     }
 
-    public CreateWarehouseResponse warehouseToCreateWarehouseResponse(Warehouse warehouse, String message) {
+    public CreateWarehouseResponse createWarehouseResponse(Warehouse warehouse) {
         return CreateWarehouseResponse.builder()
-                .warehouseId(warehouse.getWarehouseId().getValue())
-                .warehouseStatus(warehouse.getStatus())
-                .message(message)
+                .id(warehouse.getId())
+                .name(warehouse.getName())
+                .admin_id(warehouse.getAdmin_id())
                 .build();
     }
 
-    public StockTransferResponse warehouseToCreateWarehouseResponse(Stock stock, String message) {
-        return StockTransferResponse.builder()
-                .transferStatus(stock.getTransferStatus())
-                .build();
-    }
-
-//    public Stock stockTransferCommandToStock(StockTransferCommand stockTransferCommand) {
-//        return Stock.builder()
-//                .warehouseId(new WarehouseId(stockTransferCommand.getDestinationWarehouseId()))
-//                .productId(new ProductId(stockTransferCommand.getStockId()))
-//                .reservedQuantity(stockTransferCommand.getQty())
-//                .build();
-//    }
-
-//    private List<User> usersToUserEntities(
-//        @NotNull List<com.fns.warehouse.service.domain.dto.create.User> users) {
-//        return users.stream()
-//            .map(user ->
-//                    user.getName()
-//        }
-
-    private Location warehouseLocationToLocation(WarehouseLocation warehouseLocation) {
-        if(warehouseLocation == null){
-            throw new WarehouseDomainException("Location must be set.");
-        }
-
+    public Location commandToLocation(CreateWarehouseCommand createWarehouseCommand, Warehouse warehouse) {
         return Location.builder()
-                .latitude(warehouseLocation.getLatitude())
-                .longitude(warehouseLocation.getLongitude())
-                .address(warehouseLocation.getAddress())
-                .city(warehouseLocation.getCity())
-                .postalCode(warehouseLocation.getPostalCode())
-                .province(warehouseLocation.getProvince())
-                .district(warehouseLocation.getDistrict())
+                .address(createWarehouseCommand.getAddress())
+                .city_id(createWarehouseCommand.getCity_id())
+                .province_id(createWarehouseCommand.getProvince_id())
+                .warehouse_id(warehouse.getId())
+                .city(createWarehouseCommand.getCity())
+                .province(createWarehouseCommand.getProvince())
+                .postal_code(createWarehouseCommand.getPostal_code())
+                .latitude(createWarehouseCommand.getLatitude())
+                .longitude(createWarehouseCommand.getLongitude())
                 .build();
     }
+
+    public GetNearestWarehouseResponse getNearestWarehouseResponse(Warehouse warehouse) {
+        return GetNearestWarehouseResponse.builder()
+               .id(warehouse.getId())
+               .name(warehouse.getName())
+               .address(warehouse.getAddress())
+                .province_id(warehouse.getProvince_id())
+                .city_id(warehouse.getCity_id())
+                .latitude(warehouse.getLatitude())
+                .longitude(warehouse.getLongitude())
+               .build();
+    }
+
 }

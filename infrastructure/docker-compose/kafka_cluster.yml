@@ -6,7 +6,7 @@ services:
     hostname: zookeeper
     container_name: zookeeper
     ports:
-      - "2181:2181"
+      - "2182:2181"  # Update to expose ZooKeeper on port 2182
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
     volumes:

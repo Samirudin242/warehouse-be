@@ -17,8 +17,9 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Table(name = "products")
 @EntityListeners(AuditingEntityListener.class)
 @Entity
@@ -41,6 +42,10 @@ public class ProductEntity {
 
     private String gender;
 
+    private Integer totalSell;
+
+    private Integer rating;
+
     @ManyToOne
     @JoinColumn(name = "brand_id", referencedColumnName = "id")
     private ProductBrandEntity brand;
@@ -49,13 +54,9 @@ public class ProductEntity {
     @JoinColumn(name = "product_categories_id", referencedColumnName = "id")
     private ProductCategoriesEntity category;
 
-    @ManyToOne
-    @JoinColumn(name = "size_id", referencedColumnName = "id")
-    private ProductSizesEntity productSize;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProductAndSizeEntity> productAndSizes;
 
-    @ManyToOne
-    @JoinColumn(name = "color_id", referencedColumnName = "id")
-    private ProductColorsEntity productColor;
 
     @OneToMany
     @JoinColumn(name = "product_id", referencedColumnName = "id")
@@ -69,6 +70,7 @@ public class ProductEntity {
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private List<ProductReviews> reviews;
 
+
     @CreatedDate
     @Column(updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
@@ -77,26 +79,4 @@ public class ProductEntity {
     @Column()
     private LocalDateTime updatedAt = LocalDateTime.now();
 
-    @PrePersist
-    public void beforeSave() {
-        log.info("Before saving: {}", this);
-    }
-
-    @Override
-    public String toString() {
-        return "ProductEntity{" +
-                "id=" + id +
-                ", sku='" + sku + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", slug='" + slug + '\'' +
-                ", gender='" + gender + '\'' +
-                ", brand=" + (brand != null ? brand.getId() : "null") +
-                ", category=" + (category != null ? category.getId() : "null") +
-                ", productSize=" + (productSize != null ? productSize.getId() : "null") +
-                ", productColor=" + (productColor != null ? productColor.getId() : "null") +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
-    }
 }

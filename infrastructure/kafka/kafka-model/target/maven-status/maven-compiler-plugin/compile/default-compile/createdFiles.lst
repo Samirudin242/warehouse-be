@@ -1,0 +1,4 @@
+com/fns/kafka/warehouse/avro/model/WarehouseReportingResponseAvroModel.class
+com/fns/kafka/warehouse/avro/model/WarehouseReportingResponseAvroModel$Builder.class
+com/fns/kafka/warehouse/avro/model/WarehouseReportingRequestAvroModel.class
+com/fns/kafka/warehouse/avro/model/WarehouseReportingRequestAvroModel$Builder.class

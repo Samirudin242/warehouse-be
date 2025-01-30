@@ -13,7 +13,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "product_images", schema = "public")
+@Table(name = "product_images", indexes = @Index(columnList = "product_id"))
 @Entity
 public class ProductImagesEntity {
 
@@ -33,4 +33,13 @@ public class ProductImagesEntity {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    @Override
+    public String toString() {
+        return "ProductImagesEntity{" +
+                "id=" + id +
+                ", image_url='" + image_url + '\'' +
+                ", product_id=" + (product != null ? product.getId() : "null") +
+                '}';
+    }
 }

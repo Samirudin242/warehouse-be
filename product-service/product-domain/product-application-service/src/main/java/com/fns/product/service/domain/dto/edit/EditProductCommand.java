@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.Getter;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.UUID;
 @Getter
 @AllArgsConstructor
@@ -19,6 +20,7 @@ public class EditProductCommand {
     private String description;
     private String slug;
     private String gender;
+    private List<ListImage> image_url;
     @NotNull
     private UUID brand_id;
     @NotNull
@@ -28,3 +30,4 @@ public class EditProductCommand {
     @NotNull
     private UUID size_id;
 }
+

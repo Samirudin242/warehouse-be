@@ -1,0 +1,12 @@
+c360b158061aefe95f62b77947c476b74301abaa 1687 product-container-1.0-SNAPSHOT.jar
+28591a8a8573fbe21676667c59d99e465b1587ab 97398675 product-container-1.0-SNAPSHOT.jar
+2e346cccc203474d6e823ecdc4363002dd31ffc4 55285223 product-container-1.0-SNAPSHOT.jar
+b60719b04915293e462c23149ad3554dcf48e9a0 55312636 product-container-1.0-SNAPSHOT.jar
+5f42848c4143d42edb4e2dd3ed33a9048fc5ceb2 116840860 product-container-1.0-SNAPSHOT.jar
+f56905c4fdef042df5a5ed1fe4f21fa80dc45cca 55338006 product-container-1.0-SNAPSHOT.jar
+c732c628babd248ba27cdb09474e6d773b365250 97399388 product-container-1.0-SNAPSHOT.jar
+4b12495e1b50acabca617fbe5344284f8a01ca50 97383774 product-container-1.0-SNAPSHOT.jar
+aaa6c33ce123131cae1d813153defcfc81bf2638 97386320 product-container-1.0-SNAPSHOT.jar
+8583eca94c3a57fcaba4d9a27aa1513ddd8e82a5 55321070 product-container-1.0-SNAPSHOT.jar
+72678d7ac481ec6f8c5efb27f71de8a427005e39 55275242 product-container-1.0-SNAPSHOT.jar
+062d0922495ff0889c1c1422737244c531386c27 3033 product-container-1.0-SNAPSHOT.jar

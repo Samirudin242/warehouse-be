@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -23,7 +24,6 @@ public class CreateProductCommand {
 
     private String description;
 
-    @NotNull
     private String slug;
 
     private String gender;
@@ -31,7 +31,7 @@ public class CreateProductCommand {
     @NotNull
     private Double price;
 
-    private String image_url;
+    private List<String> image_url;
 
     @NotNull
     private UUID brand_id;
@@ -40,8 +40,14 @@ public class CreateProductCommand {
     private UUID product_categories_id;
 
     @NotNull
-    private UUID size_id;
+    private List<UUID> size_id;
 
     @NotNull
-    private UUID color_id;
+    private List<UUID> color_id;
+
+    @NotNull
+    private UUID warehouse_id;
+
+    @NotNull
+    private Integer quantity;
 }

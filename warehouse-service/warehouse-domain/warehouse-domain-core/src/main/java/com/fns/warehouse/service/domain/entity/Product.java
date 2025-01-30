@@ -1,27 +1,29 @@
 package com.fns.warehouse.service.domain.entity;
 
-import com.fns.domain.entity.*;
-import com.fns.domain.valueobject.*;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-public class Product extends BaseEntity<ProductId> {
+import java.util.UUID;
+
+@Getter
+@Setter
+@Builder
+@Data
+public class Product {
+    private UUID id;
+    private String sku;
     private String name;
-    private Money price;
-
-    public Product(ProductId productId, String name, Money price) {
-        super.setId(productId);
-        this.name = name;
-        this.price = price;
-    }
-
-    public Product(ProductId productId) {
-        super.setId(productId);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Money getPrice() {
-        return price;
-    }
+    private String slug;
+    private String description;
+    private String gender;
+    private Double price;
+    private UUID brandId;
+    private UUID productCategoryId;
+    private UUID sizeId;
+    private UUID colorId;
+    private String imageUrl;
+    private UUID warehouseId;
+    private Integer stock;
 }

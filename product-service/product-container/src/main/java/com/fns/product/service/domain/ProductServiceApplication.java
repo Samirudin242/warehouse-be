@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaAuditing
 @EnableJpaRepositories(basePackages = { "com.fns.product.service.dataaccess", "com.fns.dataaccess", "com.fns.product.service.domain.ports.output.repository" })
 @EntityScan(basePackages = { "com.fns.product.service.dataaccess", "com.fns.product.service.dataaccess.entity", "com.fns.product.dataaccess", "com.fns.product.service.messaging","com.fns.product.messaging" })
-@SpringBootApplication(scanBasePackages = "com.fns")
+@SpringBootApplication(scanBasePackages = {"com.fns.product.service", "com.fns.product.service.dataaccess"})
 public class ProductServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(ProductServiceApplication.class, args);

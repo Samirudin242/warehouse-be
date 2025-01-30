@@ -1,1 +1,4 @@
+com/fns/user/service/domain/rest/AddressController.class
 com/fns/user/service/domain/rest/UserController.class
+com/fns/user/service/domain/rest/AuthController.class
+com/fns/user/service/domain/rest/GlobalExceptionHandler.class

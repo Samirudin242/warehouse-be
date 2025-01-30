@@ -1,33 +1,21 @@
 package com.fns.warehouse.service.domain;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@EnableJpaRepositories(basePackages = {
-		"com.fns.warehouse.service.dataaccess.warehouse.repository",
-})
-@EntityScan(basePackages = {
-		"com.fns.warehouse.service.dataaccess.warehouse.entity",
-		"com.fns.warehouse.service.domain.ports.output.message.publisher"
-})
+@Slf4j
+@EnableJpaAuditing
+@EnableJpaRepositories(basePackages = { "com.fns.warehouse.service.dataaccess", "com.fns.warehouse.service.domain.ports.output.repository" })
+@EntityScan(basePackages = { "com.fns.warehouse.service.dataaccess", "com.fns.warehouse.service.messaging" })
 @SpringBootApplication(scanBasePackages = "com.fns")
+@ComponentScan(basePackages = {"com.fns.warehouse.service", "com.fns.warehouse.service.rest"})
 public class WarehouseServiceApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(WarehouseServiceApplication.class, args);
-	}
-
-	@GetMapping
-	public String hello(){
-		return  "Hello World ifhjdhjkfd";
-	}
-
-	@GetMapping("/world")
-	public String world(){
-		return  "Hello World kfs;";
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(WarehouseServiceApplication.class, args);
+    }
 }

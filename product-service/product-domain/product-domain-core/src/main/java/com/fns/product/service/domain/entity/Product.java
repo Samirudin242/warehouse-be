@@ -3,6 +3,8 @@ package com.fns.product.service.domain.entity;
 import com.fns.product.service.domain.valueObject.Price;
 import lombok.*;
 
+import java.lang.annotation.Documented;
+import java.util.List;
 import java.util.UUID;
 
 // Aggregate Root: Product
@@ -10,7 +12,6 @@ import java.util.UUID;
 @Setter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
 public class Product {
 
     private UUID id;
@@ -19,12 +20,16 @@ public class Product {
     private String slug;
     private String description;
     private String gender;
-    private Price price;
+    private Double price;
     private UUID brandId;
     private UUID productCategoryId;
-    private UUID sizeId;
-    private UUID colorId;
     private String imageUrl;
+    private UUID warehouseId;
+    private Integer stock;
+    private Integer totalSell;
+    private Integer rating;
+    private List<Warehouse> warehouseProduct;
+
 
     // Private constructor for builder
     private Product(Builder builder) {
@@ -37,9 +42,12 @@ public class Product {
         this.description = builder.description;
         this.brandId = builder.brandId;
         this.productCategoryId = builder.productCategoryId;
-        this.sizeId = builder.sizeId;
-        this.colorId = builder.colorId;
         this.imageUrl = builder.imageUrl;
+        this.warehouseId = builder.warehouseId;
+        this.stock = builder.stock;
+        this.totalSell = builder.totalSell;
+        this.rating = builder.rating;
+        this.warehouseProduct = builder.warehouse;
     }
 
 
@@ -63,7 +71,6 @@ public class Product {
                 ", price=" + price +
                 ", brandId=" + brandId +
                 ", productCategoryId=" + productCategoryId +
-                ", sizeId=" + sizeId +
                 ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
@@ -71,23 +78,41 @@ public class Product {
 
     // Builder class
     public static class Builder {
-        public UUID colorId;
         private UUID id;
         private String sku;
         private String name;
         private String slug;
         private String description;
         private String gender;
-        private Price price;
+        private Double price;
         private UUID brandId;
         private UUID productCategoryId;
-        private UUID sizeId;
         private String imageUrl;
-
+        private UUID warehouseId;
+        private Integer stock;
+        private Integer totalSell;
+        private Integer rating;
+        private List<Warehouse> warehouse;
         public Builder id(UUID id) {
             this.id = id;
             return this;
         }
+
+        public Builder warehouse(List<Warehouse> warehouse) {
+            this.warehouse = warehouse;
+            return this;
+        }
+
+        public Builder rating(Integer rating) {
+            this.rating = rating;
+            return this;
+        }
+
+        public Builder totalSell(Integer totalSell) {
+            this.totalSell = totalSell;
+            return this;
+        }
+
 
         public Builder sku(String sku) {
             this.sku = sku;
@@ -105,66 +130,45 @@ public class Product {
         }
 
         public Builder name(String name) {
-            if (name == null || name.trim().isEmpty()) {
-                throw new IllegalArgumentException("Product name cannot be empty.");
-            }
             this.name = name;
             return this;
         }
 
         public Builder gender(String gender) {
-            if (gender == null) {
-                throw new IllegalArgumentException("Product gender cannot be null.");
-            }
             this.gender = gender;
             return this;
         }
 
-        public Builder price(Price price) {
-            if (price == null) {
-                throw new IllegalArgumentException("Product price cannot be null.");
-            }
+        public Builder price(Double price) {
             this.price = price;
             return this;
         }
 
         public Builder brandId(UUID brandId) {
-            if (brandId == null) {
-                throw new IllegalArgumentException("Brand ID cannot be null.");
-            }
             this.brandId = brandId;
             return this;
         }
 
         public Builder productCategoryId(UUID productCategoryId) {
-            if (productCategoryId == null) {
-                throw new IllegalArgumentException("Product category ID cannot be null.");
-            }
             this.productCategoryId = productCategoryId;
             return this;
         }
 
-        public Builder sizeId(UUID sizeId) {
-            if (sizeId == null) {
-                throw new IllegalArgumentException("Size ID cannot be null.");
-            }
-            this.sizeId = sizeId;
-            return this;
-        }
-
-        public Builder colorId(UUID colorId) {
-            if (colorId == null) {
-                throw new IllegalArgumentException("Color ID cannot be null.");
-            }
-            this.colorId = colorId;
-            return this;
-        }
 
         public Builder imageUrl(String imageUrl) {
             this.imageUrl = imageUrl;
             return this;
         }
 
+        public Builder warehouseId(UUID warehouseId) {
+            this.warehouseId = warehouseId;
+            return this;
+        }
+
+        public Builder stock(Integer stock) {
+            this.stock = stock;
+            return this;
+        }
         public Product build() {
             return new Product(this);
         }

@@ -1,18 +1,11 @@
 package com.fns.user.service.dataaccess.user.entity;
 
-import com.fns.domain.valueobject.EmailAddress;
-import com.fns.user.service.dataaccess.user.converter.EmailAddressConverter;
-import com.fns.user.service.dataaccess.user.converter.PasswordConverter;
-import com.fns.user.service.dataaccess.user.converter.RoleConverter;
-import com.fns.user.service.dataaccess.user.converter.UserNameConverter;
-import com.fns.user.service.domain.valueObject.Password;
-import com.fns.user.service.domain.valueObject.Role;
-import com.fns.user.service.domain.valueObject.UserName;
-import com.fns.user.service.domain.valueObject.UserRoleType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -22,23 +15,52 @@ import java.util.UUID;
 @AllArgsConstructor
 @Table(name = "users")
 @Entity
-public class UserEntity {
+public class UserEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "uuid2")
     private UUID id;
 
-//    @Convert(converter = UserNameConverter.class)
-    private String userName;
+    private String name;
 
-//    @Convert(converter = PasswordConverter.class)
+    private String user_name;
+
     private String password;
 
-//    @Convert(converter = EmailAddressConverter.class)
     private String email;
 
-//    @Convert(converter = RoleConverter.class)
-    private String userRole;
+    private String profile_picture;
+
+    private String phone_number;
+
+    private Boolean is_verified;
+
+    @OneToMany
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    private List<LocationEntity> locations;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
+    private UserRoleEntity user_role;
+
+    public UserEntity(LocalDateTime createdAt, LocalDateTime updatedAt) {
+        super(createdAt, updatedAt);
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", user_name='" + user_name + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", profile_picture='" + profile_picture + '\'' +
+                ", phone_number='" + phone_number + '\'' +
+                ", is_verified=" + is_verified +
+                ", user_role=" + user_role +
+                '}';
+    }
 
 }

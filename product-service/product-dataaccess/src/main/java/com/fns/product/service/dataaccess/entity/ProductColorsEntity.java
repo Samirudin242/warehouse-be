@@ -1,5 +1,6 @@
 package com.fns.product.service.dataaccess.entity;
 
+import com.fns.product.service.domain.entity.ProductColors;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -30,4 +31,8 @@ public class ProductColorsEntity {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public ProductColors toDomain() {
+        return new ProductColors(this.id, this.originalName, this.filterGroup);
+    }
 }

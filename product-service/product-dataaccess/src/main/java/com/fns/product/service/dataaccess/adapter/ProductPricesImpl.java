@@ -8,6 +8,8 @@ import com.fns.product.service.domain.ports.output.repository.ProductPricesRepos
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 @Slf4j
 @Component
 public class ProductPricesImpl implements ProductPricesRepository {
@@ -26,5 +28,17 @@ public class ProductPricesImpl implements ProductPricesRepository {
 
         return productPriceMapper.priceFromPriceEntity(savedProductPrices);
 
+    }
+
+    @Override
+    public ProductPrices getPriceByProductId(UUID productId) {
+        ProductPricesEntity entity = productPricesJpaRepository.findByProduct_Id(productId);
+
+        return ProductPrices.builder()
+                .price(entity.getPrice())
+                .currency(entity.getCurrency())
+                .discountedValue(entity.getDiscounted_value())
+                .onSales(entity.getOn_sales())
+                .build();
     }
 }

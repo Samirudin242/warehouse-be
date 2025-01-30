@@ -1,28 +1,30 @@
 package com.fns.warehouse.service.domain.entity;
 
-import com.fns.domain.entity.*;
-import com.fns.domain.valueobject.*;
-import com.fns.warehouse.service.domain.valueobject.UserRole;
+import java.util.UUID;
 
-public class User extends BaseEntity<UserId> {
+import lombok.*;
 
-    private UserId userId;
+
+@Getter
+@Setter
+@Data
+@Builder
+public class User {
+
+    private UUID id;
     private String name;
-    private UserRole userRole;
-
-    public User(UserId userId, String name, UserRole userRole) {
-        super.setId(userId);
-        this.name = name;
-        this.userRole = userRole;
-    }
-
-    public User(UserId userId) {
-        super.setId(userId);
-    }
-
-    public UserId getUserId() { return userId; }
-    public String getName() { return name; }
-    public UserRole getUserRole() { return userRole; }
-
+    private String user_name;
+    private String password;
+    private UUID role_id;
+    private String email;
+    private String phone_number;
+    private Boolean is_verified;
+    private String profile_picture;
+    private String province;
+    private String city;
+    private String address;
+    private String postal_code;
+    private String province_id;
+    private String city_id;
 
 }

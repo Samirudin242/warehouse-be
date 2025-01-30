@@ -1,0 +1,10 @@
+# Ignore target folder
+target/
+
+# Ignore IDE files
+.idea/
+*.iml
+
+infrastructure/docker-compose/volumes/kafka/
+infrastructure/docker-compose/volumes/zookeeper/
+

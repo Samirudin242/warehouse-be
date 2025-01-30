@@ -1,10 +1,12 @@
 package com.fns.user.service.domain;
 
-import com.fns.user.service.domain.dto.create.GetAllUserResponse;
+import com.fns.user.service.domain.dto.get.GetAllUserResponse;
 import com.fns.user.service.domain.ports.output.repository.UserRepository;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class UserGetAllHandler {
@@ -15,8 +17,8 @@ public class UserGetAllHandler {
         this.userRepository = userRepository;
     }
 
-    public List<GetAllUserResponse> getAllUser() {
-        return userRepository.getAllUsers();
+    public Page<GetAllUserResponse> getAllUser(Integer page, Integer pageSize, UUID role, String name) {
+        return userRepository.getAllUsers(page, pageSize, role, name);
     }
 
 }

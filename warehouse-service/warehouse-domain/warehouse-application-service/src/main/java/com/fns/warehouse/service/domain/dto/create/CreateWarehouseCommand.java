@@ -2,24 +2,24 @@ package com.fns.warehouse.service.domain.dto.create;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 
-import javax.validation.constraints.NotNull;
-import java.util.List;
 import java.util.UUID;
-
 
 @Getter
 @AllArgsConstructor
 @Builder
+@Data
 public class CreateWarehouseCommand {
-    private final UUID warehouseId;
-    @NotNull
     private final String name;
-    @NotNull
-    private final WarehouseLocation location;
-
-    private final List<User> users;
-
+    private final UUID admin_id;
+    private final String address;
+    private final String city_id;
+    private final String city;
+    private final String province_id;
+    private final String province;
+    private final String postal_code;
+    private final Double latitude;
+    private final Double longitude;
 }
-
