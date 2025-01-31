@@ -14,7 +14,7 @@ import org.springframework.kafka.support.SendResult;
 public class KafkaProducer {
 
     private static final Logger logger = LoggerFactory.getLogger(KafkaProducer.class);
-    private static final String TOPIC = "user_created";
+    private static final String TOPIC = "user-created";
 
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
