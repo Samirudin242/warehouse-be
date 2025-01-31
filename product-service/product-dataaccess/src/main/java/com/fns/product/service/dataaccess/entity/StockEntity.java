@@ -1,9 +1,6 @@
 package com.fns.product.service.dataaccess.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.UUID;
@@ -20,10 +17,14 @@ public class StockEntity  {
     @GeneratedValue(generator = "UUID")
     private UUID id;
 
-    private UUID warehouseId;
-
-    private UUID productId;
-
     private Integer quantity;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private ProductEntity product;
+
+    @ManyToOne
+    @JoinColumn(name = "warehouse_id")
+    private WarehouseEntity warehouse;
 }
 

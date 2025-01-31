@@ -12,7 +12,7 @@ import java.util.UUID;
 public interface CartApplicationService {
     CreateCartResponse saveCart(@Valid CartCommand cartCommand);
 
-    List<com.fns.product.service.domain.dto.get.CartResponse> getCartResponseList(UUID userId);
+    List<CartResponse> getCartResponseList(UUID userId);
 
     CreateCartResponse editCart(@Valid CartCommand cartCommand, UUID id);
 

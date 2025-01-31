@@ -41,17 +41,16 @@ public class CartDataAccessMapper {
                             .map(ProductSizesEntity::toDomain)
                             .orElse(null);
 
-                    List<StockEntity> stockEntities = stockJpaRepository.findAllByProductId(cartItemEntity.getProduct().getId());
+                    List<StockEntity> stockEntities = stockJpaRepository.findAllByProduct_Id(cartItemEntity.getProduct().getId());
 
                     Integer stockEntity = stockEntities.stream()
                             .mapToInt(StockEntity::getQuantity)
                             .sum();
 
                     List<UUID> warehouseIds = stockEntities.stream()
-                            .map(StockEntity::getWarehouseId)
+                            .map(stock -> stock.getWarehouse().getId())
                             .distinct()
                             .collect(Collectors.toList());
-
 
                     List<WarehouseEntity> warehouseEntities = warehouseJpaRepository.findAllById(warehouseIds);
 
