@@ -16,8 +16,6 @@ public class CreateOrderItemCommand {
     private UUID id;
     private UUID order_id;
     private UUID product_id;
-    private UUID size_id;
-    private UUID color_id;
     private Integer quantity;
     private Double price;
     private List<UUID> warehouse_id;

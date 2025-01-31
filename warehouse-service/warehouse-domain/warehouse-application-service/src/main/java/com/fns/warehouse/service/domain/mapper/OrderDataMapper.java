@@ -43,8 +43,6 @@ public class OrderDataMapper {
                 .product_id(createOrderItemCommand.getProduct_id())
                 .quantity(createOrderItemCommand.getQuantity())
                 .price(createOrderItemCommand.getPrice())
-                .color_id(createOrderItemCommand.getColor_id())
-                .size_id(createOrderItemCommand.getSize_id())
                 .warehouse(createOrderItemCommand.getWarehouse_id())
                 .build();
     }
