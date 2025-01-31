@@ -2,7 +2,9 @@ package com.fns.warehouse.service.messaging.mapper;
 
 import com.fns.warehouse.service.domain.dto.message.UserModel;
 import com.fns.warehouse.service.domain.entity.Location;
+import com.fns.warehouse.service.domain.entity.Stock;
 import com.fns.warehouse.service.domain.entity.Warehouse;
+import com.fns.warehouse.service.messaging.model.StockKafkaModel;
 import com.fns.warehouse.service.messaging.model.UserKafkaModel;
 import com.fns.warehouse.service.messaging.model.WarehouseKafkaModel;
 import org.springframework.stereotype.Component;
@@ -40,5 +42,14 @@ public class WarehouseMessagingMapper {
                 warehouse.getLatitude(),
                 warehouse.getLongitude()
         );
+    }
+
+    public StockKafkaModel convertToStockKafkaModel(Stock stock) {
+        return StockKafkaModel.builder()
+                .id(stock.getId())
+                .product_id(stock.getProduct_id())
+                .warehouse_id(stock.getWarehouse_id())
+                .quantity(stock.getQuantity())
+                .build();
     }
 }

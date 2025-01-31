@@ -4,6 +4,7 @@ com/fns/warehouse/service/dataaccess/repository/ProductColorJpaRepository.class
 com/fns/warehouse/service/dataaccess/entity/ProductEntity.class
 com/fns/warehouse/service/dataaccess/entity/UserEntity.class
 com/fns/warehouse/service/dataaccess/repository/StockMutationTypeJpaRepository.class
+com/fns/warehouse/service/dataaccess/mapper/SalesReportDataAccessMapper.class
 com/fns/warehouse/service/dataaccess/entity/MutationTypeEntity$MutationTypeEntityBuilder.class
 com/fns/warehouse/service/dataaccess/repository/StockJpaRepository.class
 com/fns/warehouse/service/dataaccess/entity/ProductSizeEntity$ProductSizeEntityBuilder.class
@@ -26,11 +27,14 @@ com/fns/warehouse/service/dataaccess/entity/StockEntity$StockEntityBuilder.class
 com/fns/warehouse/service/dataaccess/repository/OrderItemJpaRepository.class
 com/fns/warehouse/service/dataaccess/adapter/UserRepositoryImpl.class
 com/fns/warehouse/service/dataaccess/entity/UserEntity$UserEntityBuilder.class
+com/fns/warehouse/service/dataaccess/repository/SalesJpaReportEntity.class
 com/fns/warehouse/service/dataaccess/entity/PaymentEntity.class
 com/fns/warehouse/service/dataaccess/entity/WarehouseEntity$WarehouseStatus.class
 com/fns/warehouse/service/dataaccess/mapper/StockDataAccessMapper.class
 com/fns/warehouse/service/dataaccess/entity/PaymentEntity$PaymentEntityBuilder.class
+com/fns/warehouse/service/dataaccess/entity/SalesReportEntity.class
 com/fns/warehouse/service/dataaccess/entity/StockMutationEntity$StockMutationEntityBuilder.class
+com/fns/warehouse/service/dataaccess/entity/SalesReportEntity$SalesReportEntityBuilder.class
 com/fns/warehouse/service/dataaccess/entity/ProductColorEntity.class
 com/fns/warehouse/service/dataaccess/entity/ProductEntity$ProductEntityBuilder.class
 com/fns/warehouse/service/dataaccess/entity/ProductSizeEntity.class
@@ -43,6 +47,7 @@ com/fns/warehouse/service/dataaccess/adapter/ProductRepositoryImpl.class
 com/fns/warehouse/service/dataaccess/adapter/OrderRepositoryImpl.class
 com/fns/warehouse/service/dataaccess/entity/StockEntity.class
 com/fns/warehouse/service/dataaccess/entity/OrderItemEntity$OrderItemEntityBuilder.class
+com/fns/warehouse/service/dataaccess/repository/StockMutationJpaRepository.class
 com/fns/warehouse/service/dataaccess/mapper/ProductDataAccessMapper.class
 com/fns/warehouse/service/dataaccess/repository/LocationJpaRepository.class
 com/fns/warehouse/service/dataaccess/mapper/LocationDataAccessMapper.class

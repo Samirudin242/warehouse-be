@@ -23,5 +23,6 @@ public class CreateOrderCommand {
     private Double latitude_user_address;
     private Double longitude_user_address;
     private String payment_method;
+    private Boolean stockMutations;
     private List<CreateOrderItemCommand> orders;
 }

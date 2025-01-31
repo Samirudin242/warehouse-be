@@ -1,7 +1,13 @@
 package com.fns.warehouse.service.domain.ports.output.repository;
 
+import com.fns.warehouse.service.domain.dto.create.*;
 import com.fns.warehouse.service.domain.dto.get.GetOrderResponse;
+import com.fns.warehouse.service.domain.dto.response.ShippingOrderResponse;
+import com.fns.warehouse.service.domain.dto.response.UpdateStockResponse;
+import com.fns.warehouse.service.domain.dto.response.UploadPaymentResponse;
 import enitity.Order;
+import enitity.Stock;
+import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -14,5 +20,18 @@ public interface OrderRepository {
     List<GetOrderResponse> getAllOrder(UUID userId);
 
     String uploadPayment(UUID orderId, MultipartFile file) throws IOException;
+
+    Page<GetOrderResponse> getOrders(Integer page, Integer size, String status);
+
+    UploadPaymentResponse uploadPayment(UploadPaymentCommand uploadPaymentCommand);
+
+    ShippingOrderResponse shipOrder(ShippingOrderCommand shipOrderCommand);
+
+    UpdateStockResponse updateStock(UpdateStockCommand updateStockCommand);
+
+    void createSales(CreateSalesCommand createSalesCommand);
+
+    void createMutationStock(CreateMutationStock createMutationStock);
+
 
 }

@@ -13,6 +13,7 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/entity/ProductColorEntity.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/entity/ProductEntity.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/entity/ProductSizeEntity.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/entity/SalesReportEntity.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/entity/StockEntity.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/entity/StockMutationEntity.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/entity/UserEntity.java
@@ -20,6 +21,7 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/mapper/LocationDataAccessMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/mapper/OrderDataAccessMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/mapper/ProductDataAccessMapper.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/mapper/SalesReportDataAccessMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/mapper/StockDataAccessMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/mapper/UserDataAccessMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/mapper/WarehouseDataAccessMapper.java
@@ -30,7 +32,9 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/repository/ProductColorJpaRepository.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/repository/ProductJpaRepository.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/repository/ProductSizeJpaRepository.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/repository/SalesJpaReportEntity.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/repository/StockJpaRepository.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/repository/StockMutationJpaRepository.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/repository/StockMutationTypeJpaRepository.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/repository/UserJpaRepository.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-dataaccess/src/main/java/com/fns/warehouse/service/dataaccess/repository/WarehouseJpaRepository.java

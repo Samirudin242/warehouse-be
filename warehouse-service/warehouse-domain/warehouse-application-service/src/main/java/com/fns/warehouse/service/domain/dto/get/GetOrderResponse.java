@@ -1,6 +1,7 @@
 package com.fns.warehouse.service.domain.dto.get;
 
 import com.fns.warehouse.service.domain.entity.OrderStatus;
+import com.fns.warehouse.service.domain.entity.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,5 +24,6 @@ public class GetOrderResponse {
     private OrderStatus status;
     private PaymentResponse payment;
     private List<OrderItemResponse> order_items;
+    private User user;
 
 }

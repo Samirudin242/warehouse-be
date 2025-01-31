@@ -2,6 +2,8 @@ package com.fns.warehouse.service.domain.mapper;
 
 import com.fns.warehouse.service.domain.dto.create.CreateOrderCommand;
 import com.fns.warehouse.service.domain.dto.create.CreateOrderItemCommand;
+import com.fns.warehouse.service.domain.dto.create.CreateSalesCommand;
+import com.fns.warehouse.service.domain.dto.create.ShippingOrderCommand;
 import com.fns.warehouse.service.domain.dto.response.CreateOrderResponse;
 import enitity.Order;
 import enitity.OrderItem;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class OrderDataMapper {
@@ -51,6 +54,17 @@ public class OrderDataMapper {
                 .order_id(order.getId())
                .user_id(order.getUser_id())
                .order_date(order.getOrder_date())
+               .build();
+    }
+
+    public CreateSalesCommand createSalesCommand(CreateOrderItemCommand createOrderItemCommand, UUID warehouseId, UUID orderItemId) {
+        return CreateSalesCommand.builder()
+               .product_id(createOrderItemCommand.getProduct_id())
+               .quantity(createOrderItemCommand.getQuantity())
+               .total_price(createOrderItemCommand.getPrice())
+               .warehouse_id(warehouseId)
+                .order_item_id(orderItemId)
+                .transaction_date(new Date())
                .build();
     }
 

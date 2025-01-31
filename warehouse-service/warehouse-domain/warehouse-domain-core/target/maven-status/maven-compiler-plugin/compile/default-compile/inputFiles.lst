@@ -9,9 +9,13 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/com/fns/warehouse/service/domain/entity/Stock.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/com/fns/warehouse/service/domain/entity/User.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/com/fns/warehouse/service/domain/entity/Warehouse.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/com/fns/warehouse/service/domain/event/StockEvent.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/com/fns/warehouse/service/domain/event/StockUpdateEvent.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/com/fns/warehouse/service/domain/event/WarehouseCreatedEvent.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/com/fns/warehouse/service/domain/event/WarehouseEvent.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/com/fns/warehouse/service/domain/exception/WarehouseDomainException.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/enitity/MutationType.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/enitity/Order.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/enitity/OrderItem.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/enitity/Stock.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-domain-core/src/main/java/enitity/Warehouse.java

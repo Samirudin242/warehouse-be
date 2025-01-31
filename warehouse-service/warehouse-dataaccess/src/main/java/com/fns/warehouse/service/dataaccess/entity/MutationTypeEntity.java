@@ -20,7 +20,6 @@ import java.util.UUID;
 public class MutationTypeEntity extends BaseEntity {
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "uuid2")
     private UUID id;
 
     private String name;

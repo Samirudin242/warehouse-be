@@ -17,13 +17,16 @@ public class StockEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "uuid2")
     private UUID id;
 
     private Integer quantity;
 
-    private UUID product_id;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private ProductEntity product;
 
-    private UUID warehouse_id;
+    @ManyToOne
+    @JoinColumn(name = "warehouse_id")
+    private WarehouseEntity warehouse;
 
 }

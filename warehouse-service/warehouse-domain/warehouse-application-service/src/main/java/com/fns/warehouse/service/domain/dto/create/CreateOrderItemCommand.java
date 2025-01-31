@@ -13,6 +13,7 @@ import java.util.UUID;
 @Builder
 @Data
 public class CreateOrderItemCommand {
+    private UUID id;
     private UUID order_id;
     private UUID product_id;
     private UUID size_id;

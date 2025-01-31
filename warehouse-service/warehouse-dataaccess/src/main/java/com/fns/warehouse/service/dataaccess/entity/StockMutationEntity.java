@@ -1,10 +1,12 @@
 package com.fns.warehouse.service.dataaccess.entity;
 
 
+import enitity.MutationType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.Date;
 import java.util.UUID;
 
 @Getter
@@ -18,7 +20,6 @@ public class StockMutationEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "uuid2")
     private UUID id;
 
     private UUID from_warehouse_id;
@@ -29,7 +30,7 @@ public class StockMutationEntity extends BaseEntity {
 
     private Integer quantity;
 
-    @ManyToOne
-    @JoinColumn(name = "mutation_type_id", referencedColumnName = "id")
-    private MutationTypeEntity mutationType;
+    private Date mutation_date;
+
+    private MutationType mutation_type;
 }

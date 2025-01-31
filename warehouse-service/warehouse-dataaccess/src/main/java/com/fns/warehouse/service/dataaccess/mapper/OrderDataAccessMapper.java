@@ -2,6 +2,7 @@ package com.fns.warehouse.service.dataaccess.mapper;
 
 import com.fns.warehouse.service.dataaccess.entity.*;
 import com.fns.warehouse.service.dataaccess.repository.*;
+import com.fns.warehouse.service.domain.dto.create.CreateMutationStock;
 import com.fns.warehouse.service.domain.dto.get.GetOrderResponse;
 import com.fns.warehouse.service.domain.dto.get.OrderItemResponse;
 import com.fns.warehouse.service.domain.dto.get.PaymentResponse;
@@ -107,6 +108,16 @@ public class OrderDataAccessMapper {
                .build();
     }
 
+    public User userFromEntity(UserEntity userEntity) {
+        return User.builder()
+               .id(userEntity.getId())
+               .name(userEntity.getName())
+               .email(userEntity.getEmail())
+               .phone_number(userEntity.getPhone_number())
+                .profile_picture(userEntity.getProfile_picture())
+               .build();
+    }
+
     public GetOrderResponse getOrderResponse(OrderEntity orderEntity) {
         return GetOrderResponse.builder()
                .id(orderEntity.getId())
@@ -119,6 +130,7 @@ public class OrderDataAccessMapper {
                .status(orderEntity.getStatus())
                .payment(orderEntity.getPayment() == null ? null : entityToResponsePayment(orderEntity.getPayment()))
                 .order_items(entityToOrderItemResponse(orderEntity.getItems()))
+                .user(userFromEntity(orderEntity.getUser()))
                 .build();
     }
 
@@ -165,6 +177,7 @@ public class OrderDataAccessMapper {
                .id(paymentEntity.getId())
                .payment_type(paymentEntity.getPayment_type())
                .payment_date(paymentEntity.getPayment_date())
+                .payment_proof(paymentEntity.getPayment_proof())
                .build();
     }
 
@@ -173,6 +186,17 @@ public class OrderDataAccessMapper {
         return orderEntities.stream()
                .map(this::getOrderResponse)
                .collect(Collectors.toList());
+    }
+
+    public StockMutationEntity stockMutationEntity(CreateMutationStock createMutationStock) {
+        return StockMutationEntity.builder()
+                .from_warehouse_id(createMutationStock.getFrom_warehouse_id())
+                .to_warehouse_id(createMutationStock.getTo_warehouse_id())
+                .product_id(createMutationStock.getProduct_id())
+                .quantity(createMutationStock.getQuantity())
+                .mutation_type(createMutationStock.getMutation_type())
+                .mutation_date(new Date())
+                .build();
     }
 
 }
