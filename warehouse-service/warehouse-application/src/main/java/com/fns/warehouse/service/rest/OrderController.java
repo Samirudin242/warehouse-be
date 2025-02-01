@@ -1,15 +1,14 @@
 package com.fns.warehouse.service.rest;
 
 import com.fns.warehouse.service.domain.dto.create.*;
-import com.fns.warehouse.service.domain.dto.get.CreateWarehouseResponse;
 import com.fns.warehouse.service.domain.dto.get.GetNearestWarehouseResponse;
 import com.fns.warehouse.service.domain.dto.get.GetOrderResponse;
 import com.fns.warehouse.service.domain.dto.response.CreateOrderResponse;
+import com.fns.warehouse.service.domain.dto.response.UpdateStatusOrderResponse;
 import com.fns.warehouse.service.domain.dto.response.ShippingOrderResponse;
 import com.fns.warehouse.service.domain.dto.response.UploadPaymentResponse;
 import com.fns.warehouse.service.domain.ports.input.service.OrderApplicationService;
 import com.fns.warehouse.service.domain.ports.input.service.WarehouseApplicationService;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -56,6 +55,20 @@ public class OrderController {
         ShippingOrderResponse shippingOrderResponse = orderApplicationService.shipOrder(shippingOrderCommand);
 
         return ResponseEntity.ok(shippingOrderResponse);
+    }
+
+    @PostMapping("/received-order")
+    public ResponseEntity<UpdateStatusOrderResponse> receivedOrder(@RequestBody UpdateStatusOrder updateStatusOrder) {
+        UpdateStatusOrderResponse updateStatusOrderResponse = orderApplicationService.receivedOrder(updateStatusOrder);
+
+        return ResponseEntity.ok(updateStatusOrderResponse);
+    }
+
+    @PostMapping("/cancel-order")
+    public ResponseEntity<UpdateStatusOrderResponse> cancelOrder(@RequestBody UpdateStatusOrder updateStatusOrder) {
+        UpdateStatusOrderResponse updateStatusOrderResponse = orderApplicationService.cancelOrder(updateStatusOrder);
+
+        return ResponseEntity.ok(updateStatusOrderResponse);
     }
 
     @PostMapping("/nearest-warehouse")

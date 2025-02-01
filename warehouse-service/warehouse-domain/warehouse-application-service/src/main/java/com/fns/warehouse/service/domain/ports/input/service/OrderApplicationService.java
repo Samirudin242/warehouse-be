@@ -1,10 +1,12 @@
 package com.fns.warehouse.service.domain.ports.input.service;
 
 import com.fns.warehouse.service.domain.dto.create.CreateOrderCommand;
+import com.fns.warehouse.service.domain.dto.create.UpdateStatusOrder;
 import com.fns.warehouse.service.domain.dto.create.ShippingOrderCommand;
 import com.fns.warehouse.service.domain.dto.create.UploadPaymentCommand;
 import com.fns.warehouse.service.domain.dto.get.GetOrderResponse;
 import com.fns.warehouse.service.domain.dto.response.CreateOrderResponse;
+import com.fns.warehouse.service.domain.dto.response.UpdateStatusOrderResponse;
 import com.fns.warehouse.service.domain.dto.response.ShippingOrderResponse;
 import com.fns.warehouse.service.domain.dto.response.UploadPaymentResponse;
 import org.springframework.data.domain.Page;
@@ -28,5 +30,9 @@ public interface OrderApplicationService {
     UploadPaymentResponse uploadPayment(UploadPaymentCommand uploadPaymentCommand);
 
     ShippingOrderResponse shipOrder(ShippingOrderCommand shippingOrderCommand);
+
+    UpdateStatusOrderResponse receivedOrder(UpdateStatusOrder updateStatusOrderCommand);
+
+    UpdateStatusOrderResponse cancelOrder(UpdateStatusOrder updateStatusOrderCommand);
 
 }

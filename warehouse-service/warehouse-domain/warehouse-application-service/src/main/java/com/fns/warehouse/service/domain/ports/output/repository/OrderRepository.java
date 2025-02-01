@@ -2,11 +2,11 @@ package com.fns.warehouse.service.domain.ports.output.repository;
 
 import com.fns.warehouse.service.domain.dto.create.*;
 import com.fns.warehouse.service.domain.dto.get.GetOrderResponse;
+import com.fns.warehouse.service.domain.dto.response.UpdateStatusOrderResponse;
 import com.fns.warehouse.service.domain.dto.response.ShippingOrderResponse;
 import com.fns.warehouse.service.domain.dto.response.UpdateStockResponse;
 import com.fns.warehouse.service.domain.dto.response.UploadPaymentResponse;
 import enitity.Order;
-import enitity.Stock;
 import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,5 +33,8 @@ public interface OrderRepository {
 
     void createMutationStock(CreateMutationStock createMutationStock);
 
+    UpdateStatusOrderResponse receiveOrder(UpdateStatusOrder updateStatusOrder);
+
+    UpdateStatusOrderResponse cancelOrder(UpdateStatusOrder updateStatusOrder);
 
 }

@@ -1,10 +1,12 @@
 package com.fns.warehouse.service.domain;
 
 import com.fns.warehouse.service.domain.dto.create.CreateOrderCommand;
+import com.fns.warehouse.service.domain.dto.create.UpdateStatusOrder;
 import com.fns.warehouse.service.domain.dto.create.ShippingOrderCommand;
 import com.fns.warehouse.service.domain.dto.create.UploadPaymentCommand;
 import com.fns.warehouse.service.domain.dto.get.GetOrderResponse;
 import com.fns.warehouse.service.domain.dto.response.CreateOrderResponse;
+import com.fns.warehouse.service.domain.dto.response.UpdateStatusOrderResponse;
 import com.fns.warehouse.service.domain.dto.response.ShippingOrderResponse;
 import com.fns.warehouse.service.domain.dto.response.UploadPaymentResponse;
 import com.fns.warehouse.service.domain.ports.input.service.OrderApplicationService;
@@ -60,5 +62,15 @@ public class OrderApplicationServiceImpl implements OrderApplicationService {
     @Override
     public ShippingOrderResponse shipOrder(ShippingOrderCommand shippingOrderCommand) {
         return orderCommandHandler.shipOrder(shippingOrderCommand);
+    }
+
+    @Override
+    public UpdateStatusOrderResponse receivedOrder(UpdateStatusOrder updateStatusOrderCommand) {
+        return orderRepository.receiveOrder(updateStatusOrderCommand);
+    }
+
+    @Override
+    public UpdateStatusOrderResponse cancelOrder(UpdateStatusOrder updateStatusOrderCommand) {
+        return orderRepository.cancelOrder(updateStatusOrderCommand);
     }
 }

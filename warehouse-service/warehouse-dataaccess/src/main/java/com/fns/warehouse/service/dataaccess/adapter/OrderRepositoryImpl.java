@@ -6,6 +6,7 @@ import com.fns.warehouse.service.dataaccess.mapper.SalesReportDataAccessMapper;
 import com.fns.warehouse.service.dataaccess.repository.*;
 import com.fns.warehouse.service.domain.dto.create.*;
 import com.fns.warehouse.service.domain.dto.get.GetOrderResponse;
+import com.fns.warehouse.service.domain.dto.response.UpdateStatusOrderResponse;
 import com.fns.warehouse.service.domain.dto.response.ShippingOrderResponse;
 import com.fns.warehouse.service.domain.dto.response.UpdateStockResponse;
 import com.fns.warehouse.service.domain.dto.response.UploadPaymentResponse;
@@ -198,6 +199,43 @@ public class OrderRepositoryImpl implements OrderRepository {
     public void createMutationStock(CreateMutationStock createMutationStock) {
         StockMutationEntity mutationEntity = orderDataAccessMapper.stockMutationEntity(createMutationStock);
         stockMutationJpaRepository.save(mutationEntity);
+    }
+
+    @Override
+    @Transactional
+    public UpdateStatusOrderResponse receiveOrder(UpdateStatusOrder updateStatusOrder) {
+        OrderEntity orderEntity = orderJpaRepository.findById(updateStatusOrder.getOrder_id())
+                .orElseThrow(() -> new RuntimeException("Order not found"));
+
+        orderEntity.setStatus(OrderStatus.COMPLETED);
+        orderEntity.setOrderDate(updateStatusOrder.getOrder_date());
+
+        orderJpaRepository.save(orderEntity);
+
+        return UpdateStatusOrderResponse.builder()
+                .order_id(orderEntity.getId())
+                .order_date(orderEntity.getOrderDate())
+                .user_id(orderEntity.getUser().getId())
+                .username(orderEntity.getUser().getUser_name())
+                .build();
+    }
+
+    @Override
+    public UpdateStatusOrderResponse cancelOrder(UpdateStatusOrder updateStatusOrder) {
+        OrderEntity orderEntity = orderJpaRepository.findById(updateStatusOrder.getOrder_id())
+                .orElseThrow(() -> new RuntimeException("Order not found"));
+
+        orderEntity.setStatus(OrderStatus.CANCELLED);
+        orderEntity.setOrderDate(updateStatusOrder.getOrder_date());
+
+        orderJpaRepository.save(orderEntity);
+
+        return UpdateStatusOrderResponse.builder()
+                .order_id(orderEntity.getId())
+                .order_date(orderEntity.getOrderDate())
+                .user_id(orderEntity.getUser().getId())
+                .username(orderEntity.getUser().getUser_name())
+                .build();
     }
 
 }

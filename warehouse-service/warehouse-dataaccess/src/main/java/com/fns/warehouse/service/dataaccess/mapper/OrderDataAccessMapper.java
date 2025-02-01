@@ -59,6 +59,7 @@ public class OrderDataAccessMapper {
     public List<OrderItemEntity> orderToOrderItemEntities(Order order, OrderEntity savedOrderEntity) {
         return order.getOrders().stream()
                 .map(orderItem -> {
+
                     ProductEntity productEntity = productJpaRepository.findById(orderItem.getProduct_id())
                             .orElseThrow(() -> new IllegalArgumentException("Invalid product id: " + orderItem.getProduct_id()));
 

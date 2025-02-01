@@ -132,7 +132,7 @@ public class OrderCommandHandler {
                             .mutation_date(new Date())
                             .product_id(order.getProduct_id())
                             .quantity(quantity)
-                            .mutation_type(fromWarehouseId != null ? MutationType.TRANSFER : MutationType.IN)
+                            .mutation_type(fromWarehouseId != null ? MutationType.TRANSFER : MutationType.OUT)
                             .build();
 
                     orderRepository.createMutationStock(createMutationStock);

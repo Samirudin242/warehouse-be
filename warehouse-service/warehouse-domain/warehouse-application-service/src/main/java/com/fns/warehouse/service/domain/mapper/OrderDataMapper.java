@@ -3,7 +3,6 @@ package com.fns.warehouse.service.domain.mapper;
 import com.fns.warehouse.service.domain.dto.create.CreateOrderCommand;
 import com.fns.warehouse.service.domain.dto.create.CreateOrderItemCommand;
 import com.fns.warehouse.service.domain.dto.create.CreateSalesCommand;
-import com.fns.warehouse.service.domain.dto.create.ShippingOrderCommand;
 import com.fns.warehouse.service.domain.dto.response.CreateOrderResponse;
 import enitity.Order;
 import enitity.OrderItem;
@@ -41,6 +40,8 @@ public class OrderDataMapper {
         return OrderItem.builder()
                 .order_id(createOrderItemCommand.getOrder_id())
                 .product_id(createOrderItemCommand.getProduct_id())
+                .color_id(createOrderItemCommand.getColor_id())
+                .size_id(createOrderItemCommand.getSize_id())
                 .quantity(createOrderItemCommand.getQuantity())
                 .price(createOrderItemCommand.getPrice())
                 .warehouse(createOrderItemCommand.getWarehouse_id())
