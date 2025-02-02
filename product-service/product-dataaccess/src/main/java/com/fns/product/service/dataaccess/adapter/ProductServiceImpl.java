@@ -46,6 +46,7 @@ public class ProductServiceImpl implements ProductRepository {
 
         Page<ProductEntity> productEntities;
 
+        log.info("product name is {}", name);
         if(name.isEmpty()) {
             productEntities  = productJpaRepository.findAll(pageable);
         } else {

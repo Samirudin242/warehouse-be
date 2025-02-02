@@ -21,6 +21,7 @@ com/fns/product/service/domain/ports/output/repository/ProductColorsRepository.c
 com/fns/product/service/domain/ports/output/repository/ProductPricesRepository.class
 com/fns/product/service/domain/ports/output/repository/StockRepository.class
 com/fns/product/service/domain/dto/get/ProductSizeBrandColorResponse.class
+com/fns/product/service/domain/StockMessagingImpl.class
 com/fns/product/service/domain/ProductCommandHandler.class
 com/fns/product/service/domain/WarehouseMessageImpl.class
 com/fns/product/service/domain/ports/output/repository/ProductAndSizeRepository.class
@@ -32,6 +33,7 @@ com/fns/product/service/domain/dto/edit/EditProductCommand$EditProductCommandBui
 com/fns/product/service/domain/ports/output/repository/CartRepository.class
 com/fns/product/service/domain/dto/create/CreateProductCommand$CreateProductCommandBuilder.class
 com/fns/product/service/domain/dto/edit/EditProductCommand.class
+com/fns/product/service/domain/dto/message/StockModel.class
 com/fns/product/service/domain/dto/create/CreateProductCommand.class
 com/fns/product/service/domain/mapper/ProductCategoryDomainMapper.class
 com/fns/product/service/domain/ProductCreateCommandHandler.class
@@ -45,18 +47,21 @@ com/fns/product/service/domain/ports/input/message/listener/UserMessageListener.
 com/fns/product/service/domain/dto/message/UserModel.class
 com/fns/product/service/domain/mapper/WarehouseDataMapper.class
 com/fns/product/service/domain/dto/message/WarehouseModel$WarehouseModelBuilder.class
+com/fns/product/service/domain/ports/input/message/listener/StockMessageListener.class
 com/fns/product/service/domain/dto/message/WarehouseModel.class
 com/fns/product/service/domain/dto/create/ProductResponse.class
 com/fns/product/service/domain/ports/output/repository/ProductImageRepository.class
 com/fns/product/service/domain/ProductPhotoServiceImpl.class
 com/fns/product/service/domain/ports/output/repository/ProductCategoriesRepository.class
 com/fns/product/service/domain/ports/output/message/ProductMessagePublisher.class
+com/fns/product/service/domain/dto/message/StockModel$StockModelBuilder.class
 com/fns/product/service/domain/ports/output/repository/ProductReviewRepository.class
 com/fns/product/service/domain/CartApplicationServiceImpl.class
 com/fns/product/service/domain/UserMessagingImpl.class
 com/fns/product/service/domain/ProductSizeBrandColorCommandHandler.class
 com/fns/product/service/domain/ports/input/message/listener/WarehouseMessageListener.class
 com/fns/product/service/domain/mapper/CartDataMapper.class
+com/fns/product/service/domain/ports/output/repository/ProductSizesRepository.class
 com/fns/product/service/domain/ports/output/repository/ProductBrandRepository.class
 com/fns/product/service/domain/dto/create/CreateCartResponse$CreateCartResponseBuilder.class
 com/fns/product/service/domain/ports/output/repository/ProductRepository.class

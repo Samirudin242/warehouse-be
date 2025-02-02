@@ -2,8 +2,12 @@ com/fns/product/service/messaging/model/ProductKafkaModel$ProductKafkaModelBuild
 com/fns/product/service/messaging/model/WarehouseKafkaModel$WarehouseKafkaModelBuilder.class
 com/fns/product/service/messaging/model/UserKafkaModel.class
 com/fns/product/service/messaging/model/ProductKafkaModel.class
+com/fns/product/service/messaging/model/StockKafkaModel$StockKafkaModelBuilder.class
+com/fns/product/service/messaging/listener/StockUpdatedListener.class
 com/fns/product/service/messaging/model/WarehouseKafkaModel.class
+com/fns/product/service/messaging/model/StockKafkaModel.class
 com/fns/product/service/messaging/config/KafkaConsumerConfig.class
+com/fns/product/service/messaging/mapper/StockMessagingMapper.class
 com/fns/product/service/messaging/listener/WarehouseCreatedListener.class
 com/fns/product/service/messaging/producer/KafkaProducerService.class
 com/fns/product/service/messaging/config/KafkaConfig.class

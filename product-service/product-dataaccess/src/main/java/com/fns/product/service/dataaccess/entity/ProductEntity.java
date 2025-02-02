@@ -26,10 +26,6 @@ import java.util.UUID;
 public class ProductEntity {
     @Id
     @GeneratedValue(generator = "UUID", strategy = GenerationType.AUTO)
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
     private UUID id;
 
     private String sku;

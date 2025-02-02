@@ -5,5 +5,6 @@ import com.fns.product.service.domain.dto.message.UserModel;
 public interface UserRepository {
 
     void saveUser(UserModel user);
+    void editUser(UserModel user);
 
 }

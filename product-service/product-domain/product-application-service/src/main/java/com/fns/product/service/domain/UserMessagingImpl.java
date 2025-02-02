@@ -20,4 +20,9 @@ public class UserMessagingImpl implements UserMessageListener {
     public void savedUser(UserModel userModel) {
         userRepository.saveUser(userModel);
     }
+
+    @Override
+    public void editUser(UserModel userModel) {
+        userRepository.editUser(userModel);
+    }
 }

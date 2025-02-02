@@ -36,4 +36,18 @@ public class UserCreatedListener {
             log.error("Error processing user_created event", e);
         }
     }
+
+    @KafkaListener(topics = "user-edited", groupId = "product-group")
+    public void listenEdit(String message) {
+        try {
+            UserKafkaModel userKafkaModel = objectMapper.readValue(message, UserKafkaModel.class);
+            log.info("Received edit event: {}", userKafkaModel);
+
+            UserModel userModel = userMessagingMapper.mapToUserModel(userKafkaModel);
+            userMessageListener.editUser(userModel);
+
+        } catch (Exception e) {
+            log.error("Error processing user_edit event", e);
+        }
+    }
 }
