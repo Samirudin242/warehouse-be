@@ -3,6 +3,7 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-messaging/src/main/java/com/fns/warehouse/service/messaging/listener/ProductCreatedListener.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-messaging/src/main/java/com/fns/warehouse/service/messaging/listener/UserCreatedListener.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-messaging/src/main/java/com/fns/warehouse/service/messaging/mapper/ProductMessagingMapper.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-messaging/src/main/java/com/fns/warehouse/service/messaging/mapper/StockMessagingMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-messaging/src/main/java/com/fns/warehouse/service/messaging/mapper/WarehouseMessagingMapper.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-messaging/src/main/java/com/fns/warehouse/service/messaging/model/ProductKafkaModel.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-messaging/src/main/java/com/fns/warehouse/service/messaging/model/StockKafkaModel.java

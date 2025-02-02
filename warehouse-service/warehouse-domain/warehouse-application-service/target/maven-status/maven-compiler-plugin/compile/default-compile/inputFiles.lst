@@ -13,6 +13,7 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/create/CreateWarehouseCommand.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/create/NearestWarehouseCommand.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/create/ShippingOrderCommand.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/create/UpdateStatusOrder.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/create/UpdateStockCommand.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/create/UploadPaymentCommand.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/create/UserCommand.java
@@ -27,6 +28,7 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/response/CreateOrderResponse.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/response/ErrorResponse.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/response/ShippingOrderResponse.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/response/UpdateStatusOrderResponse.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/response/UpdateStockResponse.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/dto/response/UploadPaymentResponse.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/warehouse-service/warehouse-domain/warehouse-application-service/src/main/java/com/fns/warehouse/service/domain/mapper/OrderDataMapper.java

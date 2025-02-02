@@ -13,3 +13,4 @@ com/fns/warehouse/service/messaging/mapper/ProductMessagingMapper.class
 com/fns/warehouse/service/messaging/producer/KafkaProducerService.class
 com/fns/warehouse/service/messaging/listener/ProductCreatedListener.class
 com/fns/warehouse/service/messaging/publisher/kafka/UpdateStockProductPublisher.class
+com/fns/warehouse/service/messaging/mapper/StockMessagingMapper.class

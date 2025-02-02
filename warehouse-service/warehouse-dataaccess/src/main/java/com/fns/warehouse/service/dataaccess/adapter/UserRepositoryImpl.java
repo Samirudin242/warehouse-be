@@ -26,4 +26,21 @@ public class UserRepositoryImpl implements UserRepository {
         UserEntity userEntity = userDataAccessMapper.userToUserEntity(user);
         return userDataAccessMapper.userEntityToUser(userJpaRepository.save(userEntity));
     }
+
+    @Override
+    public User edit(User user) {
+        UserEntity userEntity = userJpaRepository.findById(user.getId())
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+
+        userEntity.setName(user.getName());
+        userEntity.setEmail(user.getEmail());
+        userEntity.setPhone_number(user.getPhone_number());
+        userEntity.setProfile_picture(user.getProfile_picture());
+        userEntity.setUser_name(user.getUser_name());
+
+        userJpaRepository.save(userEntity);
+
+        return userDataAccessMapper.userEntityToUser(userJpaRepository.save(userEntity));
+
+    }
 }

@@ -35,4 +35,20 @@ public class UserMessageListenerImpl implements UserMessageListener {
             log.error("Error saving user to the database", e);
         }
     }
+
+    @Override
+    public void editedUser(UserModel userModel) {
+        try {
+            log.info("Saved edit user model {}", userModel);
+            // Map UserModel to User entity
+            User user = userDataMapper.userModelToUser(userModel);
+
+            // Save the user entity
+            userRepository.edit(user);
+            log.info("User edit successfully: {}", user);
+
+        } catch (Exception e) {
+            log.error("Error saved user to the database", e);
+        }
+    }
 }

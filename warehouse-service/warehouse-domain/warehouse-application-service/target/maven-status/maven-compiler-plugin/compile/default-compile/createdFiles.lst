@@ -19,6 +19,7 @@ com/fns/warehouse/service/domain/dto/message/UserModel.class
 com/fns/warehouse/service/domain/dto/create/UpdateStockCommand$UpdateStockCommandBuilder.class
 com/fns/warehouse/service/domain/dto/response/ShippingOrderResponse.class
 com/fns/warehouse/service/domain/mapper/WarehouseDataMapper.class
+com/fns/warehouse/service/domain/dto/create/UpdateStatusOrder.class
 com/fns/warehouse/service/domain/dto/get/OrderItemResponse.class
 com/fns/warehouse/service/domain/dto/response/UpdateStockResponse$UpdateStockResponseBuilder.class
 com/fns/warehouse/service/domain/dto/create/CreateOrderItemCommand.class
@@ -47,14 +48,17 @@ com/fns/warehouse/service/domain/dto/get/GetOrderResponse.class
 com/fns/warehouse/service/domain/dto/create/CreateMutationStock$CreateMutationStockBuilder.class
 com/fns/warehouse/service/domain/ports/output/repository/WarehouseRepository.class
 com/fns/warehouse/service/domain/ports/output/repository/ProductRepository.class
+com/fns/warehouse/service/domain/dto/response/UpdateStatusOrderResponse.class
 com/fns/warehouse/service/domain/dto/get/CreateWarehouseResponse.class
 com/fns/warehouse/service/domain/dto/message/ProductModel$ProductModelBuilder.class
 com/fns/warehouse/service/domain/dto/create/UploadPaymentCommand.class
+com/fns/warehouse/service/domain/dto/response/UpdateStatusOrderResponse$UpdateStatusOrderResponseBuilder.class
 com/fns/warehouse/service/domain/dto/create/UpdateStockCommand.class
 com/fns/warehouse/service/domain/dto/get/CreateWarehouseResponse$CreateWarehouseResponseBuilder.class
 com/fns/warehouse/service/domain/dto/response/UploadPaymentResponse$UploadPaymentResponseBuilder.class
 com/fns/warehouse/service/domain/UserMessageListenerImpl.class
 com/fns/warehouse/service/domain/dto/create/CreateOrderCommand.class
+com/fns/warehouse/service/domain/dto/create/UpdateStatusOrder$UpdateStatusOrderBuilder.class
 com/fns/warehouse/service/domain/dto/create/UserCommand$UserCommandBuilder.class
 com/fns/warehouse/service/domain/WarehouseApplicationServiceImpl.class
 com/fns/warehouse/service/domain/dto/response/ShippingOrderResponse$ShippingOrderResponseBuilder.class

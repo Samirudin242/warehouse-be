@@ -6,4 +6,6 @@ public interface UserMessageListener {
 
      void savedUser(UserModel userModel);
 
+     void editedUser(UserModel userModel);
+
 }
