@@ -1,6 +1,7 @@
 com/fns/user/service/messaging/config/KafkaConfig.class
-com/fns/user/service/messaging/publisher/kafka/CreateUserKafkaMessagePublisher.class
+com/fns/user/service/messaging/publisher/kafka/EditUserKafkaMessagePublisher.class
 com/fns/user/service/messaging/mapper/UserKafkaMapper.class
+com/fns/user/service/messaging/publisher/kafka/CreateUserKafkaMessagePublisher.class
 com/fns/user/service/messaging/config/MessagingConfig.class
 com/fns/user/service/messaging/producer/KafkaProducerService.class
 com/fns/user/service/messaging/model/UserKafkaModel.class

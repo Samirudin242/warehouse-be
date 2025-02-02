@@ -1,5 +1,6 @@
 package com.fns.user.service.domain.rest;
 
+import com.fns.user.service.domain.dto.create.EditUserCommand;
 import com.fns.user.service.domain.dto.get.LocationResponse;
 import com.fns.user.service.domain.dto.get.RoleResponse;
 import com.fns.user.service.domain.dto.get.UserResponse;
@@ -38,6 +39,11 @@ public class UserController {
         return ResponseEntity.ok(userResponses);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<UserResponse> editUser(@RequestBody EditUserCommand editUserCommand) {
+        UserResponse userResponse = userApplicationService.editUser(editUserCommand);
+        return ResponseEntity.ok(userResponse);
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse> getUser(@PathVariable("id") UUID id) {

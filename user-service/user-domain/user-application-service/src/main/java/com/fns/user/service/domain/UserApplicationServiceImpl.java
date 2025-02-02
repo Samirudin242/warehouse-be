@@ -2,6 +2,7 @@ package com.fns.user.service.domain;
 
 import com.fns.user.service.domain.dto.create.CreateLocation;
 import com.fns.user.service.domain.dto.create.CreateUserCommand;
+import com.fns.user.service.domain.dto.create.EditUserCommand;
 import com.fns.user.service.domain.dto.create.LoginUserCommand;
 import com.fns.user.service.domain.dto.get.*;
 import com.fns.user.service.domain.ports.input.service.UserApplicationService;
@@ -35,6 +36,11 @@ public class UserApplicationServiceImpl implements UserApplicationService {
     @Override
     public UserResponse createUser(CreateUserCommand createUserCommand) {
         return userCommandHandler.createUser(createUserCommand);
+    }
+
+    @Override
+    public UserResponse editUser(EditUserCommand editUserCommand) {
+        return userCommandHandler.editUser(editUserCommand);
     }
 
     @Override

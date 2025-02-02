@@ -1,5 +1,6 @@
 package com.fns.user.service.domain.ports.output.repository;
 
+import com.fns.user.service.domain.dto.create.EditUserCommand;
 import com.fns.user.service.domain.dto.get.GetAllUserResponse;
 import com.fns.user.service.domain.dto.get.ProfilePhotoResponse;
 import com.fns.user.service.domain.dto.get.RoleResponse;
@@ -15,6 +16,8 @@ import java.util.UUID;
 
 public interface UserRepository {
    User save(User user);
+
+   User edit(EditUserCommand editUserCommand);
 
    Page<GetAllUserResponse> getAllUsers(Integer page, Integer pageSize, UUID role, String name);
 

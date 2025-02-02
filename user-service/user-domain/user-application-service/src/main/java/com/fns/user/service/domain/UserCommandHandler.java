@@ -1,6 +1,7 @@
 package com.fns.user.service.domain;
 
 import com.fns.user.service.domain.dto.create.CreateUserCommand;
+import com.fns.user.service.domain.dto.create.EditUserCommand;
 import com.fns.user.service.domain.dto.create.LoginUserCommand;
 import com.fns.user.service.domain.dto.get.LocationResponse;
 import com.fns.user.service.domain.dto.get.LoginResponse;
@@ -50,11 +51,12 @@ public class UserCommandHandler {
     }
 
     public UserResponse createUser(CreateUserCommand createUserCommand) {
-        /*
-            Event here if any
-         */
         return  userHelper.userCreateMethod(createUserCommand);
 
+    }
+
+    public UserResponse editUser(EditUserCommand editUserCommand) {
+        return userHelper.userEditMethod(editUserCommand);
     }
 
     public UserResponse editUser(UUID id, CreateUserCommand createUserCommand) {

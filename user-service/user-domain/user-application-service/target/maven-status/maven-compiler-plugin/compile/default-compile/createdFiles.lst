@@ -1,4 +1,6 @@
 com/fns/user/service/domain/dto/get/LoginResponse.class
+com/fns/user/service/domain/dto/create/CreateUserResponse.class
+com/fns/user/service/domain/dto/create/CreateUserResponse$CreateUserResponseBuilder.class
 com/fns/user/service/domain/UserCommandHandler.class
 com/fns/user/service/domain/dto/create/LoginUserCommand$LoginUserCommandBuilder.class
 com/fns/user/service/domain/dto/get/RoleResponse.class
@@ -17,15 +19,19 @@ com/fns/user/service/domain/mapper/UserDataMapper.class
 com/fns/user/service/domain/dto/get/RoleResponse$RoleResponseBuilder.class
 com/fns/user/service/domain/dto/get/UserResponse.class
 com/fns/user/service/domain/dto/get/ProfilePhotoResponse.class
+com/fns/user/service/domain/dto/create/EditUserCommand$EditUserCommandBuilder.class
 com/fns/user/service/domain/dto/get/GetAllUserResponse.class
+com/fns/user/service/domain/ports/output/message/UserEditMessagePublisher.class
 com/fns/user/service/domain/dto/get/ProfilePhotoResponse$ProfilePhotoResponseBuilder.class
 com/fns/user/service/domain/UserApplicationServiceImpl.class
 com/fns/user/service/domain/dto/create/CreateLocation.class
 com/fns/user/service/domain/dto/get/GetAllUserResponse$GetAllUserResponseBuilder.class
 com/fns/user/service/domain/dto/get/UserResponse$UserResponseBuilder.class
 com/fns/user/service/domain/dto/response/ErrorResponse.class
+com/fns/user/service/domain/dto/create/EditUserCommand.class
 com/fns/user/service/domain/ports/input/service/UserApplicationService.class
 com/fns/user/service/domain/dto/create/CreateUserCommand.class
+com/fns/user/service/domain/dto/create/GetAllUserResponse.class
 com/fns/user/service/domain/dto/get/LocationResponse.class
 com/fns/user/service/domain/util/TokenUtil.class
 com/fns/user/service/domain/dto/get/UserAlreadyExistsException.class

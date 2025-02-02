@@ -4,3 +4,4 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-messaging/src/main/java/com/fns/user/service/messaging/model/UserKafkaModel.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-messaging/src/main/java/com/fns/user/service/messaging/producer/KafkaProducerService.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-messaging/src/main/java/com/fns/user/service/messaging/publisher/kafka/CreateUserKafkaMessagePublisher.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-messaging/src/main/java/com/fns/user/service/messaging/publisher/kafka/EditUserKafkaMessagePublisher.java

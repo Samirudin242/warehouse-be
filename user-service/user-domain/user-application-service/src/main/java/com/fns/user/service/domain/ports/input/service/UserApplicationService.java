@@ -2,6 +2,7 @@ package com.fns.user.service.domain.ports.input.service;
 
 import com.fns.user.service.domain.dto.create.CreateLocation;
 import com.fns.user.service.domain.dto.create.CreateUserCommand;
+import com.fns.user.service.domain.dto.create.EditUserCommand;
 import com.fns.user.service.domain.dto.create.LoginUserCommand;
 import com.fns.user.service.domain.dto.get.*;
 import org.springframework.data.domain.Page;
@@ -14,6 +15,8 @@ import java.util.UUID;
 
 public interface UserApplicationService {
     UserResponse createUser(@Valid CreateUserCommand createUserCommand);
+
+    UserResponse editUser(@Valid EditUserCommand editUserCommand);
 
     UserResponse editUser(UUID id, CreateUserCommand createUserCommand);
 

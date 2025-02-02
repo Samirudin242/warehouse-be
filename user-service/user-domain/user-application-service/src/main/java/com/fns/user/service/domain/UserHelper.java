@@ -1,13 +1,16 @@
 package com.fns.user.service.domain;
 
 import com.fns.user.service.domain.dto.create.CreateUserCommand;
+import com.fns.user.service.domain.dto.create.EditUserCommand;
 import com.fns.user.service.domain.dto.get.UserAlreadyExistsException;
 import com.fns.user.service.domain.dto.get.UserResponse;
 import com.fns.user.service.domain.entity.Location;
 import com.fns.user.service.domain.entity.Role;
 import com.fns.user.service.domain.entity.User;
 import com.fns.user.service.domain.event.UserCreatedEvent;
+import com.fns.user.service.domain.event.UserEditEvent;
 import com.fns.user.service.domain.mapper.UserDataMapper;
+import com.fns.user.service.domain.ports.output.message.UserEditMessagePublisher;
 import com.fns.user.service.domain.ports.output.message.UserMessagePublisher;
 import com.fns.user.service.domain.ports.output.repository.LocationRepository;
 import com.fns.user.service.domain.ports.output.repository.UserRepository;
@@ -24,6 +27,7 @@ public class UserHelper {
     private final UserRepository userRepository; // this is just declare, different with initialize
     private final LocationRepository locationRepository;
     private final UserMessagePublisher userMessagePublisher;
+    private final UserEditMessagePublisher userEditMessagePublisher;
     private final UserDomainService userDomainService;
 
     private final UserDataMapper userDataMapper;
@@ -33,12 +37,13 @@ public class UserHelper {
 
     public UserHelper(// this is called constructor, which is to initialize the object's state, that sets up the initial values for the object attributes
                       UserDomainService userDomainService,
-                      UserRepository userRepository, LocationRepository locationRepository, UserMessagePublisher userMessagePublisher, UserDomainService userDomainService1,
+                      UserRepository userRepository, LocationRepository locationRepository, UserMessagePublisher userMessagePublisher, UserEditMessagePublisher userEditMessagePublisher, UserDomainService userDomainService1,
                       UserDataMapper userDataMapper, UserRoleRepository userRoleRepository, TokenUtil tokenUtil
     ) {
         this.userRepository = userRepository;
         this.locationRepository = locationRepository;
         this.userMessagePublisher = userMessagePublisher;
+        this.userEditMessagePublisher = userEditMessagePublisher;
         this.userDomainService = userDomainService1;
         this.userDataMapper = userDataMapper;
         this.userRoleRepository = userRoleRepository;
@@ -53,10 +58,6 @@ public class UserHelper {
         User savedUser = saveUser(userEntity);
 
         Role role = userRoleRepository.getRoleById(savedUser.getRole_id());
-
-
-        log.info("Saved user: " + savedUser);
-
 
         Location location = Location.builder()
                 .user_id(savedUser.getId())
@@ -114,6 +115,30 @@ public class UserHelper {
                 .build();
     }
 
+    @Transactional
+    public UserResponse userEditMethod(EditUserCommand editUserCommand) {
+        User editedUser = editUser(editUserCommand);
+
+       UserEditEvent editEvent =  userDomainService.editUser(
+                editedUser.getId(),
+                editedUser.getName(),
+                editedUser.getUser_name(),
+                editedUser.getEmail(),
+                editedUser.getPhone_number(),
+                editedUser.getProfile_picture(),
+                editedUser.getRole_id(),
+                editedUser.getIs_verified(),
+                userEditMessagePublisher
+        );
+
+        log.info("User event edit, {}", editEvent);
+        //publish the user
+        userEditMessagePublisher.publish(editEvent);
+
+        return userDataMapper.userResponseFromUser(editedUser);
+
+    }
+
     public UserResponse userEditMethod(User user) {
         UserResponse userEdit = userDataMapper.userResponseFromUser(user);
 
@@ -139,6 +164,19 @@ public class UserHelper {
 
         } catch (Exception e) {
             log.error("Error while saving user: {}", e.getMessage());
+            throw new UserAlreadyExistsException(e.getMessage());
+        }
+    }
+
+    private User editUser(EditUserCommand editUserCommand) {
+        try {
+            User userResult = userRepository.edit(editUserCommand);
+            if (userResult == null) {
+                throw new RuntimeException("Failed to edit user");
+            }
+            return userResult;
+        } catch (Exception e) {
+            log.error("Error while editing user: {}", e.getMessage());
             throw new UserAlreadyExistsException(e.getMessage());
         }
     }

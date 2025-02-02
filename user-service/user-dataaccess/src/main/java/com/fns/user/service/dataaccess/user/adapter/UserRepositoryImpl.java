@@ -8,6 +8,7 @@ import com.fns.user.service.dataaccess.user.mapper.UserRoleMapper;
 import com.fns.user.service.dataaccess.user.repository.LocationJpaRepository;
 import com.fns.user.service.dataaccess.user.repository.UserJpaRepository;
 import com.fns.user.service.dataaccess.user.repository.UserRoleJpaRepository;
+import com.fns.user.service.domain.dto.create.EditUserCommand;
 import com.fns.user.service.domain.dto.get.GetAllUserResponse;
 import com.fns.user.service.domain.dto.get.ProfilePhotoResponse;
 import com.fns.user.service.domain.dto.get.RoleResponse;
@@ -85,6 +86,27 @@ public class UserRepositoryImpl implements UserRepository { // it will be provid
             log.error("Error saving user: {}", e.getMessage());
             throw new RuntimeException("Error saving user", e);
         }
+    }
+
+    @Override
+    public User edit(EditUserCommand editUserCommand) {
+        UserEntity userEntity = userJpaRepository.findById(editUserCommand.getId())
+                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + editUserCommand.getId()));
+
+        UserRoleEntity roleEntity = userRoleJpaRepository.findById(editUserCommand.getRole_id())
+                .orElseThrow(() -> new EntityNotFoundException("Role not found with id: " + editUserCommand.getRole_id()));
+
+
+        userEntity.setName(editUserCommand.getName());
+        userEntity.setUser_name(editUserCommand.getUser_name());
+        userEntity.setEmail(editUserCommand.getEmail());
+        userEntity.setProfile_picture(editUserCommand.getProfile_url());
+        userEntity.setPhone_number(editUserCommand.getPhone_number());
+        userEntity.setUpdatedAt(LocalDateTime.now());
+        userEntity.setUser_role(roleEntity);
+        UserEntity savedEntity = userJpaRepository.save(userEntity);
+
+        return userDataAccessMapper.userEntityToUser(savedEntity);
     }
 
 
