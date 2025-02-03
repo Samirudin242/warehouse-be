@@ -27,7 +27,6 @@
 
 	<modules>
 		<module>common</module>
-		<module>common/common-domain</module>
 		<module>user-service</module>
 		<module>product-service</module>
 		<module>warehouse-service</module>

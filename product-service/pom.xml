@@ -9,7 +9,6 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.fns</groupId>
     <artifactId>product-service</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -19,7 +18,6 @@
 
     <modules>
         <module>product-domain</module>
-<!--        <module>product-messaging</module>-->
         <module>product-container</module>
         <module>product-application</module>
         <module>product-dataaccess</module>
@@ -58,11 +56,6 @@
                 <artifactId>product-dataaccess</artifactId>
                 <version>${project.version}</version>
             </dependency>
-<!--            <dependency>-->
-<!--                <groupId>com.fns</groupId>-->
-<!--                <artifactId>product-messaging</artifactId>-->
-<!--                <version>${project.version}</version>-->
-<!--            </dependency>-->
         </dependencies>
     </dependencyManagement>
 
@@ -94,7 +87,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <scope>development</scope>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>
@@ -113,6 +106,24 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <image>
+                            <name>com.fns/product.service:1.0-SNAPSHOT</name>
+                        </image>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>build-image</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
                 <plugin>
                     <groupId>com.github.ferstl</groupId>
                     <artifactId>depgraph-maven-plugin</artifactId>
