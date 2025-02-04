@@ -20,7 +20,7 @@ spec:
           image: postgres:latest
           env:
             - name: POSTGRES_PASSWORD
-              value: "admin123"
+              value: "theyaku"
 ---
 apiVersion: v1
 kind: Service

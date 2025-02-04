@@ -17,10 +17,10 @@ spec:
     spec:
       containers:
         - name: warehouse-service
-          image: asia-southeast2-docker.pkg.dev/purwadika-441705/com-fns-wh-app-repository/warehouse.service:0.0.1-SNAPSHOT
+          image: asia-southeast2-docker.pkg.dev/civil-hash-446108-e1/com-multiwarehouse-app-repository/warehouse.service:1.0:-SNAPSHOT
           env:
             - name: SPRING_DATASOURCE_URL
-              value: "jdbc:postgresql://postgres-service:5432/staging?currentSchema=multi-wh&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified"
+              value: "jdbc:postgresql://postgres-service:5432/warehouse_service?currentSchema=public&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified"
             - name: SPRING_DATASOURCE_INITIALIZATION-MODE
               value: "never"
             - name: KAFKA-CONFIG_BOOTSTRAP-SERVERS
@@ -48,7 +48,7 @@ spec:
   ports:
     - name: warehouse-service-port
       protocol: TCP
-      port: 8082
+      port: 8080
   type: LoadBalancer
   loadBalancerIP: ""
 #---
