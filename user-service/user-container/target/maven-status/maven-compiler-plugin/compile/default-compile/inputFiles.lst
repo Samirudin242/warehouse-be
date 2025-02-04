@@ -1,7 +1,0 @@
-/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-container/src/main/java/com/fns/user/service/domain/BeanConfiguration.java
-/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-container/src/main/java/com/fns/user/service/domain/UserServiceApplication.java
-/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-container/src/main/java/com/fns/user/service/domain/security/JwtAuthenticationFilter.java
-/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-container/src/main/java/com/fns/user/service/domain/security/SecurityConfig.java
-/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-container/src/main/java/com/fns/user/service/domain/security/UserAuthentication.java
-/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-container/src/main/java/com/fns/user/service/domain/security/WebConfig.java
-/Users/samirudin./Documents/Purwadhika/warehouse-be/user-service/user-container/src/main/java/com/fns/user/service/domain/seeder/UserRoleSeeder.java
