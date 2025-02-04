@@ -21,6 +21,7 @@ com/fns/product/service/dataaccess/entity/UserEntity$UserEntityBuilder.class
 com/fns/product/service/dataaccess/entity/ProductColorsEntity$ProductColorsEntityBuilder.class
 com/fns/product/service/dataaccess/adapter/ProductPhotoImpl.class
 com/fns/product/service/dataaccess/repository/WarehouseJpaRepository.class
+com/fns/product/service/dataaccess/repository/ProductReviewJpaRepository.class
 com/fns/product/service/dataaccess/entity/ProductBrandEntity.class
 com/fns/product/service/dataaccess/adapter/WarehouseRepositoryImpl.class
 com/fns/product/service/dataaccess/entity/ProductEntity$ProductEntityBuilder.class

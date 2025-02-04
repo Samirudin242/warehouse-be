@@ -53,7 +53,6 @@ public class ProductEntity {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductAndSizeEntity> productAndSizes;
 
-
     @OneToMany
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private List<ProductImagesEntity> images;
@@ -65,7 +64,6 @@ public class ProductEntity {
     @OneToMany
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private List<ProductReviews> reviews;
-
 
     @CreatedDate
     @Column(updatable = false)

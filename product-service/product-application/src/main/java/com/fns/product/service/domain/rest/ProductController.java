@@ -34,11 +34,13 @@ public class ProductController {
 
     @GetMapping("/products-name")
     public ResponseEntity<Page<ProductResponse>> getAllProductName(
+            @RequestParam(required = false, defaultValue = "") String name,
+            @RequestParam(required = false, defaultValue = "") List<UUID> categoryIds,
             @RequestParam(defaultValue = "0") Integer page,
-            @RequestParam(defaultValue = "10") Integer size,
-            @RequestParam(required = false, defaultValue = "") String name
+            @RequestParam(defaultValue = "10") Integer size
     ) {
-        Page<ProductResponse> products = productApplicationService.getProducts(page, size, name);
+
+        Page<ProductResponse> products = productApplicationService.getProducts(page, size, name, categoryIds);
         return ResponseEntity.ok(products);
     }
 

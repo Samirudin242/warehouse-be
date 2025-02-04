@@ -1,5 +1,6 @@
 com/fns/product/service/domain/rest/ProductPublicController.class
 com/fns/product/service/domain/rest/MasterDataProductController.class
 com/fns/product/service/domain/rest/CartController.class
+com/fns/product/service/domain/rest/ReviewController.class
 com/fns/product/service/domain/rest/GlobalExceptionHandler.class
 com/fns/product/service/domain/rest/ProductController.class

@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -23,9 +24,10 @@ public class ProductPublicController {
     public ResponseEntity<Page<ProductResponse>> getAllProducts(
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "10") Integer size,
-            @RequestParam(required = false, defaultValue = "") String name
+            @RequestParam(required = false, defaultValue = "") String name,
+            @RequestParam(required = false) List<UUID> categoryIds
     ) {
-        Page<ProductResponse> products = productApplicationService.getProducts(page, size, name);
+        Page<ProductResponse> products = productApplicationService.getProducts(page, size, name, categoryIds);
         return ResponseEntity.ok(products);
     }
 

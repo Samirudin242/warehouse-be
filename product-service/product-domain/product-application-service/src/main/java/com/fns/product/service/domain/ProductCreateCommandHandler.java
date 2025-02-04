@@ -239,12 +239,6 @@ public class ProductCreateCommandHandler {
         }
     }
 
-    
-
-    private Page<Product> getProducts(Integer page, Integer size, String name) {
-        return productRepository.getProducts(page, size, name);
-    }
-
     private Product getProduct(UUID id) {
         return productRepository.getProductById(id);
     }

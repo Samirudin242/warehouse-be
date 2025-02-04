@@ -6,6 +6,7 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/ProductCreateCommandHandler.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/ProductPhotoServiceImpl.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/ProductSizeBrandColorCommandHandler.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/ReviewApplicationServiceImpl.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/StockMessagingImpl.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/UserMessagingImpl.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/WarehouseMessageImpl.java
@@ -14,6 +15,7 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/dto/create/CreatePriceCommand.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/dto/create/CreateProductCommand.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/dto/create/ProductResponse.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/dto/create/ProductReviewCommand.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/dto/delete/DeleteCartItemResponse.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/dto/edit/EditProductCommand.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/dto/edit/ListImage.java
@@ -21,6 +23,7 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/dto/get/ProductCategoryResponse.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/dto/get/ProductResponse.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/dto/get/ProductSizeBrandColorResponse.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/dto/get/ReviewResponse.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/dto/message/StockModel.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/dto/message/UserModel.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/dto/message/WarehouseModel.java
@@ -35,6 +38,7 @@
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/ports/input/service/CartApplicationService.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/ports/input/service/ProductApplicationService.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/ports/input/service/ProductPhotoService.java
+/Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/ports/input/service/ReviewApplicationService.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/ports/output/message/ProductMessagePublisher.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/ports/output/repository/CartRepository.java
 /Users/samirudin./Documents/Purwadhika/warehouse-be/product-service/product-domain/product-application-service/src/main/java/com/fns/product/service/domain/ports/output/repository/ProductAndColorRepository.java

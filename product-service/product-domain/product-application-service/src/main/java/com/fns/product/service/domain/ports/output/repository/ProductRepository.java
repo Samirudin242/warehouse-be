@@ -9,7 +9,7 @@ import java.util.UUID;
 public interface ProductRepository {
     Product saveProduct(Product product);
 
-    Page<Product> getProducts(Integer page, Integer size, String name);
+    Page<Product> getProducts(Integer page, Integer size, String name, List<UUID> categoriesId);
 
     Product getProductById(UUID id);
 

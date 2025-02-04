@@ -1,7 +1,9 @@
 package com.fns.product.service.dataaccess.adapter;
 
+import com.fns.product.service.dataaccess.entity.ProductCategoriesEntity;
 import com.fns.product.service.dataaccess.entity.ProductEntity;
 import com.fns.product.service.dataaccess.mapper.ProductMapper;
+import com.fns.product.service.dataaccess.repository.ProductCategoriesJpaRepository;
 import com.fns.product.service.dataaccess.repository.ProductJpaRepository;
 import com.fns.product.service.domain.entity.Product;
 import com.fns.product.service.domain.ports.output.repository.ProductRepository;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -24,10 +27,12 @@ import java.util.stream.Collectors;
 public class ProductServiceImpl implements ProductRepository {
 
     private final ProductJpaRepository productJpaRepository;
+    private final ProductCategoriesJpaRepository productCategoriesJpaRepository;
     private final ProductMapper productMapper;
 
-    public ProductServiceImpl(ProductJpaRepository productJpaRepository, ProductMapper productMapper) {
+    public ProductServiceImpl(ProductJpaRepository productJpaRepository, ProductCategoriesJpaRepository productCategoriesJpaRepository, ProductMapper productMapper) {
         this.productJpaRepository = productJpaRepository;
+        this.productCategoriesJpaRepository = productCategoriesJpaRepository;
         this.productMapper = productMapper;
     }
 
@@ -40,17 +45,43 @@ public class ProductServiceImpl implements ProductRepository {
         return productMapper.productFromProductEntity(savedProduct);
     }
 
+    private void collectCategoryIds(UUID categoryId, List<UUID> catIds) {
+        // Always add the current category ID first
+        catIds.add(categoryId);
+
+        // Fetch child categories
+        List<ProductCategoriesEntity> childCategories = productCategoriesJpaRepository.findByParentId(categoryId);
+
+        // Recursively collect child category IDs
+        for (ProductCategoriesEntity child : childCategories) {
+            collectCategoryIds(child.getId(), catIds);
+        }
+    }
+
+
     @Override
-    public Page<Product> getProducts(Integer page, Integer size, String name) {
+    public Page<Product> getProducts(Integer page, Integer size, String name, List<UUID> categoryIds) {
+
+        List<UUID> catIds = new ArrayList<>();
+
+        if(categoryIds != null) {
+            for (UUID categoryId : categoryIds) {
+                collectCategoryIds(categoryId, catIds);
+            }
+        }
+
         Pageable pageable = PageRequest.of(page, size);
 
         Page<ProductEntity> productEntities;
 
-        log.info("product name is {}", name);
-        if(name.isEmpty()) {
+        if(name.isEmpty() && catIds.isEmpty()) {
             productEntities  = productJpaRepository.findAll(pageable);
-        } else {
+        } else if(!catIds.isEmpty() && name.isEmpty()) {
+            productEntities = productJpaRepository.findByCategoryIds(catIds, pageable);
+        } else if(catIds.isEmpty()) {
             productEntities = productJpaRepository.findByNameILike(name, pageable);
+        } else{
+            productEntities = productJpaRepository.findByNameAndCategoryIds(name, catIds, pageable);
         }
 
         List<Product> products = productEntities.stream()

@@ -36,6 +36,13 @@ public class ProductCategorySeeder implements CommandLineRunner {
         ProductCategoriesEntity womenClothingCategory = createCategory("clothing", womenCategory.getId());
         ProductCategoriesEntity womenShoesCategory = createCategory("shoes", womenCategory.getId());
 
+        //Add bags sub-categories for women
+        createCategory("clutches", womenBagsCategory.getId());
+        createCategory("handbag", womenBagsCategory.getId());
+        createCategory("shopper", womenBagsCategory.getId());
+        createCategory("Shoulder bags", womenBagsCategory.getId());
+        createCategory("wallets", womenBagsCategory.getId());
+
         // Add clothing sub-subcategories for women
         createCategory("blazer", womenClothingCategory.getId());
         createCategory("dresses", womenClothingCategory.getId());
@@ -46,6 +53,13 @@ public class ProductCategorySeeder implements CommandLineRunner {
         createCategory("t-shirts", womenClothingCategory.getId());
         createCategory("tops", womenClothingCategory.getId());
         createCategory("trouser", womenClothingCategory.getId());
+
+        //Add shoes sub-categories for women
+        createCategory("ankle boots", womenShoesCategory.getId());
+        createCategory("ballerinas", womenShoesCategory.getId());
+        createCategory("loafers", womenShoesCategory.getId());
+        createCategory("pumps", womenShoesCategory.getId());
+        createCategory("sneakers", womenShoesCategory.getId());
 
         // Create subcategories for men
         ProductCategoriesEntity menClothingCategory = createCategory("clothing", menCategory.getId());
@@ -62,6 +76,12 @@ public class ProductCategorySeeder implements CommandLineRunner {
         createCategory("tops", menClothingCategory.getId());
         createCategory("trouser", menClothingCategory.getId());
 
+        // Add shoes sub-subcategories for men
+        createCategory("lace-up shoes", menShoesCategory.getId());
+        createCategory("loafers", menShoesCategory.getId());
+        createCategory("sneakers", menShoesCategory.getId());
+
+
         // Create subcategories for accessories
         ProductCategoriesEntity accessoriesMenCategory = createCategory("men", accessoriesCategory.getId());
         ProductCategoriesEntity accessoriesWomenCategory = createCategory("women", accessoriesCategory.getId());
@@ -70,6 +90,9 @@ public class ProductCategorySeeder implements CommandLineRunner {
         createCategory("clothing", accessoriesWomenCategory.getId());
         createCategory("looks", accessoriesWomenCategory.getId());
         createCategory("sunglasses", accessoriesWomenCategory.getId());
+
+        // Add clothing sub-subcategory for accessories (men)
+        createCategory("clothing", accessoriesMenCategory.getId());
 
         System.out.println("Categories seeded successfully!");
     }

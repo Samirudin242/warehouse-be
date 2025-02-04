@@ -1,14 +1,16 @@
 package com.fns.product.service.domain.ports.output.repository;
 
-import com.fns.product.service.domain.entity.ProductReviews;
+import com.fns.product.service.domain.dto.create.ProductReviewCommand;
+import com.fns.product.service.domain.dto.get.ReviewResponse;
+import com.fns.product.service.domain.entity.ProductReview;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface ProductReviewRepository {
 
-    ProductReviews save (ProductReviews product);
+    ReviewResponse save (ProductReviewCommand productReviewCommand);
 
-    List<ProductReviews> getProductsByProductId (UUID productId);
+    List<ProductReview> getProductsByProductId (UUID productId);
 
 }
