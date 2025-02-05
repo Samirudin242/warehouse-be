@@ -34,4 +34,6 @@ public interface UserApplicationService {
 
     LocationResponse createLocation(@Valid CreateLocation createLocation);
 
+    UserCount getAllUser();
+
 }

@@ -5,6 +5,7 @@ import com.fns.user.service.dataaccess.user.entity.UserEntity;
 import com.fns.user.service.dataaccess.user.entity.UserRoleEntity;
 import com.fns.user.service.dataaccess.user.repository.LocationJpaRepository;
 import com.fns.user.service.dataaccess.user.repository.UserRoleJpaRepository;
+import com.fns.user.service.domain.entity.Status;
 import com.fns.user.service.domain.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -35,6 +36,7 @@ public class UserDataAccessMapper {
                 .is_verified(user.getIs_verified())
                 .profile_picture(user.getProfile_picture())
                 .phone_number(user.getPhone_number())
+                .status(Status.ACTIVE)
                 .build();
     }
 

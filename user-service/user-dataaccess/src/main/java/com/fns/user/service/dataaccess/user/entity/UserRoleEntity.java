@@ -21,10 +21,6 @@ import java.util.UUID;
 public class UserRoleEntity extends BaseEntity {
     @Id
     @GeneratedValue(generator = "UUID", strategy = GenerationType.AUTO)
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
     private UUID id;
 
     private String role_name;

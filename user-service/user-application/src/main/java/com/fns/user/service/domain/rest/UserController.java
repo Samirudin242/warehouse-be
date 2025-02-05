@@ -1,10 +1,7 @@
 package com.fns.user.service.domain.rest;
 
 import com.fns.user.service.domain.dto.create.EditUserCommand;
-import com.fns.user.service.domain.dto.get.LocationResponse;
-import com.fns.user.service.domain.dto.get.RoleResponse;
-import com.fns.user.service.domain.dto.get.UserResponse;
-import com.fns.user.service.domain.dto.get.GetAllUserResponse;
+import com.fns.user.service.domain.dto.get.*;
 import com.fns.user.service.domain.ports.input.service.UserApplicationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -37,6 +34,12 @@ public class UserController {
         Page<GetAllUserResponse> userResponses = userApplicationService.getAllUsers(page, size, role, name);
 
         return ResponseEntity.ok(userResponses);
+    }
+
+    @GetMapping("/get-all-users-percentage")
+    public ResponseEntity<UserCount> getAllUserPercentage() {
+        UserCount userCount = userApplicationService.getAllUser();
+        return ResponseEntity.ok(userCount);
     }
 
     @PutMapping("/{id}")

@@ -24,7 +24,6 @@ public class UserApplicationServiceImpl implements UserApplicationService {
 
     private final UserCommandHandler userCommandHandler;
     private final LocationCommandHandler locationCommandHandler;
-
     private final UserRepository userRepository;
 
     public UserApplicationServiceImpl(UserCommandHandler userCommandHandler, LocationCommandHandler locationCommandHandler, UserRepository userRepository) {
@@ -81,5 +80,10 @@ public class UserApplicationServiceImpl implements UserApplicationService {
     @Override
     public LocationResponse createLocation(CreateLocation createLocation) {
         return locationCommandHandler.createLocation(createLocation);
+    }
+
+    @Override
+    public UserCount getAllUser() {
+        return userRepository.getAllUser();
     }
 }

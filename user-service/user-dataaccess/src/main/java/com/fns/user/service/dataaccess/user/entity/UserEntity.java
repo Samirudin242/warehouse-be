@@ -1,5 +1,6 @@
 package com.fns.user.service.dataaccess.user.entity;
 
+import com.fns.user.service.domain.entity.Status;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -19,7 +20,6 @@ public class UserEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "uuid2")
     private UUID id;
 
     private String name;
@@ -35,6 +35,8 @@ public class UserEntity extends BaseEntity {
     private String phone_number;
 
     private Boolean is_verified;
+
+    private Status status;
 
     @OneToMany
     @JoinColumn(name = "location_id", referencedColumnName = "id")

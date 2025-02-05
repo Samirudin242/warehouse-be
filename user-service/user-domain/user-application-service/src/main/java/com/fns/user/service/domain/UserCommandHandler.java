@@ -51,7 +51,7 @@ public class UserCommandHandler {
     }
 
     public UserResponse createUser(CreateUserCommand createUserCommand) {
-        return  userHelper.userCreateMethod(createUserCommand);
+        return userHelper.userCreateMethod(createUserCommand);
 
     }
 

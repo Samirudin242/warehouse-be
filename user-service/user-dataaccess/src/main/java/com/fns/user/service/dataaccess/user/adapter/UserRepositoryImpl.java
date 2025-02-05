@@ -1,6 +1,5 @@
 package com.fns.user.service.dataaccess.user.adapter;
 
-import com.fns.user.service.dataaccess.user.entity.LocationEntity;
 import com.fns.user.service.dataaccess.user.entity.UserEntity;
 import com.fns.user.service.dataaccess.user.entity.UserRoleEntity;
 import com.fns.user.service.dataaccess.user.mapper.UserDataAccessMapper;
@@ -9,11 +8,8 @@ import com.fns.user.service.dataaccess.user.repository.LocationJpaRepository;
 import com.fns.user.service.dataaccess.user.repository.UserJpaRepository;
 import com.fns.user.service.dataaccess.user.repository.UserRoleJpaRepository;
 import com.fns.user.service.domain.dto.create.EditUserCommand;
-import com.fns.user.service.domain.dto.get.GetAllUserResponse;
-import com.fns.user.service.domain.dto.get.ProfilePhotoResponse;
-import com.fns.user.service.domain.dto.get.RoleResponse;
-import com.fns.user.service.domain.dto.get.UserAlreadyExistsException;
-import com.fns.user.service.domain.entity.Location;
+import com.fns.user.service.domain.dto.get.*;
+import com.fns.user.service.domain.entity.Status;
 import com.fns.user.service.domain.entity.User;
 import com.fns.user.service.domain.ports.output.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -35,6 +31,9 @@ import java.util.stream.Collectors;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Storage;
+import java.time.LocalDateTime;
+import java.time.YearMonth;
+import java.time.ZoneId;
 
 @Slf4j
 @Component
@@ -66,7 +65,6 @@ public class UserRepositoryImpl implements UserRepository { // it will be provid
     @Override
     public User save(User user) {
         try {
-            log.info("Attempting to save user: {}", user);
 
             // Check if user already exists by username or email
             Optional<UserEntity> existingUser = userJpaRepository.findByUsernameOrEmail(user.getUser_name(), user.getEmail());
@@ -78,7 +76,6 @@ public class UserRepositoryImpl implements UserRepository { // it will be provid
             UserEntity userEntity = userDataAccessMapper.userToUserEntity(user);
 
             UserEntity savedEntity = userJpaRepository.save(userEntity);
-            log.info("Saved Entity: {}", savedEntity);
 
             // Map the saved entity back to a domain user
             return userDataAccessMapper.userEntityToUserGet(savedEntity);
@@ -214,5 +211,33 @@ public class UserRepositoryImpl implements UserRepository { // it will be provid
         return userRoleMapper.userRoleEntitiesToResponse(userRoles);
     }
 
+    @Override
+    public UserCount getAllUser() {
+        List<UserEntity> getList = userJpaRepository.findActiveCustomers(Status.ACTIVE);
 
+        log.info("User count: " + getList.size());
+
+        LocalDateTime startOfThisMonth = YearMonth.now().atDay(1).atStartOfDay();
+        LocalDateTime endOfThisMonth = YearMonth.now().atEndOfMonth().atTime(23, 59, 59);
+
+        YearMonth lastMonth = YearMonth.now().minusMonths(1);
+        LocalDateTime startOfLastMonth = lastMonth.atDay(1).atStartOfDay();
+        LocalDateTime endOfLastMonth = lastMonth.atEndOfMonth().atTime(23, 59, 59);
+
+        long customersThisMonth = userJpaRepository.countActiveCustomersCreatedBetween(startOfThisMonth, endOfThisMonth, Status.ACTIVE);
+        long customersLastMonth = userJpaRepository.countActiveCustomersCreatedBetween(startOfLastMonth, endOfLastMonth, Status.ACTIVE);
+
+        int percentage = 0;
+        if (customersLastMonth > 0) {
+            percentage = (int) (((customersThisMonth - customersLastMonth) / (double) customersLastMonth) * 100);
+        } else if (customersThisMonth > 0) {
+            percentage = 100;
+        }
+
+        return UserCount.builder()
+                .totalUser(getList.size())
+                .percentage(percentage)
+                .build();
+
+    }
 }
