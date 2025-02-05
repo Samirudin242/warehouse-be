@@ -237,7 +237,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     public UpdateStatusOrderResponse cancelOrder(UpdateStatusOrder updateStatusOrder) {
         OrderEntity orderEntity = orderJpaRepository.findById(updateStatusOrder.getOrder_id())
                 .orElseThrow(() -> new RuntimeException("Order not found"));
-        
+
 
         orderEntity.setStatus(OrderStatus.CANCELLED);
         orderEntity.setOrderDate(updateStatusOrder.getOrder_date());
