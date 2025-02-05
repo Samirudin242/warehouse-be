@@ -13,6 +13,7 @@ import com.fns.warehouse.service.domain.dto.response.UploadPaymentResponse;
 import com.fns.warehouse.service.domain.entity.OrderStatus;
 import com.fns.warehouse.service.domain.ports.output.repository.OrderRepository;
 import enitity.Order;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -30,6 +31,7 @@ import java.io.IOException;
 import java.util.*;
 
 @Component
+@Slf4j
 public class OrderRepositoryImpl implements OrderRepository {
 
     private final OrderJpaRepository orderJpaRepository;
@@ -118,7 +120,18 @@ public class OrderRepositoryImpl implements OrderRepository {
 
         Page<OrderEntity> orderEntities;
 
-        orderEntities  = orderJpaRepository.findAll(pageable);
+        OrderStatus statusOrder =
+                "PAYMENT_WAITING".equals(status) ? OrderStatus.PAYMENT_WAITING :
+                        "CANCELLED".equals(status) ? OrderStatus.CANCELLED :
+                                "SHIPPING".equals(status)? OrderStatus.SHIPPING :
+                                       "COMPLETED".equals(status) ? OrderStatus.COMPLETED :
+                                               null;
+
+        if (statusOrder != null) {
+            orderEntities = orderJpaRepository.findByStatusOrderByOrderDateDesc(statusOrder, pageable);
+        } else {
+            orderEntities  = orderJpaRepository.findAll(pageable);
+        }
 
         List<GetOrderResponse> responses = orderEntities.stream()
                 .map(orderDataAccessMapper::getOrderResponse)
@@ -224,6 +237,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     public UpdateStatusOrderResponse cancelOrder(UpdateStatusOrder updateStatusOrder) {
         OrderEntity orderEntity = orderJpaRepository.findById(updateStatusOrder.getOrder_id())
                 .orElseThrow(() -> new RuntimeException("Order not found"));
+        
 
         orderEntity.setStatus(OrderStatus.CANCELLED);
         orderEntity.setOrderDate(updateStatusOrder.getOrder_date());
