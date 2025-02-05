@@ -8,3 +8,5 @@ target/
 infrastructure/docker-compose/volumes/kafka/
 infrastructure/docker-compose/volumes/zookeeper/
 
+user-service/user-container/target/*.jar
+product-service/product-container/target/*.jar
