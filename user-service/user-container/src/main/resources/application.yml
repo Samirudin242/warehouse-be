@@ -17,7 +17,7 @@ spring:
         max-file-size: 1MB
         max-request-size: 1MB
   datasource:
-    url: jdbc:postgresql://localhost:5432/user_service?currentSchema=public&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
+    url: jdbc:postgresql://34.101.97.74:5432/user_service?currentSchema=public&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     username: postgres
     password: theyaku
     driver-class-name: org.postgresql.Driver
