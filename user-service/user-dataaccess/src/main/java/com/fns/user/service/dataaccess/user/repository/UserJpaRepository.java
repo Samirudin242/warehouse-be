@@ -24,11 +24,13 @@ public interface UserJpaRepository extends JpaRepository<UserEntity, UUID> {
         Long countActiveCustomersCreatedBetween(@Param("start") LocalDateTime start, @Param("end") LocalDateTime end, Status status);
 
         @Query("""
-       SELECT u FROM UserEntity u
-       WHERE (u.user_role.id = :role_id)
-       AND (u.name LIKE CONCAT('%', :name, '%'))
-       """)
+              SELECT u FROM UserEntity u
+               WHERE (u.user_role.id = :role_id)
+               AND (u.name LIKE CONCAT('%', :name, '%'))
+               ORDER BY u.createdAt DESC
+              """)
         Page<UserEntity> findByRoleIdAndName(UUID role_id, String name, Pageable pageable);
+
 
         @Query("""
        SELECT u FROM UserEntity u

@@ -30,7 +30,6 @@ public class UserController {
             @RequestParam(required = false, defaultValue = "") UUID role,
             @RequestParam(required = false, defaultValue = "") String name
     ) {
-        log.info("Fetching al es.size()");
         Page<GetAllUserResponse> userResponses = userApplicationService.getAllUsers(page, size, role, name);
 
         return ResponseEntity.ok(userResponses);
