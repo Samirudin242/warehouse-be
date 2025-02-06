@@ -12,5 +12,6 @@ import java.util.UUID;
 public class ProductReviewCommand {
     private Integer rating;
     private String comment;
+    private UUID user_id;
     private UUID product_id;
 }

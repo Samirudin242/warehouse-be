@@ -14,7 +14,7 @@ import java.util.UUID;
 public interface ProductApplicationService {
     ProductResponse createProduct (@Valid CreateProductCommand createProductCommand);
 
-    Page<ProductResponse> getProducts(Integer page, Integer size, String name, List<UUID> categoryIds);
+    Page<ProductResponse> getProducts(Integer page, Integer size, String name, List<UUID> categoryIds, Double minPrice, Double maxPrice);
 
     ProductResponse getProductById(UUID id);
 

@@ -30,6 +30,10 @@ public class ProductReviews {
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private ProductEntity product;
 
+    @ManyToOne
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    private UserEntity userEntity;
+
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDateTime createdAt;

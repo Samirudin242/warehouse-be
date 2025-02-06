@@ -227,11 +227,11 @@ public class ProductCommandHandler {
 
         return productDataMapper.editProductResponse(editProductCommand, existingProduct);
     }
-    public Page<ProductResponse> getAllProducts(Integer page, Integer size, String name, List<UUID> categoriesId) {
+    public Page<ProductResponse> getAllProducts(Integer page, Integer size, String name, List<UUID> categoriesId, Double minPrice, Double maxPrice) {
         try {
             PageRequest pageable = PageRequest.of(page, size);
 
-            Page<Product> products = getProducts(page, size, name, categoriesId);
+            Page<Product> products = getProducts(page, size, name, categoriesId, minPrice, maxPrice);
 
             // Map each Product to a ProductResponse
             List<ProductResponse> productResponses = products.getContent().stream()
@@ -381,8 +381,8 @@ public class ProductCommandHandler {
         }
     }
 
-    private Page<Product> getProducts(Integer page, Integer size, String name, List<UUID> categoriesId) {
-        return productRepository.getProducts(page, size, name, categoriesId);
+    private Page<Product> getProducts(Integer page, Integer size, String name, List<UUID> categoriesId, Double minPrice, Double maxPrice) {
+        return productRepository.getProducts(page, size, name, categoriesId, minPrice, maxPrice);
     }
 
     private Product getProduct(UUID id) {

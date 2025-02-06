@@ -60,7 +60,12 @@ public class ProductServiceImpl implements ProductRepository {
 
 
     @Override
-    public Page<Product> getProducts(Integer page, Integer size, String name, List<UUID> categoryIds) {
+    public Page<Product> getProducts(Integer page, Integer size, String name, List<UUID> categoryIds, Double minPrice, Double maxPrice) {
+
+        Double minP = (minPrice == null || minPrice < 1) ? 0 : minPrice;
+        Double maxP = (maxPrice == null || maxPrice < 1) ? 1000000000 : maxPrice;
+
+
 
         List<UUID> catIds = new ArrayList<>();
 

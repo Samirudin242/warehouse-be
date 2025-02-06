@@ -1,5 +1,6 @@
 package com.fns.product.service.domain.rest;
 
+import com.fns.product.service.domain.dto.get.ProductCategoryResponse;
 import com.fns.product.service.domain.dto.get.ProductResponse;
 import com.fns.product.service.domain.ports.input.service.ProductApplicationService;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +28,9 @@ public class ProductPublicController {
             @RequestParam(required = false, defaultValue = "") String name,
             @RequestParam(required = false) List<UUID> categoryIds
     ) {
-        Page<ProductResponse> products = productApplicationService.getProducts(page, size, name, categoryIds);
+        Double minP = 0.0;
+        Double maxP = 0.0;
+        Page<ProductResponse> products = productApplicationService.getProducts(page, size, name, categoryIds, minP, maxP);
         return ResponseEntity.ok(products);
     }
 
@@ -36,4 +39,11 @@ public class ProductPublicController {
         ProductResponse product = productApplicationService.getProductById(id);
         return ResponseEntity.ok(product);
     }
+
+    @GetMapping("/products-category")
+    public ResponseEntity<List<ProductCategoryResponse>> getAllProductCategory() {
+        List<ProductCategoryResponse> products = productApplicationService.getProductCategory();
+        return ResponseEntity.ok(products);
+    }
+
 }

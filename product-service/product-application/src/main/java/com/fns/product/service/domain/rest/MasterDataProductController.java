@@ -28,11 +28,6 @@ public class MasterDataProductController {
         return ResponseEntity.ok(products);
     }
 
-    @GetMapping("/products-category")
-    public ResponseEntity<List<ProductCategoryResponse>> getAllProductCategory() {
-        List<ProductCategoryResponse> products = productApplicationService.getProductCategory();
-        return ResponseEntity.ok(products);
-    }
 
     @GetMapping("/products-brand")
     public ResponseEntity<List<ProductSizeBrandColorResponse>> getAllProductBrand() {

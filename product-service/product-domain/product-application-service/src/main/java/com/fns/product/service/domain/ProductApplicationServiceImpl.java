@@ -35,8 +35,8 @@ public class ProductApplicationServiceImpl implements ProductApplicationService 
     }
 
     @Override
-    public Page<ProductResponse> getProducts(Integer page, Integer size, String name, List<UUID> categoryIds) {
-        return productCommandHandler.getAllProducts(page, size, name, categoryIds);
+    public Page<ProductResponse> getProducts(Integer page, Integer size, String name, List<UUID> categoryIds, Double minPrice, Double maxPrice) {
+        return productCommandHandler.getAllProducts(page, size, name, categoryIds, minPrice, maxPrice);
     }
 
     @Override
