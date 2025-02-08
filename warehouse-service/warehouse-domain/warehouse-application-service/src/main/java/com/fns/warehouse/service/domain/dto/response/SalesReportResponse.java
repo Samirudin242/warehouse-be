@@ -10,5 +10,6 @@ import java.util.List;
 @Setter
 @Builder
 public class SalesReportResponse {
-    List<Integer> sales;
+    private List<Integer> sales;
+    private String productName;
 }

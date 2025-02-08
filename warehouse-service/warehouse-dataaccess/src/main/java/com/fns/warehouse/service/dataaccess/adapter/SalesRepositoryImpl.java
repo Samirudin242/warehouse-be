@@ -1,10 +1,13 @@
 package com.fns.warehouse.service.dataaccess.adapter;
 
+import com.fns.warehouse.service.dataaccess.entity.ProductEntity;
 import com.fns.warehouse.service.dataaccess.entity.SalesReportEntity;
+import com.fns.warehouse.service.dataaccess.repository.ProductJpaRepository;
 import com.fns.warehouse.service.dataaccess.repository.SalesReportJpaRepository;
 import com.fns.warehouse.service.domain.dto.create.SalesReportCommand;
 import com.fns.warehouse.service.domain.dto.response.SalesIncomeResponse;
 import com.fns.warehouse.service.domain.dto.response.SalesReportResponse;
+import com.fns.warehouse.service.domain.entity.Product;
 import com.fns.warehouse.service.domain.ports.output.repository.SalesRepository;
 import org.springframework.stereotype.Component;
 
@@ -15,9 +18,10 @@ import java.util.*;
 @Component
 public class SalesRepositoryImpl implements SalesRepository {
     private final SalesReportJpaRepository salesReportJpaRepository;
-
-    public SalesRepositoryImpl(SalesReportJpaRepository salesReportJpaRepository) {
+    private final ProductJpaRepository productJpaRepository;
+    public SalesRepositoryImpl(SalesReportJpaRepository salesReportJpaRepository, ProductJpaRepository productJpaRepository) {
         this.salesReportJpaRepository = salesReportJpaRepository;
+        this.productJpaRepository = productJpaRepository;
     }
 
 
@@ -56,22 +60,25 @@ public class SalesRepositoryImpl implements SalesRepository {
 
     @Override
     public SalesReportResponse getSalesReport(UUID productId) {
+        ProductEntity productEntity = null;
+        if (productId != null) {
+            productEntity = productJpaRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+        }
 
-        // Get sales data from repository
         List<Object[]> results = salesReportJpaRepository.getSalesByMonth(productId);
 
-        // Initialize list with 12 months set to 0
         List<Integer> monthlySales = new ArrayList<>(Collections.nCopies(12, 0));
 
-        // Populate monthly sales from query result
         for (Object[] row : results) {
-            int monthIndex = ((Number) row[0]).intValue() - 1; // Convert SQL month (1-12) to index (0-11)
+            int monthIndex = ((Number) row[0]).intValue() - 1;
             int totalSales = ((Number) row[1]).intValue();
             monthlySales.set(monthIndex, totalSales);
         }
 
         return SalesReportResponse.builder()
                 .sales(monthlySales)
+                .productName(productId == null ? "All Products" : productEntity.getName())
                 .build();
     }
 
