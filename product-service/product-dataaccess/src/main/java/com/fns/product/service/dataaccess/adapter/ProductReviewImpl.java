@@ -2,6 +2,7 @@ package com.fns.product.service.dataaccess.adapter;
 
 import com.fns.product.service.dataaccess.entity.ProductEntity;
 import com.fns.product.service.dataaccess.entity.UserEntity;
+import com.fns.product.service.dataaccess.mapper.ProductReviewMapper;
 import com.fns.product.service.dataaccess.repository.ProductJpaRepository;
 import com.fns.product.service.dataaccess.repository.ProductReviewJpaRepository;
 import com.fns.product.service.dataaccess.repository.UserJpaRepository;
@@ -11,6 +12,10 @@ import com.fns.product.service.domain.entity.ProductReview;
 import com.fns.product.service.dataaccess.entity.ProductReviews;
 import com.fns.product.service.domain.ports.output.repository.ProductReviewRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,11 +30,13 @@ public class ProductReviewImpl implements ProductReviewRepository {
     private final ProductJpaRepository productJpaRepository;
     private final ProductReviewJpaRepository productReviewJpaRepository;
     private final UserJpaRepository userJpaRepository;
+    private final ProductReviewMapper productReviewMapper;
 
-    public ProductReviewImpl(ProductJpaRepository productJpaRepository, ProductReviewJpaRepository productReviewJpaRepository, UserJpaRepository userJpaRepository) {
+    public ProductReviewImpl(ProductJpaRepository productJpaRepository, ProductReviewJpaRepository productReviewJpaRepository, UserJpaRepository userJpaRepository, ProductReviewMapper productReviewMapper) {
         this.productJpaRepository = productJpaRepository;
         this.productReviewJpaRepository = productReviewJpaRepository;
         this.userJpaRepository = userJpaRepository;
+        this.productReviewMapper = productReviewMapper;
     }
 
     @Override
@@ -66,7 +73,23 @@ public class ProductReviewImpl implements ProductReviewRepository {
     }
 
     @Override
-    public List<ProductReview> getProductsByProductId(UUID productId) {
-        return List.of();
+    public Page<ReviewResponse> getProductsByProductId(Integer page, Integer size, UUID productId, Integer rating) {
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<ProductReviews> reviewsEntity;
+
+        if(productId != null) {
+            reviewsEntity = productReviewJpaRepository.findByProduct_IdOrderByCreatedAtDesc(productId, pageable);
+        } else if(rating != null) {
+            reviewsEntity = productReviewJpaRepository.findAllFiveStarReviews(pageable, rating);
+        } else {
+            reviewsEntity = productReviewJpaRepository.findAllByOrderByCreatedAtDesc(pageable);
+        }
+
+        List<ReviewResponse> reviews = reviewsEntity.stream().map(productReviewMapper::responseFromEntity)
+                .toList();
+
+        return new PageImpl<>(reviews, pageable, reviewsEntity.getTotalElements());
     }
+
 }

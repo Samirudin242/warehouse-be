@@ -7,8 +7,12 @@ import com.fns.product.service.domain.entity.ProductReview;
 import com.fns.product.service.domain.ports.input.service.ReviewApplicationService;
 import com.fns.product.service.domain.ports.output.repository.ProductReviewRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+
+import java.util.Random;
+import java.util.UUID;
 
 @Slf4j
 @Validated
@@ -23,5 +27,10 @@ public class ReviewApplicationServiceImpl implements ReviewApplicationService {
     @Override
     public ReviewResponse save(ProductReviewCommand productReviewCommand) {
         return productReviewRepository.save(productReviewCommand);
+    }
+
+    @Override
+    public Page<ReviewResponse> getReviewByProductId(Integer page, Integer size, UUID productId, Integer rating) {
+        return productReviewRepository.getProductsByProductId(page, size, productId, rating);
     }
 }

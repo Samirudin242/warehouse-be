@@ -2,7 +2,9 @@ package com.fns.product.service.domain.rest;
 
 import com.fns.product.service.domain.dto.get.ProductCategoryResponse;
 import com.fns.product.service.domain.dto.get.ProductResponse;
+import com.fns.product.service.domain.dto.get.ReviewResponse;
 import com.fns.product.service.domain.ports.input.service.ProductApplicationService;
+import com.fns.product.service.domain.ports.input.service.ReviewApplicationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +18,11 @@ import java.util.UUID;
 @RequestMapping(value = "product-public", produces = "application/vnd.api.v1+json")
 public class ProductPublicController {
     private final ProductApplicationService productApplicationService;
+    private final ReviewApplicationService reviewApplicationService;
 
-    public ProductPublicController(ProductApplicationService productApplicationService) {
+    public ProductPublicController(ProductApplicationService productApplicationService, ReviewApplicationService reviewApplicationService) {
         this.productApplicationService = productApplicationService;
+        this.reviewApplicationService = reviewApplicationService;
     }
 
     @GetMapping
@@ -44,6 +48,17 @@ public class ProductPublicController {
     public ResponseEntity<List<ProductCategoryResponse>> getAllProductCategory() {
         List<ProductCategoryResponse> products = productApplicationService.getProductCategory();
         return ResponseEntity.ok(products);
+    }
+
+    @GetMapping("reviews")
+    public ResponseEntity<Page<ReviewResponse>> getRatings(
+            @RequestParam(required = false, defaultValue = "") UUID productId,
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "10") Integer size,
+            @RequestParam(required = false, defaultValue = "") Integer rating
+    ) {
+        Page<ReviewResponse> reviews = reviewApplicationService.getReviewByProductId(page, size, productId, rating);
+        return ResponseEntity.ok(reviews);
     }
 
 }

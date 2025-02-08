@@ -1,14 +1,16 @@
 package com.fns.product.service.domain.rest;
 
 import com.fns.product.service.domain.dto.create.ProductReviewCommand;
+import com.fns.product.service.domain.dto.get.ProductResponse;
 import com.fns.product.service.domain.dto.get.ReviewResponse;
 import com.fns.product.service.domain.ports.input.service.ReviewApplicationService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @RestController
@@ -27,5 +29,7 @@ public class ReviewController {
         log.info("Product Review created: {}", reviewResponse);
         return ResponseEntity.ok(reviewResponse);
     }
+
+
 
 }
