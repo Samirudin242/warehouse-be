@@ -15,5 +15,5 @@ public interface OrderJpaRepository extends JpaRepository<OrderEntity, UUID> {
 
     Page<OrderEntity> findByStatusOrderByOrderDateDesc(OrderStatus status, Pageable pageable);
 
-
+    Page<OrderEntity> findAllByOrderByOrderDateDesc(Pageable pageable);
 }

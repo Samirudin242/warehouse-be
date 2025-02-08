@@ -31,6 +31,9 @@ public class UpdateStockProductPublisher implements StockUpdateMessagePublisher 
             String message = objectMapper.writeValueAsString(
                     warehouseMessagingMapper.convertToStockKafkaModel(domainEvent.getEntity())
             );
+
+            log.info("published kafka message, {}", message);
+
             kafkaTemplate.send(TOPIC, message);
         } catch (Exception e) {
             log.error("Error serializing stock update event for Kafka: {}", domainEvent, e);

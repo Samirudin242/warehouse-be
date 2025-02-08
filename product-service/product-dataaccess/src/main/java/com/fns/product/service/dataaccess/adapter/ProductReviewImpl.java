@@ -10,12 +10,16 @@ import com.fns.product.service.domain.dto.get.ReviewResponse;
 import com.fns.product.service.domain.entity.ProductReview;
 import com.fns.product.service.dataaccess.entity.ProductReviews;
 import com.fns.product.service.domain.ports.output.repository.ProductReviewRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Component
+@Slf4j
 public class ProductReviewImpl implements ProductReviewRepository {
 
     private final ProductJpaRepository productJpaRepository;
@@ -29,10 +33,10 @@ public class ProductReviewImpl implements ProductReviewRepository {
     }
 
     @Override
+    @Transactional
     public ReviewResponse save(ProductReviewCommand productReviewCommand) {
-
         ProductEntity productEntity = productJpaRepository.findById(productReviewCommand.getProduct_id())
-                .orElseThrow(() -> new IllegalArgumentException("Product  not found with id: " + productReviewCommand.getProduct_id()));
+                .orElseThrow(() -> new IllegalArgumentException("Product not found with id: " + productReviewCommand.getProduct_id()));
 
         UserEntity userEntity = userJpaRepository.findById(productReviewCommand.getUser_id())
                 .orElseThrow(() -> new IllegalArgumentException("User not found with id: " + productReviewCommand.getUser_id()));
@@ -44,13 +48,20 @@ public class ProductReviewImpl implements ProductReviewRepository {
                 .userEntity(userEntity)
                 .build();
 
-       ProductReviews saved = productReviewJpaRepository.save(productReviews);
+        ProductReviews savedReview = productReviewJpaRepository.save(productReviews);
+
+        Optional<Integer> currentAverage = productReviewJpaRepository.findAverageRatingByProductId(productEntity.getId());
+
+        int newAverageRating = currentAverage.orElse(0);
+
+        productEntity.setRating(newAverageRating);
+        productJpaRepository.save(productEntity);
 
         return ReviewResponse.builder()
-                .id(saved.getId())
-                .product_id(saved.getProduct().getId())
-                .comment(saved.getComment())
-                .count(saved.getCount())
+                .id(savedReview.getId())
+                .product_id(savedReview.getProduct().getId())
+                .comment(savedReview.getComment())
+                .count(savedReview.getCount())
                 .build();
     }
 

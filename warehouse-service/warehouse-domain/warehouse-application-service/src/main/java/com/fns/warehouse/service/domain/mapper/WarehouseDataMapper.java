@@ -13,6 +13,14 @@ public class WarehouseDataMapper {
         return Warehouse.builder()
                 .name(createWarehouseCommand.getName())
                 .admin_id(createWarehouseCommand.getAdmin_id())
+                .address(createWarehouseCommand.getAddress())
+                .city(createWarehouseCommand.getCity())
+                .city_id(createWarehouseCommand.getCity_id())
+                .province(createWarehouseCommand.getProvince())
+                .province_id(createWarehouseCommand.getProvince_id())
+                .latitude(createWarehouseCommand.getLatitude())
+                .longitude(createWarehouseCommand.getLongitude())
+                .postal_code(createWarehouseCommand.getPostal_code())
                 .build();
     }
 

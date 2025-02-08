@@ -130,7 +130,7 @@ public class OrderRepositoryImpl implements OrderRepository {
         if (statusOrder != null) {
             orderEntities = orderJpaRepository.findByStatusOrderByOrderDateDesc(statusOrder, pageable);
         } else {
-            orderEntities  = orderJpaRepository.findAll(pageable);
+            orderEntities  = orderJpaRepository.findAllByOrderByOrderDateDesc(pageable);
         }
 
         List<GetOrderResponse> responses = orderEntities.stream()

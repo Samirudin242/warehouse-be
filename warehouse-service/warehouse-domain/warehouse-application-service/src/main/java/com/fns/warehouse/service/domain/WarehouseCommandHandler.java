@@ -39,9 +39,13 @@ public class WarehouseCommandHandler {
 
         Warehouse warehouse = saveWarehouse(savedWarehouse);
 
+        log.info("saved warehouse: {}", warehouse);
+
+
         Location savedLocation = warehouseDataMapper.commandToLocation(createWarehouseCommand, warehouse);
 
         Location location = saveLocation(savedLocation);
+
 
         WarehouseCreatedEvent warehouseEvent = warehouseDomainService.createWarehouse(
                 warehouse.getId(),

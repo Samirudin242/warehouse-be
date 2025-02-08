@@ -36,18 +36,21 @@ public class WarehouseDataAccessMapper {
         Double longitude = null;
         String city_id = null;
         String province_id = null;
+        String address = null;
 
         if (!locationEntities.isEmpty()) {
-            latitude = locationEntities.get(0).getLatitude();
-            longitude = locationEntities.get(0).getLongitude();
-            city_id = locationEntities.get(0).getCity_id();
-            province_id = locationEntities.get(0).getProvince_id();
+            LocationEntity location = locationEntities.get(0);
+            latitude = location.getLatitude();
+            longitude = location.getLongitude();
+            city_id = location.getCity_id();
+            province_id = location.getProvince_id();
+            address = location.getAddress();
         }
-        // Map the WarehouseEntity to Warehouse
+
         return Warehouse.builder()
                 .id(warehouseEntity.getId())
                 .name(warehouseEntity.getName())
-                .address(locationEntities.get(0).getAddress())
+                .address(address)
                 .latitude(latitude)
                 .longitude(longitude)
                 .city_id(city_id)
