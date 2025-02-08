@@ -10,6 +10,8 @@ public class ProductReviewMapper {
     public ReviewResponse responseFromEntity(ProductReviews productReviews) {
         return ReviewResponse.builder()
                 .id(productReviews.getId())
+                .customerName(productReviews.getUserEntity().getName())
+                .profileUrl(productReviews.getUserEntity().getProfile_picture())
                 .product_id(productReviews.getProduct().getId())
                 .comment(productReviews.getComment())
                 .count(productReviews.getCount())

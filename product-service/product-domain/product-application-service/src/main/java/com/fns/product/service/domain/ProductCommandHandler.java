@@ -31,8 +31,6 @@ public class ProductCommandHandler {
     private final ProductDataMapper productDataMapper;
     private final ProductBrandRepository productBrandRepository;
     private final ProductCategoriesRepository productCategoriesRepository;
-    private final ProductColorsRepository productColorsRepository;
-    private final ProductSizesColorBrandRepository productSizesColorBrandRepository;
     private final ProductImageRepository productImagesRepository;
     private final StockRepository stockRepository;
     private final ProductMessagePublisher productMessagePublisher;
@@ -40,15 +38,12 @@ public class ProductCommandHandler {
     private final ProductAndSizeRepository productAndSizeRepository;
     private final ProductAndColorRepository productAndColorRepository;
 
-//    private final ProductReviewRepository productReviewRepository;
 
     public ProductCommandHandler(
             ProductRepository productRepository, ProductPricesRepository productPricesRepository,
             ProductDataMapper productDataMapper,
             ProductBrandRepository productBrandRepository,
-            ProductColorsRepository productColorsRepository,
             ProductCategoriesRepository productCategoriesRepository,
-            ProductSizesColorBrandRepository productSizesColorBrandRepository,
             ProductImageRepository productImagesRepository, StockRepository stockRepository, ProductMessagePublisher productMessagePublisher, ProductDomainService productDomainService, ProductAndSizeRepository productAndSizeRepository, ProductAndColorRepository productAndColorRepository, ProductReviewRepository productReviewRepository
     ) {
         this.productImagesRepository = productImagesRepository;
@@ -57,14 +52,11 @@ public class ProductCommandHandler {
         this.productDataMapper = productDataMapper;
         this.productBrandRepository = productBrandRepository;
         this.productCategoriesRepository = productCategoriesRepository;
-        this.productColorsRepository = productColorsRepository;
-        this.productSizesColorBrandRepository = productSizesColorBrandRepository;
         this.stockRepository = stockRepository;
         this.productMessagePublisher = productMessagePublisher;
         this.productDomainService = productDomainService;
         this.productAndSizeRepository = productAndSizeRepository;
         this.productAndColorRepository = productAndColorRepository;
-//        this.productReviewRepository = productReviewRepository;
     }
     @Transactional
     public ProductResponse createProduct(CreateProductCommand createProductCommand) {
@@ -276,6 +268,50 @@ public class ProductCommandHandler {
             log.error("Error while fetching all products: {}", e.getMessage(), e);
             throw new RuntimeException("Error while fetching all products", e);
         }
+    }
+
+    public Page<ProductResponse> getPopularProduct(Integer page, Integer size) {
+        PageRequest pageable = PageRequest.of(page, size);
+
+        Page<Product> productPopular = productRepository.getPopularProduct(page, size);
+
+        List<ProductResponse> productResponses = productPopular.getContent().stream()
+                .map(product -> {
+                    ProductBrand brand = productBrandRepository.findById(product.getBrandId())
+                            .orElseThrow(() -> new RuntimeException("Brand not found for product: " + product.getId()));
+
+                    ProductCategories category = productCategoriesRepository.findById(product.getProductCategoryId())
+                            .orElseThrow(() -> new RuntimeException("Category not found for product: " + product.getId()));
+
+                    ProductPrices prices = productPricesRepository.getPriceByProductId(product.getId());
+
+                    List<ProductImages> productImages  = productImagesRepository.findByProductId(product.getId());
+
+                    List<Stock> allStock = stockRepository.findByProductId(product.getId());
+
+                    Integer totalStock = allStock.stream()
+                            .mapToInt(Stock::getQuantity)
+                            .sum();
+
+                    return ProductResponse.builder()
+                            .id(product.getId())
+                            .name(product.getName())
+                            .sku(product.getSku())
+                            .description(product.getDescription())
+                            .slug(product.getSlug())
+                            .gender(product.getGender())
+                            .brand(brand)
+                            .productCategory(category)
+                            .stock(totalStock)
+                            .imageUrl(productImages.isEmpty() ? null : productImages.get(0).getImageUrl())
+                            .price(prices.getPrice())
+                            .rating(product.getRating())
+                            .totalSell(product.getTotalSell())
+                            .build();
+                })
+                .toList();
+
+        return new PageImpl<>(productResponses, pageable, productPopular.getTotalElements());
     }
 
     public ProductResponse getProductById(UUID id) {

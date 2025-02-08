@@ -1,5 +1,6 @@
 package com.fns.product.service.domain.ports.output.repository;
 
+import com.fns.product.service.domain.dto.get.ProductResponse;
 import com.fns.product.service.domain.entity.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
@@ -16,4 +17,6 @@ public interface ProductRepository {
     Product getProductById(UUID id);
 
     void deleteProduct(UUID id);
+
+    Page<Product> getPopularProduct(Integer page, Integer size);
 }

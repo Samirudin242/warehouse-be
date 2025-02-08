@@ -78,4 +78,9 @@ public class ProductApplicationServiceImpl implements ProductApplicationService 
     public Page<ProductResponse> getAllProductName(Integer page, Integer size, String name) {
         return null;
     }
+
+    @Override
+    public Page<ProductResponse> getPopularProduct(Integer page, Integer size) {
+        return productCommandHandler.getPopularProduct(page, size);
+    }
 }

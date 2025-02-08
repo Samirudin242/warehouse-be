@@ -66,6 +66,7 @@ public class ProductReviewImpl implements ProductReviewRepository {
 
         return ReviewResponse.builder()
                 .id(savedReview.getId())
+                .customerName(savedReview.getUserEntity().getName())
                 .product_id(savedReview.getProduct().getId())
                 .comment(savedReview.getComment())
                 .count(savedReview.getCount())

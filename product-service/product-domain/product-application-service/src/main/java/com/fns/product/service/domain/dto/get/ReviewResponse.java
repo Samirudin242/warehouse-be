@@ -14,6 +14,10 @@ import java.util.UUID;
 public class ReviewResponse {
     private UUID id;
 
+    private String customerName;
+
+    private String profileUrl;
+
     private Integer rating;
 
     private Integer count;

@@ -105,4 +105,18 @@ public class ProductServiceImpl implements ProductRepository {
     public void deleteProduct(UUID id) {
         productJpaRepository.deleteById(id);
     }
+
+    @Override
+    public Page<Product> getPopularProduct(Integer page, Integer size) {
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<ProductEntity> productEntities = productJpaRepository.findPopularProducts(pageable);
+
+        List<Product> products = productEntities.stream()
+                .map(productMapper::productFromProductEntity)
+                .collect(Collectors.toList());
+
+        return new PageImpl<>(products, pageable, productEntities.getTotalElements());
+
+    }
 }

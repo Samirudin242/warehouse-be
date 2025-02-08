@@ -28,4 +28,8 @@ public interface ProductJpaRepository extends JpaRepository<ProductEntity, UUID>
 
     @Query("SELECT p FROM ProductEntity p WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :name, '%'))")
     Page<ProductEntity> findByNameILike(@Param("name") String name, Pageable pageable);
+
+    @Query("SELECT p FROM ProductEntity p WHERE p.totalSell IS NOT NULL ORDER BY p.totalSell DESC")
+    Page<ProductEntity> findPopularProducts(Pageable pageable);
+
 }

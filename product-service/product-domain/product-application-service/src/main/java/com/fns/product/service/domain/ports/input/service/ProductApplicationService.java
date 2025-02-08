@@ -32,4 +32,6 @@ public interface ProductApplicationService {
 
     Page<ProductResponse> getAllProductName(Integer page, Integer size, String name);
 
+    Page<ProductResponse> getPopularProduct(Integer page, Integer size);
+
 }
