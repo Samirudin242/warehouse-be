@@ -36,7 +36,10 @@ public class KafkaConfig {
 
         // Use the local Kafka brokers defined in Docker Compose
         // Assuming you want to connect to 'kafka-broker-1:9092'
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:19092,localhost:29092,localhost:39092");
+//        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:19092,localhost:29092,localhost:39092");
+
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "gke-confluent-kafka-cp-kafka:9092");
+
 
         // Remove the SASL configuration as it's not needed for local Kafka setup
         props.put("security.protocol", "PLAINTEXT"); // This is used for local connections, no SSL or SASL

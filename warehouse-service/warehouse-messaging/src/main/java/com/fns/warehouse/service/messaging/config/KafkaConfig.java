@@ -18,7 +18,9 @@ public class KafkaConfig {
     public Map<String, Object> producerConfigs() {
         Map<String, Object> props = new HashMap<>();
 
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:19092,localhost:29092,localhost:39092");
+//        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:19092,localhost:29092,localhost:39092");
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "gke-confluent-kafka-cp-kafka:9092");
+
 
         props.put("security.protocol", "PLAINTEXT");
 
