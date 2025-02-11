@@ -61,4 +61,13 @@ public class ProductPublicController {
         return ResponseEntity.ok(reviews);
     }
 
+    @GetMapping("/popular-products")
+    public ResponseEntity<Page<ProductResponse>> getAllProducts(
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "10") Integer size
+    ) {
+        Page<ProductResponse> products = productApplicationService.getPopularProduct(page, size);
+        return ResponseEntity.ok(products);
+    }
+
 }
